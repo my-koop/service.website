@@ -1,4 +1,6 @@
 /** @jsx React.DOM */
+var React = require('react');
+var ReactBootstrap = require('react-boostrap');
 var mountNode = document.getElementById('content');
 
 var BS = ReactBootstrap;
@@ -11,10 +13,6 @@ var buttonsInstance = (
 );
 
 React.renderComponent(buttonsInstance, mountNode);
-
-
-
-
 
 
 
