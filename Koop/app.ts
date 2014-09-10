@@ -3,7 +3,7 @@ import routes = require('./routes/index');
 import user = require('./routes/user');
 import http = require('http');
 import path = require('path');
-
+import stylus = require('stylus');
 var app = express();
 
 var favicon = require('serve-favicon');
@@ -29,6 +29,7 @@ app.use(session({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
+app.use(stylus.middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
