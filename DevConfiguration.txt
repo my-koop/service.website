@@ -5,7 +5,7 @@ Necessary installation for the project
 To work in Visual Studio 2013
 - Typescript : http://www.microsoft.com/en-us/download/details.aspx?id=43721 
 - VS Tools   : http://nodejstools.codeplex.com/
-
+- To launch .bat file within Visual Studio : http://stackoverflow.com/a/5606276
 
 To work in another IDE or text editor (todo)                
 - Typescript :  (Using npm) npm install -g typescript
