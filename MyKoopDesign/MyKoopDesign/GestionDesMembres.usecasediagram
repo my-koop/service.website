@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="c3ab5001-b0cd-481f-b904-3338e45e9f9a" name="GestionDesMembres" linkedPackageId="b2e5e879-737e-44fe-adeb-4f6afac2e82e" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
-  <profileInstances>
-    <packageHasProfileInstances Id="6566fbba-0ab0-4a35-a13b-3a879f719679">
-      <profileInstance Id="7a3bd4fc-bb34-4849-aaa9-071ce6141631" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="296490fc-286d-4f8a-b2b0-69afc2513c01">
-      <profileInstance Id="624f7d5e-2a03-43ca-8936-94cc1c31d863" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <useCaseModelRootHasTypes>
       <actor Id="7b41d53b-b571-47eb-aed8-09983bad39cd" name="Utilisateur" isAbstract="false" isLeaf="false">
@@ -122,20 +108,6 @@
       </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <useCase Id="942c7885-b0ef-4f00-b67f-e253b0b232ae" name="Désactiver un membre" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="8dabb5f7-bb9d-44e2-9af6-c7a6ef733a1f" />
-        <extendedCases>
-          <extend Id="f9078605-bc32-4949-99ae-5ca77fec0a68">
-            <useCaseMoniker Id="48d95a28-3d58-4a0f-be5f-1e7443b3866d" LastKnownName="Gérer des membres" />
-            <elementDefinition Id="ffbce56d-a730-4368-9204-09691528c3e7" />
-          </extend>
-        </extendedCases>
-        <subjects>
-          <subsystemMoniker Id="7981644c-498f-44db-8780-5536024b9541" LastKnownName="Gestion des membres" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
       <useCase Id="6b6e1134-3aae-4333-901c-aa9ca7d2410c" name="Imprimer des cartes de membres" isAbstract="false" isLeaf="false">
         <elementDefinition Id="77eafdef-a4df-4359-8087-60db3e6be8f0" />
         <subjects>
@@ -182,34 +154,6 @@
         </targetEnds>
       </actor>
     </useCaseModelRootHasTypes>
-    <packageHasNamedElement>
-      <useCase Id="9606eed1-b5c7-4f1b-854a-88c8366bc9f8" name="Gérer les permission d'un membre" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="306bbd14-a880-43f1-8396-cc9112a911be" />
-        <extendedCases>
-          <extend Id="9132927e-1876-48e1-af6d-81ff9613f487">
-            <useCaseMoniker Id="811599ac-24db-4bd4-a094-d5f971db37b1" LastKnownName="Modifier un membre" />
-            <elementDefinition Id="886ca87f-d61a-47ed-aedc-730ae39e782c" />
-          </extend>
-        </extendedCases>
-        <subjects>
-          <subsystemMoniker Id="7981644c-498f-44db-8780-5536024b9541" LastKnownName="Gestion des membres" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase Id="6b524eb8-307e-4230-b101-c5ba91f4948d" name="Sauvegarder des notes sur un membre" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="f2f80d41-2860-495c-89ba-899184118c77" />
-        <extendedCases>
-          <extend Id="e409a9a3-036a-4181-ae86-32655b29972c">
-            <useCaseMoniker Id="811599ac-24db-4bd4-a094-d5f971db37b1" LastKnownName="Modifier un membre" />
-            <elementDefinition Id="54cdce85-6187-49de-b4cb-836f1f77e6e9" />
-          </extend>
-        </extendedCases>
-        <subjects>
-          <subsystemMoniker Id="7981644c-498f-44db-8780-5536024b9541" LastKnownName="Gestion des membres" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase Id="bd126f13-a1b6-4885-941e-872af889d356" name="Gérer la cotisation d'un membre" isAbstract="false" isLeaf="false">
         <elementDefinition Id="09dcb271-60c3-4bd5-bbac-7732d4d4997d" />
@@ -308,5 +252,19 @@
   </packagedElements>
   <package Id="b2e5e879-737e-44fe-adeb-4f6afac2e82e" name="MyKoopDesign">
     <elementDefinition Id="25133e8a-586b-4074-825e-744f71dca821" />
+    <profileInstances>
+      <packageHasProfileInstances Id="6566fbba-0ab0-4a35-a13b-3a879f719679">
+        <profileInstance Id="7a3bd4fc-bb34-4849-aaa9-071ce6141631" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="296490fc-286d-4f8a-b2b0-69afc2513c01">
+        <profileInstance Id="624f7d5e-2a03-43ca-8936-94cc1c31d863" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </useCaseModelRoot>

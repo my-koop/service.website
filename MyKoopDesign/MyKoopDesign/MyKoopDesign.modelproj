@@ -43,6 +43,13 @@
       <SubType>Content</SubType>
       <DependentUpon>GestionEvenements.usecasediagram</DependentUpon>
     </Content>
+    <Content Include="GestionProfilUtilisateur.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="GestionProfilUtilisateur.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>GestionProfilUtilisateur.usecasediagram</DependentUpon>
+    </Content>
     <Content Include="PreparerProchaineCommande.usecasediagram">
       <SubType>Content</SubType>
     </Content>

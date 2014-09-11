@@ -659,6 +659,162 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="b4b81baa-f467-486e-b1f6-0187feb71230"
+            isDerived="false"
+            sourceEndRoleName="Admin"
+            targetEndRoleName="Désactiver un compte utilisateur"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="c2d7adc9-8bca-4012-a94a-19d33498710c"
+              LastKnownName="Désactiver un compte utilisateur"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3d51d33d-2483-4cf2-9c79-ac90d4df141f"
+                  name="Admin"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5e391834-9a60-4841-96f4-2414cd778477"
+                  name="Désactiver un compte utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="db4798b8-44ad-45c1-919d-2a0b6fecdc8a"
+            isDerived="false"
+            sourceEndRoleName="Admin"
+            targetEndRoleName="Modifier les information du profil"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="0af1718e-1e05-463d-8a41-b8b1d0aad2d4"
+              LastKnownName="Modifier les information du profil"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9fcf7a33-40d9-4d56-a2d6-1f7fb085a5f6"
+                  name="Admin"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5e96fa18-faa3-4c82-8ec5-c19762674da3"
+                  name="Modifier les information du profil"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="028669e0-868b-4ab2-bab7-541445486f0a"
+            isDerived="false"
+            sourceEndRoleName="Admin"
+            targetEndRoleName="Gérer les permission du profil"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="8695ec78-bf6b-4f10-b327-e58bd9959234"
+              LastKnownName="Gérer les permission du profil"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b6236c88-5cd5-440c-a15c-c14192ed77ed"
+                  name="Admin"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f3b73d4c-abf3-4b83-a5ce-4518a7b597a4"
+                  name="Gérer les permission du profil"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="e6ba6b7a-6197-4404-83e6-572ac6d9668b"
+            isDerived="false"
+            sourceEndRoleName="Admin"
+            targetEndRoleName="Entrer des notes sur le profil"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="2e875e23-5fc2-4413-ad42-5bb8f21167e1"
+              LastKnownName="Entrer des notes sur le profil"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="990cf2ae-17db-447b-adcb-52d3f38945e1"
+                  name="Admin"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="69524393-d40d-4aef-9346-ee94637ed32f"
+                  name="Entrer des notes sur le profil"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
@@ -1542,6 +1698,45 @@
                 <memberEnd
                   Id="9bd82af6-b74f-4ae2-b097-a1bc64c97007"
                   name="Fermer un événement"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="f29a7073-3749-4afe-8fda-5c67ac24be21"
+            isDerived="false"
+            sourceEndRoleName="Utilisateur"
+            targetEndRoleName="Modifier les information du profil"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="0af1718e-1e05-463d-8a41-b8b1d0aad2d4"
+              LastKnownName="Modifier les information du profil"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ae4dded9-49f5-4545-993d-0920d1248c7f"
+                  name="Utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f1fc812a-6bcd-4c63-b2b5-ba89146bd09d"
+                  name="Modifier les information du profil"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -2975,79 +3170,10 @@
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
-        Id="8dabb5f7-bb9d-44e2-9af6-c7a6ef733a1f"
-        name="Désactiver un membre"
-        isAbstract="false"
-        isLeaf="false">
-        <extendedCases>
-          <extend
-            Id="ffbce56d-a730-4368-9204-09691528c3e7">
-            <useCaseMoniker
-              Id="f704d415-34b2-453e-a200-fef0cc6f021a"
-              LastKnownName="Gérer des membres"
-              LastKnownLocation="MyKoopDesig.uml" />
-          </extend>
-        </extendedCases>
-        <subjects>
-          <subsystemMoniker
-            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
-            LastKnownName="Gestion des membres"
-            LastKnownLocation="MyKoopDesig.uml" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
         Id="77eafdef-a4df-4359-8087-60db3e6be8f0"
         name="Imprimer des cartes de membres"
         isAbstract="false"
         isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
-            LastKnownName="Gestion des membres"
-            LastKnownLocation="MyKoopDesig.uml" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="306bbd14-a880-43f1-8396-cc9112a911be"
-        name="Gérer les permission d'un membre"
-        isAbstract="false"
-        isLeaf="false">
-        <extendedCases>
-          <extend
-            Id="886ca87f-d61a-47ed-aedc-730ae39e782c">
-            <useCaseMoniker
-              Id="e2381a16-410f-460a-af7a-a87ca3c0e682"
-              LastKnownName="Modifier un membre"
-              LastKnownLocation="MyKoopDesig.uml" />
-          </extend>
-        </extendedCases>
-        <subjects>
-          <subsystemMoniker
-            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
-            LastKnownName="Gestion des membres"
-            LastKnownLocation="MyKoopDesig.uml" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="f2f80d41-2860-495c-89ba-899184118c77"
-        name="Sauvegarder des notes sur un membre"
-        isAbstract="false"
-        isLeaf="false">
-        <extendedCases>
-          <extend
-            Id="54cdce85-6187-49de-b4cb-836f1f77e6e9">
-            <useCaseMoniker
-              Id="e2381a16-410f-460a-af7a-a87ca3c0e682"
-              LastKnownName="Modifier un membre"
-              LastKnownLocation="MyKoopDesig.uml" />
-          </extend>
-        </extendedCases>
         <subjects>
           <subsystemMoniker
             Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
@@ -3708,6 +3834,222 @@
             LastKnownLocation="MyKoopDesig.uml" />
         </subjects>
       </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="d8fa1321-92a0-40d7-849c-1a302d9ce8cf"
+        name="Profil utilisateur"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="de3a8cf2-2805-4c36-8c32-e9085e170dbe"
+        name="Créer un compte utilisateur"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="7dd18def-d453-4cb1-a856-e2e6eafe0b1f"
+            isDerived="false"
+            sourceEndRoleName="Créer un compte utilisateur"
+            targetEndRoleName="BD"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e"
+              LastKnownName="BD"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="bce01bb2-f01c-4f4b-a295-6af8b804b7d4"
+                  name="Créer un compte utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="008cbaf2-1c06-4a16-ac82-a330ceafcd9b"
+                  name="BD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="d8fa1321-92a0-40d7-849c-1a302d9ce8cf"
+            LastKnownName="Profil utilisateur"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="51f90217-4ed6-4f9b-897c-97aec7355210"
+        name="Anonyme"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="90534f5a-7aa4-4705-903d-a7ded64e981c"
+            isDerived="false"
+            sourceEndRoleName="Anonyme"
+            targetEndRoleName="Créer un compte utilisateur"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="de3a8cf2-2805-4c36-8c32-e9085e170dbe"
+              LastKnownName="Créer un compte utilisateur"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="776a3d0c-d4ec-4a7a-893a-c7997b88c535"
+                  name="Anonyme"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="70aaba08-49f2-41e3-966c-4bb9ac374406"
+                  name="Créer un compte utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="c2d7adc9-8bca-4012-a94a-19d33498710c"
+        name="Désactiver un compte utilisateur"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="35815a1e-dca9-4354-a6ce-2c4573821290"
+            isDerived="false"
+            sourceEndRoleName="Désactiver un compte utilisateur"
+            targetEndRoleName="BD"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e"
+              LastKnownName="BD"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a3713cba-334b-4da5-9533-cc3f8a91910c"
+                  name="Désactiver un compte utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4b482ea9-85b1-4dac-84a1-e36441e659db"
+                  name="BD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="d8fa1321-92a0-40d7-849c-1a302d9ce8cf"
+            LastKnownName="Profil utilisateur"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0af1718e-1e05-463d-8a41-b8b1d0aad2d4"
+        name="Modifier les information du profil"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="d8fa1321-92a0-40d7-849c-1a302d9ce8cf"
+            LastKnownName="Profil utilisateur"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8695ec78-bf6b-4f10-b327-e58bd9959234"
+        name="Gérer les permission du profil"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="d8fa1321-92a0-40d7-849c-1a302d9ce8cf"
+            LastKnownName="Profil utilisateur"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2e875e23-5fc2-4413-ad42-5bb8f21167e1"
+        name="Entrer des notes sur le profil"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="d8fa1321-92a0-40d7-849c-1a302d9ce8cf"
+            LastKnownName="Profil utilisateur"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="02ec68b3-12fd-409c-ac77-550a3fa38d4b"
+        name="UseCase1"
+        isAbstract="false"
+        isLeaf="false" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
