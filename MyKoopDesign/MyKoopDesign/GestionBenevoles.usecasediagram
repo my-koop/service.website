@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="9af03746-6190-46a9-817b-9255958f35c0" name="GestionBenevoles" linkedPackageId="f571c3bc-856c-415b-8a2b-b1fea929fd61" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="f40a2327-5ad7-463c-a039-eed57d5f4320">
+      <profileInstance Id="da602110-f714-490c-8378-392547e4d20b" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="f6fac759-a73f-4099-b00e-da426ea1b678">
+      <profileInstance Id="9ad3c00b-f369-48e2-828f-146a85085c36" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="8c0e216b-ae54-40e2-92bd-0e14fa87fbd6" name="Gestion Bénévoles" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="54257bda-ac07-49fe-8083-887d211ac842" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="6dfcbf83-7c48-4b25-9058-4ff5f551eba6" name="Entrer les disponibilité" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="917a6b27-a253-451e-afae-76e0f3711299" />
+        <subjects>
+          <subsystemMoniker Id="8c0e216b-ae54-40e2-92bd-0e14fa87fbd6" LastKnownName="Gestion Bénévoles" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="20786e29-7b6b-44af-bd2b-70d6c9e12f2c" name="Voir les disponibilité des autres bénévoles" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="85a88891-7e0b-4952-94b7-bc43a3de03ab" />
+        <subjects>
+          <subsystemMoniker Id="8c0e216b-ae54-40e2-92bd-0e14fa87fbd6" LastKnownName="Gestion Bénévoles" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="8d974427-994c-45aa-bb4d-3cb963bdf836" name="Enregistrer des heures" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8530b340-95e2-40b7-aea4-6a1f78632713" />
+        <subjects>
+          <subsystemMoniker Id="8c0e216b-ae54-40e2-92bd-0e14fa87fbd6" LastKnownName="Gestion Bénévoles" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="a81eada1-3360-4713-b6dd-474e21eeee76" name="Bénévole" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3491cb50-1e01-4a95-8337-ec1d52fcfe6f" />
+        <targetEnds>
+          <association Id="684c1284-9187-4d82-b528-665c125dfbab" isDerived="false" sourceEndRoleName="Bénévole" targetEndRoleName="Entrer les disponibilité" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="6dfcbf83-7c48-4b25-9058-4ff5f551eba6" LastKnownName="Entrer les disponibilité" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="44f5e381-8d68-4512-ba7b-bd359e2d0838" name="Bénévole" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="bb87a31a-de26-42f5-bf1f-9cd014b22946" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8d02e0ed-5525-4f23-badf-67e805d4c450" name="Entrer les disponibilité" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="cf135102-2681-4c89-88a9-fe2de43a6562" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b7e19ce1-59ef-494b-beb6-874fd553e97d" />
+          </association>
+          <association Id="16f4b104-0e77-4534-b74f-2b51813e5bf2" isDerived="false" sourceEndRoleName="Bénévole" targetEndRoleName="Voir les disponibilité des autres bénévoles" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="20786e29-7b6b-44af-bd2b-70d6c9e12f2c" LastKnownName="Voir les disponibilité des autres bénévoles" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="01782968-757f-455e-a198-e7a073adfc3b" name="Bénévole" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c645bf0f-8fbb-4ca9-a86f-8a2f1f8a28d3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9a398ec0-3c72-4e43-a055-efc27aa6605b" name="Voir les disponibilité des autres bénévoles" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0109a5a8-c502-4147-993e-ff1123c9b1cf" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="aa3df85f-795e-4484-9ecc-8463f6ca2491" />
+          </association>
+          <association Id="1254309f-03e0-4ea9-adbd-9a0b82dcdf39" isDerived="false" sourceEndRoleName="Bénévole" targetEndRoleName="Enregistrer des heures" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="8d974427-994c-45aa-bb4d-3cb963bdf836" LastKnownName="Enregistrer des heures" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="84e8df93-97be-4297-aa5e-a36c2a41429d" name="Bénévole" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="90eb037e-6da1-4199-b015-d51065bfb411" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="38b0aef7-ea82-4b32-a85e-e57492169293" name="Enregistrer des heures" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="345188b9-dfe2-419d-9f3b-b4c57ad7f57d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8ed5cfe2-1443-46b1-b2c5-0b61feb5f060" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="d39006c2-47bd-4368-b9d0-9a6d7c485d21" name="Admin" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="158443cc-114f-4c29-9b7b-0b9306b080b3" />
+        <targetEnds>
+          <association Id="8ca37d27-0898-436f-be7a-38fe105c8a79" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Enregistrer des heures" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="8d974427-994c-45aa-bb4d-3cb963bdf836" LastKnownName="Enregistrer des heures" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2f8e1499-c58e-4833-95bc-71cfc1f6da34" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="398bb76f-e39c-496c-9e25-26d6307cc7fc" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="522ed0ea-715e-4a67-8cde-de7edeb999c3" name="Enregistrer des heures" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="fb6c588f-b4ee-4787-95a9-806b859b50d5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="1dc8ea90-51bd-4504-ba94-7037f12bbd63" />
+          </association>
+          <association Id="ba7292c4-26f0-4868-9eb4-75d441e32a29" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Voir les disponibilité des autres bénévoles" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="20786e29-7b6b-44af-bd2b-70d6c9e12f2c" LastKnownName="Voir les disponibilité des autres bénévoles" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f5b4aee8-9dba-4709-92df-e3585e60dbf1" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="999f43f2-669d-4243-ad23-1009fef40770" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bddee047-9d08-4f5c-939b-6f206f9d1fdc" name="Voir les disponibilité des autres bénévoles" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="988d19b2-bb7c-4056-8d29-f45d1c9b1c47" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="06019d3c-5dc4-44be-8bb0-7580ecdbbe95" />
+          </association>
+          <association Id="532e9827-12d7-480e-9117-f88beb28be1c" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Entrer les disponibilité" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="6dfcbf83-7c48-4b25-9058-4ff5f551eba6" LastKnownName="Entrer les disponibilité" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="42c18fd3-1f52-4cbb-bd8a-3538e3ee94df" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6d6e7637-3f42-4fd9-b53f-bcd83261a286" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4dfa9948-4def-4b18-9d0d-50a83b50bbf8" name="Entrer les disponibilité" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="458ba849-2084-4312-ad73-806c663274b6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="ca47ada7-c45d-418a-95f5-9ef48f7770f9" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="9b548bd6-8e3b-482e-be48-27a2a00f2b37" name="Demande de remplacement par un autre bénévole" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="81cf635d-0064-4ade-bd1e-ab2175bd9b77" />
+        <suppliersInternal>
+          <dependency Id="0e09ed30-c768-4be4-8edb-8ca5135b3acf">
+            <useCaseMoniker Id="20786e29-7b6b-44af-bd2b-70d6c9e12f2c" LastKnownName="Voir les disponibilité des autres bénévoles" />
+            <elementDefinition Id="f24e7536-f4e5-4b5b-a58f-16a92f660764" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker Id="8c0e216b-ae54-40e2-92bd-0e14fa87fbd6" LastKnownName="Gestion Bénévoles" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="4a9efe95-cc3c-47ad-9476-8e37a5ee3202" name="Envoyer un message texte" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="638a4c4a-126e-4a9c-8f67-61ffd40cb606" />
+        <extendedCases>
+          <extend Id="e9ba77e6-cab1-44f4-8c48-dd0aefc666f3">
+            <useCaseMoniker Id="9b548bd6-8e3b-482e-be48-27a2a00f2b37" LastKnownName="Demande de remplacement par un autre bénévole" />
+            <elementDefinition Id="44613b35-c8ad-423c-8204-c8ec12c1a1e3" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="8c0e216b-ae54-40e2-92bd-0e14fa87fbd6" LastKnownName="Gestion Bénévoles" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="dc864d32-a62b-4ea8-8bfd-66afcea27051" name="Envoyer un email" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9f0dcc66-428a-4bff-98c8-45ea0e2f9277" />
+        <extendedCases>
+          <extend Id="a36ef296-bf50-490c-9a5a-91c23adb41a1">
+            <useCaseMoniker Id="9b548bd6-8e3b-482e-be48-27a2a00f2b37" LastKnownName="Demande de remplacement par un autre bénévole" />
+            <elementDefinition Id="e4e1fa2d-2167-4ce1-8df3-aa095c2ea7f0" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="8c0e216b-ae54-40e2-92bd-0e14fa87fbd6" LastKnownName="Gestion Bénévoles" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="fd7ba1a4-28d9-45cd-abb2-3dcc94a70989" name="Serveur" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ea0ec924-5838-42b9-99d5-6147a9958164" />
+        <targetEnds>
+          <association Id="84d72aea-7572-4a11-a74f-f7fbf5fa50b3" isDerived="false" sourceEndRoleName="Serveur" targetEndRoleName="Envoyer un message texte" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="4a9efe95-cc3c-47ad-9476-8e37a5ee3202" LastKnownName="Envoyer un message texte" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c1644882-45d3-4ee8-9842-201f0503f762" name="Serveur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="573bc9bd-e651-401a-9503-48e973488158" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="164fc247-5990-47f1-96ce-56f0adb983ac" name="Envoyer un message texte" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="48ff7444-0de3-436d-92ea-27fe9a09e307" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="01874e7a-645c-4108-984d-89c430bf9388" />
+          </association>
+          <association Id="eb5b7937-29c7-4685-a70d-06d4c74b641c" isDerived="false" sourceEndRoleName="Serveur" targetEndRoleName="Envoyer un email" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="dc864d32-a62b-4ea8-8bfd-66afcea27051" LastKnownName="Envoyer un email" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="347455ae-bb27-472e-b335-0459091da974" name="Serveur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="4045133b-6fe1-4bfc-870a-18f0efe567e2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3b16286c-1c5f-45f1-bd5d-98024bb945e5" name="Envoyer un email" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="a4e04639-e768-469f-8e7c-6c5a9765d107" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d2807722-01cc-4893-bae1-09de3e551e6b" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="f571c3bc-856c-415b-8a2b-b1fea929fd61" name="MyKoopDesign">
+    <elementDefinition Id="25133e8a-586b-4074-825e-744f71dca821" />
+  </package>
+</useCaseModelRoot>

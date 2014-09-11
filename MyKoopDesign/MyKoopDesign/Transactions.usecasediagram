@@ -1,11 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="99247f77-fcb3-45c4-92bb-8495aae1972e" name="Transactions" linkedPackageId="067bcf0e-e73b-4181-b5d5-37435fc563bb" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
-  <ownedCommentsInternal>
-    <comment Id="84ba7f35-512a-4b28-a57d-57f9da3b4a3b">
-      <elementDefinition Id="590b3e5a-de94-4d45-81f8-c308040bbcd5" />
-      <body>UC finaliser une transaction</body>
-    </comment>
-  </ownedCommentsInternal>
   <packagedElements>
     <useCaseModelRootHasTypes>
       <actor Id="030f1828-e384-47c3-af80-0e82e4579ffc" name="Utilisateur" isAbstract="false" isLeaf="false">
@@ -371,6 +365,22 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="0cf35f6d-7d70-41c1-9302-41c13f62174d" />
           </association>
+          <association Id="05e68700-cba5-4f54-9ef3-16c6b1f31ee3" isDerived="false" sourceEndRoleName="Serveur" targetEndRoleName="Envoyer une facture au client" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="da7be56d-81f6-491d-9695-8363074e50d4" LastKnownName="Envoyer une facture au client" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8e69f85d-2bba-4543-af32-a5ec3e2612c2" name="Serveur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="33920d2d-e0fd-422c-90e9-ef4a207706ff" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5b44a272-2457-42c8-8b80-0a7f3dd55e3a" name="Envoyer une facture au client" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="708413d0-8d0a-4ed6-8b36-ced4c643b276" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="af298a81-6303-442f-9a97-0422412f5645" />
+          </association>
         </targetEnds>
       </actor>
     </useCaseModelRootHasTypes>
@@ -382,6 +392,14 @@
         </subjects>
       </useCase>
     </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="da7be56d-81f6-491d-9695-8363074e50d4" name="Envoyer une facture au client" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="52ed5d77-8a57-4481-b969-d2e00a6d6ca5" />
+        <subjects>
+          <subsystemMoniker Id="d210b4a2-e987-46e1-bad3-50a831ed85a9" LastKnownName="Finalisation d'une transaction" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
   </packagedElements>
   <package Id="067bcf0e-e73b-4181-b5d5-37435fc563bb" name="MyKoopDesign">
     <elementDefinition Id="25133e8a-586b-4074-825e-744f71dca821" />

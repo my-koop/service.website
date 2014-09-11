@@ -22,6 +22,13 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
   <ItemGroup>
+    <Content Include="GestionBenevoles.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="GestionBenevoles.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>GestionBenevoles.usecasediagram</DependentUpon>
+    </Content>
     <Content Include="GestionDesMembres.usecasediagram">
       <SubType>Content</SubType>
     </Content>
@@ -42,13 +49,6 @@
     <Content Include="PreparerProchaineCommande.usecasediagram.layout">
       <SubType>Content</SubType>
       <DependentUpon>PreparerProchaineCommande.usecasediagram</DependentUpon>
-    </Content>
-    <Content Include="RapportJournalier.usecasediagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="RapportJournalier.usecasediagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>RapportJournalier.usecasediagram</DependentUpon>
     </Content>
     <Content Include="Remboursement.usecasediagram">
       <SubType>Content</SubType>
