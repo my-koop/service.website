@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="99247f77-fcb3-45c4-92bb-8495aae1972e" name="Transactions" linkedPackageId="067bcf0e-e73b-4181-b5d5-37435fc563bb" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="84ba7f35-512a-4b28-a57d-57f9da3b4a3b">
+      <elementDefinition Id="590b3e5a-de94-4d45-81f8-c308040bbcd5" />
+      <body>UC finaliser une transaction</body>
+    </comment>
+  </ownedCommentsInternal>
   <packagedElements>
     <useCaseModelRootHasTypes>
       <actor Id="030f1828-e384-47c3-af80-0e82e4579ffc" name="Utilisateur" isAbstract="false" isLeaf="false">
@@ -116,6 +122,22 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="9c77b758-f791-42a5-aaac-4e60fd63b04f" />
+          </association>
+          <association Id="2f8edd00-838d-441a-a82c-54848ea67434" isDerived="false" sourceEndRoleName="Utilisateur" targetEndRoleName="Annuler une transaction" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="6415336a-cce0-49f8-ba7c-0dd564184d99" LastKnownName="Annuler une transaction" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="11e0fbb3-b6ae-4edb-bc88-1b469857b392" name="Utilisateur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="4d616b70-3e38-4990-8fac-47697d456348" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7e162211-7c12-4168-a50b-0af378d1e7ca" name="Annuler une transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="3b2da8d7-b06d-455d-8aab-5b71491c0cf0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c4137474-f943-467d-9831-9282410a4873" />
           </association>
         </targetEnds>
       </actor>
@@ -351,6 +373,14 @@
           </association>
         </targetEnds>
       </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6415336a-cce0-49f8-ba7c-0dd564184d99" name="Annuler une transaction" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="503de572-2fb7-44f6-a557-04a500255b2a" />
+        <subjects>
+          <subsystemMoniker Id="ac78e136-caa4-4413-83f3-a2b9d4310170" LastKnownName="Création d'une transaction" />
+        </subjects>
+      </useCase>
     </useCaseModelRootHasTypes>
   </packagedElements>
   <package Id="067bcf0e-e73b-4181-b5d5-37435fc563bb" name="MyKoopDesign">

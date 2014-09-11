@@ -1,19 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="3fc99f50-1c72-4f1c-9651-5eebfc1f1a0b" name="RéservationEnLigne" linkedPackageId="73703d39-5a76-46cf-8206-0598be396774" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
-  <profileInstances>
-    <packageHasProfileInstances Id="ec1debd7-0e92-47bf-a974-e86d400c4c6f">
-      <profileInstance Id="d04e0426-f860-40d4-b052-0c65c15a3f6e" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="083a5630-a5ab-4003-8535-41299744363c">
-      <profileInstance Id="63b2e2e4-b7b9-4451-98c9-f2402720f7ed" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
+  <ownedCommentsInternal>
+    <comment Id="82708bbb-b14d-4734-a598-bed8d245c142">
+      <elementDefinition Id="c19659b9-c434-4b1b-9e60-3f26e6cad157" />
+      <body>UC Ramassage de l"article</body>
+    </comment>
+  </ownedCommentsInternal>
   <packagedElements>
     <useCaseModelRootHasTypes>
       <subsystem Id="60f25812-bea4-4ed0-be6c-f34b510a8b68" name="Réservation d'un article" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -253,5 +245,19 @@
   </packagedElements>
   <package Id="73703d39-5a76-46cf-8206-0598be396774" name="MyKoopDesign">
     <elementDefinition Id="25133e8a-586b-4074-825e-744f71dca821" />
+    <profileInstances>
+      <packageHasProfileInstances Id="ec1debd7-0e92-47bf-a974-e86d400c4c6f">
+        <profileInstance Id="d04e0426-f860-40d4-b052-0c65c15a3f6e" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="083a5630-a5ab-4003-8535-41299744363c">
+        <profileInstance Id="63b2e2e4-b7b9-4451-98c9-f2402720f7ed" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </useCaseModelRoot>

@@ -99,7 +99,7 @@
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="780a276b-a21f-4ce4-aa6b-7732ab95c7c2" name="Choix des informations de l'article" isAbstract="false" isLeaf="false">
+      <useCase Id="780a276b-a21f-4ce4-aa6b-7732ab95c7c2" name="Choisir les informations de l'article" isAbstract="false" isLeaf="false">
         <elementDefinition Id="5126e595-6a98-42e1-a1b4-3233797b1dad" />
         <targetEnds>
           <association Id="4d3728ad-f05b-4874-afdb-464d03c04b91" isDerived="false" sourceEndRoleName="Choix des informations de l'article" targetEndRoleName="BD" isLeaf="false" isAbstract="false">

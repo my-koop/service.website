@@ -3,6 +3,16 @@
   dslVersion="1.0.0.0"
   Id="25133e8a-586b-4074-825e-744f71dca821"
   name="MyKoopDesign" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="590b3e5a-de94-4d45-81f8-c308040bbcd5">
+      <body>UC finaliser une transaction</body>
+    </comment>
+    <comment
+      Id="c19659b9-c434-4b1b-9e60-3f26e6cad157">
+      <body>UC Ramassage de l"article</body>
+    </comment>
+  </ownedCommentsInternal>
   <profileInstances>
     <packageHasProfileInstances
       Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
@@ -543,7 +553,7 @@
     <packageHasNamedElement>
       <useCase
         Id="5126e595-6a98-42e1-a1b4-3233797b1dad"
-        name="Choix des informations de l'article"
+        name="Choisir les informations de l'article"
         isAbstract="false"
         isLeaf="false">
         <targetEnds>
@@ -723,6 +733,10 @@
           <subsystemMoniker
             Id="324d4d7c-da40-4c4c-aeb9-69c580b94c2c"
             LastKnownName="Gestion du seuil minimal"
+            LastKnownLocation="MyKoopDesig.uml" />
+          <subsystemMoniker
+            Id="85db4da3-73ff-4d36-8056-39124e618f18"
+            LastKnownName="Préparation de la commande fournisseur"
             LastKnownLocation="MyKoopDesig.uml" />
         </subjects>
       </useCase>
@@ -1177,6 +1191,45 @@
                 <memberEnd
                   Id="fc96a4e3-c6cd-4fe3-a7cd-2f31457e9781"
                   name="Réserver l'article"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="c4137474-f943-467d-9831-9282410a4873"
+            isDerived="false"
+            sourceEndRoleName="Utilisateur"
+            targetEndRoleName="Annuler une transaction"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="503de572-2fb7-44f6-a557-04a500255b2a"
+              LastKnownName="Annuler une transaction"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4d616b70-3e38-4990-8fac-47697d456348"
+                  name="Utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3b2da8d7-b06d-455d-8aab-5b71491c0cf0"
+                  name="Annuler une transaction"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -2537,6 +2590,28 @@
             LastKnownLocation="MyKoopDesig.uml" />
         </subjects>
       </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="503de572-2fb7-44f6-a557-04a500255b2a"
+        name="Annuler une transaction"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="6e5d60b1-405b-4d92-aaa7-de85c78b3220"
+            LastKnownName="Création d'une transaction"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="85db4da3-73ff-4d36-8056-39124e618f18"
+        name="Préparation de la commande fournisseur"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
