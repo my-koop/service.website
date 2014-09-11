@@ -1,0 +1,1240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="25133e8a-586b-4074-825e-744f71dca821"
+  name="MyKoopDesign" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <actor
+        Id="158443cc-114f-4c29-9b7b-0b9306b080b3"
+        name="Admin"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="cda64be7-1487-43dd-a82d-68e195cd6e04"
+            isDerived="false"
+            sourceEndRoleName="Admin"
+            targetEndRoleName="Ajout d'un article"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="03977006-8791-4c87-b3c1-ea52e33721a1"
+              LastKnownName="Ajouter un article"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="63d6cdfa-4f23-4d02-a83e-a6a0094b66cd"
+                  name="Admin"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="36412862-77f5-4f63-aba2-6f5cb0c47a58"
+                  name="Ajout d'un article"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="adf869a3-eadc-4cf1-a6b9-8ea65611e211"
+            isDerived="false"
+            sourceEndRoleName="Admin"
+            targetEndRoleName="Modification d'un article"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="cee92dd2-984b-47f3-9b93-3652eb76306c"
+              LastKnownName="Modifier un article"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="836ddbbe-5135-4d08-8980-be0037ff8710"
+                  name="Admin"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d4714fb3-ac1b-4b6d-9268-f2ab0254dada"
+                  name="Modification d'un article"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="bc8322f3-f546-41a9-b1a1-9c6e828a113a"
+            isDerived="false"
+            sourceEndRoleName="Admin"
+            targetEndRoleName="Retrait d'un article"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="40e886e0-3ec2-4a04-8b86-9baf139315a3"
+              LastKnownName="Retirer un article"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d2106368-7d93-4dbc-a8bf-5b2f5281a791"
+                  name="Admin"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="db21c1b4-b991-4988-8e74-78bc27fb4db4"
+                  name="Retrait d'un article"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="acae018a-964f-4dc0-b955-b6b30a328f7b"
+            isDerived="false"
+            sourceEndRoleName="Admin"
+            targetEndRoleName="Modification du seuil minimal d'un article"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="74b079c6-956d-4b3d-834c-0cb2846f407f"
+              LastKnownName="Modier le seuil minimal d'un article"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="50edec2e-8a60-4d0f-a107-0df3f84efc0b"
+                  name="Admin"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5630b6f3-712b-48ff-9d17-ee9b3237a99e"
+                  name="Modification du seuil minimal d'un article"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="97a2d04a-7a5e-4fcb-8a2a-d97c30d818fb"
+            isDerived="false"
+            sourceEndRoleName="Admin"
+            targetEndRoleName="Visualisation de la liste à renouveler"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="d55956fd-9d6a-4bf9-8123-fb9bc15067f3"
+              LastKnownName="Visualiser la liste à renouveler"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0d16259c-9666-48c9-8c78-6add879c240c"
+                  name="Admin"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c70a7d55-3c7c-4198-8346-c470cdccc057"
+                  name="Visualisation de la liste à renouveler"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="03977006-8791-4c87-b3c1-ea52e33721a1"
+        name="Ajouter un article"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="e3b5576e-9940-42b5-a790-1ce363d558af"
+            LastKnownName="Gestion de l'inventaire"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="cee92dd2-984b-47f3-9b93-3652eb76306c"
+        name="Modifier un article"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="e3b5576e-9940-42b5-a790-1ce363d558af"
+            LastKnownName="Gestion de l'inventaire"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="40e886e0-3ec2-4a04-8b86-9baf139315a3"
+        name="Retirer un article"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="da93bd7c-e5f7-432e-999a-129e1b9645ee"
+            isDerived="false"
+            sourceEndRoleName="Retrait d'un article"
+            targetEndRoleName="BD"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e"
+              LastKnownName="BD"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0e31085e-e165-46e2-aeb9-7fbd3058e43a"
+                  name="Retrait d'un article"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="96a1a2d0-8f22-4b9e-9a2a-f4629a5d6b9f"
+                  name="BD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="e3b5576e-9940-42b5-a790-1ce363d558af"
+            LastKnownName="Gestion de l'inventaire"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="5126e595-6a98-42e1-a1b4-3233797b1dad"
+        name="Choix des informations de l'article"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="995be389-466e-4532-b13c-59b7b497f2f1"
+            isDerived="false"
+            sourceEndRoleName="Choix des informations de l'article"
+            targetEndRoleName="BD"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e"
+              LastKnownName="BD"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6e51aa9b-6b19-4a59-b395-375fb746cd12"
+                  name="Choix des informations de l'article"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8dfe4b13-072c-407a-b0d0-e5317387ef06"
+                  name="BD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <additions>
+          <include
+            Id="f32b9a1f-7d00-4161-b446-1ee481122fd3">
+            <useCaseMoniker
+              Id="cee92dd2-984b-47f3-9b93-3652eb76306c"
+              LastKnownName="Modifier un article"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </include>
+          <include
+            Id="dd0d28c4-a93b-42c0-8555-1ad97ffea712">
+            <useCaseMoniker
+              Id="03977006-8791-4c87-b3c1-ea52e33721a1"
+              LastKnownName="Ajouter un article"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="e3b5576e-9940-42b5-a790-1ce363d558af"
+            LastKnownName="Gestion de l'inventaire"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e"
+        name="BD"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="e3b5576e-9940-42b5-a790-1ce363d558af"
+        name="Gestion de l'inventaire"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="21fed0a1-5e5e-4aff-8d43-f93921b374e9"
+        name="Quantité d'un article tombe sous son seuil minimum"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="324d4d7c-da40-4c4c-aeb9-69c580b94c2c"
+            LastKnownName="Gestion du seuil minimal"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1cea22a9-ca1b-48a9-9c81-b7ebc0da2c36"
+        name="Ajouter l'article dans la liste à renouveler"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="c65be447-974e-4160-b0f7-244ffb311910"
+            isDerived="false"
+            sourceEndRoleName="Ajout de l'article dans la liste à renouveler"
+            targetEndRoleName="BD"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e"
+              LastKnownName="BD"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e9bed49d-687f-4235-a853-fd3686f755db"
+                  name="Ajout de l'article dans la liste à renouveler"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="89a4b9e8-577d-4528-bdb9-c9bf6da1cc52"
+                  name="BD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <additions>
+          <include
+            Id="65fb4f15-2e49-4606-86ca-a0b7121afa99">
+            <useCaseMoniker
+              Id="21fed0a1-5e5e-4aff-8d43-f93921b374e9"
+              LastKnownName="Quantité d'un article tombe sous son seuil minimum"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="324d4d7c-da40-4c4c-aeb9-69c580b94c2c"
+            LastKnownName="Gestion du seuil minimal"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d55956fd-9d6a-4bf9-8123-fb9bc15067f3"
+        name="Visualiser la liste à renouveler"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="ab99a949-56a5-4610-bebd-85b277a88687">
+            <useCaseMoniker
+              Id="1cea22a9-ca1b-48a9-9c81-b7ebc0da2c36"
+              LastKnownName="Ajouter l'article dans la liste à renouveler"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker
+            Id="324d4d7c-da40-4c4c-aeb9-69c580b94c2c"
+            LastKnownName="Gestion du seuil minimal"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="74b079c6-956d-4b3d-834c-0cb2846f407f"
+        name="Modier le seuil minimal d'un article"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="725120aa-aa32-45c2-b6cf-d7a0da87d728"
+            isDerived="false"
+            sourceEndRoleName="Modification du seuil minimal d'un article"
+            targetEndRoleName="BD"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e"
+              LastKnownName="BD"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="502aab96-691e-438f-83f5-f06fb205a685"
+                  name="Modification du seuil minimal d'un article"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f2125466-8b6f-4c74-8151-70beb6ef0159"
+                  name="BD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="324d4d7c-da40-4c4c-aeb9-69c580b94c2c"
+            LastKnownName="Gestion du seuil minimal"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="324d4d7c-da40-4c4c-aeb9-69c580b94c2c"
+        name="Gestion du seuil minimal"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="a6432d43-6570-4a12-ac1e-1e34e34a0930"
+        name="Utilisateur"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="2953bbad-e6b8-45c1-92b3-2ef549ae1c0b"
+            isDerived="false"
+            sourceEndRoleName="Utilisateur"
+            targetEndRoleName="Ajout d'article à la transaction"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="6465b8c1-4d93-4d23-a1ac-6aed5cc82ed9"
+              LastKnownName="Ajouter un article à la transaction"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9c36ba81-f5e6-4a69-bc7b-a60fe2c298ae"
+                  name="Utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c9a8ff7d-73e0-4aef-8e2a-9eb4afeeb1f8"
+                  name="Ajout d'article à la transaction"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="9ba7bc24-14ed-4348-b6a8-b78739f7aba3"
+            isDerived="false"
+            sourceEndRoleName="Utilisateur"
+            targetEndRoleName="Retrait d'article à la transaction"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="e38650ff-ad4a-4b78-9084-073194ae0bbc"
+              LastKnownName="Retirer un article à la transaction"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f98196cf-3d99-419b-a3e9-6fd0305c8fc2"
+                  name="Utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5408670c-6f20-4660-b82b-c539ec94c479"
+                  name="Retrait d'article à la transaction"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="be24b150-35f1-44ac-a03a-1446177d9169"
+            isDerived="false"
+            sourceEndRoleName="Utilisateur"
+            targetEndRoleName="Modification de la quantité d'un article"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="379cdc05-efa2-4a8d-aa08-b3b1f178e3f9"
+              LastKnownName="Modifier la quantité d'un article"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="40a70759-2a1a-4727-9e8f-59e07206dab6"
+                  name="Utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0cf99cd8-fd7a-4423-9d47-8b472325f055"
+                  name="Modification de la quantité d'un article"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="527ac955-68af-43e9-aed2-955d792f7276"
+            isDerived="false"
+            sourceEndRoleName="Utilisateur"
+            targetEndRoleName="Définir la transaction comme ouverte"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="0d16d5f2-f9b3-46dc-96b5-d335bdfb8005"
+              LastKnownName="Définir la transaction comme ouverte"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="dafb8b5f-3eb5-45c1-b9bd-5044dc37c2b1"
+                  name="Utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="98f880dc-3a6c-4031-bf5a-885bc45087ba"
+                  name="Définir la transaction comme ouverte"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="0316535f-fffb-4e7e-9886-f18a71f4cbfe"
+            isDerived="false"
+            sourceEndRoleName="Utilisateur"
+            targetEndRoleName="Ajouter un article personalisé"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="4bf42b14-69ba-4497-9041-133db6c6f73b"
+              LastKnownName="Ajouter un article personalisé"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="70231e0a-5d37-48c4-9001-16721ff66165"
+                  name="Utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4f494264-931b-4170-a348-12cf8b6d994f"
+                  name="Ajouter un article personalisé"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="c1de9384-7baa-4f33-aecd-a19d816f6e0d"
+            isDerived="false"
+            sourceEndRoleName="Utilisateur"
+            targetEndRoleName="Appliquer un rabais"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="52bdc0ec-db3b-4f52-b8fc-ff59e8118d42"
+              LastKnownName="Appliquer un rabais"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0a326625-27f2-4fcf-9f69-a6a6c6f8ee9f"
+                  name="Utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0718313f-2347-4d55-bd8f-66342b5f70a1"
+                  name="Appliquer un rabais"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="603be671-8fe9-4b45-a10f-b1d71bee5a97"
+            isDerived="false"
+            sourceEndRoleName="Utilisateur"
+            targetEndRoleName="Enregistrer un paiement partiel"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="c013dfe1-2a5d-4d2f-a18d-7bc81ba6dfea"
+              LastKnownName="Enregistrer un paiement partiel"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3931ed6d-df17-4a62-80de-57711e38a35c"
+                  name="Utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9faf8c26-cb57-43a9-bcd0-589b87731256"
+                  name="Enregistrer un paiement partiel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="9c77b758-f791-42a5-aaac-4e60fd63b04f"
+            isDerived="false"
+            sourceEndRoleName="Utilisateur"
+            targetEndRoleName="Enregistrer un paiement complet"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b4b0e6ff-7ea3-4126-8158-3ccb7c8c08cf"
+              LastKnownName="Enregistrer un paiement complet"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0d94e520-37a2-471d-9ec4-33a8b2c99274"
+                  name="Utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="69428f11-2815-4fff-acda-5e8dda0b4e4d"
+                  name="Enregistrer un paiement complet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="6e5d60b1-405b-4d92-aaa7-de85c78b3220"
+        name="Création d'une transaction"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6465b8c1-4d93-4d23-a1ac-6aed5cc82ed9"
+        name="Ajouter un article à la transaction"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="6e5d60b1-405b-4d92-aaa7-de85c78b3220"
+            LastKnownName="Création d'une transaction"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e38650ff-ad4a-4b78-9084-073194ae0bbc"
+        name="Retirer un article à la transaction"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="6e5d60b1-405b-4d92-aaa7-de85c78b3220"
+            LastKnownName="Création d'une transaction"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="379cdc05-efa2-4a8d-aa08-b3b1f178e3f9"
+        name="Modifier la quantité d'un article"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="6e5d60b1-405b-4d92-aaa7-de85c78b3220"
+            LastKnownName="Création d'une transaction"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0d16d5f2-f9b3-46dc-96b5-d335bdfb8005"
+        name="Définir la transaction comme ouverte"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4bf42b14-69ba-4497-9041-133db6c6f73b"
+        name="Ajouter un article personalisé"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="6e5d60b1-405b-4d92-aaa7-de85c78b3220"
+            LastKnownName="Création d'une transaction"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="52bdc0ec-db3b-4f52-b8fc-ff59e8118d42"
+        name="Appliquer un rabais"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="6389842c-0308-47c5-a326-1cc75bf39dae"
+            LastKnownName="Finalisation d'une transaction"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="6389842c-0308-47c5-a326-1cc75bf39dae"
+        name="Finalisation d'une transaction"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="c013dfe1-2a5d-4d2f-a18d-7bc81ba6dfea"
+        name="Enregistrer un paiement partiel"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="9524df04-d9d5-41f3-bf32-badae745c59d"
+            isDerived="false"
+            sourceEndRoleName="Enregistrer un paiement partiel"
+            targetEndRoleName="BD"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e"
+              LastKnownName="BD"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7a4f0dc0-9844-47f9-884f-b4fb4bf8d92b"
+                  name="Enregistrer un paiement partiel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="27ca8094-ad76-473a-b7dc-581ff2178754"
+                  name="BD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <additions>
+          <include
+            Id="784bcd9b-8a02-4812-b26a-d39c465cdd1b">
+            <useCaseMoniker
+              Id="e5cb9e1e-8b64-4ba7-859d-75b861716de2"
+              LastKnownName="Définir la transaction comme ouverte"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="6389842c-0308-47c5-a326-1cc75bf39dae"
+            LastKnownName="Finalisation d'une transaction"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b4b0e6ff-7ea3-4126-8158-3ccb7c8c08cf"
+        name="Enregistrer un paiement complet"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="3c415df8-68eb-433a-9117-dcf8dff4e7cd"
+            isDerived="false"
+            sourceEndRoleName="Enregistrer un paiement complet"
+            targetEndRoleName="BD"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e"
+              LastKnownName="BD"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2e7065e8-1609-4d1f-bc21-fe1e063db72d"
+                  name="Enregistrer un paiement complet"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0ca4fe1c-5a58-4c35-ac23-3efb8febcdbe"
+                  name="BD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="6389842c-0308-47c5-a326-1cc75bf39dae"
+            LastKnownName="Finalisation d'une transaction"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e5cb9e1e-8b64-4ba7-859d-75b861716de2"
+        name="Définir la transaction comme ouverte"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="c70506bf-ada9-4e6c-b5a6-62f48e6d349a"
+            isDerived="false"
+            sourceEndRoleName="Définir la transaction comme ouverte"
+            targetEndRoleName="BD"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e"
+              LastKnownName="BD"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ad4b1149-b424-4974-946c-abb08164eddc"
+                  name="Définir la transaction comme ouverte"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="16d97a25-a01b-48e0-962f-4adb6655ee63"
+                  name="BD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker
+            Id="6389842c-0308-47c5-a326-1cc75bf39dae"
+            LastKnownName="Finalisation d'une transaction"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1e93665a-f3bc-45b8-a93b-86d6e5905c28"
+        name="Mise à jour de l'inventaire"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="39b4c185-5808-4dd3-a648-5391beb09508"
+            isDerived="false"
+            sourceEndRoleName="Mise à jour de l'inventaire"
+            targetEndRoleName="BD"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e"
+              LastKnownName="BD"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6b4979ba-1e09-4cac-bdfd-fef24eecfeb5"
+                  name="Mise à jour de l'inventaire"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="58f6e66f-a541-49d4-961a-1a400ff45b1f"
+                  name="BD"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <extendedCases>
+          <extend
+            Id="a5168ac2-0b87-4e64-8bb0-09e7e21d6fd9">
+            <useCaseMoniker
+              Id="c013dfe1-2a5d-4d2f-a18d-7bc81ba6dfea"
+              LastKnownName="Enregistrer un paiement partiel"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+          <extend
+            Id="c2958b5e-5192-4384-8780-7ba3de76585a">
+            <useCaseMoniker
+              Id="b4b0e6ff-7ea3-4126-8158-3ccb7c8c08cf"
+              LastKnownName="Enregistrer un paiement complet"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="6389842c-0308-47c5-a326-1cc75bf39dae"
+            LastKnownName="Finalisation d'une transaction"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

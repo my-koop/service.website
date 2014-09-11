@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="8f446e48-c771-46e7-9c8f-1a07a5625d94" name="SeuilMinimal" linkedPackageId="a59fa4e1-024a-4eaf-8a06-74914d3662be" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="3b37b286-d516-4b7c-9944-08e779c2ddee">
+      <profileInstance Id="771a04ed-cd3a-4b66-9109-0d331ab69119" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="3ac1913d-29bc-4db7-98e2-20627c791dee">
+      <profileInstance Id="491f58e2-8c61-4762-b517-36c57ea26795" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="5d066aea-ada5-4924-a03a-76a74bf6b328" name="BD" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ebf4ff1d-c04f-481d-8339-34bced1c6b2d" name="Modier le seuil minimal d'un article" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="74b079c6-956d-4b3d-834c-0cb2846f407f" />
+        <targetEnds>
+          <association Id="e7874103-a18a-43da-ac2b-d9d7e8ad29ab" isDerived="false" sourceEndRoleName="Modification du seuil minimal d'un article" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="5d066aea-ada5-4924-a03a-76a74bf6b328" LastKnownName="BD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5c199ba4-3818-453a-b267-4d996ced6ead" name="Modification du seuil minimal d'un article" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="502aab96-691e-438f-83f5-f06fb205a685" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="66e939c2-12e8-4f31-bf0f-799c135109a4" name="BD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f2125466-8b6f-4c74-8151-70beb6ef0159" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="725120aa-aa32-45c2-b6cf-d7a0da87d728" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="35f71c62-6a79-4e27-a593-7b279327499f" LastKnownName="Gestion du seuil minimal" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e3713b00-497c-4442-944e-1e5c18f16c93" name="Quantité d'un article tombe sous son seuil minimum" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="21fed0a1-5e5e-4aff-8d43-f93921b374e9" />
+        <subjects>
+          <subsystemMoniker Id="35f71c62-6a79-4e27-a593-7b279327499f" LastKnownName="Gestion du seuil minimal" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="71c8ab75-e10d-40cc-b7a0-e58ec644f3da" name="Visualiser la liste à renouveler" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d55956fd-9d6a-4bf9-8123-fb9bc15067f3" />
+        <suppliersInternal>
+          <dependency Id="5aeea277-dcb2-4d6e-b958-a652d32f7772">
+            <useCaseMoniker Id="53ff3e47-8b39-49e5-bb79-b9ae0ba3c744" LastKnownName="Ajouter l'article dans la liste à renouveler" />
+            <elementDefinition Id="ab99a949-56a5-4610-bebd-85b277a88687" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker Id="35f71c62-6a79-4e27-a593-7b279327499f" LastKnownName="Gestion du seuil minimal" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="53ff3e47-8b39-49e5-bb79-b9ae0ba3c744" name="Ajouter l'article dans la liste à renouveler" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1cea22a9-ca1b-48a9-9c81-b7ebc0da2c36" />
+        <targetEnds>
+          <association Id="091f03d1-5b1f-4633-9bd7-d5d1d685c2ca" isDerived="false" sourceEndRoleName="Ajout de l'article dans la liste à renouveler" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="5d066aea-ada5-4924-a03a-76a74bf6b328" LastKnownName="BD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c827cb0e-5cc2-4539-a415-5dac1bfecdfc" name="Ajout de l'article dans la liste à renouveler" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e9bed49d-687f-4235-a853-fd3686f755db" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bf4b4c3c-d329-49d8-a404-56e418f353a2" name="BD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="89a4b9e8-577d-4528-bdb9-c9bf6da1cc52" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c65be447-974e-4160-b0f7-244ffb311910" />
+          </association>
+        </targetEnds>
+        <additions>
+          <include Id="98be74d1-c7cc-4866-a654-9521f022dabd">
+            <useCaseMoniker Id="e3713b00-497c-4442-944e-1e5c18f16c93" LastKnownName="Quantité d'un article tombe sous son seuil minimum" />
+            <elementDefinition Id="65fb4f15-2e49-4606-86ca-a0b7121afa99" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="35f71c62-6a79-4e27-a593-7b279327499f" LastKnownName="Gestion du seuil minimal" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="f34d14bb-1181-4160-b529-006100736967" name="Admin" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="158443cc-114f-4c29-9b7b-0b9306b080b3" />
+        <targetEnds>
+          <association Id="f2377601-1e89-4da2-a2fa-266acd09bae6" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Modification du seuil minimal d'un article" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="ebf4ff1d-c04f-481d-8339-34bced1c6b2d" LastKnownName="Modier le seuil minimal d'un article" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8b145bc5-5927-48e6-b4b9-545d4840a020" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="50edec2e-8a60-4d0f-a107-0df3f84efc0b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="692bfdf3-8e02-439f-9c2f-7636be003fc8" name="Modification du seuil minimal d'un article" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5630b6f3-712b-48ff-9d17-ee9b3237a99e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="acae018a-964f-4dc0-b955-b6b30a328f7b" />
+          </association>
+          <association Id="3e8fb79f-d896-4c75-87da-e48f7c2a3534" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Visualisation de la liste à renouveler" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="71c8ab75-e10d-40cc-b7a0-e58ec644f3da" LastKnownName="Visualiser la liste à renouveler" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0f8ab9e3-6edc-4c2d-b047-ea021bad87ec" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0d16259c-9666-48c9-8c78-6add879c240c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0bfe15e7-3e5d-4d81-9865-81f90ff0acbd" name="Visualisation de la liste à renouveler" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="c70a7d55-3c7c-4198-8346-c470cdccc057" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="97a2d04a-7a5e-4fcb-8a2a-d97c30d818fb" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="35f71c62-6a79-4e27-a593-7b279327499f" name="Gestion du seuil minimal" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="324d4d7c-da40-4c4c-aeb9-69c580b94c2c" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="a59fa4e1-024a-4eaf-8a06-74914d3662be" name="MyKoopDesign">
+    <elementDefinition Id="25133e8a-586b-4074-825e-744f71dca821" />
+  </package>
+</useCaseModelRoot>

@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="5d294371-68cd-407b-8f2a-34c4fb0abcce" name="Inventaire" linkedPackageId="4d66f777-a9cb-4559-8bb0-11652334a05f" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="779c1903-aae3-4e06-a8a2-7163190d6dc7" name="Admin" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="158443cc-114f-4c29-9b7b-0b9306b080b3" />
+        <targetEnds>
+          <association Id="879c4754-c642-457a-a0fe-288db023fc16" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Ajout d'un article" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="9f8dd450-d75e-4cbd-a93a-f0ad615a6d08" LastKnownName="Ajouter un article" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c370f223-d312-4835-a465-790e30da01f9" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="63d6cdfa-4f23-4d02-a83e-a6a0094b66cd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c9e8d46a-148c-4f35-bae4-bbf12d0f14c6" name="Ajout d'un article" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="36412862-77f5-4f63-aba2-6f5cb0c47a58" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="cda64be7-1487-43dd-a82d-68e195cd6e04" />
+          </association>
+          <association Id="51ee7cbc-1f8f-41fc-8d94-e05c952d8995" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Modification d'un article" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b7ced694-196a-47c6-a410-97974ae2760b" LastKnownName="Modifier un article" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0134958a-b3ba-4183-b01f-73a15e7e3902" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="836ddbbe-5135-4d08-8980-be0037ff8710" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4f5c7b35-c84b-43a6-bda4-58d571f17e85" name="Modification d'un article" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d4714fb3-ac1b-4b6d-9268-f2ab0254dada" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="adf869a3-eadc-4cf1-a6b9-8ea65611e211" />
+          </association>
+          <association Id="b548b48d-5d78-4bcb-80b5-fb7d52b02f79" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Retrait d'un article" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="24a55b89-6fe3-4f76-b467-38dfa4ab4648" LastKnownName="Retirer un article" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="97f115fa-8775-4bcd-826d-e5437fea8891" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d2106368-7d93-4dbc-a8bf-5b2f5281a791" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="90af22f4-ff3d-4781-8e9c-91d45a29c931" name="Retrait d'un article" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="db21c1b4-b991-4988-8e74-78bc27fb4db4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="bc8322f3-f546-41a9-b1a1-9c6e828a113a" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9f8dd450-d75e-4cbd-a93a-f0ad615a6d08" name="Ajouter un article" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="03977006-8791-4c87-b3c1-ea52e33721a1" />
+        <subjects>
+          <subsystemMoniker Id="8e2bf32c-18fa-4701-8fe7-a1f63822ed60" LastKnownName="Gestion de l'inventaire" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b7ced694-196a-47c6-a410-97974ae2760b" name="Modifier un article" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="cee92dd2-984b-47f3-9b93-3652eb76306c" />
+        <subjects>
+          <subsystemMoniker Id="8e2bf32c-18fa-4701-8fe7-a1f63822ed60" LastKnownName="Gestion de l'inventaire" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="24a55b89-6fe3-4f76-b467-38dfa4ab4648" name="Retirer un article" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="40e886e0-3ec2-4a04-8b86-9baf139315a3" />
+        <targetEnds>
+          <association Id="e8b70569-2217-45d4-8ffe-06a78249e254" isDerived="false" sourceEndRoleName="Retrait d'un article" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="c214630b-7d5e-4138-86d8-26d9003dd96c" LastKnownName="BD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="573d3a49-23c2-4606-bf82-87f0760cdda0" name="Retrait d'un article" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0e31085e-e165-46e2-aeb9-7fbd3058e43a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="43f752e8-32fd-4d0f-a68d-f656493ecb6f" name="BD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="96a1a2d0-8f22-4b9e-9a2a-f4629a5d6b9f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="da93bd7c-e5f7-432e-999a-129e1b9645ee" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="8e2bf32c-18fa-4701-8fe7-a1f63822ed60" LastKnownName="Gestion de l'inventaire" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="780a276b-a21f-4ce4-aa6b-7732ab95c7c2" name="Choix des informations de l'article" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5126e595-6a98-42e1-a1b4-3233797b1dad" />
+        <targetEnds>
+          <association Id="4d3728ad-f05b-4874-afdb-464d03c04b91" isDerived="false" sourceEndRoleName="Choix des informations de l'article" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="c214630b-7d5e-4138-86d8-26d9003dd96c" LastKnownName="BD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0c8668e8-d0f4-44ea-bd86-af3d5894fb59" name="Choix des informations de l'article" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6e51aa9b-6b19-4a59-b395-375fb746cd12" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2e88b81c-8c70-4542-881c-60e6f951ba0d" name="BD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8dfe4b13-072c-407a-b0d0-e5317387ef06" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="995be389-466e-4532-b13c-59b7b497f2f1" />
+          </association>
+        </targetEnds>
+        <additions>
+          <include Id="34ba3670-e843-48c4-ac76-a7dffbb542c2">
+            <useCaseMoniker Id="b7ced694-196a-47c6-a410-97974ae2760b" LastKnownName="Modifier un article" />
+            <elementDefinition Id="f32b9a1f-7d00-4161-b446-1ee481122fd3" />
+          </include>
+          <include Id="7247ff37-03c7-4be8-95f1-5767914d9fc7">
+            <useCaseMoniker Id="9f8dd450-d75e-4cbd-a93a-f0ad615a6d08" LastKnownName="Ajouter un article" />
+            <elementDefinition Id="dd0d28c4-a93b-42c0-8555-1ad97ffea712" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="8e2bf32c-18fa-4701-8fe7-a1f63822ed60" LastKnownName="Gestion de l'inventaire" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="c214630b-7d5e-4138-86d8-26d9003dd96c" name="BD" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="8e2bf32c-18fa-4701-8fe7-a1f63822ed60" name="Gestion de l'inventaire" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e3b5576e-9940-42b5-a790-1ce363d558af" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="4d66f777-a9cb-4559-8bb0-11652334a05f" name="MyKoopDesign">
+    <elementDefinition Id="25133e8a-586b-4074-825e-744f71dca821" />
+    <profileInstances>
+      <packageHasProfileInstances Id="99e95fc7-f244-4ed0-9d8e-bcd7bac154c3">
+        <profileInstance Id="2fbb9a26-2c45-4ac4-8914-f6db61eb4304" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="61c5f701-32af-4b5b-987b-b7bacf9f9a74">
+        <profileInstance Id="422e19f0-8c13-425a-b8c2-07c9963ce8f7" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>
