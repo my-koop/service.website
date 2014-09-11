@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="26c31092-7c81-4ddd-8854-ba8bf35d9912" name="Remboursement" linkedPackageId="796170f0-961d-4e59-a9f7-bea737173cbb" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="a9e90e60-ac66-4b2e-89f1-5f5517ec342a">
+      <profileInstance Id="97983fb1-588e-4577-b916-6b0e630b6f5c" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="e61bd7a1-6538-4613-a9d0-da0378bd0743">
+      <profileInstance Id="7d4c4c02-0622-450f-98f6-7e4a1046fc5d" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="89dde48b-dc98-4b6e-a77b-d8b2a567f390" name="Remboursement" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="83055ee6-1212-4c56-9ab8-43c9bf8356e2" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="f08a8bfd-f773-4fe7-977d-63a7027c3a29" name="Admin" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="158443cc-114f-4c29-9b7b-0b9306b080b3" />
+        <targetEnds>
+          <association Id="3882940f-1c02-4ded-88ec-7ca940be65e4" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Choisir une transaction à rembourser" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="3e048d5b-ed66-4113-b30d-3b94bd3823f8" LastKnownName="Choisir une transaction à rembourser" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="06f57596-cab0-4778-ba9d-565b90cfdc38" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="4338356e-011f-480c-bf3d-89bc1a52ff1f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="84bb64a0-1ea6-4e01-8b49-8161f42de12d" name="Choisir une transaction à rembourser" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="6c1e8026-68d7-4a08-b0a5-1ccd68d369f0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="21693e97-def3-4c34-878e-89ed742db83d" />
+          </association>
+          <association Id="b643a41d-56f4-448e-a664-c73855a4822d" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Entrer le montant à rembourser" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="155b66ac-b3f4-4df9-80c1-41b7065bae82" LastKnownName="Entrer le montant à rembourser" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b8a296e4-6f27-477c-b087-ea5ae9d9a051" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="fa3ea641-2b3c-42e5-a151-c5d40e3e6720" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0687bcae-d00d-4083-a8c1-76372aa0c846" name="Entrer le montant à rembourser" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="1e96cd43-9a7e-47ef-b9b9-4a0950a01a8a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c398d8bf-ff48-495c-96c0-6b0fbb8c4835" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="155b66ac-b3f4-4df9-80c1-41b7065bae82" name="Entrer le montant à rembourser" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="313628f9-f3fa-45f9-af2a-e7d8110f67e2" />
+        <subjects>
+          <subsystemMoniker Id="89dde48b-dc98-4b6e-a77b-d8b2a567f390" LastKnownName="Remboursement" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="3e048d5b-ed66-4113-b30d-3b94bd3823f8" name="Choisir une transaction à rembourser" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="70e18d7a-4c39-45c1-abf8-c1c407672e7f" />
+        <subjects>
+          <subsystemMoniker Id="89dde48b-dc98-4b6e-a77b-d8b2a567f390" LastKnownName="Remboursement" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="656ebd98-9e75-4bfd-9c38-7b15a25b1f03" name="Choix des articles à rembourser" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f681b077-4651-40f7-9077-ee7c6b04a108" />
+        <suppliersInternal>
+          <dependency Id="b92f729e-91f1-4468-bd5c-54dfc1f2c618">
+            <useCaseMoniker Id="3e048d5b-ed66-4113-b30d-3b94bd3823f8" LastKnownName="Choisir une transaction à rembourser" />
+            <elementDefinition Id="34d4a5c1-8d17-4f29-8832-0d98fced1a2a" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker Id="89dde48b-dc98-4b6e-a77b-d8b2a567f390" LastKnownName="Remboursement" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="78d38ef3-5545-4238-b4bb-3cc6e40763ac" name="Mise à jour des finances" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5a909594-b9df-4d04-baa4-1a2e4e24725d" />
+        <targetEnds>
+          <association Id="37bd512d-bc03-4e3f-8c37-de06b00b49e8" isDerived="false" sourceEndRoleName="Mise à jour des finances" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="2b3624f2-32f4-4b18-bf9f-036a833116c3" LastKnownName="BD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d7bfb7d0-5519-44b7-8559-31d82a2c6085" name="Mise à jour des finances" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="921fb77a-f705-4903-8300-7aed85ff04a8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="64193481-555d-4870-8cff-9a8dfb57506b" name="BD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="83000411-60e0-435e-8cf7-61e6384fd8ac" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0aeb350d-111b-4bc9-a83e-48c99f0a8c44" />
+          </association>
+        </targetEnds>
+        <extendedCases>
+          <extend Id="885a14ef-5b71-46bf-a94a-746ac84cd5c8">
+            <useCaseMoniker Id="656ebd98-9e75-4bfd-9c38-7b15a25b1f03" LastKnownName="Choix des articles à rembourser" />
+            <elementDefinition Id="b962412a-ab22-48ac-bcef-bd1c2acd5b0b" />
+          </extend>
+          <extend Id="18251462-7973-4ff9-a718-27ee84a900d0">
+            <useCaseMoniker Id="155b66ac-b3f4-4df9-80c1-41b7065bae82" LastKnownName="Entrer le montant à rembourser" />
+            <elementDefinition Id="eca04684-99f0-4360-b6ae-d4d4b7099ce0" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="89dde48b-dc98-4b6e-a77b-d8b2a567f390" LastKnownName="Remboursement" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="2b3624f2-32f4-4b18-bf9f-036a833116c3" name="BD" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e" />
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="796170f0-961d-4e59-a9f7-bea737173cbb" name="MyKoopDesign">
+    <elementDefinition Id="25133e8a-586b-4074-825e-744f71dca821" />
+  </package>
+</useCaseModelRoot>

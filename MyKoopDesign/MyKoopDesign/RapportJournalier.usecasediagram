@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="836e3fc9-8fd2-4f14-ac33-b9aafad190a0" name="RapportJournalier" linkedPackageId="fad07b99-c33d-417c-ad29-a1e77e9c1cfb" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="0f89e01e-1962-455f-aa50-fac0583b76f7">
+      <profileInstance Id="e9560716-65d1-4c0c-9a9a-71457b4fde7a" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="cebb8f38-343a-4a24-9852-5ed242ec650b">
+      <profileInstance Id="819eb7b7-f5d5-4c39-bd39-860f1f6956fe" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="969c6b75-a297-45e5-8041-c2761ae3297e" name="Ouverture de la journée" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="65f0b70e-30c4-40ca-849d-0153b3403413" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="48b254b1-13c7-48d8-b9ea-e0da96aea316" name="Entrer l'état initial" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="bced77a7-cfbf-4cd3-9b94-220ac8494799" />
+        <subjects>
+          <subsystemMoniker Id="969c6b75-a297-45e5-8041-c2761ae3297e" LastKnownName="Ouverture de la journée" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="87301471-1521-4f9e-a2f7-490e11651e7d" name="Admin" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="158443cc-114f-4c29-9b7b-0b9306b080b3" />
+        <targetEnds>
+          <association Id="82a9385c-83ed-4729-9307-e26e150fd456" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Entrer l'état initial" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="48b254b1-13c7-48d8-b9ea-e0da96aea316" LastKnownName="Entrer l'état initial" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="461f6abd-b134-4dde-9c2a-0e43a7d6c715" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d300c350-e34a-4d0c-9665-9e3dab8e0dc0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="752979fe-ac20-46f2-b10d-5575ca62e95d" name="Entrer l'état initial" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="cc1bbb74-ddb9-4364-93d0-ab46e12e93eb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="72cc2c1a-a739-4fb0-9496-59a3121ab174" />
+          </association>
+          <association Id="1bb1acb9-e8a3-4a7e-935c-2360b24d3fcb" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Correction de l'état initial" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="2fdbde86-2aeb-4ac4-80f1-99987ddec097" LastKnownName="Correction de l'état initial" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="878ae19b-0551-4a04-b1f1-c4103718b39c" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b44670b8-1001-4159-b2de-82e91f823e5a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="51e286e9-b351-454f-b137-be1c06fccf96" name="Correction de l'état initial" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="dfe39198-d329-4eb1-bd93-d290a63952e1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="db454229-58fb-4fda-8519-db79dabd482b" />
+          </association>
+          <association Id="8e93b872-8cc7-4096-b088-a8a1d8cb2c95" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Entrer l'état final de la journée" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="45235221-9d43-4663-bce9-d2f4a8697582" LastKnownName="Entrer l'état final de la journée" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="08edb669-ae02-40d2-a935-1f19198b59c6" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d0fd6c8a-127c-4f07-8de8-8e5ef70e8551" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b0202576-c132-482c-b679-84784cb4ae06" name="Entrer l'état final de la journée" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="bb883e9c-87bb-4e01-b6a1-624042ef5ce5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="03cd5c07-9e65-45a8-a1d0-5fac8c81f472" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="d1de6280-4c6f-4012-aa57-8d54ba95077f" name="Sauvegarde de l'état de la journée" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="664e8bf4-52de-441a-8332-4f045b299f11" />
+        <suppliersInternal>
+          <dependency Id="36f1b486-7a1e-4859-a46b-b1ad50d7c7a2">
+            <useCaseMoniker Id="48b254b1-13c7-48d8-b9ea-e0da96aea316" LastKnownName="Entrer l'état initial" />
+            <elementDefinition Id="26608e68-12c1-4c75-8779-191c1782d6cd" />
+          </dependency>
+        </suppliersInternal>
+        <targetEnds>
+          <association Id="0836dc0f-e19a-4fc5-bdcc-94dad1e7559f" isDerived="false" sourceEndRoleName="Sauvegarde de l'état de la journée" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="2f2e3b00-4847-420b-b8bf-eb9e6065ff26" LastKnownName="BD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7ff95655-ac55-4841-8f0a-8f7789f50fab" name="Sauvegarde de l'état de la journée" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f1a09982-25ce-441e-abde-a7a6a153dae9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d39390c9-adac-4b09-beb1-34b7e83343b9" name="BD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="1e61a4e5-7226-4fae-92f1-b57932b8c4f8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="da784347-513d-420b-b836-b67d5a0c6e73" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="969c6b75-a297-45e5-8041-c2761ae3297e" LastKnownName="Ouverture de la journée" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="2f2e3b00-4847-420b-b8bf-eb9e6065ff26" name="BD" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="2fdbde86-2aeb-4ac4-80f1-99987ddec097" name="Correction de l'état initial" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3ce479e7-a28a-4bf5-bc71-97abaa1b01a3" />
+        <targetEnds>
+          <association Id="00afde07-c71d-4b70-840b-41036ea2ede7" isDerived="false" sourceEndRoleName="Correction de l'état initial" targetEndRoleName="Sauvegarde de l'état de la journée" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="d1de6280-4c6f-4012-aa57-8d54ba95077f" LastKnownName="Sauvegarde de l'état de la journée" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d0533a69-722d-4424-a642-e23acd6ac94a" name="Correction de l'état initial" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ab4f5788-d67b-484a-9ad7-0339245e0da8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="92f74439-c0ab-470d-8784-9ffe8429b7b2" name="Sauvegarde de l'état de la journée" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="a47faddd-fc35-4e13-a915-309467359709" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="88d1e382-e5f5-4bbc-9e9f-429ea1b9be24" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="969c6b75-a297-45e5-8041-c2761ae3297e" LastKnownName="Ouverture de la journée" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="79e8cd71-7892-49cb-a6cd-37af410851b8" name="Fermeture de la journée" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="147855fb-17c8-4254-837e-d9b2882ec7ec" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="45235221-9d43-4663-bce9-d2f4a8697582" name="Entrer l'état final de la journée" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2625b394-3f32-4e3c-8f29-9abee53ad335" />
+        <subjects>
+          <subsystemMoniker Id="79e8cd71-7892-49cb-a6cd-37af410851b8" LastKnownName="Fermeture de la journée" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="e624b227-d2d8-4a1b-bdba-cf3a0e33a6b4" name="Sauvergarde de l'état final de la journée" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c3c7f613-ce80-480a-a05c-8d648835d2de" />
+        <suppliersInternal>
+          <dependency Id="797b96b2-4f58-467b-9d4d-780a70ff76b5">
+            <useCaseMoniker Id="45235221-9d43-4663-bce9-d2f4a8697582" LastKnownName="Entrer l'état final de la journée" />
+            <elementDefinition Id="c9c0cd27-6919-4432-b8ee-b3376d1aa1e0" />
+          </dependency>
+        </suppliersInternal>
+        <targetEnds>
+          <association Id="2e8692ed-3163-48c1-bbdb-ac7e8ca0584a" isDerived="false" sourceEndRoleName="Sauvergarde de l'état final de la journée" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="2f2e3b00-4847-420b-b8bf-eb9e6065ff26" LastKnownName="BD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fc227bcf-589e-43b9-965d-97e70c36dc6a" name="Sauvergarde de l'état final de la journée" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="41e29bd1-3658-4dea-a537-abd9e3e66ac3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6417b696-ac9f-4acc-b4db-b0360dc60dbf" name="BD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="24b5d988-369f-478e-a490-42e59421f663" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="21730512-16d4-43a0-baea-4c9eb76a37ec" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="79e8cd71-7892-49cb-a6cd-37af410851b8" LastKnownName="Fermeture de la journée" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="db02998c-70d5-4d0c-a7fc-f64b23393b09" name="Production du rapport journalier" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6d546324-bcc7-430e-8ddf-7ff8b45aa100" />
+        <suppliersInternal>
+          <dependency Id="50a3011c-5de3-489b-a084-12dc2e111146">
+            <useCaseMoniker Id="45235221-9d43-4663-bce9-d2f4a8697582" LastKnownName="Entrer l'état final de la journée" />
+            <elementDefinition Id="b3dc9309-3961-4f59-9db1-ac2f4877c878" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker Id="79e8cd71-7892-49cb-a6cd-37af410851b8" LastKnownName="Fermeture de la journée" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="2ac12f8f-1a36-466d-8cc6-622f04eed454" name="Serveur" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ea0ec924-5838-42b9-99d5-6147a9958164" />
+        <targetEnds>
+          <association Id="777b731c-8e47-4273-82b1-69407c907d98" isDerived="false" sourceEndRoleName="Serveur" targetEndRoleName="Production du rapport journalier" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="db02998c-70d5-4d0c-a7fc-f64b23393b09" LastKnownName="Production du rapport journalier" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bb311bce-b3a9-404f-b02e-8657418b0a5e" name="Serveur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="48c2e26f-671e-4cda-b7d9-bc67ef8df311" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="70c07526-0a7e-4620-a261-a5152061da1d" name="Production du rapport journalier" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="43c3a1bb-3dc8-4e9c-9c36-39c70bf46e16" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="06a779ef-70b2-4cd6-98f8-effc2e0b78ca" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="fad07b99-c33d-417c-ad29-a1e77e9c1cfb" name="MyKoopDesign">
+    <elementDefinition Id="25133e8a-586b-4074-825e-744f71dca821" />
+  </package>
+</useCaseModelRoot>

@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="3fc99f50-1c72-4f1c-9651-5eebfc1f1a0b" name="RéservationEnLigne" linkedPackageId="73703d39-5a76-46cf-8206-0598be396774" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="ec1debd7-0e92-47bf-a974-e86d400c4c6f">
+      <profileInstance Id="d04e0426-f860-40d4-b052-0c65c15a3f6e" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="083a5630-a5ab-4003-8535-41299744363c">
+      <profileInstance Id="63b2e2e4-b7b9-4451-98c9-f2402720f7ed" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="60f25812-bea4-4ed0-be6c-f34b510a8b68" name="Réservation d'un article" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="527e5efa-8212-4bfc-9753-efe2ee9922b7" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="abd4a803-2d3e-4910-976a-9886f4fe048c" name="Choix de l'article à réserver" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="82d81743-5792-4e00-8f65-d3b22660a2e1" />
+        <suppliersInternal>
+          <dependency Id="ea0a3213-dbb2-4c58-97f9-3e6aed5467bf">
+            <useCaseMoniker Id="687a399d-21ce-4c3c-93ad-e09576ca96bf" LastKnownName="Vérifier la disponibilité" />
+            <elementDefinition Id="43082b59-e988-4ae4-9c24-326c47ac1a2a" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker Id="60f25812-bea4-4ed0-be6c-f34b510a8b68" LastKnownName="Réservation d'un article" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="687a399d-21ce-4c3c-93ad-e09576ca96bf" name="Vérifier la disponibilité" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ccaf9fb5-3b4f-4d81-addb-42c45e94f404" />
+        <subjects>
+          <subsystemMoniker Id="60f25812-bea4-4ed0-be6c-f34b510a8b68" LastKnownName="Réservation d'un article" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="e180a2ee-1505-46f7-a296-77034e538aa3" name="Réserver l'article" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c3ecd9e1-625e-45e6-b920-1ee754a9a477" />
+        <suppliersInternal>
+          <dependency Id="6b967a71-018a-472e-bc85-fbf72983aa2f">
+            <useCaseMoniker Id="687a399d-21ce-4c3c-93ad-e09576ca96bf" LastKnownName="Vérifier la disponibilité" />
+            <elementDefinition Id="f7b9f3a4-705c-4c8a-bb9a-e13f4b767f89" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker Id="60f25812-bea4-4ed0-be6c-f34b510a8b68" LastKnownName="Réservation d'un article" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="f630b6b6-6b08-4b35-85dc-138aafed28ae" name="Créer une transaction ouverte" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8b3e7b0d-42f2-49af-b0c1-99334c89ddea" />
+        <targetEnds>
+          <association Id="c8dda51a-313d-4859-ab10-396ceb9de7ab" isDerived="false" sourceEndRoleName="Créer une transaction ouverte" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="6733f188-458a-4e9e-be0f-1f8a8082ae38" LastKnownName="BD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3764476d-e13c-40c0-8c83-71f305879c58" name="Créer une transaction ouverte" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ea2b6482-a2a2-46b0-9275-8229ce596daa" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="dfd30a3a-b4dd-4b5a-9cf7-87b505615d96" name="BD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="1e0a1010-3c79-46cb-a380-8bc0532e5449" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="86bde0e5-1363-4a7e-94ec-11c025a71f84" />
+          </association>
+        </targetEnds>
+        <extendedCases>
+          <extend Id="53141aaf-8915-49ad-a711-31cee409b02b">
+            <useCaseMoniker Id="e180a2ee-1505-46f7-a296-77034e538aa3" LastKnownName="Réserver l'article" />
+            <elementDefinition Id="df90cb35-c82d-4375-a0e6-763b5756b2b5" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="60f25812-bea4-4ed0-be6c-f34b510a8b68" LastKnownName="Réservation d'un article" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="ecfdcab3-e0ee-45da-93de-0c78acac32d7" name="Utilisateur" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a6432d43-6570-4a12-ac1e-1e34e34a0930" />
+        <targetEnds>
+          <association Id="975a8680-9049-492a-9d22-a48168c69ca6" isDerived="false" sourceEndRoleName="Utilisateur" targetEndRoleName="Choix de l'article à réserver" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="abd4a803-2d3e-4910-976a-9886f4fe048c" LastKnownName="Choix de l'article à réserver" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2ef4c591-2362-437a-8a43-93df0ad50e3b" name="Utilisateur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c512283e-91d7-45c5-a378-30553f2152a3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="58185a73-47ef-43d6-b5d7-20df6ea70dfa" name="Choix de l'article à réserver" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0125e163-6137-4efb-8b26-b33d8ded62b7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="195a1ea9-ffe8-4aa9-b56e-edf5e1393e48" />
+          </association>
+          <association Id="bd9e5d6a-6967-4581-9ac5-9ee867b8c8cd" isDerived="false" sourceEndRoleName="Utilisateur" targetEndRoleName="Réserver l'article" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="e180a2ee-1505-46f7-a296-77034e538aa3" LastKnownName="Réserver l'article" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6e809a55-50a9-4c5b-b398-aed9f11da726" name="Utilisateur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="cdbc39f4-49ca-4b69-b3d5-15f305bef82a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="da159623-923e-4153-842c-d07353d3c355" name="Réserver l'article" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="fc96a4e3-c6cd-4fe3-a7cd-2f31457e9781" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="975fa2db-97c9-4823-aa15-9e1c32fc7e2a" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="6ad7bb61-c4de-4b8a-8bd5-0d7bade47807" name="Serveur" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ea0ec924-5838-42b9-99d5-6147a9958164" />
+        <targetEnds>
+          <association Id="0966ee6e-e517-42a9-88d3-264d0ef2e550" isDerived="false" sourceEndRoleName="Serveur" targetEndRoleName="Vérifier la disponibilité" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="687a399d-21ce-4c3c-93ad-e09576ca96bf" LastKnownName="Vérifier la disponibilité" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a8640f78-a6ef-425f-b136-d233a935c1f4" name="Serveur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="23c5ea04-3384-43e3-8349-ab89df70e6e9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="45300649-3808-45ea-99b9-8d2d3df808d6" name="Vérifier la disponibilité" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="9ae7a452-642f-466f-8327-eb5d4c76bbc0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e8ef6ee6-fe18-478d-98da-f91aac943ebe" />
+          </association>
+          <association Id="a0ba05bd-1dbc-4929-bc05-2f4227b484d8" isDerived="false" sourceEndRoleName="Serveur" targetEndRoleName="Créer une transaction ouverte" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="f630b6b6-6b08-4b35-85dc-138aafed28ae" LastKnownName="Créer une transaction ouverte" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="07ae6bdc-e328-4533-8f6f-d32fa3c78b7d" name="Serveur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c87c3841-bc57-4fce-b4d5-46cacbf1b645" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1d4c1542-a1f4-4f99-b9c8-6d33075784f3" name="Créer une transaction ouverte" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="37b5146a-201a-42e8-9185-f0d40795199c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="bf3d3f23-9ea6-42f5-8d4a-7cef01a42f25" />
+          </association>
+          <association Id="1f8f5606-3aa9-463a-b8b5-80389af833e8" isDerived="false" sourceEndRoleName="Serveur" targetEndRoleName="Fermeture de la transaction" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="629c851b-f481-4fcf-952f-ddab0890e878" LastKnownName="Fermeture de la transaction" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="71856593-7695-407e-938d-c632c4d5faa3" name="Serveur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="783c50b3-1b9e-455a-abee-fb8a54a00d13" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="dad89b57-5091-443c-89c3-177e814a67e1" name="Fermeture de la transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f226bc7a-794d-4c6c-aef5-dda81e05f41d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="503ade1e-3206-4bfb-b4d3-a4e430b4eb1f" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="6733f188-458a-4e9e-be0f-1f8a8082ae38" name="BD" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="4438f9d5-876e-476a-9678-5c8515372646" name="Annuler une réservation" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="113c365d-67c0-4159-819f-3d07d2fffc68" />
+        <subjects>
+          <subsystemMoniker Id="60f25812-bea4-4ed0-be6c-f34b510a8b68" LastKnownName="Réservation d'un article" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="d466eeb3-f5e4-479d-98db-fbf41225228d" name="Admin" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="158443cc-114f-4c29-9b7b-0b9306b080b3" />
+        <targetEnds>
+          <association Id="968af9d2-0cf3-4748-ab31-9a772ba50630" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Annuler une réservation" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="4438f9d5-876e-476a-9678-5c8515372646" LastKnownName="Annuler une réservation" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ef33cdeb-3812-4a0b-8cc1-3fbda2a66af9" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="538b53bd-f2db-4f1c-8e2a-38328e332da2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="25be3b92-2e18-4981-bc64-72595e65cb06" name="Annuler une réservation" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="6b173fa4-97b7-4406-a1a7-5e6055ba3752" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="6ebbacbe-e8f6-41f2-af14-a3686c898b20" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="629c851b-f481-4fcf-952f-ddab0890e878" name="Fermeture de la transaction" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ca88166b-3960-46e0-8434-4148eea15288" />
+        <targetEnds>
+          <association Id="d8aaa07f-c0e7-4446-9174-4d6581e3a115" isDerived="false" sourceEndRoleName="Fermeture de la transaction" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="6733f188-458a-4e9e-be0f-1f8a8082ae38" LastKnownName="BD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7f329f11-9a88-4fa2-97b8-9205afb86297" name="Fermeture de la transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e8d73fcf-84f9-4c0f-b0a5-1c3d6679f9b1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="877e25aa-2336-42df-a247-6ddba5c5fe4a" name="BD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="a5708962-dc77-4e58-a5ea-6dc1fa0f5944" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="1c896488-51eb-41eb-96ae-80f48a1a2102" />
+          </association>
+        </targetEnds>
+        <extendedCases>
+          <extend Id="51dfa216-3fff-4438-b9fa-591a827fb30c">
+            <useCaseMoniker Id="4438f9d5-876e-476a-9678-5c8515372646" LastKnownName="Annuler une réservation" />
+            <elementDefinition Id="a6d12c06-2e94-4359-a1ad-10083bfdf196" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="60f25812-bea4-4ed0-be6c-f34b510a8b68" LastKnownName="Réservation d'un article" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="73703d39-5a76-46cf-8206-0598be396774" name="MyKoopDesign">
+    <elementDefinition Id="25133e8a-586b-4074-825e-744f71dca821" />
+  </package>
+</useCaseModelRoot>

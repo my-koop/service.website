@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="99247f77-fcb3-45c4-92bb-8495aae1972e" name="Transactions" linkedPackageId="067bcf0e-e73b-4181-b5d5-37435fc563bb" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
-  <profileInstances>
-    <packageHasProfileInstances Id="b8eab833-021c-4ba9-b508-7a1c235e8b0c">
-      <profileInstance Id="6dcc69d8-04e6-4b4b-9e1b-9e4bddadb734" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="98dee0d8-9106-41a2-88fd-624ac72048db">
-      <profileInstance Id="26a0e18b-9fe5-4cc4-b9ec-cc914dcff275" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <useCaseModelRootHasTypes>
       <actor Id="030f1828-e384-47c3-af80-0e82e4579ffc" name="Utilisateur" isAbstract="false" isLeaf="false">
@@ -175,7 +161,7 @@
       <useCase Id="6dc2fe1d-7d73-4179-bffb-606a75818287" name="Appliquer un rabais" isAbstract="false" isLeaf="false">
         <elementDefinition Id="52bdc0ec-db3b-4f52-b8fc-ff59e8118d42" />
         <subjects>
-          <subsystemMoniker Id="d210b4a2-e987-46e1-bad3-50a831ed85a9" LastKnownName="Finalisation d'une transaction" />
+          <subsystemMoniker Id="ac78e136-caa4-4413-83f3-a2b9d4310170" LastKnownName="Création d'une transaction" />
         </subjects>
       </useCase>
     </packageHasNamedElement>
@@ -276,6 +262,12 @@
     <packageHasNamedElement>
       <useCase Id="f7cb26ba-6431-4247-8a05-4fc72b8b2608" name="Mise à jour de l'inventaire" isAbstract="false" isLeaf="false">
         <elementDefinition Id="1e93665a-f3bc-45b8-a93b-86d6e5905c28" />
+        <suppliersInternal>
+          <dependency Id="885d23c6-7f46-4d46-877c-56d6408f77f7">
+            <useCaseMoniker Id="b81b2f62-b9c2-4038-a632-7dc647891cbf" LastKnownName="Fermeture de la transaction" />
+            <elementDefinition Id="daa6b0f3-0898-4410-88fa-64797156eec4" />
+          </dependency>
+        </suppliersInternal>
         <targetEnds>
           <association Id="77f1633e-855f-4876-96f6-5dad031634a0" isDerived="false" sourceEndRoleName="Mise à jour de l'inventaire" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
             <actorMoniker Id="bc635d90-5354-4505-a27a-05684d650a09" LastKnownName="BD" />
@@ -299,18 +291,83 @@
             <useCaseMoniker Id="d7a95a4b-5a61-4cf9-812f-363787cd385a" LastKnownName="Enregistrer un paiement partiel" />
             <elementDefinition Id="a5168ac2-0b87-4e64-8bb0-09e7e21d6fd9" />
           </extend>
-          <extend Id="2e3baf57-4d64-4d62-9df1-c6bdfcd189b2">
-            <useCaseMoniker Id="92f4f69b-1e60-487c-b6b2-81870adef051" LastKnownName="Enregistrer un paiement complet" />
-            <elementDefinition Id="c2958b5e-5192-4384-8780-7ba3de76585a" />
-          </extend>
         </extendedCases>
         <subjects>
           <subsystemMoniker Id="d210b4a2-e987-46e1-bad3-50a831ed85a9" LastKnownName="Finalisation d'une transaction" />
         </subjects>
       </useCase>
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="b81b2f62-b9c2-4038-a632-7dc647891cbf" name="Fermeture de la transaction" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="13d373cb-0b9a-4352-9ae5-f5036ee65482" />
+        <suppliersInternal>
+          <dependency Id="62842e8c-91bd-4255-854c-f4de0c91b2a9">
+            <useCaseMoniker Id="92f4f69b-1e60-487c-b6b2-81870adef051" LastKnownName="Enregistrer un paiement complet" />
+            <elementDefinition Id="8550f4f3-fa16-4316-b95f-4ef15afa7aa2" />
+          </dependency>
+        </suppliersInternal>
+        <targetEnds>
+          <association Id="031a9b68-3d9b-4b28-8978-2788efa8453d" isDerived="false" sourceEndRoleName="Fermeture de la transaction" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="bc635d90-5354-4505-a27a-05684d650a09" LastKnownName="BD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f5f41859-d0a5-444a-b5aa-3e1a60abd8aa" name="Fermeture de la transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e683c88d-ac11-4647-857f-4b7aa8469763" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="13158184-6fc3-4a5e-94b9-26d88269b1c4" name="BD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="24094180-ca65-4403-b7eb-47b2af7f7faf" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9d5104ce-4d08-485c-9847-3a0d3901079d" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="d210b4a2-e987-46e1-bad3-50a831ed85a9" LastKnownName="Finalisation d'une transaction" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="7726635f-577d-4526-8d8a-c1e75c6c4a68" name="Serveur" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ea0ec924-5838-42b9-99d5-6147a9958164" />
+        <targetEnds>
+          <association Id="239c3167-3f66-4de0-b1cf-b13bea0dd7bd" isDerived="false" sourceEndRoleName="Serveur" targetEndRoleName="Fermeture de la transaction" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b81b2f62-b9c2-4038-a632-7dc647891cbf" LastKnownName="Fermeture de la transaction" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="214fe06a-621b-4051-a841-8cc9d7c1565d" name="Serveur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b95c82b7-b831-4a60-b5a8-95e40bad7fc8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cf5e3a33-679f-4d3d-a3f0-b53774b1585a" name="Fermeture de la transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8ecfa395-26fe-4a63-8de6-bb6f9d47ff8a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0cf35f6d-7d70-41c1-9302-41c13f62174d" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
   </packagedElements>
   <package Id="067bcf0e-e73b-4181-b5d5-37435fc563bb" name="MyKoopDesign">
     <elementDefinition Id="25133e8a-586b-4074-825e-744f71dca821" />
+    <profileInstances>
+      <packageHasProfileInstances Id="b8eab833-021c-4ba9-b508-7a1c235e8b0c">
+        <profileInstance Id="6dcc69d8-04e6-4b4b-9e1b-9e4bddadb734" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="98dee0d8-9106-41a2-88fd-624ac72048db">
+        <profileInstance Id="26a0e18b-9fe5-4cc4-b9ec-cc914dcff275" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </useCaseModelRoot>
