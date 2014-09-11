@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="706a69e6-86e5-4e1a-93b9-eede2c1b324c" name="GestionProfilUtilisateur" linkedPackageId="2a3e39b1-b81b-4eb7-8469-33a3fceef73c" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
-  <profileInstances>
-    <packageHasProfileInstances Id="30692d28-3a5f-4377-b923-9ee6ad5b9de4">
-      <profileInstance Id="1e2ae001-c715-4ab0-9ed7-01ffc93c671d" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="beb422c8-89f3-4f8f-b87f-e9d2d42bf5fa">
-      <profileInstance Id="4a475f61-0bda-407b-9e92-1dc9e141fa78" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <useCaseModelRootHasTypes>
       <subsystem Id="b787c8b8-1a0c-4724-bc77-e545fd8b140f" name="Profil utilisateur" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -168,6 +154,22 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="e6ba6b7a-6197-4404-83e6-572ac6d9668b" />
           </association>
+          <association Id="4acdcf60-c04b-4335-8f42-8ce09579977d" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Envoyer des courriels aux utilisateurs" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="a4f8e909-fe5a-4bf6-a7ef-343e893689c7" LastKnownName="Envoyer des courriels aux utilisateurs" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="97f838b3-ff92-4ac2-a91a-1abf6ee3ecd7" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a87f1f62-f828-46c2-a353-48426bcfdaeb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d969ec01-78d8-4654-89d4-32a560b3b2fb" name="Envoyer des courriels aux utilisateurs" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4dc6a30c-4ec7-4188-aa7a-f8b0f5cadb61" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="feeab751-3af5-4da6-94bc-277eb8a60436" />
+          </association>
         </targetEnds>
       </actor>
     </useCaseModelRootHasTypes>
@@ -218,8 +220,30 @@
         </subjects>
       </useCase>
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="a4f8e909-fe5a-4bf6-a7ef-343e893689c7" name="Envoyer des courriels aux utilisateurs" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="08cdf98e-a503-48fb-b0b4-be21a58e10e1" />
+        <subjects>
+          <subsystemMoniker Id="b787c8b8-1a0c-4724-bc77-e545fd8b140f" LastKnownName="Profil utilisateur" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
   </packagedElements>
   <package Id="2a3e39b1-b81b-4eb7-8469-33a3fceef73c" name="MyKoopDesign">
     <elementDefinition Id="25133e8a-586b-4074-825e-744f71dca821" />
+    <profileInstances>
+      <packageHasProfileInstances Id="30692d28-3a5f-4377-b923-9ee6ad5b9de4">
+        <profileInstance Id="1e2ae001-c715-4ab0-9ed7-01ffc93c671d" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="beb422c8-89f3-4f8f-b87f-e9d2d42bf5fa">
+        <profileInstance Id="4a475f61-0bda-407b-9e92-1dc9e141fa78" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </useCaseModelRoot>

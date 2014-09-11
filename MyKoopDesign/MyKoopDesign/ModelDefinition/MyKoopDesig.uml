@@ -815,6 +815,45 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="feeab751-3af5-4da6-94bc-277eb8a60436"
+            isDerived="false"
+            sourceEndRoleName="Admin"
+            targetEndRoleName="Envoyer des courriels aux utilisateurs"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="08cdf98e-a503-48fb-b0b4-be21a58e10e1"
+              LastKnownName="Envoyer des courriels aux utilisateurs"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a87f1f62-f828-46c2-a353-48426bcfdaeb"
+                  name="Admin"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4dc6a30c-4ec7-4188-aa7a-f8b0f5cadb61"
+                  name="Envoyer des courriels aux utilisateurs"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
@@ -3124,29 +3163,6 @@
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase
-        Id="9fdfd54d-ddd3-4597-86f0-ba91a6acf3b7"
-        name="Envoyer des courriels aux membres"
-        isAbstract="false"
-        isLeaf="false">
-        <extendedCases>
-          <extend
-            Id="f5b4c64e-2b43-4b85-a7a6-de9dceb53362">
-            <useCaseMoniker
-              Id="f704d415-34b2-453e-a200-fef0cc6f021a"
-              LastKnownName="Gérer des membres"
-              LastKnownLocation="MyKoopDesig.uml" />
-          </extend>
-        </extendedCases>
-        <subjects>
-          <subsystemMoniker
-            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
-            LastKnownName="Gestion des membres"
-            LastKnownLocation="MyKoopDesig.uml" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
         Id="e2381a16-410f-460a-af7a-a87ca3c0e682"
         name="Modifier un membre"
         isAbstract="false"
@@ -4050,6 +4066,20 @@
         name="UseCase1"
         isAbstract="false"
         isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="08cdf98e-a503-48fb-b0b4-be21a58e10e1"
+        name="Envoyer des courriels aux utilisateurs"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="d8fa1321-92a0-40d7-849c-1a302d9ce8cf"
+            LastKnownName="Profil utilisateur"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

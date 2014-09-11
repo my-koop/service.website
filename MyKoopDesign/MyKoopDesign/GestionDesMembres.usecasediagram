@@ -80,20 +80,6 @@
       </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <useCase Id="38802054-96dd-477b-92a7-cb40eb17fd6a" name="Envoyer des courriels aux membres" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="9fdfd54d-ddd3-4597-86f0-ba91a6acf3b7" />
-        <extendedCases>
-          <extend Id="eb969cb2-a8d2-4c47-a5b8-3abdf7cb57a0">
-            <useCaseMoniker Id="48d95a28-3d58-4a0f-be5f-1e7443b3866d" LastKnownName="Gérer des membres" />
-            <elementDefinition Id="f5b4c64e-2b43-4b85-a7a6-de9dceb53362" />
-          </extend>
-        </extendedCases>
-        <subjects>
-          <subsystemMoniker Id="7981644c-498f-44db-8780-5536024b9541" LastKnownName="Gestion des membres" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
       <useCase Id="811599ac-24db-4bd4-a094-d5f971db37b1" name="Modifier un membre" isAbstract="false" isLeaf="false">
         <elementDefinition Id="e2381a16-410f-460a-af7a-a87ca3c0e682" />
         <extendedCases>
