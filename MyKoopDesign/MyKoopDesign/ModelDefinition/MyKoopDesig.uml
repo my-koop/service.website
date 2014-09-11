@@ -12,6 +12,10 @@
       Id="c19659b9-c434-4b1b-9e60-3f26e6cad157">
       <body>UC Ramassage de l"article</body>
     </comment>
+    <comment
+      Id="2a9986bb-19bf-4549-bf18-f4d4fd619965">
+      <body>Note sur la méthode d'ajout d'un article dans la liste</body>
+    </comment>
   </ownedCommentsInternal>
   <profileInstances>
     <packageHasProfileInstances
@@ -454,6 +458,201 @@
                 <memberEnd
                   Id="bb883e9c-87bb-4e01-b6a1-624042ef5ce5"
                   name="Entrer l'état final de la journée"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="12e166a8-ea99-4f66-aa65-e58abd31b78d"
+            isDerived="false"
+            sourceEndRoleName="Admin"
+            targetEndRoleName="Ajouter un article de la liste à renouveler dans la prochaine commande"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="de5765a8-c785-4acf-ab47-88a256159f83"
+              LastKnownName="Ajouter un article de la liste à renouveler dans la prochaine commande"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="01396842-ef74-4d70-91ec-a4c0277e7e69"
+                  name="Admin"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c9328425-e8c8-4f2e-8c6c-afe1e5a361a6"
+                  name="Ajouter un article de la liste à renouveler dans la prochaine commande"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="3780bacf-4562-4c64-ba62-908e11c0d3c8"
+            isDerived="false"
+            sourceEndRoleName="Admin"
+            targetEndRoleName="Visualiser la prochaine commande"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="39e223ac-ce39-4b0a-8e65-9681669ab205"
+              LastKnownName="Visualiser la prochaine commande"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5af4fd49-a66b-4fde-8b66-cded97f2c005"
+                  name="Admin"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="de6f721c-6967-4dcc-ac89-ab4b2d223377"
+                  name="Visualiser la prochaine commande"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="e718c93e-1d83-405e-a8c8-cb7323cb23c3"
+            isDerived="false"
+            sourceEndRoleName="Admin"
+            targetEndRoleName="Gérer des membres"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="f704d415-34b2-453e-a200-fef0cc6f021a"
+              LastKnownName="Gérer des membres"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="965100ef-ae70-4027-8ee7-8db9619e2bc5"
+                  name="Admin"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ef4b9c1f-5b09-417c-b46f-a919a3f9d2c7"
+                  name="Gérer des membres"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="3200385f-9339-4c37-bc0a-58e7b1ea6b1e"
+            isDerived="false"
+            sourceEndRoleName="Admin"
+            targetEndRoleName="Imprimer des cartes de membres"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="77eafdef-a4df-4359-8087-60db3e6be8f0"
+              LastKnownName="Imprimer des cartes de membres"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="104d2517-3276-43b0-9e93-6ec627ca06c6"
+                  name="Admin"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="18e44ada-5e49-4e45-b5f8-fedd40b93ba8"
+                  name="Imprimer des cartes de membres"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="8611a7a7-a355-4886-bbbf-40db8d8cb194"
+            isDerived="false"
+            sourceEndRoleName="Admin"
+            targetEndRoleName="Gérer des événements"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="78ef2fdc-0176-4117-ae1a-f2b63b21dd45"
+              LastKnownName="Gérer des événements"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a3faac7e-adb0-4010-80c0-b6adcc822e5a"
+                  name="Admin"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="886c9749-5082-4d94-9c87-bb9839860d3b"
+                  name="Gérer des événements"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1230,6 +1429,123 @@
                 <memberEnd
                   Id="3b2da8d7-b06d-455d-8aab-5b71491c0cf0"
                   name="Annuler une transaction"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="36eb1c02-a87e-426e-a234-a7481facfe96"
+            isDerived="false"
+            sourceEndRoleName="Utilisateur"
+            targetEndRoleName="Adhérer à la coopérative"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="c1027dda-f504-4b63-9da4-aec5629deac2"
+              LastKnownName="Adhérer à la coopérative"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="37d43270-d665-4a06-a17d-5b702151856f"
+                  name="Utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0eb0c1f6-340b-419f-b24f-58f325ae2559"
+                  name="Adhérer à la coopérative"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="4e81f7a3-357e-4b90-972a-91040d0dcb18"
+            isDerived="false"
+            sourceEndRoleName="Utilisateur"
+            targetEndRoleName="Ouvrir un événement"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="5e48fce0-d823-43c7-a777-ea73e62dfbd4"
+              LastKnownName="Ouvrir un événement"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="660c5643-ffb7-44c3-9fb9-bc9134a65ae1"
+                  name="Utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8e4cd7bb-dfc3-421c-a48e-b042503052b4"
+                  name="Ouvrir un événement"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="63367768-7f82-467f-812c-dc5bf76a766d"
+            isDerived="false"
+            sourceEndRoleName="Utilisateur"
+            targetEndRoleName="Fermer un événement"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="98efd52f-ce38-4aff-9b8b-535012e0aa60"
+              LastKnownName="Fermer un événement"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3e2ef25b-4ca9-4391-85f4-f301da3989ac"
+                  name="Utilisateur"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9bd82af6-b74f-4ae2-b097-a1bc64c97007"
+                  name="Fermer un événement"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -2612,6 +2928,702 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="de5765a8-c785-4acf-ab47-88a256159f83"
+        name="Ajouter un article de la liste à renouveler dans la prochaine commande"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="461b529f-a0b4-4652-a7ce-6ca3331920cd">
+            <useCaseMoniker
+              Id="d55956fd-9d6a-4bf9-8123-fb9bc15067f3"
+              LastKnownName="Visualiser la liste à renouveler"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker
+            Id="85db4da3-73ff-4d36-8056-39124e618f18"
+            LastKnownName="Préparation de la commande fournisseur"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b17b40bb-77d6-4778-94dd-9f406fff573b"
+        name="Ajouter un article à la commande"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="d2b06107-9c86-424f-afd0-4f53206d12ff">
+            <useCaseMoniker
+              Id="39e223ac-ce39-4b0a-8e65-9681669ab205"
+              LastKnownName="Visualiser la prochaine commande"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="85db4da3-73ff-4d36-8056-39124e618f18"
+            LastKnownName="Préparation de la commande fournisseur"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e97f89d2-9fb0-4ace-b59b-e9772c4376e4"
+        name="Modifier la quantité d'un article"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="7ec9b727-0c35-4e4c-92f0-c95b0b9511d9">
+            <useCaseMoniker
+              Id="39e223ac-ce39-4b0a-8e65-9681669ab205"
+              LastKnownName="Visualiser la prochaine commande"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="85db4da3-73ff-4d36-8056-39124e618f18"
+            LastKnownName="Préparation de la commande fournisseur"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="39e223ac-ce39-4b0a-8e65-9681669ab205"
+        name="Visualiser la prochaine commande"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="85db4da3-73ff-4d36-8056-39124e618f18"
+            LastKnownName="Préparation de la commande fournisseur"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
+        name="Gestion des membres"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="c1027dda-f504-4b63-9da4-aec5629deac2"
+        name="Adhérer à la coopérative"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="7a6c6dc4-ed1f-4e40-bac3-009f64512759">
+            <useCaseMoniker
+              Id="eeaa9760-e6ce-4645-a905-8d082056f9bb"
+              LastKnownName="Ajouter un membre"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
+            LastKnownName="Gestion des membres"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="eeaa9760-e6ce-4645-a905-8d082056f9bb"
+        name="Ajouter un membre"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="7f0c4bcb-4151-4068-908a-294898aff99f">
+            <useCaseMoniker
+              Id="f704d415-34b2-453e-a200-fef0cc6f021a"
+              LastKnownName="Gérer des membres"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
+            LastKnownName="Gestion des membres"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f704d415-34b2-453e-a200-fef0cc6f021a"
+        name="Gérer des membres"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
+            LastKnownName="Gestion des membres"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a798d4ba-1eb1-405a-9e1e-66aadd953cd7"
+        name="Lister des membres"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="84b83ecd-0fbf-4b57-bbd0-701c9a112229">
+            <useCaseMoniker
+              Id="f704d415-34b2-453e-a200-fef0cc6f021a"
+              LastKnownName="Gérer des membres"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
+            LastKnownName="Gestion des membres"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="9fdfd54d-ddd3-4597-86f0-ba91a6acf3b7"
+        name="Envoyer des courriels aux membres"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="f5b4c64e-2b43-4b85-a7a6-de9dceb53362">
+            <useCaseMoniker
+              Id="f704d415-34b2-453e-a200-fef0cc6f021a"
+              LastKnownName="Gérer des membres"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
+            LastKnownName="Gestion des membres"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e2381a16-410f-460a-af7a-a87ca3c0e682"
+        name="Modifier un membre"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="3fe9368b-7a86-4f9a-9fd2-c072cdd2ef86">
+            <useCaseMoniker
+              Id="f704d415-34b2-453e-a200-fef0cc6f021a"
+              LastKnownName="Gérer des membres"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
+            LastKnownName="Gestion des membres"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8dabb5f7-bb9d-44e2-9af6-c7a6ef733a1f"
+        name="Désactiver un membre"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="ffbce56d-a730-4368-9204-09691528c3e7">
+            <useCaseMoniker
+              Id="f704d415-34b2-453e-a200-fef0cc6f021a"
+              LastKnownName="Gérer des membres"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
+            LastKnownName="Gestion des membres"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="77eafdef-a4df-4359-8087-60db3e6be8f0"
+        name="Imprimer des cartes de membres"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
+            LastKnownName="Gestion des membres"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="306bbd14-a880-43f1-8396-cc9112a911be"
+        name="Gérer les permission d'un membre"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="886ca87f-d61a-47ed-aedc-730ae39e782c">
+            <useCaseMoniker
+              Id="e2381a16-410f-460a-af7a-a87ca3c0e682"
+              LastKnownName="Modifier un membre"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
+            LastKnownName="Gestion des membres"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f2f80d41-2860-495c-89ba-899184118c77"
+        name="Sauvegarder des notes sur un membre"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="54cdce85-6187-49de-b4cb-836f1f77e6e9">
+            <useCaseMoniker
+              Id="e2381a16-410f-460a-af7a-a87ca3c0e682"
+              LastKnownName="Modifier un membre"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
+            LastKnownName="Gestion des membres"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="09dcb271-60c3-4bd5-bbac-7732d4d4997d"
+        name="Gérer la cotisation d'un membre"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="f1c59442-c9e4-4df1-93bd-b117b0020fcc">
+            <useCaseMoniker
+              Id="e2381a16-410f-460a-af7a-a87ca3c0e682"
+              LastKnownName="Modifier un membre"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
+            LastKnownName="Gestion des membres"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="fd46b893-7d88-4311-827e-a71c13ba3879"
+        name="Gérer la balance d'un membre"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="bdeb1c43-58eb-4216-bc40-ebb48ac155b9">
+            <useCaseMoniker
+              Id="e2381a16-410f-460a-af7a-a87ca3c0e682"
+              LastKnownName="Modifier un membre"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
+            LastKnownName="Gestion des membres"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d98d6881-e1a3-45fd-9056-408e3a0ed9ed"
+        name="Payer sa cotisation"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="a6438884-75bf-4028-9681-e8e9972c4fb8">
+            <useCaseMoniker
+              Id="09dcb271-60c3-4bd5-bbac-7732d4d4997d"
+              LastKnownName="Gérer la cotisation d'un membre"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker
+            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
+            LastKnownName="Gestion des membres"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0dbce48d-1f57-47c0-b572-04c9ce09a40c"
+        name="Déposer de l'argent dans la balance"
+        isAbstract="false"
+        isLeaf="false">
+        <suppliersInternal>
+          <dependency
+            Id="764e0283-c29b-486a-ba18-19ecfbee7567">
+            <useCaseMoniker
+              Id="fd46b893-7d88-4311-827e-a71c13ba3879"
+              LastKnownName="Gérer la balance d'un membre"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker
+            Id="987133c3-99f3-4fa0-ac3f-ebc90a2b3638"
+            LastKnownName="Gestion des membres"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="645c9291-c13e-4918-9d1b-ed6141296ffc"
+        name="Membre"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="d4f12305-7934-44a3-8d13-e54f314409fb"
+            isDerived="false"
+            sourceEndRoleName="Membre"
+            targetEndRoleName="Payer sa cotisation"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="d98d6881-e1a3-45fd-9056-408e3a0ed9ed"
+              LastKnownName="Payer sa cotisation"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3e4d652a-4a09-4146-a398-cf29f6e67b25"
+                  name="Membre"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8aaad780-3e9a-4f1e-831f-30d733cac8df"
+                  name="Payer sa cotisation"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="34df34e7-32b3-4968-9ec1-3b11951721cc"
+            isDerived="false"
+            sourceEndRoleName="Membre"
+            targetEndRoleName="Déposer de l'argent dans la balance"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="0dbce48d-1f57-47c0-b572-04c9ce09a40c"
+              LastKnownName="Déposer de l'argent dans la balance"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a548da94-ad5e-4fe3-8823-dedbccc2d321"
+                  name="Membre"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="969010fb-fd40-40e4-ae0b-4a42f4b7fc80"
+                  name="Déposer de l'argent dans la balance"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="5dc3357a-1a68-4b5e-b624-1a2162195104"
+            isDerived="false"
+            sourceEndRoleName="Membre"
+            targetEndRoleName="S'inscrire à un événement"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="a20e48c3-92b5-40ba-8d5d-c25b07260f77"
+              LastKnownName="S'inscrire à un événement"
+              LastKnownLocation="MyKoopDesig.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="21e33714-7c64-4c61-92c7-cb369c794554"
+                  name="Membre"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c020bdce-8ce0-4123-9c3f-7e90a599b96d"
+                  name="S'inscrire à un événement"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="6eefddb3-bf37-4d85-a1cb-ba4dd0dcbd46"
+        name="Événements"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="78ef2fdc-0176-4117-ae1a-f2b63b21dd45"
+        name="Gérer des événements"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="6eefddb3-bf37-4d85-a1cb-ba4dd0dcbd46"
+            LastKnownName="Événements"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d7365f86-9007-448f-b21b-6066d678476b"
+        name="Ajouter un événement"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="04c71804-4be0-4e7a-841c-ab987f006bda">
+            <useCaseMoniker
+              Id="78ef2fdc-0176-4117-ae1a-f2b63b21dd45"
+              LastKnownName="Gérer des événements"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="6eefddb3-bf37-4d85-a1cb-ba4dd0dcbd46"
+            LastKnownName="Événements"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="780b6a73-d18e-404f-a35a-3ec86b6dd282"
+        name="Lister des événements"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="7e8e7fd4-989c-4dac-8cd7-601add593e94">
+            <useCaseMoniker
+              Id="78ef2fdc-0176-4117-ae1a-f2b63b21dd45"
+              LastKnownName="Gérer des événements"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="6eefddb3-bf37-4d85-a1cb-ba4dd0dcbd46"
+            LastKnownName="Événements"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a1a1c4bb-3106-4d2f-a9ed-3d2539bda8b6"
+        name="Mettre un événement à jour"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="b2eb2766-8953-4ded-a965-1ddcae759db2">
+            <useCaseMoniker
+              Id="78ef2fdc-0176-4117-ae1a-f2b63b21dd45"
+              LastKnownName="Gérer des événements"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="6eefddb3-bf37-4d85-a1cb-ba4dd0dcbd46"
+            LastKnownName="Événements"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f14a24e2-20a4-4a87-addf-80ed71e7d4d2"
+        name="Annuler un événement"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="67526c69-0444-46bf-8803-35b2ef109b45">
+            <useCaseMoniker
+              Id="78ef2fdc-0176-4117-ae1a-f2b63b21dd45"
+              LastKnownName="Gérer des événements"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="6eefddb3-bf37-4d85-a1cb-ba4dd0dcbd46"
+            LastKnownName="Événements"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a20e48c3-92b5-40ba-8d5d-c25b07260f77"
+        name="S'inscrire à un événement"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="6eefddb3-bf37-4d85-a1cb-ba4dd0dcbd46"
+            LastKnownName="Événements"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="5e48fce0-d823-43c7-a777-ea73e62dfbd4"
+        name="Ouvrir un événement"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="4c9aa3f4-70f0-4fb9-b0b0-5a1c9d9a42eb">
+            <useCaseMoniker
+              Id="a1a1c4bb-3106-4d2f-a9ed-3d2539bda8b6"
+              LastKnownName="Mettre un événement à jour"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="6eefddb3-bf37-4d85-a1cb-ba4dd0dcbd46"
+            LastKnownName="Événements"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="98efd52f-ce38-4aff-9b8b-535012e0aa60"
+        name="Fermer un événement"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="e8f76846-35a8-459c-a43c-8771b67655d0">
+            <useCaseMoniker
+              Id="a1a1c4bb-3106-4d2f-a9ed-3d2539bda8b6"
+              LastKnownName="Mettre un événement à jour"
+              LastKnownLocation="MyKoopDesig.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="6eefddb3-bf37-4d85-a1cb-ba4dd0dcbd46"
+            LastKnownName="Événements"
+            LastKnownLocation="MyKoopDesig.uml" />
+        </subjects>
+      </useCase>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

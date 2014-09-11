@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="45bfea58-77a5-4193-aac9-24b8e1f090ba" name="PreparerProchaineCommande" linkedPackageId="18f15b2e-ce04-4cfe-9553-05539d9efabb" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="c82e56f7-e8f8-4deb-bd1f-9e76967a1dcb" name="Préparation de la commande fournisseur" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <ownedCommentsInternal>
+          <comment Id="4e997d92-d1f4-4e4d-afcc-e57d5d2a196e">
+            <elementDefinition Id="2a9986bb-19bf-4549-bf18-f4d4fd619965" />
+            <body>Note sur la méthode d'ajout d'un article dans la liste</body>
+          </comment>
+        </ownedCommentsInternal>
+        <elementDefinition Id="85db4da3-73ff-4d36-8056-39124e618f18" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="5957192b-c084-493e-9f80-0cc7325f1bb7" name="Admin" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="158443cc-114f-4c29-9b7b-0b9306b080b3" />
+        <targetEnds>
+          <association Id="23ead70f-5685-4915-a441-1be8102d948b" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Visualisation de la liste à renouveler" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="a77279d5-f032-445c-9bdc-6b706dc30600" LastKnownName="Visualiser la liste à renouveler" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b817175f-573b-4b9b-a89a-ae006df5c556" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0d16259c-9666-48c9-8c78-6add879c240c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="779870f9-befc-460d-9449-2ccfb58758f3" name="Visualisation de la liste à renouveler" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="c70a7d55-3c7c-4198-8346-c470cdccc057" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="97a2d04a-7a5e-4fcb-8a2a-d97c30d818fb" />
+          </association>
+          <association Id="d397ef40-e8a7-4107-bc2d-e783d6d477fe" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Ajouter un article de la liste à renouveler dans la prochaine commande" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b29b5766-c00a-4007-9865-60330faace04" LastKnownName="Ajouter un article de la liste à renouveler dans la prochaine commande" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2ee0a83b-74a0-4bf1-9eb3-069caf4c6a25" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="01396842-ef74-4d70-91ec-a4c0277e7e69" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1722bdac-325d-4943-9653-4a9045996a3d" name="Ajouter un article de la liste à renouveler dans la prochaine commande" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="c9328425-e8c8-4f2e-8c6c-afe1e5a361a6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="12e166a8-ea99-4f66-aa65-e58abd31b78d" />
+          </association>
+          <association Id="8cd7e833-fa22-472b-8290-68dcb023f15d" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Visualiser la prochaine commande" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="73374f17-9085-42fe-bb29-a0a4a73a19d3" LastKnownName="Visualiser la prochaine commande" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b2cea4fa-fc5d-4a3d-945f-14ee0cc9573e" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5af4fd49-a66b-4fde-8b66-cded97f2c005" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3b010e8f-1ade-4d0c-bc79-606e33edfa8a" name="Visualiser la prochaine commande" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="de6f721c-6967-4dcc-ac89-ab4b2d223377" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3780bacf-4562-4c64-ba62-908e11c0d3c8" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="3d943e1c-2833-4bc5-8cd3-92bdabbda991" name="BD" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="a77279d5-f032-445c-9bdc-6b706dc30600" name="Visualiser la liste à renouveler" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d55956fd-9d6a-4bf9-8123-fb9bc15067f3" />
+        <subjects>
+          <subsystemMoniker Id="c82e56f7-e8f8-4deb-bd1f-9e76967a1dcb" LastKnownName="Préparation de la commande fournisseur" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="b29b5766-c00a-4007-9865-60330faace04" name="Ajouter un article de la liste à renouveler dans la prochaine commande" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="de5765a8-c785-4acf-ab47-88a256159f83" />
+        <suppliersInternal>
+          <dependency Id="3020e589-6818-458c-8c79-28cbc4e7dd1b">
+            <useCaseMoniker Id="a77279d5-f032-445c-9bdc-6b706dc30600" LastKnownName="Visualiser la liste à renouveler" />
+            <elementDefinition Id="461b529f-a0b4-4652-a7ce-6ca3331920cd" />
+          </dependency>
+        </suppliersInternal>
+        <subjects>
+          <subsystemMoniker Id="c82e56f7-e8f8-4deb-bd1f-9e76967a1dcb" LastKnownName="Préparation de la commande fournisseur" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="27377558-263f-49d7-8bf7-3dc4a1a23345" name="Ajouter un article à la commande" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b17b40bb-77d6-4778-94dd-9f406fff573b" />
+        <extendedCases>
+          <extend Id="f8282c9a-4f7c-4598-a99f-1ea5e4cce079">
+            <useCaseMoniker Id="73374f17-9085-42fe-bb29-a0a4a73a19d3" LastKnownName="Visualiser la prochaine commande" />
+            <elementDefinition Id="d2b06107-9c86-424f-afd0-4f53206d12ff" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="c82e56f7-e8f8-4deb-bd1f-9e76967a1dcb" LastKnownName="Préparation de la commande fournisseur" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="bb164a2b-bb30-4ebb-83c8-e950b955b186" name="Modifier la quantité d'un article" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e97f89d2-9fb0-4ace-b59b-e9772c4376e4" />
+        <extendedCases>
+          <extend Id="c4529eb7-7def-428e-a40b-9a75f2052552">
+            <useCaseMoniker Id="73374f17-9085-42fe-bb29-a0a4a73a19d3" LastKnownName="Visualiser la prochaine commande" />
+            <elementDefinition Id="7ec9b727-0c35-4e4c-92f0-c95b0b9511d9" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="c82e56f7-e8f8-4deb-bd1f-9e76967a1dcb" LastKnownName="Préparation de la commande fournisseur" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="73374f17-9085-42fe-bb29-a0a4a73a19d3" name="Visualiser la prochaine commande" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="39e223ac-ce39-4b0a-8e65-9681669ab205" />
+        <subjects>
+          <subsystemMoniker Id="c82e56f7-e8f8-4deb-bd1f-9e76967a1dcb" LastKnownName="Préparation de la commande fournisseur" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="18f15b2e-ce04-4cfe-9553-05539d9efabb" name="MyKoopDesign">
+    <elementDefinition Id="25133e8a-586b-4074-825e-744f71dca821" />
+    <profileInstances>
+      <packageHasProfileInstances Id="69150fb0-18ff-478e-9b31-3d2e54619742">
+        <profileInstance Id="ab19f75d-4458-43d6-9901-1bc9e290d531" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="18c90c45-fcba-4714-b983-d62a03c88e53">
+        <profileInstance Id="a82cf567-7f36-4bca-9694-bb8381755681" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>
