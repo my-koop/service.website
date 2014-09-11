@@ -30,7 +30,8 @@ node_modules
 .lock-wscript
 
 
-/Koop/*.js*
+/Koop/app.js
+/Koop/app.js.map
 *.suo
 .ntvs_analysis.dat
 /Koop/obj
