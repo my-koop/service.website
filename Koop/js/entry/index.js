@@ -1,16 +1,20 @@
 /** @jsx React.DOM */
-var mountNode = document.getElementById('content');
+
+// Require styles.
+require('mykoop.less');
 
 var React = require('react');
-var ReactBootstrap = require('react-bootstrap');
-
-var BS = ReactBootstrap;
+var BSButton = require('react-bootstrap/Button');
+var BSButtonToolbar = require('react-bootstrap/ButtonToolbar');
 
 var buttonsInstance = (
-    <BS.ButtonToolbar>
-        <BS.Button href="#">Link</BS.Button>
-        <BS.Button>Button</BS.Button>
-    </BS.ButtonToolbar>
+  <div>
+    <BSButtonToolbar>
+      <BSButton href="#">Link</BSButton>
+      <BSButton>Button</BSButton>
+    </BSButtonToolbar>
+    <p className="demo">This should have a red backround!</p>
+  </div>
 );
 
-React.renderComponent(buttonsInstance, mountNode);
+React.renderComponent(buttonsInstance, document.body);

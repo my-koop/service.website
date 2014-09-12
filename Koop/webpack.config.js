@@ -2,8 +2,6 @@ var env = process.env.NODE_ENV;
 var path = require("path");
 var webpack = require("webpack");
 
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
 var isDev = env === "development";
 var isProd = env === "production";
 
@@ -15,14 +13,6 @@ var pluginList = [
     __DEV__: isDev,
     __PROD__: isProd,
     __FRONTEND__: true
-  }),
-
-  // Generate a file that all pages load and that provides common code chunks.
-  new webpack.optimize.CommonsChunkPlugin("common.js"),
-
-  // Create the stylesheet file based on the style requires.
-  new ExtractTextPlugin("auctionex.css", {
-    allChunks: true
   })
 ];
 
@@ -40,9 +30,10 @@ if (isProd) {
 var loaderList = [
   // Styles.
   { test: /\.less$/,
-    loader: ExtractTextPlugin.extract("style",
-      "css" +
-      "!autoprefixer?" + {
+    loaders: [
+      "style",
+      "css",
+      "autoprefixer?" + {
         "browsers": [
           "last 2 versions",
           "ie 8",
@@ -51,9 +42,9 @@ var loaderList = [
           "android 4",
           "opera 12"
         ]
-      } +
-      "!less"
-    )
+      },
+      "less"
+    ]
   },
 
   // Fonts.
@@ -85,8 +76,7 @@ module.exports = {
   // Where to look for the entry points.
   context: path.join(__dirname, "js/entry"),
   entry: {
-    "index" : "./index",
-    "common.js": "./all",
+    "mykoop" : "./index",
   },
   output: {
     path: path.join(__dirname, "public/"),
@@ -103,7 +93,7 @@ module.exports = {
       path.join(__dirname, "less"),
       path.join(__dirname, "locales"),
     ],
-	
+
     modulesDirectories: [
       "node_modules",
       "bower_components"
@@ -112,7 +102,7 @@ module.exports = {
     // Map the modules to the files we really need, for hassle-free inclusion
     // in our files.
     alias: {
-
+      "bootstrap-styles": "bootstrap/less",
     }
   },
   plugins: pluginList
