@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="706a69e6-86e5-4e1a-93b9-eede2c1b324c" name="GestionProfilUtilisateur" linkedPackageId="2a3e39b1-b81b-4eb7-8469-33a3fceef73c" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="b787c8b8-1a0c-4724-bc77-e545fd8b140f" name="Profil utilisateur" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d8fa1321-92a0-40d7-849c-1a302d9ce8cf" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="c9a3f665-4a46-4c4c-bc6c-478c6d406a7e" name="Créer un compte utilisateur" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="de3a8cf2-2805-4c36-8c32-e9085e170dbe" />
+        <targetEnds>
+          <association Id="3a5b0c95-25bb-4fda-9c37-c2c86ab14b38" isDerived="false" sourceEndRoleName="Créer un compte utilisateur" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="88fd20ba-97ba-4ec9-b89a-35960b4621a5" LastKnownName="BD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="300d3d12-e338-4a46-9e4a-56683c89f3a3" name="Créer un compte utilisateur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="bce01bb2-f01c-4f4b-a295-6af8b804b7d4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3d103a24-8257-4a79-88fa-0452d8629f32" name="BD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="008cbaf2-1c06-4a16-ac82-a330ceafcd9b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7dd18def-d453-4cb1-a856-e2e6eafe0b1f" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="b787c8b8-1a0c-4724-bc77-e545fd8b140f" LastKnownName="Profil utilisateur" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="c6b9df8a-67b9-4a31-98c6-cad8f5dd7422" name="Anonyme" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="51f90217-4ed6-4f9b-897c-97aec7355210" />
+        <targetEnds>
+          <association Id="0aa621fe-679f-4dc0-bcad-3abb3933d2d9" isDerived="false" sourceEndRoleName="Anonyme" targetEndRoleName="Créer un compte utilisateur" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="c9a3f665-4a46-4c4c-bc6c-478c6d406a7e" LastKnownName="Créer un compte utilisateur" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="38354616-3fb2-4c0f-8f46-a7b16f65a8a7" name="Anonyme" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="776a3d0c-d4ec-4a7a-893a-c7997b88c535" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2c99a4db-d74b-433b-b694-e7b7a83c7475" name="Créer un compte utilisateur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="70aaba08-49f2-41e3-966c-4bb9ac374406" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="90534f5a-7aa4-4705-903d-a7ded64e981c" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="88fd20ba-97ba-4ec9-b89a-35960b4621a5" name="BD" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="b86a8a4a-6865-422b-b0cc-13e46483c8d4" name="Désactiver un compte utilisateur" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c2d7adc9-8bca-4012-a94a-19d33498710c" />
+        <targetEnds>
+          <association Id="72e81ef0-5029-4399-bc2a-6ff583eb2d93" isDerived="false" sourceEndRoleName="Désactiver un compte utilisateur" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="88fd20ba-97ba-4ec9-b89a-35960b4621a5" LastKnownName="BD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f616faa6-a21e-448a-817f-b7f81bf442e3" name="Désactiver un compte utilisateur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a3713cba-334b-4da5-9533-cc3f8a91910c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="369e2b44-269a-43dd-b980-e35d5e2ef153" name="BD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4b482ea9-85b1-4dac-84a1-e36441e659db" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="35815a1e-dca9-4354-a6ce-2c4573821290" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="b787c8b8-1a0c-4724-bc77-e545fd8b140f" LastKnownName="Profil utilisateur" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="4e5a70e5-2856-436e-bbc4-af88dfb8404c" name="Admin" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="158443cc-114f-4c29-9b7b-0b9306b080b3" />
+        <targetEnds>
+          <association Id="5e441c12-4c37-4691-93bc-84d07b7a687d" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Désactiver un compte utilisateur" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b86a8a4a-6865-422b-b0cc-13e46483c8d4" LastKnownName="Désactiver un compte utilisateur" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3c1f5646-8c12-46d4-8560-22d62c755caf" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="3d51d33d-2483-4cf2-9c79-ac90d4df141f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="50c5a4af-2881-4fee-81a3-c12e76ec2c48" name="Désactiver un compte utilisateur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5e391834-9a60-4841-96f4-2414cd778477" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b4b81baa-f467-486e-b1f6-0187feb71230" />
+          </association>
+          <association Id="1827e166-2c4d-455b-a881-b3b6ad939121" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Modifier les information du profil" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="2bbe2347-d750-4a88-bdec-a0f7ab5e3e3e" LastKnownName="Modifier les information du profil" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b3df0f52-cc9d-4cdd-bd62-35af327f5b60" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9fcf7a33-40d9-4d56-a2d6-1f7fb085a5f6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2234e0d9-c269-42bd-8342-557a2d8dbc07" name="Modifier les information du profil" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5e96fa18-faa3-4c82-8ec5-c19762674da3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="db4798b8-44ad-45c1-919d-2a0b6fecdc8a" />
+          </association>
+          <association Id="2fe4e367-c9b7-4c24-bbdd-008cbb12651e" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Gérer les permission du profil" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="3652c190-ee94-4eae-b2ca-b1ecd9b55ca2" LastKnownName="Gérer les permission du profil" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fe75af56-b1af-45f5-9ea1-b2ba3a140d13" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b6236c88-5cd5-440c-a15c-c14192ed77ed" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9bcbf15c-a43d-459d-91b5-324407784874" name="Gérer les permission du profil" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f3b73d4c-abf3-4b83-a5ce-4518a7b597a4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="028669e0-868b-4ab2-bab7-541445486f0a" />
+          </association>
+          <association Id="fd06d9b2-bb29-4127-b7ae-224eebb6edfd" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Entrer des notes sur le profil" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="1d23aafc-e50b-49e9-8a4b-bd48f6ef99aa" LastKnownName="Entrer des notes sur le profil" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3fbd393c-b3b6-439c-af1c-9df4ef54ba54" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="990cf2ae-17db-447b-adcb-52d3f38945e1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="43052db4-2473-4ca0-8b81-5be4aa5af3f7" name="Entrer des notes sur le profil" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="69524393-d40d-4aef-9346-ee94637ed32f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e6ba6b7a-6197-4404-83e6-572ac6d9668b" />
+          </association>
+          <association Id="4acdcf60-c04b-4335-8f42-8ce09579977d" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Envoyer des courriels aux utilisateurs" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="a4f8e909-fe5a-4bf6-a7ef-343e893689c7" LastKnownName="Envoyer des courriels aux utilisateurs" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="97f838b3-ff92-4ac2-a91a-1abf6ee3ecd7" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a87f1f62-f828-46c2-a353-48426bcfdaeb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d969ec01-78d8-4654-89d4-32a560b3b2fb" name="Envoyer des courriels aux utilisateurs" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4dc6a30c-4ec7-4188-aa7a-f8b0f5cadb61" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="feeab751-3af5-4da6-94bc-277eb8a60436" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="2bbe2347-d750-4a88-bdec-a0f7ab5e3e3e" name="Modifier les information du profil" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0af1718e-1e05-463d-8a41-b8b1d0aad2d4" />
+        <subjects>
+          <subsystemMoniker Id="b787c8b8-1a0c-4724-bc77-e545fd8b140f" LastKnownName="Profil utilisateur" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="ae82f0b4-c7e1-4831-99a3-359d825c9275" name="Utilisateur" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a6432d43-6570-4a12-ac1e-1e34e34a0930" />
+        <targetEnds>
+          <association Id="a8f4deda-898c-4dfc-8749-ae5f9e436b88" isDerived="false" sourceEndRoleName="Utilisateur" targetEndRoleName="Modifier les information du profil" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="2bbe2347-d750-4a88-bdec-a0f7ab5e3e3e" LastKnownName="Modifier les information du profil" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f841d2db-9480-4584-a567-32c6c2e39c35" name="Utilisateur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ae4dded9-49f5-4545-993d-0920d1248c7f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ee95537d-3fcf-4554-800c-d0ec0d0290f3" name="Modifier les information du profil" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f1fc812a-6bcd-4c63-b2b5-ba89146bd09d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f29a7073-3749-4afe-8fda-5c67ac24be21" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="3652c190-ee94-4eae-b2ca-b1ecd9b55ca2" name="Gérer les permission du profil" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8695ec78-bf6b-4f10-b327-e58bd9959234" />
+        <subjects>
+          <subsystemMoniker Id="b787c8b8-1a0c-4724-bc77-e545fd8b140f" LastKnownName="Profil utilisateur" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="1d23aafc-e50b-49e9-8a4b-bd48f6ef99aa" name="Entrer des notes sur le profil" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2e875e23-5fc2-4413-ad42-5bb8f21167e1" />
+        <subjects>
+          <subsystemMoniker Id="b787c8b8-1a0c-4724-bc77-e545fd8b140f" LastKnownName="Profil utilisateur" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="a4f8e909-fe5a-4bf6-a7ef-343e893689c7" name="Envoyer des courriels aux utilisateurs" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="08cdf98e-a503-48fb-b0b4-be21a58e10e1" />
+        <subjects>
+          <subsystemMoniker Id="b787c8b8-1a0c-4724-bc77-e545fd8b140f" LastKnownName="Profil utilisateur" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="2a3e39b1-b81b-4eb7-8469-33a3fceef73c" name="MyKoopDesign">
+    <elementDefinition Id="25133e8a-586b-4074-825e-744f71dca821" />
+    <profileInstances>
+      <packageHasProfileInstances Id="30692d28-3a5f-4377-b923-9ee6ad5b9de4">
+        <profileInstance Id="1e2ae001-c715-4ab0-9ed7-01ffc93c671d" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="beb422c8-89f3-4f8f-b87f-e9d2d42bf5fa">
+        <profileInstance Id="4a475f61-0bda-407b-9e92-1dc9e141fa78" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

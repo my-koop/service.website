@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="00074717-edca-40a6-9309-b13890857511" name="TransactionEnLigne" linkedPackageId="b9d8c274-a30b-45fc-b0eb-08f2381125c9" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="6328b7f8-06ae-4dba-b3e7-deee55aa6f72" name="Création d'une transaction" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6e5d60b1-405b-4d92-aaa7-de85c78b3220" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="a705e064-4fee-4eea-8c67-74307aa27354" name="Ajouter un article à la transaction" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6465b8c1-4d93-4d23-a1ac-6aed5cc82ed9" />
+        <subjects>
+          <subsystemMoniker Id="6328b7f8-06ae-4dba-b3e7-deee55aa6f72" LastKnownName="Création d'une transaction" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="c95034e6-e366-4b95-ae2b-2f4099639586" name="Retirer un article à la transaction" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e38650ff-ad4a-4b78-9084-073194ae0bbc" />
+        <subjects>
+          <subsystemMoniker Id="6328b7f8-06ae-4dba-b3e7-deee55aa6f72" LastKnownName="Création d'une transaction" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="a263957b-6ea2-4115-81bc-ccda8f2f66dc" name="Modifier la quantité d'un article" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="379cdc05-efa2-4a8d-aa08-b3b1f178e3f9" />
+        <subjects>
+          <subsystemMoniker Id="6328b7f8-06ae-4dba-b3e7-deee55aa6f72" LastKnownName="Création d'une transaction" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="eabee205-21bb-4c0d-8624-053e16dca679" name="Utilisateur" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a6432d43-6570-4a12-ac1e-1e34e34a0930" />
+        <targetEnds>
+          <association Id="dea7b7c1-0027-467e-9599-5d8f6cbf71b4" isDerived="false" sourceEndRoleName="Utilisateur" targetEndRoleName="Ajout d'article à la transaction" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="a705e064-4fee-4eea-8c67-74307aa27354" LastKnownName="Ajouter un article à la transaction" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2a5a6c76-4ed3-4cc7-a121-eb6fb74b40c5" name="Utilisateur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9c36ba81-f5e6-4a69-bc7b-a60fe2c298ae" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f09c5a2b-f8c1-40d4-8404-b7987d9462cf" name="Ajout d'article à la transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="c9a8ff7d-73e0-4aef-8e2a-9eb4afeeb1f8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="2953bbad-e6b8-45c1-92b3-2ef549ae1c0b" />
+          </association>
+          <association Id="bf7f71bc-5229-4dba-b550-05905519943c" isDerived="false" sourceEndRoleName="Utilisateur" targetEndRoleName="Retrait d'article à la transaction" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="c95034e6-e366-4b95-ae2b-2f4099639586" LastKnownName="Retirer un article à la transaction" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="400714b6-d598-4de0-bacf-b96a4779e325" name="Utilisateur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f98196cf-3d99-419b-a3e9-6fd0305c8fc2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cd5b2269-d9a5-41dd-864b-b459e4f4e392" name="Retrait d'article à la transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5408670c-6f20-4660-b82b-c539ec94c479" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9ba7bc24-14ed-4348-b6a8-b78739f7aba3" />
+          </association>
+          <association Id="6cc260a2-c9b4-45f2-837e-339e4036716a" isDerived="false" sourceEndRoleName="Utilisateur" targetEndRoleName="Modification de la quantité d'un article" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="a263957b-6ea2-4115-81bc-ccda8f2f66dc" LastKnownName="Modifier la quantité d'un article" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="088995ec-3900-4f0e-b074-07b785f59891" name="Utilisateur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="40a70759-2a1a-4727-9e8f-59e07206dab6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a3986047-8777-4f52-9e6c-a1f194f460a8" name="Modification de la quantité d'un article" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0cf99cd8-fd7a-4423-9d47-8b472325f055" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="be24b150-35f1-44ac-a03a-1446177d9169" />
+          </association>
+          <association Id="624d0d82-45e0-49db-80d5-6d47cbcfce75" isDerived="false" sourceEndRoleName="Utilisateur" targetEndRoleName="Paiement complet en ligne" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="6f21beec-8b3b-414d-9e4b-59da2df4c316" LastKnownName="Paiement complet en ligne" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="58edf709-976a-4161-8d6d-41e08708bfb5" name="Utilisateur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="00c7d7b7-2066-4aa8-a5e0-d0e06b58b566" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e519ba9e-48fa-4754-9e31-f8c1eee3afec" name="Paiement complet en ligne" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b9cbfebf-d06e-4caa-8d36-2cc6d413951e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9e21b388-e365-4d5e-b533-1af5df8c8880" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="b936430f-b28c-41c8-bf59-a06a30055b48" name="Finalisation d'une transaction" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6389842c-0308-47c5-a326-1cc75bf39dae" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="51352a43-29a3-413a-9920-f142103836c8" name="BD" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="febfdec3-f383-4e2b-9be8-5474fef8fd2e" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="70e69e9a-45cb-4fa2-86b9-17faf58a9734" name="Appliquer un rabais si possible" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f336425b-46e7-4e59-8917-ad8767bceca5" />
+        <subjects>
+          <subsystemMoniker Id="6328b7f8-06ae-4dba-b3e7-deee55aa6f72" LastKnownName="Création d'une transaction" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="86da04be-aab8-4c68-9625-2620378fa7ab" name="Serveur" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ea0ec924-5838-42b9-99d5-6147a9958164" />
+        <targetEnds>
+          <association Id="ad4b6012-f586-475f-97a7-abfb3cf187de" isDerived="false" sourceEndRoleName="Serveur" targetEndRoleName="Appliquer un rabais si possible" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="70e69e9a-45cb-4fa2-86b9-17faf58a9734" LastKnownName="Appliquer un rabais si possible" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9af55c73-1e60-4470-9cdb-a736490c23bb" name="Serveur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c33a4154-81de-49a2-adf9-77b817481d93" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="59a96c89-4ef6-4643-9bbb-09e30ad29389" name="Appliquer un rabais si possible" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f45e8cf4-6c29-4a07-9690-181cc00be22e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="36ffdb21-c7c9-4306-b460-e794d9ac8394" />
+          </association>
+          <association Id="ac031f91-0a9a-48ee-94c1-188e09727436" isDerived="false" sourceEndRoleName="Serveur" targetEndRoleName="Fermeture de la transaction" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="5c50b9bb-0b09-4786-b9bd-1041153a64ef" LastKnownName="Fermeture de la transaction" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f4a5d704-9273-49bd-9236-05e848a9505e" name="Serveur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b95c82b7-b831-4a60-b5a8-95e40bad7fc8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ccfeab97-b06d-430f-80c6-0a24adf63bf5" name="Fermeture de la transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8ecfa395-26fe-4a63-8de6-bb6f9d47ff8a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0cf35f6d-7d70-41c1-9302-41c13f62174d" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="6f21beec-8b3b-414d-9e4b-59da2df4c316" name="Paiement complet en ligne" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="277e4889-adc4-48e8-8234-95de72979d94" />
+        <subjects>
+          <subsystemMoniker Id="b936430f-b28c-41c8-bf59-a06a30055b48" LastKnownName="Finalisation d'une transaction" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="a79973d3-2d0c-46c5-879e-37a03e57f5de" name="Enregistrement de la commande" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3727dc48-a53d-4c9f-b85e-4b0e52e1db75" />
+        <suppliersInternal>
+          <dependency Id="0aa59d42-1471-4beb-a200-131edd175f53">
+            <useCaseMoniker Id="6f21beec-8b3b-414d-9e4b-59da2df4c316" LastKnownName="Paiement complet en ligne" />
+            <elementDefinition Id="3b3555b9-3c38-4e33-b316-b3bb6d493349" />
+          </dependency>
+        </suppliersInternal>
+        <targetEnds>
+          <association Id="0cc9ab4e-5c82-487e-baed-3f48cfc0f025" isDerived="false" sourceEndRoleName="Enregistrement de la commande" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="51352a43-29a3-413a-9920-f142103836c8" LastKnownName="BD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="64e495fe-cf71-4682-946e-bcbbcdf4a4fc" name="Enregistrement de la commande" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9d7af613-6298-49ec-b8c0-f17a9b9f31b9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6ce9aa36-b2ac-44f4-aa4b-5d4644dac987" name="BD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="fd17716a-4749-4fa9-a162-c8a8d62e59e5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0661dc6f-4674-4967-a81e-2bf725e2fdc4" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="b936430f-b28c-41c8-bf59-a06a30055b48" LastKnownName="Finalisation d'une transaction" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="5c50b9bb-0b09-4786-b9bd-1041153a64ef" name="Fermeture de la transaction" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="13d373cb-0b9a-4352-9ae5-f5036ee65482" />
+        <targetEnds>
+          <association Id="f69221a2-081b-4175-9054-c68a8126c30f" isDerived="false" sourceEndRoleName="Fermeture de la transaction" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="51352a43-29a3-413a-9920-f142103836c8" LastKnownName="BD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7d76dfa8-cbd4-47ff-86bf-c51c3bf36aad" name="Fermeture de la transaction" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e683c88d-ac11-4647-857f-4b7aa8469763" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="83e3b176-69a8-4830-92d5-5208826a22e8" name="BD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="24094180-ca65-4403-b7eb-47b2af7f7faf" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9d5104ce-4d08-485c-9847-3a0d3901079d" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="429096ac-aa44-4b36-a3c1-d3129a36314c" LastKnownName="Livraison/Ramassage de la commande" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="429096ac-aa44-4b36-a3c1-d3129a36314c" name="Livraison/Ramassage de la commande" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="24c69db0-ab26-4c87-876c-8d821a97d2ec" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="e90d180c-6aca-4e64-952c-48955a4b1587" name="Mise à jour de l'inventaire" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1e93665a-f3bc-45b8-a93b-86d6e5905c28" />
+        <suppliersInternal>
+          <dependency Id="9eecc6fa-b4a5-4991-9114-e8cb9e7801e2">
+            <useCaseMoniker Id="5c50b9bb-0b09-4786-b9bd-1041153a64ef" LastKnownName="Fermeture de la transaction" />
+            <elementDefinition Id="daa6b0f3-0898-4410-88fa-64797156eec4" />
+          </dependency>
+        </suppliersInternal>
+        <targetEnds>
+          <association Id="17ffc544-b634-4e19-9294-302d12fb51fe" isDerived="false" sourceEndRoleName="Mise à jour de l'inventaire" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="51352a43-29a3-413a-9920-f142103836c8" LastKnownName="BD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6b66584f-37e0-4a6c-8587-a866ddb5923d" name="Mise à jour de l'inventaire" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6b4979ba-1e09-4cac-bdfd-fef24eecfeb5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="afe8b37c-ec83-4992-b5d1-885239219242" name="BD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="58f6e66f-a541-49d4-961a-1a400ff45b1f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="39b4c185-5808-4dd3-a648-5391beb09508" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="429096ac-aa44-4b36-a3c1-d3129a36314c" LastKnownName="Livraison/Ramassage de la commande" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="2c3b2760-8ebc-4d0e-85a3-3d1204d819d2" name="Définir la transaction comme ouverte" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e5cb9e1e-8b64-4ba7-859d-75b861716de2" />
+        <targetEnds>
+          <association Id="8cf6c402-6b62-4148-9d14-46ebb0ebbe54" isDerived="false" sourceEndRoleName="Définir la transaction comme ouverte" targetEndRoleName="BD" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="51352a43-29a3-413a-9920-f142103836c8" LastKnownName="BD" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e7ea195b-a370-4607-b1ab-2df177527d99" name="Définir la transaction comme ouverte" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ad4b1149-b424-4974-946c-abb08164eddc" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a354ba04-149a-4d6b-8796-729e0625d5ae" name="BD" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="16d97a25-a01b-48e0-962f-4adb6655ee63" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c70506bf-ada9-4e6c-b5a6-62f48e6d349a" />
+          </association>
+        </targetEnds>
+        <extendedCases>
+          <extend Id="3e6f801e-b271-404d-9fde-a7cdab612700">
+            <useCaseMoniker Id="a79973d3-2d0c-46c5-879e-37a03e57f5de" LastKnownName="Enregistrement de la commande" />
+            <elementDefinition Id="3367e6fe-ee99-4589-b94d-89f2a8d9cdd0" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="b936430f-b28c-41c8-bf59-a06a30055b48" LastKnownName="Finalisation d'une transaction" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="b9d8c274-a30b-45fc-b0eb-08f2381125c9" name="MyKoopDesign">
+    <elementDefinition Id="25133e8a-586b-4074-825e-744f71dca821" />
+    <profileInstances>
+      <packageHasProfileInstances Id="8b5e8b18-9b91-49d7-a0bc-5702b1cc1d4b">
+        <profileInstance Id="848c6ff0-4699-4408-ad0d-615f1a35bd47" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="9b0fea14-4022-4294-a96a-24b785f3f1ca">
+        <profileInstance Id="5f945c70-5bca-4033-ad72-2430214ab9c2" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="497976a0-a842-4ed5-88b4-db12eb1b4de2" name="GestionEvenements" linkedPackageId="4597e1cf-be0a-4d8f-9359-01edfb766858" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="4d0d9c3d-a2d0-422f-8104-270830070b38">
+      <profileInstance Id="eca8a0ab-7735-4275-a3f6-24acd4db555b" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="f5672ab5-2b12-4e46-a15b-325d2128bb3d">
+      <profileInstance Id="3b1d849a-18a4-4611-a6aa-6017a1ad8d37" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="0c834d6f-ab62-4ea0-85b5-0afdc6c4e981" name="Événements" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6eefddb3-bf37-4d85-a1cb-ba4dd0dcbd46" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="8655aae1-bf1c-4a1a-be3d-b8e3782ee015" name="Gérer des événements" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="78ef2fdc-0176-4117-ae1a-f2b63b21dd45" />
+        <subjects>
+          <subsystemMoniker Id="0c834d6f-ab62-4ea0-85b5-0afdc6c4e981" LastKnownName="Événements" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="d4c7da53-47be-49e6-a0cd-0feff794133f" name="Ajouter un événement" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d7365f86-9007-448f-b21b-6066d678476b" />
+        <extendedCases>
+          <extend Id="6057399a-cd7c-4331-ba7e-edaea23086d9">
+            <useCaseMoniker Id="8655aae1-bf1c-4a1a-be3d-b8e3782ee015" LastKnownName="Gérer des événements" />
+            <elementDefinition Id="04c71804-4be0-4e7a-841c-ab987f006bda" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="0c834d6f-ab62-4ea0-85b5-0afdc6c4e981" LastKnownName="Événements" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="431c5556-b719-434d-8c4f-739da2c65187" name="Lister des événements" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="780b6a73-d18e-404f-a35a-3ec86b6dd282" />
+        <extendedCases>
+          <extend Id="1b4c1ac0-e670-4d1a-80d3-5cc9df5bf781">
+            <useCaseMoniker Id="8655aae1-bf1c-4a1a-be3d-b8e3782ee015" LastKnownName="Gérer des événements" />
+            <elementDefinition Id="7e8e7fd4-989c-4dac-8cd7-601add593e94" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="0c834d6f-ab62-4ea0-85b5-0afdc6c4e981" LastKnownName="Événements" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="2e1e15d5-8bb0-475f-9b60-86dafe31a8a8" name="Mettre un événement à jour" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a1a1c4bb-3106-4d2f-a9ed-3d2539bda8b6" />
+        <extendedCases>
+          <extend Id="23b8b6ef-7e9d-413a-bc68-243d4fc27bbe">
+            <useCaseMoniker Id="8655aae1-bf1c-4a1a-be3d-b8e3782ee015" LastKnownName="Gérer des événements" />
+            <elementDefinition Id="b2eb2766-8953-4ded-a965-1ddcae759db2" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="0c834d6f-ab62-4ea0-85b5-0afdc6c4e981" LastKnownName="Événements" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="b7ef7348-5b0a-4ed8-a92c-d7f0e4c0166f" name="Annuler un événement" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f14a24e2-20a4-4a87-addf-80ed71e7d4d2" />
+        <extendedCases>
+          <extend Id="f5136a68-3450-4546-8e5b-78ed90e737b4">
+            <useCaseMoniker Id="8655aae1-bf1c-4a1a-be3d-b8e3782ee015" LastKnownName="Gérer des événements" />
+            <elementDefinition Id="67526c69-0444-46bf-8803-35b2ef109b45" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="0c834d6f-ab62-4ea0-85b5-0afdc6c4e981" LastKnownName="Événements" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="165e6c50-02cd-4bb3-97e9-d32d0c0a2861" name="S'inscrire à un événement" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a20e48c3-92b5-40ba-8d5d-c25b07260f77" />
+        <subjects>
+          <subsystemMoniker Id="0c834d6f-ab62-4ea0-85b5-0afdc6c4e981" LastKnownName="Événements" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="e8711cd2-7cfa-4905-9616-6d749cc57878" name="Ouvrir un événement" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5e48fce0-d823-43c7-a777-ea73e62dfbd4" />
+        <extendedCases>
+          <extend Id="a0bc372b-291d-4954-95c7-3436adcd5931">
+            <useCaseMoniker Id="2e1e15d5-8bb0-475f-9b60-86dafe31a8a8" LastKnownName="Mettre un événement à jour" />
+            <elementDefinition Id="4c9aa3f4-70f0-4fb9-b0b0-5a1c9d9a42eb" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="0c834d6f-ab62-4ea0-85b5-0afdc6c4e981" LastKnownName="Événements" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="e7f24a6e-7fb3-428b-b67e-0785a88867d6" name="Fermer un événement" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="98efd52f-ce38-4aff-9b8b-535012e0aa60" />
+        <extendedCases>
+          <extend Id="0026f61d-d6b1-4353-8dda-a6ef777287f5">
+            <useCaseMoniker Id="2e1e15d5-8bb0-475f-9b60-86dafe31a8a8" LastKnownName="Mettre un événement à jour" />
+            <elementDefinition Id="e8f76846-35a8-459c-a43c-8771b67655d0" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="0c834d6f-ab62-4ea0-85b5-0afdc6c4e981" LastKnownName="Événements" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="e15d1b2b-5bfd-413f-8266-51783d102a95" name="Admin" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="158443cc-114f-4c29-9b7b-0b9306b080b3" />
+        <targetEnds>
+          <association Id="94a20ebe-f367-4e32-91e1-e93413d8e47c" isDerived="false" sourceEndRoleName="Admin" targetEndRoleName="Gérer des événements" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="8655aae1-bf1c-4a1a-be3d-b8e3782ee015" LastKnownName="Gérer des événements" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="19126469-aa9a-42a9-8c98-84d13d7ba001" name="Admin" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a3faac7e-adb0-4010-80c0-b6adcc822e5a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0ef2d212-ce12-4e6a-a013-228e39b04923" name="Gérer des événements" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="886c9749-5082-4d94-9c87-bb9839860d3b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8611a7a7-a355-4886-bbbf-40db8d8cb194" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="da7d4713-a0f0-4738-9f72-0a9fccff5b8d" name="Utilisateur" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a6432d43-6570-4a12-ac1e-1e34e34a0930" />
+        <targetEnds>
+          <association Id="3cb98f36-e3a5-4e6b-8642-ea6d89f6a836" isDerived="false" sourceEndRoleName="Utilisateur" targetEndRoleName="Ouvrir un événement" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="e8711cd2-7cfa-4905-9616-6d749cc57878" LastKnownName="Ouvrir un événement" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e25e4b96-eeca-4ce8-8237-e5296116029e" name="Utilisateur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="660c5643-ffb7-44c3-9fb9-bc9134a65ae1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ee6db394-4622-403a-8bcb-942947001b65" name="Ouvrir un événement" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8e4cd7bb-dfc3-421c-a48e-b042503052b4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4e81f7a3-357e-4b90-972a-91040d0dcb18" />
+          </association>
+          <association Id="c035b225-3d5e-4292-8424-25945f5340a2" isDerived="false" sourceEndRoleName="Utilisateur" targetEndRoleName="Fermer un événement" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="e7f24a6e-7fb3-428b-b67e-0785a88867d6" LastKnownName="Fermer un événement" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="db4d8c03-dcff-488c-8442-033a26f6989f" name="Utilisateur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="3e2ef25b-4ca9-4391-85f4-f301da3989ac" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="57595c2d-5f81-4908-a937-389e70dc956f" name="Fermer un événement" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="9bd82af6-b74f-4ae2-b097-a1bc64c97007" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="63367768-7f82-467f-812c-dc5bf76a766d" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="e6d9bd9a-d44e-407f-9b54-a7e178d9874d" name="Membre" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="645c9291-c13e-4918-9d1b-ed6141296ffc" />
+        <targetEnds>
+          <association Id="afc03985-29fc-4e0c-ad68-fa1ec046af94" isDerived="false" sourceEndRoleName="Membre" targetEndRoleName="S'inscrire à un événement" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="165e6c50-02cd-4bb3-97e9-d32d0c0a2861" LastKnownName="S'inscrire à un événement" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0620691d-a460-43d8-a6b1-aedbd2e9e579" name="Membre" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="21e33714-7c64-4c61-92c7-cb369c794554" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1d0a76eb-9666-4e60-8a64-afc39a65b1a3" name="S'inscrire à un événement" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="c020bdce-8ce0-4123-9c3f-7e90a599b96d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="5dc3357a-1a68-4b5e-b624-1a2162195104" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="4597e1cf-be0a-4d8f-9359-01edfb766858" name="MyKoopDesign">
+    <elementDefinition Id="25133e8a-586b-4074-825e-744f71dca821" />
+  </package>
+</useCaseModelRoot>
