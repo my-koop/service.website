@@ -43,6 +43,9 @@
     <TypeScriptCompile Include="Scripts\typings\express\express.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\stylus\stylus.d.ts" />
+    <Content Include=".sublimets" />
+    <Content Include="less\main.less" />
+    <Content Include="less\mykoop.less" />
     <Content Include="Run Script assets-dev.bat" />
     <Content Include="package.json" />
     <Content Include="public\stylesheets\style.styl" />
@@ -54,6 +57,7 @@
   <ItemGroup>
     <Folder Include="js\" />
     <Folder Include="js\entry\" />
+    <Folder Include="less\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="public\javascripts\" />
@@ -67,7 +71,6 @@
     <Folder Include="views\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="js\entry\all.js" />
     <Compile Include="js\entry\index.js" />
     <Compile Include="webpack.config.js" />
   </ItemGroup>
