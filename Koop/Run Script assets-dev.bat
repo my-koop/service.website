@@ -1,2 +1,2 @@
 @echo off
-npm run-script assets-dev-win
+npm run-script assets-dev

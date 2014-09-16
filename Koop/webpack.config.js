@@ -96,7 +96,8 @@ module.exports = {
 
     modulesDirectories: [
       "node_modules",
-      "bower_components"
+      "bower_components",
+      "routes"
     ],
 
     // Map the modules to the files we really need, for hassle-free inclusion

@@ -9,8 +9,7 @@
   },
   "scripts": {
     "start": "PORT=1337 node app",
-    "assets-dev": "./node_modules/.bin/webpack-dev-server --port 8080 --content-base-target http://localhost:1337",
-    "assets-dev-win": "%CD%/node_modules/.bin/webpack-dev-server --port 8080 --content-base-target http://localhost:1337"
+    "assets-dev": "./node_modules/.bin/webpack-dev-server --port 8080 --content-base-target http://localhost:1337"
   },
   "dependencies": {
     "body-parser": "^1.8.1",
