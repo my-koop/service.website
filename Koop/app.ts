@@ -1,7 +1,6 @@
 ﻿import express = require('express');
 import routes = require('./routes/index');
 import user = require('./routes/user');
-import navBar = require('./routes/navBar');
 import http = require('http');
 import path = require('path');
 import stylus = require('stylus');
@@ -39,7 +38,10 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.get(navBar.Url, navBar.NavBar);
+
+export function AddRoute(url: string, handler: express.RequestFunction) {
+    app.get(url, handler);
+}
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
