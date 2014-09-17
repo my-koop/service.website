@@ -3,11 +3,10 @@
  */
 import express = require('express');
 import ctrl = require('./controllers/index');
-import routeInfo = require('../Scripts/modules/RouteInformation');
+import routeInfo = require('../Scripts/modules/routeInformation');
 
 function indexApp(app: express.Express) {
-    app.get('/', ctrl.homepage);
     app.get(routeInfo.userRoute, ctrl.user);
-    app.get(routeInfo.navBarRoute, ctrl.navBar);
+    app.get(routeInfo.navBar, ctrl.navBar);
 }
 export = indexApp;

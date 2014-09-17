@@ -7,9 +7,6 @@ var isProd = env === "production";
 
 var pluginList = [
   new webpack.DefinePlugin({
-    //FIXME: Need to fix a bug in webpack for this to work.
-    //"window.jQuery": "jQuery"
-
     __DEV__: isDev,
     __PROD__: isProd,
     __FRONTEND__: true

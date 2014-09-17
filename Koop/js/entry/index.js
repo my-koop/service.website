@@ -9,6 +9,7 @@ var BSButton = require('react-bootstrap/Button');
 var BSButtonToolbar = require('react-bootstrap/ButtonToolbar');
 
 var routeInfo = require('RouteInformation');
+var ajax = require('ajax');
 
 // NavigationBar
 // properties :
@@ -20,17 +21,16 @@ var NavigationBar = React.createClass({
         };
     },
     componentDidMount: function () {
-        $.ajax({
-            url: routeInfo.navBarRoute,
-            dataType: 'json',
-            data : {path: window.location.pathname},
-            success: function (data) {
-                if(data.links !== undefined) this.setState(data);
-            }.bind(this),
-            error: function (xhr, status, err) {
-                console.error(routeInfo.navBarRoute, status, err.toString());
-            }.bind(this)
-        })
+        var self = this;
+        ajax.request({ endpoint: routeInfo.navBar }, function (err, res) {
+            if (err) {
+                console.error(routeInfo.navBar, status, err.toString());
+                return;
+            }
+            if (res.body.links) {
+                self.setState(res.body);
+            }
+        });
     },
     render : function() {
         var links = this.state.links.map( function(link,i) {
