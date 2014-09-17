@@ -17,4 +17,3 @@ export function request(params: AjaxParams, callback: AjaxCallback) {
         .get(params.endpoint)
         .end(callback);
 }
-

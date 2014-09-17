@@ -38,13 +38,12 @@
   </PropertyGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
-    <TypeScriptCompile Include="routes\controllers\homepage.ts" />
     <TypeScriptCompile Include="routes\controllers\index.ts" />
     <TypeScriptCompile Include="routes\controllers\navBar.ts" />
     <TypeScriptCompile Include="routes\controllers\user.ts" />
     <TypeScriptCompile Include="routes\index.ts" />
     <TypeScriptCompile Include="Scripts\modules\ajax.ts" />
-    <TypeScriptCompile Include="Scripts\modules\RouteInformation.ts" />
+    <TypeScriptCompile Include="Scripts\modules\routeInformation.ts" />
     <TypeScriptCompile Include="Scripts\typings\express\express.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\stylus\stylus.d.ts" />
@@ -55,8 +54,6 @@
     <Content Include="public\stylesheets\style.styl" />
     <Content Include="README.md" />
     <Content Include="RunAll.bat" />
-    <Content Include="views\index.jade" />
-    <Content Include="views\layout.jade" />
     <TypeScriptCompile Include="Scripts\typings\superagent\superagent.d.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -76,7 +73,6 @@
     <Folder Include="Scripts\typings\node\" />
     <Folder Include="Scripts\typings\stylus\" />
     <Folder Include="Scripts\typings\superagent\" />
-    <Folder Include="views\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="js\entry\index.js" />
