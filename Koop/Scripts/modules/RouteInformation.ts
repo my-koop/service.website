@@ -1,2 +1,2 @@
-export var navBarRoute = "/GetNavBar";
+export var navBar = "/GetNavBar";
 export var userRoute = "/users";
