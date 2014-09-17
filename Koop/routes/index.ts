@@ -3,10 +3,9 @@
  */
 import express = require('express');
 import ctrl = require('./controllers/index');
-import routeInfo = require('../Scripts/modules/RouteInformation');
-import ajax = require('../Scripts/modules/ajax');
+import routeInfo = require('../Scripts/modules/routeInformation');
+
 function indexApp(app: express.Express) {
-    app.get('/', ctrl.homepage);
     app.get(routeInfo.userRoute, ctrl.user);
     app.get(routeInfo.navBar, ctrl.navBar);
 }
