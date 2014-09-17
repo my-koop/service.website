@@ -1,10 +1,10 @@
 ﻿import express = require('express');
-import routes = require('./routes/index');
-import user = require('./routes/user');
 import http = require('http');
 import path = require('path');
 import stylus = require('stylus');
 var app = express();
+import routes = require('./routes/index');
+routes(app);
 
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -34,13 +34,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // development only
 if ('development' == app.get('env')) {
     app.use(errorHandler());
-}
-
-app.get('/', routes.index);
-app.get('/users', user.list);
-
-export function AddRoute(url: string, handler: express.RequestFunction) {
-    app.get(url, handler);
 }
 
 http.createServer(app).listen(app.get('port'), function () {
