@@ -5,8 +5,6 @@ require('mykoop.less');
 
 var React = require('react');
 var RBS = require('react-bootstrap');
-var BSButton = require('react-bootstrap/Button');
-var BSButtonToolbar = require('react-bootstrap/ButtonToolbar');
 
 var routeInfo = require('routeInformation');
 var ajax = require('ajax');
@@ -17,7 +15,7 @@ var ajax = require('ajax');
 var NavigationBar = React.createClass({
     getInitialState: function () {
         return {
-            links : [{mName:'index',mUrl:'/'}]
+            links : [{name:'index',url:'/'}]
         };
     },
     componentDidMount: function () {
@@ -34,7 +32,7 @@ var NavigationBar = React.createClass({
     },
     render : function() {
         var links = this.state.links.map( function(link,i) {
-            return <RBS.NavItem key={i} href={link.mUrl}>{link.mName}</RBS.NavItem>
+            return <RBS.NavItem key={i} href={link.url}>{link.name}</RBS.NavItem>
         });
         return (
             <RBS.Navbar>

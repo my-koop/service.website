@@ -13,6 +13,6 @@ function NavBar(req: express.Request, res: express.Response) {
 export = NavBar;
 
 class Link {
-    constructor(public mName: string, public mUrl: string) {
+    constructor(public name: string, public url: string) {
     }
 }
