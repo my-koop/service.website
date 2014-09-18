@@ -1,4 +1,5 @@
-﻿import superagent = require('superagent');
+﻿///<reference path="../typings/superagent/superagent.d.ts" />
+import superagent = require('superagent');
 var t: any = superagent;
 var agent: superagent.Agent = t;
 

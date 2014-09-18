@@ -1,4 +1,5 @@
-﻿import express = require('express');
+﻿///<reference path="Scripts/typings/express/express.d.ts" />
+import express = require('express');
 import http = require('http');
 import path = require('path');
 import logger = require('morgan');
