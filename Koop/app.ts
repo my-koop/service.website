@@ -1,18 +1,17 @@
 ﻿import express = require('express');
 import http = require('http');
 import path = require('path');
-import stylus = require('stylus');
+import logger = require('morgan');
+import methodOverride = require('method-override');
+import session = require('express-session');
+import bodyParser = require('body-parser');
+import errorHandler = require('errorhandler');
+var favicon = require('serve-favicon');
+var multer = require('multer');
+
 var app = express();
 import routes = require('./routes/index');
 routes(app);
-
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var methodOverride = require('method-override');
-var session = require('express-session');
-var bodyParser = require('body-parser');
-var multer = require('multer');
-var errorHandler = require('errorhandler');
 
 // all environments
 app.set('port', process.env.PORT || 3000);
