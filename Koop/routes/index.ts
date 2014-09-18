@@ -2,7 +2,11 @@
  * GET home page.
  */
 import express = require('express');
+import ctrl = require('./controllers/index');
+import routeInfo = require('../Scripts/modules/routeInformation');
 
-export function index(req: express.Request, res: express.Response) {
-    res.render('index', { title: 'Express' });
-};
+function indexApp(app: express.Express) {
+    app.get(routeInfo.userRoute, ctrl.user);
+    app.get(routeInfo.navBar, ctrl.navBar);
+}
+export = indexApp;

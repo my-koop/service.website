@@ -23,7 +23,7 @@
     <OutputPath>.</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
@@ -38,36 +38,49 @@
   </PropertyGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="routes\controllers\index.ts" />
+    <TypeScriptCompile Include="routes\controllers\navBar.ts" />
+    <TypeScriptCompile Include="routes\controllers\user.ts" />
     <TypeScriptCompile Include="routes\index.ts" />
-    <TypeScriptCompile Include="routes\user.ts" />
+    <TypeScriptCompile Include="Scripts\modules\ajax.ts" />
+    <TypeScriptCompile Include="Scripts\modules\routeInformation.ts" />
+    <TypeScriptCompile Include="Scripts\typings\body-parser\body-parser.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\errorhandler\errorhandler.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\express-session\express-session.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\express\express.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\method-override\method-override.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\morgan\morgan.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
-    <TypeScriptCompile Include="Scripts\typings\stylus\stylus.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\superagent\superagent.d.ts" />
+    <Content Include="less\main.less" />
+    <Content Include="less\mykoop.less" />
     <Content Include="Run Script assets-dev.bat" />
     <Content Include="package.json" />
-    <Content Include="public\stylesheets\style.styl" />
     <Content Include="README.md" />
     <Content Include="RunAll.bat" />
-    <Content Include="views\index.jade" />
-    <Content Include="views\layout.jade" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="js\" />
     <Folder Include="js\entry\" />
+    <Folder Include="less\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="public\javascripts\" />
-    <Folder Include="public\stylesheets\" />
     <Folder Include="routes\" />
+    <Folder Include="routes\controllers\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Scripts\modules\" />
     <Folder Include="Scripts\typings\" />
+    <Folder Include="Scripts\typings\body-parser\" />
+    <Folder Include="Scripts\typings\errorhandler\" />
+    <Folder Include="Scripts\typings\express-session\" />
     <Folder Include="Scripts\typings\express\" />
+    <Folder Include="Scripts\typings\method-override\" />
+    <Folder Include="Scripts\typings\morgan\" />
     <Folder Include="Scripts\typings\node\" />
-    <Folder Include="Scripts\typings\stylus\" />
-    <Folder Include="views\" />
+    <Folder Include="Scripts\typings\superagent\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="js\entry\all.js" />
     <Compile Include="js\entry\index.js" />
     <Compile Include="webpack.config.js" />
   </ItemGroup>
