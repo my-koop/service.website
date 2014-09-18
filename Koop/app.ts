@@ -1,7 +1,7 @@
-﻿import express = require('express');
+﻿///<reference path="Scripts/typings/express/express.d.ts" />
+import express = require('express');
 import http = require('http');
 import path = require('path');
-import stylus = require('stylus');
 var app = express();
 import routes = require('./routes/index');
 routes(app);

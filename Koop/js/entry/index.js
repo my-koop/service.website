@@ -8,7 +8,7 @@ var RBS = require('react-bootstrap');
 var BSButton = require('react-bootstrap/Button');
 var BSButtonToolbar = require('react-bootstrap/ButtonToolbar');
 
-var routeInfo = require('RouteInformation');
+var routeInfo = require('routeInformation');
 var ajax = require('ajax');
 
 // NavigationBar
