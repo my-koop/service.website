@@ -1,0 +1,43 @@
+{
+  "name": "Koop",
+  "version": "0.0.0",
+  "description": "Koop",
+  "main": "app.js",
+  "author": {
+    "name": "Michael Ferris",
+    "email": "michael.ferris@polymtl.ca"
+  },
+  "scripts": {
+    "start": "PORT=1337 node app",
+    "assets-dev": "./node_modules/.bin/webpack-dev-server --port 8080 --content-base-target http://localhost:1337"
+  },
+  "dependencies": {
+    "body-parser": "^1.8.1",
+    "errorhandler": "^1.2.0",
+    "express": "^4.9.0",
+    "express-session": "^1.8.1",
+    "favicon": "0.0.2",
+    "method-override": "^2.2.0",
+    "morgan": "^1.3.0",
+    "multer": "^0.1.4",
+    "serve-favicon": "^2.1.3",
+    "superagent": "^0.18.2"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "^1.0.0",
+    "bootstrap": "^3.2.0",
+    "css-loader": "^0.8.0",
+    "favicon": "0.0.2",
+    "file-loader": "^0.7.2",
+    "jsx-loader": "^0.11.0",
+    "less": "^1.7.5",
+    "less-loader": "^0.7.7",
+    "react": "^0.11.1",
+    "react-bootstrap": "^0.12.0",
+    "style-loader": "^0.8.0",
+    "ts-loader": "git://github.com/robarnold/ts-loader.git",
+    "url-loader": "^0.5.5",
+    "webpack": "^1.4.0",
+    "webpack-dev-server": "^1.6.4"
+  }
+}

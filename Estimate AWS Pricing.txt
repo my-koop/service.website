@@ -1,0 +1,9 @@
+Compute de base 0.013$/h = 9.75$/Month
+    Bandwidth 0.12$/Gb
+Storage 0.024$/Gb
+    GET 0.004$/ 10 000 Requests
+    Bandwidth 0.12$/Gb
+Database 
+    MySQL 0.017$/h = 12.75$/Month
+    OU
+    PostGre 0.018$/h = 13.50$/Month
