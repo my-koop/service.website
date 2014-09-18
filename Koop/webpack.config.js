@@ -7,9 +7,6 @@ var isProd = env === "production";
 
 var pluginList = [
   new webpack.DefinePlugin({
-    //FIXME: Need to fix a bug in webpack for this to work.
-    //"window.jQuery": "jQuery"
-
     __DEV__: isDev,
     __PROD__: isProd,
     __FRONTEND__: true
@@ -63,6 +60,9 @@ var loaderList = [
   // JSX (for React)
   { test: /\.js$/,   loader: "jsx" },
   { test: /\.jsx$/,  loader: "jsx?insertPragma=React.DOM" },
+
+  // TypeScript.
+  { test: /\.ts$/,   loader: "ts-loader" },
 ];
 
 if (isDev) {
@@ -88,10 +88,13 @@ module.exports = {
     loaders: loaderList
   },
   resolve: {
+    extensions: ["", ".webpack.js", ".web.js", ".js", ".ts"],
+
     root: [
       path.join(__dirname, "js"),
       path.join(__dirname, "less"),
       path.join(__dirname, "locales"),
+      path.join(__dirname, "Scripts", "modules")
     ],
 
     modulesDirectories: [
