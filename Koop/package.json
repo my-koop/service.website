@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "PORT=1337 node app",
-    "assets-dev": "./node_modules/.bin/webpack-dev-server --port 8080 --content-base-target http://localhost:1337"
+    "assets-dev": "NODE_ENV=development ./node_modules/.bin/webpack-dev-server --port 8080 --content-base-target http://localhost:1337"
   },
   "dependencies": {
     "body-parser": "^1.8.1",
@@ -34,10 +34,12 @@
     "less-loader": "^0.7.7",
     "react": "^0.11.1",
     "react-bootstrap": "^0.12.0",
+    "react-router": "^0.7.0",
     "style-loader": "^0.8.0",
     "ts-loader": "git://github.com/robarnold/ts-loader.git",
     "url-loader": "^0.5.5",
     "webpack": "^1.4.0",
-    "webpack-dev-server": "^1.6.4"
+    "webpack-dev-server": "^1.6.4",
+    "expose-loader": "^0.5.3"
   }
 }

@@ -62,7 +62,7 @@ var loaderList = [
   { test: /\.jsx$/,  loader: "jsx?insertPragma=React.DOM" },
 
   // TypeScript.
-  { test: /\.ts$/,   loader: "ts-loader" },
+  { test: /\.ts$/,   loader: "ts" },
 ];
 
 if (isDev) {
@@ -88,7 +88,7 @@ module.exports = {
     loaders: loaderList
   },
   resolve: {
-    extensions: ["", ".webpack.js", ".web.js", ".js", ".ts"],
+    extensions: ["", ".webpack.js", ".web.js", ".js", ".ts", ".jsx"],
 
     root: [
       path.join(__dirname, "js"),
@@ -106,6 +106,7 @@ module.exports = {
     // in our files.
     alias: {
       "bootstrap-styles": "bootstrap/less",
+      components: path.join(__dirname, "components")
     }
   },
   plugins: pluginList

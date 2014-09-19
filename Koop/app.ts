@@ -29,6 +29,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// For now "catch-all" requests that are not mapped to let the front-end manage
+// these routes.
+app.get('*', function(req, res) {
+  // Valid route in the front-end, we only want to send the index.
+  if (res.locals.isFrontEnd) {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+    return;
+  }
+
+  // Unknown route.
+  res.status(404).send("Not found");
+});
+
 // development only
 if ('development' == app.get('env')) {
     app.use(errorHandler());

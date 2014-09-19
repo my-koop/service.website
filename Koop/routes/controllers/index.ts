@@ -4,8 +4,9 @@
 import user = require('./user');
 import navBar = require('./navBar');
 
-var ctrls = {
+var controllers = {
     user: user,
     navBar: navBar
 };
-export = ctrls;
+
+export = controllers;

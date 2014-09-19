@@ -1,2 +1,4 @@
 export var navBar = "/GetNavBar";
-export var userRoute = "/users";
+
+export var homepage = "/";
+export var users = "/users";
