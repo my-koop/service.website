@@ -1,11 +1,8 @@
 import express = require('express');
 
 function NavBar(req: express.Request, res: express.Response) {
-    
-    var links = { links: [new Link('Index', '/'), new Link('Users', '/users')] };
-    if (req.query.path !== undefined) {
+    var links = { links: [new Link('Index', 'app'), new Link('Users', 'users')] };
 
-    }
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(links));
 };

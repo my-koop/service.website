@@ -23,7 +23,7 @@
     <OutputPath>.</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
@@ -39,6 +39,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="routes\controllers\index.ts" />
+    <TypeScriptCompile Include="routes\controllers\staticRoot.ts" />
     <TypeScriptCompile Include="routes\controllers\navBar.ts" />
     <TypeScriptCompile Include="routes\controllers\user.ts" />
     <TypeScriptCompile Include="routes\index.ts" />
@@ -52,14 +53,22 @@
     <TypeScriptCompile Include="Scripts\typings\morgan\morgan.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\superagent\superagent.d.ts" />
+    <Content Include="components\App.jsx" />
+    <Content Include="components\Homepage.jsx" />
+    <Content Include="components\MyKoop.jsx" />
+    <Content Include="components\NavigationBar.jsx" />
+    <Content Include="components\Users.jsx" />
     <Content Include="less\main.less" />
     <Content Include="less\mykoop.less" />
+    <Content Include="public\index.html" />
     <Content Include="Run Script assets-dev.bat" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="RunAll.bat" />
+    <TypeScriptCompile Include="Scripts\typings\tsd.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="components\" />
     <Folder Include="js\" />
     <Folder Include="js\entry\" />
     <Folder Include="less\" />
