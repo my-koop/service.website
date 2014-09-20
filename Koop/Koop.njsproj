@@ -39,6 +39,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="routes\controllers\index.ts" />
+    <TypeScriptCompile Include="routes\controllers\staticRoot.ts" />
     <TypeScriptCompile Include="routes\controllers\navBar.ts" />
     <TypeScriptCompile Include="routes\controllers\user.ts" />
     <TypeScriptCompile Include="routes\index.ts" />
