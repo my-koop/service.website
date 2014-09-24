@@ -11,8 +11,8 @@ function NavBar(req: express.Request, res: express.Response) {
     links: allLinks
   };
 
-  res.setHeader('Content-Type', 'application/json');
-  res.end(JSON.stringify(links));
+  res.json(links);
+  res.end();
 };
 
 export = NavBar;
