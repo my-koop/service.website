@@ -60,10 +60,10 @@ var NavigationBar = React.createClass({
     var self = this;
 
     ajax.request(
-      {endpoint: routeInfo.navBar},
+      {endpoint: routeInfo.navBar.fullPath},
       function (err, res) {
         if (err) {
-          console.error(routeInfo.navBar, status, err.toString());
+          console.error(routeInfo.navBar.fullPath, status, err.toString());
           return;
         }
 

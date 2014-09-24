@@ -1,15 +1,23 @@
 import express = require('express');
+import routeInfo = require('../../Scripts/modules/routeInformation');
 
 function NavBar(req: express.Request, res: express.Response) {
-    var links = { links: [new Link('Index', 'app'), new Link('Users', 'users')] };
+  var allLinks = []
+  for (var i = 0; i < routeInfo.frontEndPages.length; ++i) {
+    var route = routeInfo.frontEndPages[i];
+    allLinks.push(new Link(route.name, route.fullPath));
+  }
+  var links = {
+    links: allLinks
+  };
 
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify(links));
+  res.setHeader('Content-Type', 'application/json');
+  res.end(JSON.stringify(links));
 };
 
 export = NavBar;
 
 class Link {
-    constructor(public name: string, public url: string) {
-    }
+  constructor(public name: string, public url: string) {
+  }
 }

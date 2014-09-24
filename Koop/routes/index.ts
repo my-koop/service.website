@@ -11,10 +11,11 @@ function indexApp(app: express.Express) {
   // although they may be subsets of those in the front-end and/or use another
   // HTTP method. e.g. /users/posts could be handled by the backend while
   // /users maps to the front-end.
-  app.get(routeInfo.homepage, ctrl.staticRoot);
-  app.get(routeInfo.users, ctrl.staticRoot);
+  for (var i = 0; i < routeInfo.frontEndPages.length; ++i) {
+    app.get(routeInfo.frontEndPages[i].fullPath, ctrl.staticRoot);
+  }
 
   // Backend routes.
-  app.get(routeInfo.navBar, ctrl.navBar);
+  app.get(routeInfo.navBar.fullPath, ctrl.navBar);
 }
 export = indexApp;
