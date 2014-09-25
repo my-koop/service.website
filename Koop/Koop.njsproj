@@ -23,7 +23,7 @@
     <OutputPath>.</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
@@ -57,9 +57,14 @@
     <Content Include="components\Homepage.jsx" />
     <Content Include="components\MyKoop.jsx" />
     <Content Include="components\NavigationBar.jsx" />
-    <Content Include="components\Users.jsx" />
+    <Content Include="components\ParentPlaceHolder.jsx" />
+    <Content Include="components\PlaceHolder.jsx" />
     <Content Include="less\main.less" />
     <Content Include="less\mykoop.less" />
+    <Content Include="node_modules\react-bootstrap\.npmignore" />
+    <Content Include="node_modules\react-bootstrap\LICENSE" />
+    <Content Include="node_modules\react-bootstrap\package.json" />
+    <Content Include="node_modules\react-bootstrap\README.md" />
     <Content Include="public\index.html" />
     <Content Include="Run Script assets-dev.bat" />
     <Content Include="package.json" />
@@ -72,6 +77,9 @@
     <Folder Include="js\" />
     <Folder Include="js\entry\" />
     <Folder Include="less\" />
+    <Folder Include="node_modules\" />
+    <Folder Include="node_modules\react-bootstrap\" />
+    <Folder Include="node_modules\react-bootstrap\utils\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="public\javascripts\" />
@@ -91,6 +99,65 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="js\entry\index.js" />
+    <Compile Include="node_modules\react-bootstrap\Accordion.js" />
+    <Compile Include="node_modules\react-bootstrap\Affix.js" />
+    <Compile Include="node_modules\react-bootstrap\AffixMixin.js" />
+    <Compile Include="node_modules\react-bootstrap\Alert.js" />
+    <Compile Include="node_modules\react-bootstrap\Badge.js" />
+    <Compile Include="node_modules\react-bootstrap\BootstrapMixin.js" />
+    <Compile Include="node_modules\react-bootstrap\Button.js" />
+    <Compile Include="node_modules\react-bootstrap\ButtonGroup.js" />
+    <Compile Include="node_modules\react-bootstrap\ButtonToolbar.js" />
+    <Compile Include="node_modules\react-bootstrap\Carousel.js" />
+    <Compile Include="node_modules\react-bootstrap\CarouselItem.js" />
+    <Compile Include="node_modules\react-bootstrap\Col.js" />
+    <Compile Include="node_modules\react-bootstrap\CollapsableMixin.js" />
+    <Compile Include="node_modules\react-bootstrap\constants.js" />
+    <Compile Include="node_modules\react-bootstrap\DropdownButton.js" />
+    <Compile Include="node_modules\react-bootstrap\DropdownMenu.js" />
+    <Compile Include="node_modules\react-bootstrap\DropdownStateMixin.js" />
+    <Compile Include="node_modules\react-bootstrap\FadeMixin.js" />
+    <Compile Include="node_modules\react-bootstrap\Glyphicon.js" />
+    <Compile Include="node_modules\react-bootstrap\Grid.js" />
+    <Compile Include="node_modules\react-bootstrap\Input.js" />
+    <Compile Include="node_modules\react-bootstrap\Interpolate.js" />
+    <Compile Include="node_modules\react-bootstrap\Jumbotron.js" />
+    <Compile Include="node_modules\react-bootstrap\Label.js" />
+    <Compile Include="node_modules\react-bootstrap\ListGroup.js" />
+    <Compile Include="node_modules\react-bootstrap\ListGroupItem.js" />
+    <Compile Include="node_modules\react-bootstrap\main.js" />
+    <Compile Include="node_modules\react-bootstrap\MenuItem.js" />
+    <Compile Include="node_modules\react-bootstrap\Modal.js" />
+    <Compile Include="node_modules\react-bootstrap\ModalTrigger.js" />
+    <Compile Include="node_modules\react-bootstrap\Nav.js" />
+    <Compile Include="node_modules\react-bootstrap\Navbar.js" />
+    <Compile Include="node_modules\react-bootstrap\NavItem.js" />
+    <Compile Include="node_modules\react-bootstrap\OverlayMixin.js" />
+    <Compile Include="node_modules\react-bootstrap\OverlayTrigger.js" />
+    <Compile Include="node_modules\react-bootstrap\PageHeader.js" />
+    <Compile Include="node_modules\react-bootstrap\PageItem.js" />
+    <Compile Include="node_modules\react-bootstrap\Pager.js" />
+    <Compile Include="node_modules\react-bootstrap\Panel.js" />
+    <Compile Include="node_modules\react-bootstrap\PanelGroup.js" />
+    <Compile Include="node_modules\react-bootstrap\Popover.js" />
+    <Compile Include="node_modules\react-bootstrap\ProgressBar.js" />
+    <Compile Include="node_modules\react-bootstrap\Row.js" />
+    <Compile Include="node_modules\react-bootstrap\SplitButton.js" />
+    <Compile Include="node_modules\react-bootstrap\SubNav.js" />
+    <Compile Include="node_modules\react-bootstrap\TabbedArea.js" />
+    <Compile Include="node_modules\react-bootstrap\Table.js" />
+    <Compile Include="node_modules\react-bootstrap\TabPane.js" />
+    <Compile Include="node_modules\react-bootstrap\Tooltip.js" />
+    <Compile Include="node_modules\react-bootstrap\utils\classSet.js" />
+    <Compile Include="node_modules\react-bootstrap\utils\cloneWithProps.js" />
+    <Compile Include="node_modules\react-bootstrap\utils\createChainedFunction.js" />
+    <Compile Include="node_modules\react-bootstrap\utils\CustomPropTypes.js" />
+    <Compile Include="node_modules\react-bootstrap\utils\domUtils.js" />
+    <Compile Include="node_modules\react-bootstrap\utils\EventListener.js" />
+    <Compile Include="node_modules\react-bootstrap\utils\merge.js" />
+    <Compile Include="node_modules\react-bootstrap\utils\TransitionEvents.js" />
+    <Compile Include="node_modules\react-bootstrap\utils\ValidComponentChildren.js" />
+    <Compile Include="node_modules\react-bootstrap\Well.js" />
     <Compile Include="webpack.config.js" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />

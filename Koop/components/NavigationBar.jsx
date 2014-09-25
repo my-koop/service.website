@@ -3,7 +3,6 @@ var RBS = require("react-bootstrap");
 
 var Router = require("react-router");
 
-var routeInfo = require("routeInformation");
 var ajax = require("ajax");
 
 var NavItemLink = React.createClass({
@@ -49,10 +48,7 @@ var NavigationBar = React.createClass({
 
   getInitialState: function () {
     return {
-      links: [{
-        name: "index",
-        url: "/"
-      }]
+      links: []
     };
   },
 
@@ -60,10 +56,10 @@ var NavigationBar = React.createClass({
     var self = this;
 
     ajax.request(
-      {endpoint: routeInfo.navBar},
+      {endpoint: this.props.contentUrl},
       function (err, res) {
         if (err) {
-          console.error(routeInfo.navBar, status, err.toString());
+          console.error(this.props.contentUrl, status, err.toString());
           return;
         }
 
@@ -73,7 +69,6 @@ var NavigationBar = React.createClass({
       }
     );
   },
-
   render : function() {
     var links = this.state.links.map(function(link, index) {
       return (
@@ -85,13 +80,14 @@ var NavigationBar = React.createClass({
         </NavItemLink>
       );
     });
-
     return (
-      <RBS.Navbar>
-        <RBS.Nav>
-          {links}
-        </RBS.Nav>
-      </RBS.Navbar>
+      <div>
+        <RBS.Navbar toggleNavKey={1}>
+          <RBS.Nav key={1}>
+            {links}
+          </RBS.Nav>
+        </RBS.Navbar>
+      </div>
     );
   }
 });
