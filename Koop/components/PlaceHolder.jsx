@@ -3,14 +3,14 @@ var Link = require("react-router").Link;
 var BSCol = require("react-bootstrap/Col");
 var RouteInfo = require("routeInformation");
 
-var Users = React.createClass({
+var PlaceHolder = React.createClass({
   render: function() {
     return (
       <BSCol md={12}>
-        USERS!!! <Link to={RouteInfo.homepage.name}>Go to homepage.</Link>
+        This is a placeholder with no interesting content what so ever <Link to={RouteInfo.homepage.name}>Go to homepage.</Link>
       </BSCol>
     );
   }
 });
 
-module.exports = Users;
+module.exports = PlaceHolder;
