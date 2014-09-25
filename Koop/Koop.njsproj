@@ -57,7 +57,8 @@
     <Content Include="components\Homepage.jsx" />
     <Content Include="components\MyKoop.jsx" />
     <Content Include="components\NavigationBar.jsx" />
-    <Content Include="components\Users.jsx" />
+    <Content Include="components\ParentPlaceHolder.jsx" />
+    <Content Include="components\PlaceHolder.jsx" />
     <Content Include="less\main.less" />
     <Content Include="less\mykoop.less" />
     <Content Include="node_modules\react-bootstrap\.npmignore" />
