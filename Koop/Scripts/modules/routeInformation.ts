@@ -84,4 +84,4 @@ export var frontEndPages: Array<RouteInformationTree> = [];
 homepage.addAll(frontEndPages);
 
 // ajax routes
-export var navBar = new RouteInformation("getNavBar");
+export var devNavBar = new RouteInformation("getDevNavBar");

@@ -5,6 +5,8 @@ var BSGrid = require("react-bootstrap/Grid");
 var BSRow = require("react-bootstrap/Row");
 var BSButton = require("react-bootstrap/Button");
 
+var RouteInformation = require("routeInformation");
+
 var App = React.createClass({
   getInitialState: function () {
     return {
@@ -22,7 +24,7 @@ var App = React.createClass({
       <BSGrid fluid={true}>
         <BSRow>
           <BSButton onClick={this.showHideClick}>{showHideButtonName}</BSButton>
-          <MKNavigationBar hidden={this.state.hidden}/>
+          <MKNavigationBar hidden={this.state.hidden} contentUrl={RouteInformation.devNavBar.fullPath}/>
         </BSRow>
         <BSRow style={{border:"1px solid black"}}>
             {this.props.activeRouteHandler()}
