@@ -1,4 +1,4 @@
-var React = require("react");
+ï»¿var React = require("react");
 var Link = require("react-router").Link;
 var BSCol = require("react-bootstrap/Col");
 
@@ -7,10 +7,10 @@ var Homepage = React.createClass({
         return (
             <BSCol md={6} mdOffset={3}>
                 <div>
-                    Coop Bécik est une coopérative de réparation qui a pour mission de rendre accessible l’utilisation du vélo comme mode de transport aux citoyen-ne-s et étudiant-e-s de Montréal. 
+                    Coop BÃ©cik est une coopÃ©rative de rÃ©paration qui a pour mission de rendre accessible lâ€™utilisation du vÃ©lo comme mode de transport aux citoyen-ne-s et Ã©tudiant-e-s de MontrÃ©al.
                 </div>
                 <div>
-                    Ouvert les mardis et mercredis de 17h à 20h Formations 17, 24 septembre et 1er octobre: <a href="http://doodle.com/3z4y37skqyxhtn86">s'inscrire ICI</a>
+                    Ouvert les mardis et mercredis de 17h Ã  20h Formations 17, 24 septembre et 1er octobre: <a href="http://doodle.com/3z4y37skqyxhtn86">s'inscrire ICI</a>
                 </div>
                 
             </BSCol>
