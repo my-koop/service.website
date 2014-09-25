@@ -73,8 +73,10 @@ var NavigationBar = React.createClass({
       }
     );
   },
-
   render : function() {
+    if(this.props.hidden){
+      return null;
+    }
     var links = this.state.links.map(function(link, index) {
       return (
         <NavItemLink
@@ -85,13 +87,14 @@ var NavigationBar = React.createClass({
         </NavItemLink>
       );
     });
-
     return (
-      <RBS.Navbar>
-        <RBS.Nav>
-          {links}
-        </RBS.Nav>
-      </RBS.Navbar>
+      <span>
+        <RBS.Navbar toggleNavKey={1}>
+          <RBS.Nav key={1}>
+            {links}
+          </RBS.Nav>
+        </RBS.Navbar>
+      </span>
     );
   }
 });

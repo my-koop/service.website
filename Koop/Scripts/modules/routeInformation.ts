@@ -46,7 +46,7 @@ export class RouteInformationTree {
   }
 }
 
-// static pages
+// public pages
 export var homepage = new RouteInformationTree("Homepage");
   export var aboutUs = new RouteInformationTree("About Us", homepage);
   export var pwdRcv = new RouteInformationTree("Password Recovery", homepage);
@@ -62,19 +62,19 @@ export var dashboard = new RouteInformationTree("Dashboard", homepage);
   export var stats = new RouteInformationTree("Stats", dashboard);
   export var transaction = new RouteInformationTree("Transactions", dashboard);
   export var events = new RouteInformationTree("Events", dashboard);
-    export var events_pos = new RouteInformationTree("Event Pos", events);
-    export var events_report = new RouteInformationTree("Events Report", events);
-    export var events_signup = new RouteInformationTree("Events Signup", events);
+    export var eventsPos = new RouteInformationTree("Event Pos", events);
+    export var eventsReport = new RouteInformationTree("Events Report", events);
+    export var eventsSignup = new RouteInformationTree("Events Signup", events);
   export var items = new RouteInformationTree("Items", dashboard);
-    export var items_itemsbelowthreshold = new RouteInformationTree("Items Below Threshold", items);
-    export var items_nextorder = new RouteInformationTree("Supplier Order", items);
+    export var itemsItemsBelowThreshold = new RouteInformationTree("Items Below Threshold", items);
+    export var itemsNextOrder = new RouteInformationTree("Supplier Order", items);
   export var mailing = new RouteInformationTree("Mailing Lists", dashboard);
-    export var mailing_send = new RouteInformationTree("Mailing Send", mailing);
-    export var mailing_subscribe = new RouteInformationTree("Mailing Subscribe", mailing);
+    export var mailingSend = new RouteInformationTree("Mailing Send", mailing);
+    export var mailingSubscribe = new RouteInformationTree("Mailing Subscribe", mailing);
   export var members = new RouteInformationTree("Members", dashboard);
-    export var members_permissions = new RouteInformationTree("Members Permissions", members);
-    export var volunteer_availability = new RouteInformationTree("Volunteer Availability", members);
-    export var volunteer_schedule = new RouteInformationTree("Volunteer Schedule", members);
+    export var membersPermissions = new RouteInformationTree("Members Permissions", members);
+    export var volunteerAvailability = new RouteInformationTree("Volunteer Availability", members);
+    export var volunteerSchedule = new RouteInformationTree("Volunteer Schedule", members);
 
 
 
