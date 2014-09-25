@@ -6,7 +6,7 @@ export class RouteInformation {
     if (path) {
       this.fullPath = "/" + path;
     } else {
-      this.fullPath = "/" + this.name.replace(/\s+/g, '');
+      this.fullPath = "/" + this.name.replace(/\s+/g, "");
     }
     this.relativePath = this.fullPath;
   }
@@ -21,7 +21,7 @@ export class RouteInformationTree {
 
     // relative path is full path before fixup with parent
     if (path === undefined){
-      path = name.replace(/\s+/g, '');;
+      path = name.replace(/\s+/g, "");
     }
     this.relativePath = path;
 

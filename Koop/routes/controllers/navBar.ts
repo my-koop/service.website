@@ -12,7 +12,6 @@ function NavBar(req: express.Request, res: express.Response) {
   };
 
   res.json(links);
-  res.end();
 };
 
 export = NavBar;

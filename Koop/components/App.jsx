@@ -1,4 +1,4 @@
-var React = require("react");
+var React = require("react/addons");
 
 var MKNavigationBar = require("components/NavigationBar");
 var BSGrid = require("react-bootstrap/Grid");
@@ -10,21 +10,24 @@ var RouteInformation = require("routeInformation");
 var App = React.createClass({
   getInitialState: function () {
     return {
-      hidden:false
+      isDevBarHidden:false
     };
   },
-  showHideClick : function(){
-    var state = this.state;
-    state.hidden = !state.hidden;
-    this.setState(state);
+  toggleDevBarDisplay : function(){
+    this.setState({isDevBarHidden: !this.state.isDevBarHidden});
   },
   render: function() {
-    var showHideButtonName = this.state.hidden? "Show dev NavBar":"Hide dev NavBar";
+    var showHideButtonName = this.state.isDevBarHidden ? "Show Dev NavBar" : "Hide Dev NavBar";
+    var classes = React.addons.classSet({
+      hidden:this.state.isDevBarHidden
+    });
     return (
-      <BSGrid fluid={true}>
+      <BSGrid fluid>
         <BSRow>
-          <BSButton onClick={this.showHideClick}>{showHideButtonName}</BSButton>
-          <MKNavigationBar hidden={this.state.hidden} contentUrl={RouteInformation.devNavBar.fullPath}/>
+          <BSButton onClick={this.toggleDevBarDisplay}>{showHideButtonName}</BSButton>
+          <div className={classes}>
+            <MKNavigationBar contentUrl={RouteInformation.devNavBar.fullPath}/>
+          </div>
         </BSRow>
         <BSRow style={{border:"1px solid black"}}>
             {this.props.activeRouteHandler()}

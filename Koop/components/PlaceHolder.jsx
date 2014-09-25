@@ -5,14 +5,7 @@ var RouteInfo = require("routeInformation");
 
 var PlaceHolder = React.createClass({
   render: function() {
-    var name = this.props.displayName;
-    if(!name){
-      if(this.props.name){
-        name = this.props.name;
-      } else {
-        name = "Empty";
-      }
-    }
+    var name = this.props.displayName || this.props.name || "Empty";
     return (
       <BSCol md={12}>
         <h1>
