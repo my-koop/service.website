@@ -52,7 +52,7 @@ export var homepage = new RouteInformationTree("Homepage");
   export var pwdRcv = new RouteInformationTree("Password Recovery", homepage);
   export var myaccount = new RouteInformationTree("My Account", homepage);
     export var register = new RouteInformationTree("Register", myaccount);
-    export var login = new RouteInformationTree("Login", myaccount);
+  export var login = new RouteInformationTree("Login", homepage);
   export var shop = new RouteInformationTree("Shop", homepage);
     export var cart = new RouteInformationTree("Cart", shop);
 

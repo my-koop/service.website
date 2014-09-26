@@ -1,5 +1,6 @@
 var env = process.env.NODE_ENV;
 var path = require("path");
+var _ = require("lodash");
 var webpack = require("webpack");
 
 var isDev = env === "development";
@@ -24,25 +25,38 @@ if (isProd) {
   }));
 }
 
-var loaderList = [
-  // Styles.
-  { test: /\.less$/,
-    loaders: [
-      "style",
-      "css",
-      "autoprefixer?" + {
-        "browsers": [
-          "last 2 versions",
-          "ie 8",
-          "ie 9",
-          "android 2.3",
-          "android 4",
-          "opera 12"
-        ]
-      },
-      "less"
+var styleLoaders = [
+  "style",
+  "css",
+  "autoprefixer?" + {
+    "browsers": [
+      "last 2 versions",
+      "ie 8",
+      "ie 9",
+      "android 2.3",
+      "android 4",
+      "opera 12"
     ]
   },
+  "less"
+];
+
+var lessLoader = {
+  test: /\.less$/,
+  exclude: /\.useable\.less$/,
+  loaders: _.clone(styleLoaders)
+};
+
+styleLoaders[0] += "/useable";
+var lessUseableLoader = {
+  test: /\.useable\.less$/,
+  loaders: styleLoaders
+};
+
+var loaderList = [
+  // Styles.
+  lessLoader,
+  lessUseableLoader,
 
   // Fonts.
   { test: /\.woff$/, loader: "url?prefix=fonts/&limit=5000&mimetype=application/font-woff" },
