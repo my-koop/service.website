@@ -10,7 +10,7 @@ var RouteInformation = require("routeInformation");
 var App = React.createClass({
   getInitialState: function () {
     return {
-      isDevBarHidden:false
+      isDevBarHidden:true
     };
   },
   toggleDevBarDisplay : function(){
@@ -24,7 +24,7 @@ var App = React.createClass({
     return (
       <BSGrid fluid>
         <BSRow>
-          <BSButton onClick={this.toggleDevBarDisplay}>{showHideButtonName}</BSButton>
+          <BSButton onClick={this.toggleDevBarDisplay} bsSize="small">{showHideButtonName}</BSButton>
           <div className={classes}>
             <MKNavigationBar contentUrl={RouteInformation.devNavBar.fullPath}/>
           </div>
