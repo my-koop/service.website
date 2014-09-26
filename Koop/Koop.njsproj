@@ -54,6 +54,7 @@
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\superagent\superagent.d.ts" />
     <Content Include="components\App.jsx" />
+    <Content Include="components\DevNavBar.jsx" />
     <Content Include="components\Homepage.jsx" />
     <Content Include="components\LoginBox.jsx" />
     <Content Include="components\MyKoop.jsx" />
