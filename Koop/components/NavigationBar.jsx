@@ -1,8 +1,8 @@
 var React = require("react");
+var PropTypes = React.PropTypes;
 var RBS = require("react-bootstrap");
 
 var Router = require("react-router");
-
 var ajax = require("ajax");
 
 var NavItemLink = React.createClass({
@@ -43,7 +43,8 @@ var NavItemLink = React.createClass({
 // NavigationBar
 var NavigationBar = React.createClass({
   propTypes: {
-    links: React.PropTypes.array
+    links: PropTypes.array,
+    contentUrl : PropTypes.string.isRequired
   },
 
   getInitialState: function () {
