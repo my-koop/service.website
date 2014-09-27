@@ -21,7 +21,7 @@ var PasswordChangeForm = React.createClass({
             type="password" 
             label="New Password" 
           />
-          <BSInput block type="submit" bsStyle="success" bsSize="large" value="Update Password" />
+          <BSInput type="submit" bsStyle="primary" value="Update Password" />
         </form>
       </div>
     );

@@ -25,7 +25,7 @@ var ProfileUpdateForm = React.createClass({
             type="text" 
             label="Last Name"
           />
-          <BSInput block type="submit" bsStyle="success" bsSize="large" value="Update Profile" />
+          <BSInput type="submit" bsStyle="primary" value="Update Profile" />
         </form>
       </div>
     );
