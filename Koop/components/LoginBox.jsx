@@ -5,6 +5,7 @@ var BSInput = require("react-bootstrap/Input");
 var BSButton = require("react-bootstrap/Button");
 var BSButtonGroup = require("react-bootstrap/ButtonGroup");
 var BSPanel = require("react-bootstrap/Panel");
+var BSAlert = require("react-bootstrap/Alert");
 
 var LoginBox = React.createClass({
 
@@ -31,24 +32,58 @@ var LoginBox = React.createClass({
     }
   },
   
+  getSuccessStyle: function(state){
+    switch(state){
+      case 1: return "success";
+      case 2: return "error";
+      case 3: return "warning";
+      default: return "";
+    }
+  },
+
   onSubmit: function(e){
     e.preventDefault();
-    alert("You signed in bro!");
+    var email = this.refs.email.getValue();
+    var r1 = Math.floor(Math.random()*3)+1;
+    var r2 = (r1 == 1 && Math.floor(Math.random()*2)+1) || 0;
+    var errorMessage = 
+      (r1==2 && "Invalid E-Mail address") ||
+      (r1==3 && "Unrecognised E-Mail address") ||
+      (r2==2 && "Invalid Password") ||
+      "";
+    this.setState({
+      emailState: r1,
+      pwdState: r1 && r2,
+      errorMessage: errorMessage
+    });
   },
 
   render: function() {
     return (
       <BSCol sm={6} smOffset={3} md={4} mdOffset={4} lg={3} lgOffset={4.5}>
         <div>
-          {this.state.errorMessage ?
-            <div className="form-error">
-              {this.state.errorMessage}
-            </div>
-          : null}
           <BSPanel header="Please Sign In">
+            {this.state.errorMessage ?
+              <BSAlert bsStyle="warning">
+                {this.state.errorMessage}
+              </BSAlert>
+            : null}
             <form onSubmit={this.onSubmit}>
-              <BSInput type="email" placeholder="E-Mail" />
-              <BSInput type="password" placeholder="Password" />
+              <BSInput 
+                type="email" 
+                placeholder="E-Mail" 
+                label="E-Mail" 
+                bsStyle={this.getSuccessStyle(this.state.emailState)} 
+                hasFeedback 
+                ref="email"
+              />
+              <BSInput 
+                type="password" 
+                placeholder="Password" 
+                label="Password" 
+                bsStyle={this.getSuccessStyle(this.state.pwdState)} 
+                hasFeedback 
+              />
               <BSInput type="checkbox" label="Remember Me" />
               <BSInput block type="submit" bsStyle="success" bsSize="large" value="Login" />
             </form>
