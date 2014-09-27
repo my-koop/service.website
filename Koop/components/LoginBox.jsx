@@ -1,49 +1,40 @@
-﻿var React = require("react");
+﻿var React = require("react/addons");
 var PropTypes = React.PropTypes;
-var BSCol = require("react-bootstrap/Col");
 var BSInput = require("react-bootstrap/Input");
 var BSButton = require("react-bootstrap/Button");
 var BSButtonGroup = require("react-bootstrap/ButtonGroup");
-var BSPanel = require("react-bootstrap/Panel");
 var BSAlert = require("react-bootstrap/Alert");
 
 var LoginBox = React.createClass({
 
-  propTypes : {
+  mixins: [React.addons.LinkedStateMixin],
+
+  propTypes: {
+    state: PropTypes.object,
+    saveStateFunction: PropTypes.func
   },
 
   getInitialState: function(){
-    return {
-      errorMessage: ""
-    };
-  },
-
-  componentDidMount: function(){
-    var self = this;
-    require.ensure([],function(require){
-      self.styles = require("login.useable.less")
-      self.styles.use();
-    })
-  },
-
-  componentWillUnmount : function(){
-    if(this.styles){
-      this.styles.unuse();
-    }
+    return this.props.state || {};
   },
   
+  componentWillUnmount: function(){
+    if(this.props.saveStateFunction){
+      this.props.saveStateFunction(this.state);
+    }
+  },
+
   getSuccessStyle: function(state){
     switch(state){
       case 1: return "success";
       case 2: return "error";
       case 3: return "warning";
-      default: return "";
+      default: return null;
     }
   },
 
   onSubmit: function(e){
     e.preventDefault();
-    var email = this.refs.email.getValue();
     var r1 = Math.floor(Math.random()*3)+1;
     var r2 = (r1 == 1 && Math.floor(Math.random()*2)+1) || 0;
     var errorMessage = 
@@ -60,40 +51,37 @@ var LoginBox = React.createClass({
 
   render: function() {
     return (
-      <BSCol sm={6} smOffset={3} md={4} mdOffset={4} lg={3} lgOffset={4.5}>
-        <div>
-          <BSPanel header="Please Sign In">
-            {this.state.errorMessage ?
-              <BSAlert bsStyle="warning">
-                {this.state.errorMessage}
-              </BSAlert>
-            : null}
-            <form onSubmit={this.onSubmit}>
-              <BSInput 
-                type="email" 
-                placeholder="E-Mail" 
-                label="E-Mail" 
-                bsStyle={this.getSuccessStyle(this.state.emailState)} 
-                hasFeedback 
-                ref="email"
-              />
-              <BSInput 
-                type="password" 
-                placeholder="Password" 
-                label="Password" 
-                bsStyle={this.getSuccessStyle(this.state.pwdState)} 
-                hasFeedback 
-              />
-              <BSInput type="checkbox" label="Remember Me" />
-              <BSInput block type="submit" bsStyle="success" bsSize="large" value="Login" />
-            </form>
-            <BSButtonGroup vertical style={{display:"block"}}>
-              <BSButton block bsStyle="primary">Create your account</BSButton>
-              <BSButton block bsStyle="info" >Forgot your password</BSButton>
-            </BSButtonGroup>
-          </BSPanel>
-        </div>
-      </BSCol>
+      <div>
+        {this.state.errorMessage ?
+          <BSAlert bsStyle="warning">
+            {this.state.errorMessage}
+          </BSAlert>
+        : null}
+        <form onSubmit={this.onSubmit}>
+          <BSInput 
+            type="email" 
+            placeholder="E-Mail" 
+            label="E-Mail" 
+            bsStyle={this.getSuccessStyle(this.state.emailState)} 
+            hasFeedback 
+            valueLink={this.linkState("email")}
+          />
+          <BSInput 
+            type="password" 
+            placeholder="Password" 
+            label="Password" 
+            bsStyle={this.getSuccessStyle(this.state.pwdState)} 
+            hasFeedback 
+            valueLink={this.linkState("password")}
+          />
+          <BSInput type="checkbox" label="Remember Me" checkedLink={this.linkState("rememberMe")}/>
+          <BSInput block type="submit" bsStyle="success" bsSize="large" value="Login" />
+        </form>
+        <BSButtonGroup vertical style={{display:"block"}}>
+          <BSButton block bsStyle="primary">Create your account</BSButton>
+          <BSButton block bsStyle="info" >Forgot your password</BSButton>
+        </BSButtonGroup>
+      </div>
     );
   }
 });
