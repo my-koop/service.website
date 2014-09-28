@@ -4,6 +4,8 @@ var BSInput = require("react-bootstrap/Input");
 var BSButton = require("react-bootstrap/Button");
 var BSButtonGroup = require("react-bootstrap/ButtonGroup");
 var BSAlert = require("react-bootstrap/Alert");
+var util = require("util");
+
 
 var LoginBox = React.createClass({
 
@@ -11,7 +13,13 @@ var LoginBox = React.createClass({
 
   propTypes: {
     state: PropTypes.object,
-    saveStateFunction: PropTypes.func
+    saveStateCallback: PropTypes.func.isRequired
+  },
+
+  getDefaultProps: function(){
+    return {
+      saveStateCallback:function(){}
+    };
   },
 
   getInitialState: function(){
@@ -19,9 +27,7 @@ var LoginBox = React.createClass({
   },
   
   componentWillUnmount: function(){
-    if(this.props.saveStateFunction){
-      this.props.saveStateFunction(this.state);
-    }
+    this.props.saveStateCallback(this.state);
   },
 
   getSuccessStyle: function(state){
@@ -35,16 +41,20 @@ var LoginBox = React.createClass({
 
   onSubmit: function(e){
     e.preventDefault();
-    var r1 = Math.floor(Math.random()*3)+1;
-    var r2 = (r1 == 1 && Math.floor(Math.random()*2)+1) || 0;
+
+    // Mock request for login
+    // 1 = Success, 2 = Error, 3 = Warning
+    // todo:: use enum if this code is to live longer than v0.1
+    var emailState = Math.floor( Math.random() * 3 ) + 1;
+    var pwdState = (emailState === 1 && Math.floor( Math.random() * 2) + 1 ) || 0;
     var errorMessage = 
-      (r1==2 && "Invalid E-Mail address") ||
-      (r1==3 && "Unrecognised E-Mail address") ||
-      (r2==2 && "Invalid Password") ||
+      (emailState === 2 && util.format("Invalid E-Mail %s","address")) ||
+      (emailState === 3 && "Unrecognised E-Mail address") ||
+      (pwdState === 2 && "Invalid Password") ||
       "";
     this.setState({
-      emailState: r1,
-      pwdState: r1 && r2,
+      emailState: emailState,
+      pwdState: pwdState,
       errorMessage: errorMessage
     });
   },
@@ -77,6 +87,8 @@ var LoginBox = React.createClass({
           <BSInput type="checkbox" label="Remember Me" checkedLink={this.linkState("rememberMe")}/>
           <BSInput block type="submit" bsStyle="success" bsSize="large" value="Login" />
         </form>
+        {/*FIXME:: style on the node is to make vertical buttongroup take 100% width
+                   currently no known official way to do this*/}
         <BSButtonGroup vertical style={{display:"block"}}>
           <BSButton block bsStyle="primary">Create your account</BSButton>
           <BSButton block bsStyle="info" >Forgot your password</BSButton>

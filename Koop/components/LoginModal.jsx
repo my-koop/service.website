@@ -15,7 +15,7 @@ var LoginModal = React.createClass({
     return this.transferPropsTo(
       <BSModal title="Please Sign In" bsSize="small">
         <div className="modal-body" > 
-          <MKLoginBox state={loginState} saveStateFunction={saveLoginState}/>
+          <MKLoginBox state={loginState} saveStateCallback={saveLoginState}/>
         </div>
         <div className="modal-footer">
           <BSButton onClick={this.props.onRequestHide}>Close</BSButton>
