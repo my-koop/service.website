@@ -27,12 +27,7 @@ app.use(session({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
-
-// Catch all requests that got this far.
-app.get('*', function(req, res) {
-  // Unknown route.
-  res.status(404).send("Not found");
-});
+app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
