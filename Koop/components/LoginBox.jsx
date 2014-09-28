@@ -4,8 +4,6 @@ var BSInput = require("react-bootstrap/Input");
 var BSButton = require("react-bootstrap/Button");
 var BSButtonGroup = require("react-bootstrap/ButtonGroup");
 var BSAlert = require("react-bootstrap/Alert");
-var util = require("util");
-
 
 var LoginBox = React.createClass({
 
@@ -48,7 +46,7 @@ var LoginBox = React.createClass({
     var emailState = Math.floor( Math.random() * 3 ) + 1;
     var pwdState = (emailState === 1 && Math.floor( Math.random() * 2) + 1 ) || 0;
     var errorMessage = 
-      (emailState === 2 && util.format("Invalid E-Mail %s","address")) ||
+      (emailState === 2 && "Invalid E-Mail address") ||
       (emailState === 3 && "Unrecognised E-Mail address") ||
       (pwdState === 2 && "Invalid Password") ||
       "";
