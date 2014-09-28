@@ -57,6 +57,8 @@
     <Content Include="components\DevNavBar.jsx" />
     <Content Include="components\Homepage.jsx" />
     <Content Include="components\LoginBox.jsx" />
+    <Content Include="components\LoginModal.jsx" />
+    <Content Include="components\LoginPage.jsx" />
     <Content Include="components\MyKoop.jsx" />
     <Content Include="components\NavigationBar.jsx" />
     <Content Include="components\ParentPlaceHolder.jsx" />

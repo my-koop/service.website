@@ -10,7 +10,7 @@ var MKApp = require("components/App");
 var MKHomepage = require("components/Homepage");
 var MKPlaceHolder = require("components/PlaceHolder");
 var MKParentPlaceHolder = require("components/ParentPlaceHolder");
-var MKLoginBox = require("components/LoginBox");
+var MKLoginPage = require("components/LoginPage");
 
 var MyKoop = React.createClass({
   render: function() {
@@ -33,7 +33,7 @@ var MyKoop = React.createClass({
             </Route>
           </Route>
 
-          <Route name={RouteInfo.login.name} path={RouteInfo.login.fullPath} handler={MKLoginBox}/>
+          <Route name={RouteInfo.login.name} path={RouteInfo.login.fullPath} handler={MKLoginPage}/>
 
           {/*Admin dashboard pages*/}
           <Route name={RouteInfo.dashboard.name} path={RouteInfo.dashboard.fullPath} handler={MKParentPlaceHolder}>
