@@ -20,25 +20,20 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(methodOverride());
 app.use(session({
-    resave: true,
-    saveUninitialized: true,
-    secret: 'uwotm8'
+  resave: true,
+  saveUninitialized: true,
+  secret: 'uwotm8'
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
 
-// Catch all requests that got this far.
-app.get('*', function(req, res) {
-  // Unknown route.
-  res.status(404).send("Not found");
-});
-
 // development only
 if ('development' == app.get('env')) {
-    app.use(errorHandler());
+  app.use(express.static(path.join(__dirname, 'public')));
+  app.use(errorHandler());
 }
 
 http.createServer(app).listen(app.get('port'), function () {
-    console.log('Express server listening on port ' + app.get('port'));
+  console.log('Express server listening on port ' + app.get('port'));
 });

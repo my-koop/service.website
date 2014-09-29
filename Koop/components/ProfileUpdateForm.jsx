@@ -1,12 +1,10 @@
 ﻿var React = require("react");
-var BSCol = require("react-bootstrap/Col");
 var BSInput = require("react-bootstrap/Input");
-var BSButton = require("react-bootstrap/Button");
 
 var ProfileUpdateForm = React.createClass({
 
   onSubmit: function(e){
-    return false;
+    e.preventDefault();
   },
 
   render: function() {
