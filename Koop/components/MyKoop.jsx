@@ -11,6 +11,7 @@ var MKHomepage = require("components/Homepage");
 var MKPlaceHolder = require("components/PlaceHolder");
 var MKParentPlaceHolder = require("components/ParentPlaceHolder");
 var MKLoginPage = require("components/LoginPage");
+var MKItems = require("components/Items");
 
 var MyKoop = React.createClass({
   render: function() {
@@ -47,8 +48,8 @@ var MyKoop = React.createClass({
               <Route name={RouteInfo.eventsReport.name} path={RouteInfo.eventsReport.relativePath} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.eventsSignup.name} path={RouteInfo.eventsSignup.relativePath} handler={MKPlaceHolder}/>
             </Route>
-            <Route name={RouteInfo.items.name} path={RouteInfo.items.relativePath} handler={MKParentPlaceHolder}>
-              <DefaultRoute displayName={RouteInfo.items.name} handler={MKPlaceHolder}/>
+            <Route name={RouteInfo.items.name} path={RouteInfo.items.relativePath} handler={MKItems}>
+              <DefaultRoute displayName={RouteInfo.items.name} handler={MKItems}/>
               <Route name={RouteInfo.itemsItemsBelowThreshold.name} path={RouteInfo.itemsItemsBelowThreshold.relativePath} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.itemsNextOrder.name} path={RouteInfo.itemsNextOrder.relativePath} handler={MKPlaceHolder}/>
             </Route>
