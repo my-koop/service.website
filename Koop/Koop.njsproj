@@ -59,10 +59,13 @@
     <Content Include="components\LoginBox.jsx" />
     <Content Include="components\LoginModal.jsx" />
     <Content Include="components\LoginPage.jsx" />
+    <Content Include="components\MyAccountPage.jsx" /> 
     <Content Include="components\MyKoop.jsx" />
     <Content Include="components\NavigationBar.jsx" />
     <Content Include="components\ParentPlaceHolder.jsx" />
+    <Content Include="components\PasswordChangeForm.jsx" />
     <Content Include="components\PlaceHolder.jsx" />
+    <Content Include="components\ProfileUpdateForm.jsx" />
     <Content Include="less\login.useable.less" />
     <Content Include="less\main.less" />
     <Content Include="less\mykoop.less" />
