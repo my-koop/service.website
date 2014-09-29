@@ -67,7 +67,7 @@
     <Content Include="components\PasswordRecoveryPage.jsx" />
     <Content Include="components\PlaceHolder.jsx" />
     <Content Include="components\ProfileUpdateForm.jsx" />
-    <Content Include="less\login.useable.less" />
+    <Content Include="less\grayBg.useable.less" />
     <Content Include="less\main.less" />
     <Content Include="less\mykoop.less" />
     <Content Include="node_modules\bootstrap\less\.csscomb.json" />
