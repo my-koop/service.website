@@ -64,6 +64,7 @@
     <Content Include="components\NavigationBar.jsx" />
     <Content Include="components\ParentPlaceHolder.jsx" />
     <Content Include="components\PlaceHolder.jsx" />
+    <Content Include="css\TableSorter.css" />
     <Content Include="less\login.useable.less" />
     <Content Include="less\main.less" />
     <Content Include="less\mykoop.less" />
@@ -152,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="components\" />
+    <Folder Include="css\" />
     <Folder Include="js\" />
     <Folder Include="js\entry\" />
     <Folder Include="less\" />

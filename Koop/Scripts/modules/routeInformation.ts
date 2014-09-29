@@ -76,6 +76,8 @@ export var dashboard = new RouteInformationTree("Dashboard", homepage);
     export var volunteerAvailability = new RouteInformationTree("Volunteer Availability", members);
     export var volunteerSchedule = new RouteInformationTree("Volunteer Schedule", members);
 
+// ajax
+export var itemsData = new RouteInformation("Items ajax", "Items");
 
 
 homepage.fullPath = "/";

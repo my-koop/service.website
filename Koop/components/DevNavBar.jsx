@@ -19,7 +19,7 @@ var DevNavBar = React.createClass({
 
   getInitialState: function () {
     return {
-      isDevBarHidden: this.props.hide
+      isDevBarHidden: this.props.show
     };
   },
 
