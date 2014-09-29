@@ -3,7 +3,7 @@ var PropTypes = React.PropTypes;
 var BSCol = require("react-bootstrap/Col");
 var BSPanel = require("react-bootstrap/Panel");
 var MKLoginBox = require("components/LoginBox");
-var style = require("login.useable.less");
+var style = require("grayBg.useable.less");
 var LoginPage = React.createClass({
 
   componentDidMount: function(){
