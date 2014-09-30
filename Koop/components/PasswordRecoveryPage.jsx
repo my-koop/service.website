@@ -1,10 +1,7 @@
 ﻿var React = require("react");
-var PropTypes = React.PropTypes;
-var BSCol = require("react-bootstrap/Col");
 var BSPanel = require("react-bootstrap/Panel");
 var BSInput = require("react-bootstrap/Input");
 var BSAlert = require("react-bootstrap/Alert");
-var style = require("grayBg.useable.less");
 
 var PasswordRecoveryPage = React.createClass({
 
@@ -15,14 +12,6 @@ var PasswordRecoveryPage = React.createClass({
     };
   },
 
-  componentDidMount: function(){
-    style.use();
-  },
-
-  componentWillUnmount : function(){
-    style.unuse();
-  },
-  
   hasSentSuccessfully: function(){
     return this.state.success === 1;
   },
@@ -63,26 +52,26 @@ var PasswordRecoveryPage = React.createClass({
 
   render: function() {
     return (
-      <BSCol sm={6} smOffset={3} md={4} mdOffset={4} lg={3} lgOffset={4.5}>
-        <BSPanel header="Password Recovery">
-          {this.state.success ?
-            <BSAlert bsStyle={this.getMessageStyle()}>
-              {this.getMessage()}
-            </BSAlert>
+      <BSPanel header="Password Recovery">
+        {this.state.success ?
+          <BSAlert bsStyle={this.getMessageStyle()}>
+            {this.getMessage()}
+          </BSAlert>
+        : null}
+        <form onSubmit={this.onSubmit}>
+          <BSInput
+            type="email"
+            label="E-Mail"
+            placeholder="E-Mail"
+            labelClassName="sr-only"
+            bsStyle={this.getInputStyle()}
+            hasFeedback
+          />
+          {!this.hasSentSuccessfully() ?
+            <BSInput type="submit" bsStyle="primary" bsSize="large" value="Submit" />
           : null}
-          <form onSubmit={this.onSubmit}>
-            <BSInput
-              type="email"
-              label="E-Mail"
-              bsStyle={this.getInputStyle()}
-              hasFeedback
-            />
-            { !this.hasSentSuccessfully() ?
-              <BSInput type="submit" bsStyle="primary" bsSize="large" value="Submit" />
-            : null}
-          </form>
-        </BSPanel>
-      </BSCol>
+        </form>
+      </BSPanel>
     );
   }
 });
