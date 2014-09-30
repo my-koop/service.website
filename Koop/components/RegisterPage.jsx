@@ -4,9 +4,12 @@ var BSInput = require("react-bootstrap/Input");
 var BSAlert = require("react-bootstrap/Alert");
 var BSButton = require("react-bootstrap/Button");
 var BSAccordion = require("react-bootstrap/Accordion");
+var Router = require("react-router");
+var RouteInfo = require("routeInformation");
 
+// Variables used to traverse panels
 var totalPanels = 3;
-var FirstField = [
+var panelsFirstField = [
   "email",
   "age",
   "mailing1"
@@ -24,28 +27,59 @@ var RegisterPage = React.createClass({
     };
   },
 
+  // Indicate we sent a request and are waiting for a response
+  pendingRequest: false,
+
+  // Checks if we can send a new request to the server
+  canSendRequest: function(){
+    return !pendingRequest && !this.hasSentSuccessfully();
+  },
+  
+  // Checks if we received a positive response from the server
   hasSentSuccessfully: function(){
     return this.state.success === 1;
   },
 
   onSubmit: function(e){
     // Prevents sending another request if it succeeded
-    if(!this.hasSentSuccessfully()){
+    if( this.canSendRequest() && (this.pendingRequest = true) ){
+      var self = this;
+
+      // For now randomly generate a success/error for the request
       this.setState({
         success: Math.floor( Math.random() * 2 ) + 1
+      }, function(){
+        self.pendingRequest = false;
+        if(this.hasSentSuccessfully()){
+          // Redirect to homepage after 2 seconds
+          setTimeout(function(){
+            Router.transitionTo(RouteInfo.homepage.name);
+          },2000);
+        }
       });
     }
     e.preventDefault();
   },
 
+  // Get message to display in the form (null = no message)
   getMessage: function(){
     switch(this.state.success){
-    case 1: return "Successfully created profile";
+    case 1: return "Successfully created profile, redirecting to homepage";
     case 2: return "Error(s) in form"
     default: return null;
     }
   },
 
+  // Get style to use for message
+  getMessageStyle: function(){
+    switch(this.state.success){
+    case 1: return "success";
+    case 2: return "danger"
+    default: return null;
+    }
+  },
+
+  // Captures shift+tab & tab key to go up or down in the accordion
   checkGoingUpDownKey: function(e){
     if(e.shiftKey && e.keyCode === 9){
       this.previousPanel();
@@ -56,6 +90,7 @@ var RegisterPage = React.createClass({
     }
   },
 
+  // Captures shift+tab to go up in the accordion
   checkGoingUpKey: function(e){
     if(e.shiftKey && e.keyCode === 9){
       this.previousPanel();
@@ -63,6 +98,7 @@ var RegisterPage = React.createClass({
     }
   },
 
+  // Captures tab key to go down in the accordion
   checkGoingDownKey: function(e){
     if(!e.shiftKey && e.keyCode === 9){
       this.nextPanel();
@@ -70,23 +106,27 @@ var RegisterPage = React.createClass({
     }
   },
 
+  // Go to previous panel
   previousPanel: function(){
     var key = this.state.key ? this.state.key - 1 : totalPanels - 1;
     this.selectPanel(key);
   },
 
+  // Go to next panel
   nextPanel: function(){
     this.selectPanel((this.state.key+1)%totalPanels);
   },
 
+  // Select an arbitrary panel
   selectPanel: function(key){
     this.setState({
       key: key
     }, function(){
-      this.refs[FirstField[key]].getInputDOMNode().focus();
+      this.refs[panelsFirstField[key]].getInputDOMNode().focus();
     });
   },
 
+  // Handler when clicking on a panel header in the accordion
   handleSelect: function(selectedKey) {
     this.selectPanel(selectedKey);
   },
@@ -99,7 +139,7 @@ var RegisterPage = React.createClass({
             
             <BSPanel header="Account Info" key={0}>
               {this.state.success ?
-                <BSAlert>
+                <BSAlert bsStyle={this.getMessageStyle()}>
                   {this.getMessage()}
                 </BSAlert>
               : null}
@@ -165,6 +205,7 @@ var RegisterPage = React.createClass({
               <BSInput 
                 type="text"
                 label="Why do you use a bike"
+                placeholder="Describe why you mainly use your bike"
                 onKeyDown={this.checkGoingDownKey}
               />
               <BSButton onClick={this.nextPanel} className="pull-right">Next</BSButton>
