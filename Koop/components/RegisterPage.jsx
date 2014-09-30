@@ -114,7 +114,7 @@ var RegisterPage = React.createClass({
 
   // Go to next panel
   nextPanel: function(){
-    this.selectPanel((this.state.key+1)%totalPanels);
+    this.selectPanel((this.state.key + 1) % totalPanels);
   },
 
   // Select an arbitrary panel
@@ -227,7 +227,7 @@ var RegisterPage = React.createClass({
             </BSPanel>
 
           </BSAccordion>
-          <BSInput type="submit" bsStyle="primary" bsSize="large" value="Submit" className="pull-right"/>
+          <BSInput type="submit" bsStyle="primary" bsSize="large" value="Submit" className="pull-right" />
         </form>
       </BSPanel>
     );
