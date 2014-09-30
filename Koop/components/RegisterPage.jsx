@@ -1,4 +1,4 @@
-﻿var React = require("react");
+﻿var React = require("react/addons");
 var BSPanel = require("react-bootstrap/Panel");
 var BSInput = require("react-bootstrap/Input");
 var BSAlert = require("react-bootstrap/Alert");
@@ -9,16 +9,23 @@ var totalPanels = 3;
 var FirstField = [
   "email",
   "age",
-  "option1"
+  "mailing1"
 ];
 
 
 var RegisterPage = React.createClass({
 
+  mixins: [React.addons.LinkedStateMixin],
+
   getInitialState: function(){
     return {
-      key: 0
+      key: 0,
+      success: 0
     };
+  },
+
+  hasSentSuccessfully: function(){
+    return this.state.success === 1;
   },
 
   onSubmit: function(e){
@@ -29,6 +36,14 @@ var RegisterPage = React.createClass({
       });
     }
     e.preventDefault();
+  },
+
+  getMessage: function(){
+    switch(this.state.success){
+    case 1: return "Successfully created profile";
+    case 2: return "Error(s) in form"
+    default: return null;
+    }
   },
 
   checkGoingUpDownKey: function(e){
@@ -49,7 +64,7 @@ var RegisterPage = React.createClass({
   },
 
   checkGoingDownKey: function(e){
-    if(e.keyCode === 9){
+    if(!e.shiftKey && e.keyCode === 9){
       this.nextPanel();
       e.preventDefault();
     }
@@ -81,6 +96,7 @@ var RegisterPage = React.createClass({
       <BSPanel header="Register Form">
         <form onSubmit={this.onSubmit}>
           <BSAccordion activeKey={this.state.key} onSelect={this.handleSelect}>
+            
             <BSPanel header="Account Info" key={0}>
               {this.state.success ?
                 <BSAlert>
@@ -107,25 +123,68 @@ var RegisterPage = React.createClass({
               />
               <BSButton onClick={this.nextPanel} className="pull-right">Next</BSButton>
             </BSPanel>
+
             <BSPanel header="Optionnal Info" key={1}>
               <BSInput
                 type="number"
                 label="Age"
                 placeholder="Age"
                 ref="age"
-                onKeyDown={this.checkGoingUpDownKey}
+                onKeyDown={this.checkGoingUpKey}
+              />
+              <BSInput 
+                type="select" 
+                defaultValue="visit" 
+                label="How did you find us"
+                valueLink={this.linkState("referral")}
+              >
+                <option value="visit">On-Site Visit</option>
+                <option value="friend">Friend referral</option>
+                <option value="ads">Ads</option>
+                <option value="other">Other</option>
+              </BSInput>
+              {this.state.referral === "other" ? 
+                <BSInput 
+                  type="text"
+                  label="Please Specify"
+                  valueLink={this.linkState("referralSpecify")}
+                />
+              : null
+              }
+              <BSInput 
+                type="select" 
+                defaultValue="everyday" 
+                label="Bike usage"
+              >
+                <option value="everyday">Every Day</option>
+                <option value="fewWeek">Few times a week</option>
+                <option value="fewMonth">Few times a month</option>
+                <option value="fewYear">Few times a year</option>
+                <option value="never">Never</option>
+              </BSInput>
+              <BSInput 
+                type="text"
+                label="Why do you use a bike"
+                onKeyDown={this.checkGoingDownKey}
               />
               <BSButton onClick={this.nextPanel} className="pull-right">Next</BSButton>
             </BSPanel>
+
             <BSPanel header="Subscribe Options" key={2}>
-              <BSInput
-                type="text"
-                label="Option"
-                placeholder="Enter option choice"
-                ref="option1"
-                onKeyDown={this.checkGoingUpDownKey}
-              />
+              <BSPanel header="Mailing Lists">
+                <BSInput 
+                  type="checkbox" 
+                  label="General Mailing List"
+                  ref="mailing1"
+                  onKeyDown={this.checkGoingUpKey}
+                />
+                <BSInput 
+                  type="checkbox" 
+                  label="Events Mailing List"
+                />
+              </BSPanel>
             </BSPanel>
+
           </BSAccordion>
           <BSInput type="submit" bsStyle="primary" bsSize="large" value="Submit" className="pull-right"/>
         </form>
