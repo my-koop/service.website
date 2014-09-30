@@ -1,4 +1,4 @@
-﻿body {
+﻿/*body {
   color: #333333;
   font-family: "Helvetica Neue",Arial,sans-serif;
   font-size: 13px;
@@ -9,7 +9,7 @@ html, body, div, h1, h2, h3, h4, h5, h6, p, img, dl, dt, dd, ol, ul, li, table, 
   border: 0 none;
   margin: 0;
   padding: 0;
-}
+}*/
 
 ol, ul {
   list-style: none outside none;
