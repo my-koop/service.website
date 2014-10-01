@@ -69,6 +69,7 @@
     <Content Include="components\ProfileUpdateForm.jsx" />
     <Content Include="components\RegisterPage.jsx" />
     <Content Include="components\SimplePage.jsx" />
+    <Content Include="components\ConfirmationTrigger.jsx" />
     <Content Include="less\grayBg.useable.less" />
     <Content Include="less\main.less" />
     <Content Include="less\mykoop.less" />

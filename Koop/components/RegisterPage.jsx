@@ -7,6 +7,8 @@ var BSAccordion = require("react-bootstrap/Accordion");
 var Router = require("react-router");
 var RouteInfo = require("routeInformation");
 
+var MKConfirmationTrigger = require("components/ConfirmationTrigger");
+
 // Variables used to traverse panels
 var totalPanels = 3;
 var panelsFirstField = [
@@ -42,23 +44,7 @@ var RegisterPage = React.createClass({
 
   onSubmit: function(e){
     e.preventDefault();
-    // Prevents sending another request if it succeeded
-    if( this.canSendRequest() && (this.pendingRequest = true) ){
-      var self = this;
-
-      // For now randomly generate a success/error for the request
-      this.setState({
-        success: Math.floor( Math.random() * 2 ) + 1
-      }, function(){
-        self.pendingRequest = false;
-        if(this.hasSentSuccessfully()){
-          // Redirect to homepage after 2 seconds
-          setTimeout(function(){
-            Router.transitionTo(RouteInfo.homepage.name);
-          },2000);
-        }
-      });
-    }
+    this.refs.confirmationBox.show();
   },
 
   // Get message to display in the form (null = no message)
@@ -131,10 +117,31 @@ var RegisterPage = React.createClass({
     this.selectPanel(selectedKey);
   },
 
+  submitForm: function(){
+    var self = this;
+    return function(){
+      if( self.canSendRequest() && (self.pendingRequest = true) ){
+
+        // For now randomly generate a success/error for the request
+        self.setState({
+          success: Math.floor( Math.random() * 2 ) + 1
+        }, function(){
+          self.pendingRequest = false;
+          if(self.hasSentSuccessfully()){
+            // Redirect to homepage after 2 seconds
+            setTimeout(function(){
+              Router.transitionTo(RouteInfo.homepage.name);
+            },2000);
+          }
+        });
+      }
+    }
+  },
+
   render: function() {
     return (
-      <BSPanel header="Register Form">
-        <form onSubmit={this.onSubmit}>
+      <BSPanel header="Register Form" >
+        <form name="registerForm" onSubmit={this.onSubmit}>
           <BSAccordion activeKey={this.state.key} onSelect={this.handleSelect}>
 
             <BSPanel header="Account Info" key={0}>
@@ -228,6 +235,7 @@ var RegisterPage = React.createClass({
             </BSPanel>
 
           </BSAccordion>
+          <MKConfirmationTrigger message="Are you sure all the information is valid?" onYes={this.submitForm()} ref="confirmationBox" />
           <BSInput type="submit" bsStyle="primary" bsSize="large" value="Submit" className="pull-right" />
         </form>
       </BSPanel>
