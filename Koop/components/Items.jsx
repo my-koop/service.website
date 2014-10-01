@@ -7,7 +7,7 @@ var routeInfo = require("routeInformation");
 var BSTable = require("react-bootstrap/Table");
 var PropTypes = React.PropTypes; 
 var BSButton = require("react-bootstrap/Button");
-
+var MKAddItemQuantity = require("components/AddItemQuantity");
 
 // Inequality function map for the filtering
 var operators = {
@@ -127,7 +127,7 @@ var TableSorter = React.createClass({
             if(c != "editCol"){
               return <td>{x[c]}</td>;
             }else{
-              return <td><BSButton>{x["id"]}</BSButton></td>
+              return <td><MKAddItemQuantity idItem={x["id"]}/></td>
             }
             }, this);
         }.bind(this);
@@ -204,7 +204,6 @@ var Homepage = React.createClass({
         return (
             <BSCol md={12}>
 
-           
                 <div>
                     Coop Bécik est une coopérative de réparation qui a pour mission de rendre accessible l’utilisation du vélo comme mode de transport aux citoyen-ne-s et étudiant-e-s de Montréal.
                 </div>
