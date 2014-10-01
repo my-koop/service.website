@@ -1,14 +1,13 @@
 ﻿var React = require("react/addons");
-var PropTypes = React.PropTypes;
 var BSCol = require("react-bootstrap/Col");
 var BSTable = require("react-bootstrap/Table");
 var BSInput = require("react-bootstrap/Input");
+var BSButton = require("react-bootstrap/Button");
+var BSPanel = require("react-bootstrap/Panel");
+var Router = require("react-router");
 
-
-var RouteInformation = require("routeInformation");
+var RouteInfo = require("routeInformation");
 var Ajax = require("ajax");
-var Definitions = require("itemsThreshold");
-var headers = Definitions.Item.ITEMS_HEADER;
 var _ = require("lodash");
 
 var ItemsBelowThreshold = React.createClass({
@@ -17,38 +16,85 @@ var ItemsBelowThreshold = React.createClass({
 
   getInitialState: function(){
     return{
-      itemList: []
+      itemList: [],
+      headers: []
     }
   },
 
   componentWillMount: function(){
     var self = this;
     Ajax.request(
-      {endpoint: RouteInformation.itemsBelowThreshold.fullPath},
+      {endpoint: RouteInfo.itemsBelowThreshold.fullPath},
       function(err,res){
         if (err) {
           console.error(status, err.toString());
           return;
         }
 
-        if (res.body && _.isArray(res.body)) {
-          self.setState({ 
-            itemList: res.body
+        if (res.body.headers &&
+          res.body.data &&
+          _.isArray(res.body.headers) &&
+          _.isArray(res.body.data)
+        ) {
+          self.setState({
+            itemList: res.body.data,
+            headers: res.body.headers
           });
         }
       }
     );
   },
 
+  // Selects all checkboxes in the list
+  selectAll: function(){
+    var l = this.state.itemList.length;
+    var checkBoxState = {};
+    for(var i=0; i < l; ++i){
+      checkBoxState["item"+i] = true;
+    }
+    this.setState(checkBoxState);
+  },
+
+  // Deselects all checkboxes in the list
+  deSelectAll: function(){
+    var l = this.state.itemList.length;
+    var checkBoxState = {};
+    for(var i=0; i < l; ++i){
+      checkBoxState["item"+i] = false;
+    }
+    this.setState(checkBoxState);
+  },
+
+  // Counts how many checkbox are checked
+  countSelected: function(){
+    var l = this.state.itemList.length;
+    var count = 0;
+    for(var i=0; i < l; ++i){
+      // convert value to a boolean before adding
+      count += !!this.state["item"+i];
+    }
+    return count;
+  },
+
+  onSubmit: function(e){
+    e.preventDefault();
+    // only transition if something is selected
+    if(this.countSelected() > 0){
+      Router.transitionTo(RouteInfo.itemsNextOrder.name);
+    }
+  },
+
   render: function() {
     var self = this;
-    var header = headers.map(function(head, index){
+    var headers = this.state.headers;
+    var headerComponents = headers.map(function(head, index){
       return (<th key={index}>{head.title}</th>);
     });
 
     var data = this.state.itemList.map(function(item, i){
       var itemFields = headers.map(function(head, j){
         if(j===0){
+          // The first item is a checkbox with the content as the label
           return (
             <td key={j}>
               <BSInput
@@ -70,19 +116,31 @@ var ItemsBelowThreshold = React.createClass({
     });
 
     return (
-      <BSCol>
-        <form>
-          <BSTable striped bordered condensed hover>
-            <thead>
-              <tr>
-                {header}
-              </tr>
-            </thead>
-            <tbody>
-              {data}
-            </tbody>
-          </BSTable>
-        </form>
+      <BSCol md={6}>
+        <BSPanel header="Items to Order" >
+          <BSButton onClick={this.selectAll}>Select All</BSButton>
+          <BSButton onClick={this.deSelectAll}>DeSelect All</BSButton>
+          <form onSubmit={this.onSubmit}>
+            <BSTable striped bordered condensed hover>
+              <thead>
+                <tr>
+                  {headerComponents}
+                </tr>
+              </thead>
+              <tbody>
+                {data}
+              </tbody>
+            </BSTable>
+            {this.countSelected() > 0 ?
+              <BSInput
+                type="submit"
+                bsStyle="primary"
+                value="Add Selection to next order"
+                className="pull-right"
+              />
+            : null }
+          </form>
+        </BSPanel>
       </BSCol>
     );
   }

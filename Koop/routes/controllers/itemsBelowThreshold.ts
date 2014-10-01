@@ -16,7 +16,11 @@ var muckData = [
 ];
 
 function ItemsBelowThreshold(req: express.Request, res: express.Response) {
-  res.json(muckData);
+
+  res.json({
+    headers: definitions.Item.ITEMS_HEADER,
+    data: muckData
+  });
 };
 
 export = ItemsBelowThreshold;
