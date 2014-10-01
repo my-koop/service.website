@@ -17,5 +17,6 @@ function indexApp(app: express.Express) {
 
   // Backend routes.
   app.get(routeInfo.devNavBar.fullPath, ctrl.navBar);
+  app.get(routeInfo.itemsBelowThreshold.fullPath, ctrl.itemsThreshold);
 }
 export = indexApp;
