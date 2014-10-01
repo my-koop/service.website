@@ -1,44 +1,16 @@
 var React = require("react");
-var PropTypes = React.PropTypes;
-var RBS = require("react-bootstrap");
-
 var Router = require("react-router");
+
+var BSNavbar = require("react-bootstrap/Navbar");
+var BSNav = require("react-bootstrap/Nav");
+
+var MKNavItemLink = require("components/NavItemLink");
+
 var ajax = require("ajax");
 
-var NavItemLink = React.createClass({
-  mixins: [ Router.ActiveState ],
+var PropTypes = React.PropTypes;
 
-  getInitialState: function () {
-    return {
-      isActive: false
-    };
-  },
 
-  updateActiveState: function() {
-    this.setState({
-      isActive: false
-      //FIXME: For now "/" is considered active when in "/users".
-      //isActive: NavItemLink.isActive(this.props.to, this.props.params, this.props.query)
-    });
-  },
-
-  render: function() {
-    return this.transferPropsTo(
-      <RBS.NavItem
-        active={this.state.isActive}
-        onClick={this.handleClick}
-      >
-        {this.props.children}
-      </RBS.NavItem>
-    );
-  },
-
-  handleClick: function(e) {
-    e.preventDefault();
-
-    Router.transitionTo(this.props.to, this.props.params, this.props.query);
-  }
-});
 
 // NavigationBar
 var NavigationBar = React.createClass({
@@ -73,21 +45,21 @@ var NavigationBar = React.createClass({
   render : function() {
     var links = this.state.links.map(function(link, index) {
       return (
-        <NavItemLink
+        <MKNavItemLink
           key={index}
           to={link.url}
         >
           {link.name}
-        </NavItemLink>
+        </MKNavItemLink>
       );
     });
     return (
       <div>
-        <RBS.Navbar toggleNavKey={1}>
-          <RBS.Nav key={1}>
+        <BSNavbar toggleNavKey={1}>
+          <BSNav key={1}>
             {links}
-          </RBS.Nav>
-        </RBS.Navbar>
+          </BSNav>
+        </BSNavbar>
       </div>
     );
   }

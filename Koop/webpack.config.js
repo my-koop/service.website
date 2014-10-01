@@ -59,10 +59,11 @@ var loaderList = [
   lessUseableLoader,
 
   // Fonts.
-  { test: /\.woff$/, loader: "url?prefix=fonts/&limit=5000&mimetype=application/font-woff" },
-  { test: /\.ttf$/,  loader: "file?prefix=fonts/" },
-  { test: /\.eot$/,  loader: "file?prefix=fonts/" },
-  { test: /\.svg$/,  loader: "file?prefix=fonts/" },
+  //FIXME: Removed $ in these tests, but this could be a problem with webpack.
+  { test: /\.woff/, loader: "url?prefix=fonts/&limit=5000&mimetype=application/font-woff" },
+  { test: /\.ttf/,  loader: "file?prefix=fonts/" },
+  { test: /\.eot/,  loader: "file?prefix=fonts/" },
+  { test: /\.svg/,  loader: "file?prefix=fonts/" },
 
   // Images.
   { test: /\.(png|jpg)$/, loader: "url-loader?limit=8192"},
@@ -120,6 +121,7 @@ module.exports = {
     // in our files.
     alias: {
       "bootstrap-styles": "bootstrap/less",
+      "font-awesome-styles": "font-awesome/less",
       components: path.join(__dirname, "components")
     }
   },
