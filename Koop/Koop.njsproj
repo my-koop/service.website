@@ -159,7 +159,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="components\" />
-    <Folder Include="css\" />
     <Folder Include="js\" />
     <Folder Include="js\entry\" />
     <Folder Include="less\" />

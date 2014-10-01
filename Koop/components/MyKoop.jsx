@@ -16,7 +16,7 @@ var MKLoginPage            = require("components/LoginPage");
 var MKMyAccountPage        = require("components/MyAccountPage");
 var MKPasswordRecoveryPage = require("components/PasswordRecoveryPage");
 var MKRegisterPage         = require("components/RegisterPage");
-var MKItems 			   = require("components/Items");
+var MKItems                = require("components/Items");
 
 var MyKoop = React.createClass({
   render: function() {
@@ -53,7 +53,7 @@ var MyKoop = React.createClass({
               <Route name={RouteInfo.eventsReport.name} path={RouteInfo.eventsReport.relativePath} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.eventsSignup.name} path={RouteInfo.eventsSignup.relativePath} handler={MKPlaceHolder}/>
             </Route>
-            <Route name={RouteInfo.items.name} path={RouteInfo.items.relativePath} handler={MKItems}>
+            <Route name={RouteInfo.items.name} path={RouteInfo.items.relativePath} handler={MKParentPlaceHolder}>
               <DefaultRoute displayName={RouteInfo.items.name} handler={MKItems}/>
               <Route name={RouteInfo.itemsItemsBelowThreshold.name} path={RouteInfo.itemsItemsBelowThreshold.relativePath} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.itemsNextOrder.name} path={RouteInfo.itemsNextOrder.relativePath} handler={MKPlaceHolder}/>
