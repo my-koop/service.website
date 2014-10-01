@@ -55,6 +55,7 @@
     <TypeScriptCompile Include="Scripts\typings\superagent\superagent.d.ts" />
     <Content Include="components\App.jsx" />
     <Content Include="components\DevNavBar.jsx" />
+    <Content Include="components\EventsList.jsx" />
     <Content Include="components\FilterableItemList.jsx" />
     <Content Include="components\FormElementFactory.jsx" />
     <Content Include="components\Homepage.jsx" />
