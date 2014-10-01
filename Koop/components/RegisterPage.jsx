@@ -149,17 +149,20 @@ var RegisterPage = React.createClass({
                 placeholder="E-Mail"
                 autoFocus
                 ref="email"
+                required
               />
               <BSInput
                 type="password"
                 label="Password"
                 placeholder="Password"
+                required
               />
               <BSInput
                 type="password"
                 label="Confirm Password"
                 placeholder="Confirm Password"
                 onKeyDown={this.checkGoingDownKey}
+                required
               />
               <BSButton onClick={this.nextPanel} className="pull-right">Next</BSButton>
             </BSPanel>
@@ -212,18 +215,16 @@ var RegisterPage = React.createClass({
             </BSPanel>
 
             <BSPanel header="Subscribe Options" key={2}>
-              <BSPanel header="Mailing Lists">
-                <BSInput
-                  type="checkbox"
-                  label="General Mailing List"
-                  ref="mailing1"
-                  onKeyDown={this.checkGoingUpKey}
-                />
-                <BSInput
-                  type="checkbox"
-                  label="Events Mailing List"
-                />
-              </BSPanel>
+              <BSInput
+                type="checkbox"
+                label="General Mailing List"
+                ref="mailing1"
+                onKeyDown={this.checkGoingUpKey}
+              />
+              <BSInput
+                type="checkbox"
+                label="Events Mailing List"
+              />
             </BSPanel>
 
           </BSAccordion>
