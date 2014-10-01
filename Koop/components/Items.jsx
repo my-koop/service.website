@@ -7,7 +7,7 @@ var routeInfo = require("routeInformation");
 var BSTable = require("react-bootstrap/Table");
 var PropTypes = React.PropTypes; 
 var BSButton = require("react-bootstrap/Button");
-var MKAddItemQuantity = require("components/AddItemQuantity");
+var BSInput = require("react-bootstrap/Input");
 
 // Inequality function map for the filtering
 var operators = {
@@ -123,12 +123,24 @@ var TableSorter = React.createClass({
         }.bind(this);
 
         var cell = function(x) {
-          return columnNames.map(function(c) {
-            if(c != "editCol"){
-              return <td>{x[c]}</td>;
-            }else{
-              return <td><MKAddItemQuantity idItem={x["id"]}/></td>
+          return columnNames.map(function(colName) {
+
+            switch(colName){
+              case "editCol":
+                return <td>
+                        <BSButton bsSize="small">Edit item  </BSButton><br/>
+                       </td>;
+                break;
+              case "addCol":
+                return <td>
+                         <BSInput type="text" placeholder="Enter quantity"/>
+                         <BSButton>Add quantity to stock (ID:{x["id"]}) </BSButton>
+                       </td>;
+                break;
+              default:
+                return <td>{x[colName]}</td>;
             }
+
             }, this);
         }.bind(this);
 
@@ -192,10 +204,11 @@ module.exports = Homepage;
 var CONFIG = {
     sort: { column: "col2", order: "desc" },
     columns: {
-        col1: { name: "Col haboub", filterText: "", defaultSortOrder: "desc"},
-        col2: { name: "Col2", filterText: "", defaultSortOrder: "desc"},
-        col3: { name: "Col3", filterText: "", defaultSortOrder: "desc"},
-        editCol: { name: "Edit", filterText: "", defaultSortOrder: "none"}
+        col1: { name: "Col 1", filterText: "", defaultSortOrder: "desc"},
+        col2: { name: "Col 2", filterText: "", defaultSortOrder: "desc"},
+        col3: { name: "Col 3", filterText: "", defaultSortOrder: "desc"},
+        editCol: { name: "Edit", filterText: "", defaultSortOrder: "none"},
+        addCol: { name: "Add", filterText: "", defaultSortOrder: "none"}
     }
 };
 
@@ -212,9 +225,7 @@ var Homepage = React.createClass({
                 </div>
 
                 <div>
-
                     <TableSorter config={CONFIG} headerRepeat="8" />
-
                </div>
 
 
