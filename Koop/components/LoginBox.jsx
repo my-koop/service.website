@@ -69,7 +69,8 @@ var LoginBox = React.createClass({
           <BSInput 
             type="email" 
             placeholder="E-Mail" 
-            label="E-Mail" 
+            label="E-Mail"
+            labelClassName="sr-only"
             bsStyle={this.getSuccessStyle(this.state.emailState)} 
             hasFeedback 
             valueLink={this.linkState("email")}
@@ -78,6 +79,7 @@ var LoginBox = React.createClass({
             type="password" 
             placeholder="Password" 
             label="Password" 
+            labelClassName="sr-only"
             bsStyle={this.getSuccessStyle(this.state.pwdState)} 
             hasFeedback 
             valueLink={this.linkState("password")}
