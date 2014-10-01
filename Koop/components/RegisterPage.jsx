@@ -32,15 +32,16 @@ var RegisterPage = React.createClass({
 
   // Checks if we can send a new request to the server
   canSendRequest: function(){
-    return !pendingRequest && !this.hasSentSuccessfully();
+    return !this.pendingRequest && !this.hasSentSuccessfully();
   },
-  
+
   // Checks if we received a positive response from the server
   hasSentSuccessfully: function(){
     return this.state.success === 1;
   },
 
   onSubmit: function(e){
+    e.preventDefault();
     // Prevents sending another request if it succeeded
     if( this.canSendRequest() && (this.pendingRequest = true) ){
       var self = this;
@@ -58,7 +59,6 @@ var RegisterPage = React.createClass({
         }
       });
     }
-    e.preventDefault();
   },
 
   // Get message to display in the form (null = no message)
@@ -136,7 +136,7 @@ var RegisterPage = React.createClass({
       <BSPanel header="Register Form">
         <form onSubmit={this.onSubmit}>
           <BSAccordion activeKey={this.state.key} onSelect={this.handleSelect}>
-            
+
             <BSPanel header="Account Info" key={0}>
               {this.state.success ?
                 <BSAlert bsStyle={this.getMessageStyle()}>
@@ -172,9 +172,9 @@ var RegisterPage = React.createClass({
                 ref="age"
                 onKeyDown={this.checkGoingUpKey}
               />
-              <BSInput 
-                type="select" 
-                defaultValue="visit" 
+              <BSInput
+                type="select"
+                defaultValue="visit"
                 label="How did you find us"
                 valueLink={this.linkState("referral")}
               >
@@ -183,17 +183,17 @@ var RegisterPage = React.createClass({
                 <option value="ads">Ads</option>
                 <option value="other">Other</option>
               </BSInput>
-              {this.state.referral === "other" ? 
-                <BSInput 
+              {this.state.referral === "other" ?
+                <BSInput
                   type="text"
                   label="Please Specify"
                   valueLink={this.linkState("referralSpecify")}
                 />
               : null
               }
-              <BSInput 
-                type="select" 
-                defaultValue="everyday" 
+              <BSInput
+                type="select"
+                defaultValue="everyday"
                 label="Bike usage"
               >
                 <option value="everyday">Every Day</option>
@@ -202,7 +202,7 @@ var RegisterPage = React.createClass({
                 <option value="fewYear">Few times a year</option>
                 <option value="never">Never</option>
               </BSInput>
-              <BSInput 
+              <BSInput
                 type="text"
                 label="Why do you use a bike"
                 placeholder="Describe why you mainly use your bike"
@@ -213,14 +213,14 @@ var RegisterPage = React.createClass({
 
             <BSPanel header="Subscribe Options" key={2}>
               <BSPanel header="Mailing Lists">
-                <BSInput 
-                  type="checkbox" 
+                <BSInput
+                  type="checkbox"
                   label="General Mailing List"
                   ref="mailing1"
                   onKeyDown={this.checkGoingUpKey}
                 />
-                <BSInput 
-                  type="checkbox" 
+                <BSInput
+                  type="checkbox"
                   label="Events Mailing List"
                 />
               </BSPanel>
