@@ -22,17 +22,16 @@ var operators = {
 var TableSorter = React.createClass({
   propTypes: {
     state: PropTypes.object,
-    saveStateCallback: PropTypes.func.isRequired,
     items: PropTypes.array,
-    sort : PropTypes.array,
-    columns : PropTypes.array
+    sort : PropTypes.object,
+    columns : PropTypes.object
   },
   getInitialState: function() {
-      return {
-          items: this.props.initialItems || [],
-          sort: this.props.config.sort || { column: "", order: "" },
-          columns: this.props.config.columns
-      };
+    return {
+      items: this.props.initialItems || [],
+      sort: this.props.config.sort || { column: "", order: "" },
+      columns: this.props.config.columns
+    };
   },
   componentWillMount: function() {
     var self = this;
@@ -63,13 +62,13 @@ var TableSorter = React.createClass({
   },
   sortColumn: function(column) {
     return function(event) {
-        var newSortOrder = (this.state.sort.order == "asc") ? "desc" : "asc";
+      var newSortOrder = (this.state.sort.order == "asc") ? "desc" : "asc";
 
-        if (this.state.sort.column != column) {
-            newSortOrder = this.state.columns[column].defaultSortOrder;
-        }
+      if (this.state.sort.column != column) {
+          newSortOrder = this.state.columns[column].defaultSortOrder;
+      }
 
-        this.setState({sort: { column: column, order: newSortOrder }});
+      this.setState({sort: { column: column, order: newSortOrder }});
     }.bind(this);
   },
   sortClass: function(column) {
@@ -89,15 +88,15 @@ var TableSorter = React.createClass({
       filters[column] = null;
 
       if (filterText.length > 0) { 
-          operandMatch = operandRegex.exec(filterText);
-          if (operandMatch && operandMatch.length == 3) {
-              //filters[column] = Function.apply(null, ["x", "return x " + operandMatch[1] + " " + operandMatch[2]]);
-              filters[column] = function(match) { return function(x) { return operators[match[1]](x, match[2]); }; }(operandMatch); 
-          } else {
-              filters[column] = function(x) {
-                  return (x.toString().toLowerCase().indexOf(filterText.toLowerCase()) > -1);
-              };
-          }
+        operandMatch = operandRegex.exec(filterText);
+        if (operandMatch && operandMatch.length == 3) {
+            //filters[column] = Function.apply(null, ["x", "return x " + operandMatch[1] + " " + operandMatch[2]]);
+            filters[column] = function(match) { return function(x) { return operators[match[1]](x, match[2]); }; }(operandMatch); 
+        } else {
+            filters[column] = function(x) {
+                return (x.toString().toLowerCase().indexOf(filterText.toLowerCase()) > -1);
+            };
+        }
       }
     }, this);
 
@@ -113,7 +112,7 @@ var TableSorter = React.createClass({
 
     var headerExtra = function() {
       return columnNames.map(function(c) {
-          return <th className="header-extra">{this.state.columns[c].name}</th>;
+        return <th className="header-extra">{this.state.columns[c].name}</th>;
       }, this);   
     }.bind(this);
 
@@ -121,18 +120,26 @@ var TableSorter = React.createClass({
       return columnNames.map(function(colName) {
         switch(colName){
           case "editCol":
-            return <td>
-                    <BSButton bsSize="small">Edit item  </BSButton><br/>
-                   </td>;
+            return (
+              <td>
+               <BSButton bsSize="small">Edit item  </BSButton><br/>
+              </td>
+            );
             break;
           case "addCol":
-            return <td>
-                     <BSInput type="text" placeholder="Enter quantity"/>
-                     <BSButton>Add quantity to stock (ID:{x["id"]}) </BSButton>
-                   </td>;
+            return (
+              <td>
+                <BSInput type="text" placeholder="Enter quantity"/>
+                <BSButton>Add quantity to stock (ID:{x["id"]}) </BSButton>
+              </td>
+          );
             break;
           default:
-            return <td>{x[colName]}</td>;
+            return (
+              <td>
+                {x[colName]}
+              </td>
+            );
         }
 
         }, this);
@@ -150,8 +157,8 @@ var TableSorter = React.createClass({
 
       rows.push(
         <tr key={item.id}>
-        { cell(item) }
-      </tr>
+          { cell(item) }
+        </tr>
       );
     }.bind(this));
 
@@ -188,9 +195,6 @@ var TableSorter = React.createClass({
   }
 });
 
-module.exports = Homepage;
-
-
 // TableSorter Config
 var CONFIG = {
     sort: { column: "col2", order: "desc" },
@@ -203,16 +207,16 @@ var CONFIG = {
     }
 };
 
-var Homepage = React.createClass({
-    render: function() {
-        return (
-            <BSCol md={12}>
-                <div>
-                    <TableSorter config={CONFIG} headerRepeat="8" />
-               </div>
-            </BSCol>
-        );
+var Items = React.createClass({
+  render: function() {
+      return (
+          <BSCol md={12}>
+              <div>
+                  <TableSorter config={CONFIG} headerRepeat="8" />
+             </div>
+          </BSCol>
+      );
 }
 });
 
-module.exports = Homepage;
+module.exports = Items;
