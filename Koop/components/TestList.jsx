@@ -7,20 +7,20 @@ var button = <BSButton>Edit </BSButton>;
 
 var headers = ["ID","Username","Name","UseBike","Fonction"];
 var data = [
-	["1","AS","Adam","Yes",button],
-	["2","ML","Moe","No",button],
-	["3","HS","Homer","No",button]
-	];
+    ["1","AS","Adam","Yes",button],
+    ["2","ML","Moe","No",button],
+    ["3","HS","Homer","No",button]
+    ];
 var filters = [
-	{
-	  "properties": {
-		"name": "search",
-		"placeholder": "search",
-		"label": "search"
-	  },
-	 "type": "text"
-	},
-	{
+    {
+      "properties": {
+        "name": "search",
+        "placeholder": "search",
+        "label": "search"
+      },
+     "type": "text"
+    },
+    {
   "properties": {
     "name": "Dropdown",
     "label": "Dropdown",
@@ -67,20 +67,19 @@ var filters = [
   "properties": {
     "name": "Checkbox",
     "label": "Checkbox",
-	"isChecked": true
+    "isChecked": true
   },
   "type": "checkbox"
 }
 
 ];
 var TestList = React.createClass({
-	render: function(){
-		var filter = true;
-		return (
-			<FilteredList isFiltered={filter} filterOptions={filters} headers={headers} data={data} />
-		);
-
-	}
+    render: function(){
+      var filter = true;
+      return (
+        <FilteredList isFiltered={filter} filterOptions={filters} headers={headers} data={data} />
+      );
+    }
 });
 
 module.exports = TestList;
