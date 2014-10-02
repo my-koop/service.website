@@ -17,7 +17,8 @@ var ItemsBelowThreshold = React.createClass({
   getInitialState: function(){
     return{
       itemList: [],
-      headers: []
+      headers: [],
+      checkboxes: {}
     }
   },
 
@@ -31,7 +32,8 @@ var ItemsBelowThreshold = React.createClass({
           return;
         }
 
-        if (_.isArray(res.body.headers) &&
+        if (
+          _.isArray(res.body.headers) &&
           _.isArray(res.body.data)
         ) {
           self.setState({
@@ -47,31 +49,20 @@ var ItemsBelowThreshold = React.createClass({
   selectAll: function(){
     var l = this.state.itemList.length;
     var checkBoxState = {};
-    for(var i=0; i < l; ++i){
-      checkBoxState["item"+i] = true;
+    for(var i = 0; i < l; ++i){
+      checkBoxState[i] = true;
     }
-    this.setState(checkBoxState);
+    this.setState({checkboxes:checkBoxState});
   },
 
   // Deselects all checkboxes in the list
   unselectAll: function(){
-    var l = this.state.itemList.length;
-    var checkBoxState = {};
-    for(var i=0; i < l; ++i){
-      checkBoxState["item"+i] = false;
-    }
-    this.setState(checkBoxState);
+    this.setState({checkboxes:{}});
   },
 
   // Counts how many checkbox are checked
   countSelected: function(){
-    var l = this.state.itemList.length;
-    var count = 0;
-    for(var i=0; i < l; ++i){
-      // convert value to a boolean before adding
-      count += !!this.state["item"+i];
-    }
-    return count;
+    return Object.keys(this.state.checkboxes).length;
   },
 
   onSubmit: function(e){
@@ -80,6 +71,16 @@ var ItemsBelowThreshold = React.createClass({
     if(this.countSelected() > 0){
       Router.transitionTo(RouteInfo.itemsNextOrder.name);
     }
+  },
+
+  onCheckboxChange: function(i, checked){
+    var checkboxes = this.state.checkboxes;
+    if(checked){
+      checkboxes[i] = true;
+    } else {
+      delete checkboxes[i];
+    }
+    this.setState({checkboxes:checkboxes});
   },
 
   render: function() {
@@ -91,18 +92,23 @@ var ItemsBelowThreshold = React.createClass({
 
     var data = this.state.itemList.map(function(item, i){
       var itemFields = headers.map(function(head, j){
-        if(j===0){
+        if(j === 0){
+          var valueLink = {
+            value: self.state.checkboxes[i],
+            requestChange: self.onCheckboxChange.bind(null,i)
+          }
           // The first item is a checkbox with the content as the label
           return (
             <td key={j}>
               <BSInput
                 type="checkbox"
-                checkedLink={self.linkState("item" + i)}
+                checkedLink={valueLink}
                 label={item[head.key]}
               />
             </td>
           );
         }
+
         return (<td key={j}>{item[head.key]}</td>);
       });
 
@@ -142,6 +148,7 @@ var ItemsBelowThreshold = React.createClass({
       </BSCol>
     );
   }
+
 });
 
 module.exports = ItemsBelowThreshold;
