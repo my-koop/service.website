@@ -15,6 +15,7 @@ var MKLoginPage            = require("components/LoginPage");
 var MKMyAccountPage        = require("components/MyAccountPage");
 var MKPasswordRecoveryPage = require("components/PasswordRecoveryPage");
 var MKRegisterPage         = require("components/RegisterPage");
+var MKUserPrivilegesPage   = require("components/UserPrivilegesPage");
 
 var MyKoop = React.createClass({
   render: function() {
@@ -63,7 +64,7 @@ var MyKoop = React.createClass({
             </Route>
             <Route name={RouteInfo.members.name} path={RouteInfo.members.relativePath} handler={MKParentPlaceHolder}>
               <DefaultRoute displayName={RouteInfo.members.name} handler={MKPlaceHolder}/>
-              <Route name={RouteInfo.membersPermissions.name} path={RouteInfo.membersPermissions.relativePath} handler={MKPlaceHolder}/>
+              <Route name={RouteInfo.membersPermissions.name} path={RouteInfo.membersPermissions.relativePath} handler={MKUserPrivilegesPage}/>
               <Route name={RouteInfo.volunteerAvailability.name} path={RouteInfo.volunteerAvailability.relativePath} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.volunteerSchedule.name} path={RouteInfo.volunteerSchedule.relativePath} handler={MKPlaceHolder}/>
             </Route>
