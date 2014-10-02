@@ -51,8 +51,8 @@ var MyKoop = React.createClass({
             <Route name={RouteInfo.options.name} path={RouteInfo.options.relativePath} handler={MKPlaceHolder}/>
             <Route name={RouteInfo.stats.name} path={RouteInfo.stats.relativePath} handler={MKPlaceHolder}/>
             <Route name={RouteInfo.transaction.name} path={RouteInfo.transaction.relativePath} handler={MKTransactionList}/>
-            <Route name={RouteInfo.events.name} path={RouteInfo.events.relativePath} handler={MKEventsList}>
-              <DefaultRoute displayName={RouteInfo.events.name} handler={MKPlaceHolder}/>
+            <Route name={RouteInfo.events.name} path={RouteInfo.events.relativePath} handler={MKParentPlaceHolder}>
+              <DefaultRoute displayName={RouteInfo.events.name} handler={MKEventsList}/>
               <Route name={RouteInfo.eventsPos.name} path={RouteInfo.eventsPos.relativePath} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.eventsReport.name} path={RouteInfo.eventsReport.relativePath} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.eventsSignup.name} path={RouteInfo.eventsSignup.relativePath} handler={MKPlaceHolder}/>
