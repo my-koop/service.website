@@ -19,6 +19,7 @@ var MKRegisterPage         = require("components/RegisterPage");
 var MKUserPrivilegesPage   = require("components/UserPrivilegesPage");
 var MKEventsList           = require("components/EventsList");
 var MKItems                = require("components/Items");
+var MKTransactionList      = require("components/TransactionList")
 
 var MyKoop = React.createClass({
   render: function() {
@@ -48,7 +49,7 @@ var MyKoop = React.createClass({
             <DefaultRoute handler={MKHomepage}/>
             <Route name={RouteInfo.options.name} path={RouteInfo.options.relativePath} handler={MKPlaceHolder}/>
             <Route name={RouteInfo.stats.name} path={RouteInfo.stats.relativePath} handler={MKPlaceHolder}/>
-            <Route name={RouteInfo.transaction.name} path={RouteInfo.transaction.relativePath} handler={MKPlaceHolder}/>
+            <Route name={RouteInfo.transaction.name} path={RouteInfo.transaction.relativePath} handler={MKTransactionList}/>
             <Route name={RouteInfo.events.name} path={RouteInfo.events.relativePath} handler={MKEventsList}>
               <DefaultRoute displayName={RouteInfo.events.name} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.eventsPos.name} path={RouteInfo.eventsPos.relativePath} handler={MKPlaceHolder}/>
