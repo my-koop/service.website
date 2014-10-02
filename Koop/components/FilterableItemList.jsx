@@ -1,11 +1,11 @@
 //Component hierarchy
 //FilterableItemList
-//	FilterOptions
-//		FilterOption
-//	ItemList
-//		ItemListHeader
-//		ItemRow
-//			ItemRowElement
+//  FilterOptions
+//    FilterOption
+//  ItemList
+//    ItemListHeader
+//    ItemRow
+//      ItemRowElement
 
 var React = require("react");
 var PropTypes = React.PropTypes;
@@ -32,10 +32,10 @@ var ItemRow = React.createClass({
   },
  
   render: function(){
-    rowElements = this.props.rowData.map(function(rowElementData){
+    rowElements = this.props.rowData.map(function(rowElementData,key){
       return (
-        <ItemRowElement cellData={rowElementData} />
-      );	
+        <ItemRowElement key={key} cellData={rowElementData} />
+      );
     });
     return (
       <tr>
@@ -52,9 +52,9 @@ var ItemListHeader = React.createClass({
   },
   
   render: function(){
-    headers = this.props.headerList.map(function(header){
+    headers = this.props.headerList.map(function(header,key){
       return (
-        <th> {header} </th>
+        <th key={key}> {header} </th>
       );
     });
 
@@ -75,9 +75,9 @@ var ItemList = React.createClass({
     tableData : PropTypes.array.isRequired
   },
   render: function(){
-    rows = this.props.tableData.map(function(data){
+    rows = this.props.tableData.map(function(data,key){
       return (
-          <ItemRow rowData={data} />
+          <ItemRow key={key} rowData={data} />
       );
     });
     return (
@@ -98,9 +98,10 @@ var FilterOptions = React.createClass({
     options : PropTypes.array
   },
   render: function() {
-    optionsArray = this.props.options.map(function(option) {
+    optionsArray = this.props.options.map(function(option,key) {
       return (
         <FormElementFactory
+          key  ={key}
           type = {option.type}
           properties = {option.properties}/>
         );
@@ -108,7 +109,7 @@ var FilterOptions = React.createClass({
     return (
       <div>
         {optionsArray}
-      </div>	
+      </div>
     );
   }
 
@@ -116,9 +117,9 @@ var FilterOptions = React.createClass({
 
 var FilterableItemList = React.createClass({
   propTypes: {
-    isFiltered	  : PropTypes.bool.isRequired,
+    isFiltered    : PropTypes.bool.isRequired,
     filterOptions : PropTypes.array,
-    data		  : PropTypes.array.isRequired,
+    data          : PropTypes.array.isRequired,
     headers       : PropTypes.array.isRequired
   },
   

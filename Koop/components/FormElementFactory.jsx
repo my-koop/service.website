@@ -9,9 +9,9 @@ var FormElementSelect = React.createClass({
     name     : PropTypes.string.isRequired
   },
   render: function(){
-    options = this.props.options.map(function(option){
+    options = this.props.options.map(function(option,key){
       return (
-          <option name={option.name}>
+          <option key={key} name={option.name}>
           {option.value}
           </option>
       );
@@ -28,10 +28,10 @@ var FormElementSelect = React.createClass({
 
 var FormElementText = React.createClass({
     propTypes: {
-        label		 : PropTypes.string.isRequired,
-        name		 : PropTypes.string.isRequired,
+        label        : PropTypes.string.isRequired,
+        name         : PropTypes.string.isRequired,
         defaultValue : PropTypes.string,
-        value		 : PropTypes.string,
+        value        : PropTypes.string,
         placeholder  : PropTypes.string
     },
     getDefaultProps: function(){
@@ -48,11 +48,11 @@ var FormElementText = React.createClass({
         return (
           <div>
             <BSInput type="text"
-              label		  ={this.props.label} 
+              label       ={this.props.label} 
               name        ={this.props.name} 
               defaultValue={this.props.defaultValue} 
               placeholder ={this.props.placeholder} 
-              value		  ={this.props.value} />
+              value       ={this.props.value} />
           </div>
         )
     }
@@ -66,9 +66,9 @@ var FormElementRadioGroup = React.createClass({
   },
   render: function(){
     var name = this.props.name;
-    var group = this.props.values.map(function(radio){
+    var group = this.props.values.map(function(radio,key){
       return (
-        <BSInput type="radio" label={radio.label} name={name} value={radio.value} />            
+        <BSInput type="radio" key={key} label={radio.label} name={name} value={radio.value} />            
       );
     });
     return (
@@ -116,19 +116,19 @@ var FormElementFactory = React.createClass({
                          break;
           case "text": element = <FormElementText 
                                    label       ={this.props.properties.label}
-                                   name		   ={this.props.properties.name}
+                                   name        ={this.props.properties.name}
                                    defaultValue={this.props.properties.defaultValue}
                                    value       ={this.props.properties.value}
                                    placeholder ={this.props.properties.placeholder} />
                        break;
           case "radio": element = <FormElementRadioGroup 
-                                    label	 ={this.props.properties.label}
-                                    name	 ={this.props.properties.name}
-                                    values	 ={this.props.properties.values} />
+                                    label    ={this.props.properties.label}
+                                    name     ={this.props.properties.name}
+                                    values   ={this.props.properties.values} />
                           break;
           case "checkbox" : element = <FormElementCheckbox
-                                         label	  ={this.props.properties.label}
-                                         name	  ={this.props.properties.name}
+                                         label    ={this.props.properties.label}
+                                         name     ={this.props.properties.name}
                                          onChange ={this.props.properties.onChange}
                                          isChecked={this.props.properties.isChecked}  />
                             break;
