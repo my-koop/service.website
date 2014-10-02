@@ -6,8 +6,10 @@ var BSInput = require("react-bootstrap/Input");
 var BSButton = require("react-bootstrap/Button");
 var BSPanel = require("react-bootstrap/Panel");
 var BSTable = require("react-bootstrap/Table");
+var BSGlyphicon = require("react-bootstrap/Glyphicon");
 var MKConfirmationTrigger = require("components/ConfirmationTrigger");
 var MKListModButtons = require("components/ListModButtons");
+var MKFilterableItemList = require("components/FilterableItemList");
 
 var OptionsPage = React.createClass({
 
@@ -72,44 +74,22 @@ var OptionsPage = React.createClass({
     var length = field.options.length;
     var options = field.options.map(function(option,i){
       return (
-        <tr>
-
-          <td>
-            <MKListModButtons
+        [ <MKListModButtons
               hideUp={i === 0}
               hideDown={i >= (length - 1)}
               hidePlus
               warningMessage="Are you sure you want to delete this ?"
-            />
-          </td>
-          <td>
-            {option.display}
-          </td>
-        </tr>
+            />,
+          option.display
+        ]
       );
     });
+    options.push([<MKListModButtons hideUp hideDown hideMinus />, "Add a new option"]);
+
     return (
       <div>
         <BSInput type="text" value={field.label} onChange={labelChanged} label="label" />
-        <BSTable hover>
-          <thead>
-            <tr>
-              <td style={{width:"10%", minWidth:"120px"}}>Actions</td>
-              <td>Option Name</td>
-            </tr>
-          </thead>
-          <tbody>
-            {options}
-            <tr>
-              <td>
-                <MKListModButtons hideUp hideDown hideMinus />
-              </td>
-              <td>
-                Add a new option
-              </td>
-            </tr>
-          </tbody>
-        </BSTable>
+        <MKFilterableItemList headers={["Actions","Option Name"]} data={options}/>
       </div>
     );
   },
@@ -159,12 +139,13 @@ var OptionsPage = React.createClass({
     default:
       return null;
     }
-
-    return (
-      <BSPanel bsSize="small" key={i}>
-        <div className="modal-header">
-          <div>{fieldTypeDisplay} field</div>
-          <MKListModButtons
+    var expanded = !!this.state.fields[i].expanded;
+    var glyph = expanded ? "minus" : "plus";
+    var title = (
+      <div>
+        <BSGlyphicon glyph={glyph} />
+        <span style={{marginRight:"15px"}}>{fieldTypeDisplay} field</span>
+        <MKListModButtons
             hideUp={i === 0}
             hideDown={i >= (this.state.fields.length - 1)}
             callBackMinus={this.deleteField.bind(null,i)}
@@ -172,44 +153,50 @@ var OptionsPage = React.createClass({
             callBackDown={this.moveDown.bind(null,i)}
             warningMessage="Are you sure you want to delete this ?"
           />
-
-        </div>
-        <div className="modal-body" >
-          {fieldComponent}
-        </div>
+      </div>
+    );
+    return (
+      <BSPanel bsSize="small" key={i} collapsable expanded={expanded} header={title} onSelect={this.toggleField.bind(null,i)}>
+        {fieldComponent}
       </BSPanel>
     );
   },
 
-  deleteField: function(i, e){
+  toggleField: function(i, e, e2){
     if(i < 0 || i >= this.state.fields.length) return null;
 
     var fields = this.state.fields;
+    fields[i].expanded = !fields[i].expanded;
+    this.setState({fields:fields});
+
+  },
+
+  deleteField: function(i, e){
+    if(i < 0 || i >= this.state.fields.length) return null;
+    e.stopPropagation();
+
+    var fields = this.state.fields;
     var elem = fields.splice(i,1);
-    this.setState({fields:fields}, function(){
-      console.log(this.state.fields);
-    });
+    this.setState({fields:fields});
   },
 
   moveUp: function(i, e){
     if(i <= 0) return null;
+    e.stopPropagation();
     var fields = this.state.fields;
     var elem = fields.splice(i,1);
     fields.splice(i-1,0,elem[0]);
-    this.setState({fields:fields}, function(){
-      console.log(this.state.fields);
-    });
+    this.setState({fields:fields});
   },
 
   moveDown: function(i, e){
     if(i < 0 || i >= this.state.fields.length-1) return null;
+    e.stopPropagation();
 
     var fields = this.state.fields;
     var elem = fields.splice(i,1);
     fields.splice(i+1,0,elem[0]);
-    this.setState({fields:fields}, function(){
-      console.log(this.state.fields);
-    });
+    this.setState({fields:fields});
   },
 
   render: function() {
