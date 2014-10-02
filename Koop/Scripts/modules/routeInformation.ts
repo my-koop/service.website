@@ -76,8 +76,6 @@ export var dashboard = new RouteInformationTree("Dashboard", homepage);
     export var volunteerAvailability = new RouteInformationTree("Volunteer Availability", members);
     export var volunteerSchedule = new RouteInformationTree("Volunteer Schedule", members);
 
-
-
 homepage.fullPath = "/";
 // All frontend pages
 export var frontEndPages: Array<RouteInformationTree> = [];
@@ -85,3 +83,4 @@ homepage.addAll(frontEndPages);
 
 // ajax routes
 export var devNavBar = new RouteInformation("getDevNavBar");
+export var itemsData = new RouteInformation("Items Ajax", "ItemsAjax");
