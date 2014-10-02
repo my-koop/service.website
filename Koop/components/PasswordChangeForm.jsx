@@ -24,16 +24,16 @@ var PasswordChangeForm = React.createClass({
       hasConfirmPwdError: false
     };
 
-    if(!this.state.pwd1 || !this.state.pwd2 || !this.state.oldpwd){
-      formState.message = "All fileds must be filled";
+    if(!this.state.password || !this.state.passwordRepeat || !this.state.oldPassword){
+      formState.message = "All fields must be filled";
       formState.hasMessageError = true;
 
-    } else if(this.state.pwd1 === this.state.oldpwd){
+    } else if(this.state.password === this.state.oldPassword){
       formState.message = "New password cannot be the same as the old one";
       formState.hasMessageError = true;
       formState.hasNewPwdError = true;
 
-    } else if(this.state.pwd1 !== this.state.pwd2){
+    } else if(this.state.password !== this.state.passwordRepeat){
       formState.message = "Password confirmation doesn't match";
       formState.hasMessageError = true;
       formState.hasConfirmPwdError = true;
@@ -66,19 +66,19 @@ var PasswordChangeForm = React.createClass({
           <BSInput
             type="password"
             label="Old Password"
-            valueLink={this.linkState("oldpwd")}
+            valueLink={this.linkState("oldPassword")}
           />
           <BSInput
             type="password"
             label="New Password"
-            valueLink={this.linkState("pwd1")}
+            valueLink={this.linkState("password")}
             bsStyle={this.getNewPwdStyle()}
             hasFeedback
           />
           <BSInput
             type="password"
             label="Confirm Password"
-            valueLink={this.linkState("pwd2")}
+            valueLink={this.linkState("passwordRepeat")}
             bsStyle={this.getConfPwdStyle()}
             hasFeedback
           />
