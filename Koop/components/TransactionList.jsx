@@ -2,13 +2,14 @@
 var PropTypes = React.PropTypes;
 var FilteredList = require("components/FilterableItemList");
 var BSButton = require("react-bootstrap/Button");
+var BSButtonGroup = require("react-bootstrap/ButtonGroup");
 
 var editButton = <BSButton>Edit </BSButton>;
 var viewButton = <BSButton>View </BSButton>;
-var functions = <div>
+var functions = <BSButtonGroup>
                   {editButton}
                   {viewButton}
-                  </div>
+                </BSButtonGroup>
 
 var headers = ["ID","Username","Date","#items","Total Price","Total Paid","Status","Functions"];
 var data = [
