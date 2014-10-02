@@ -44,7 +44,7 @@ var filters = [
 }
 
 ];
-var TestList = React.createClass({
+var TransactionList = React.createClass({
     render: function(){
       var filter = true;
       return (
@@ -53,4 +53,4 @@ var TestList = React.createClass({
     }
 });
 
-module.exports = TestList;
+module.exports = TransactionList;
