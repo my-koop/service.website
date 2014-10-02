@@ -7,9 +7,12 @@ var editButton = <BSButton>Edit</BSButton>;
 
 var headers = ["ID","Name","Date","Fonction"];
 var data = [
-    ["1","Ouverture Coop","2013/10/01",editButton],
+    ["1","Daily Operation","2013/10/01",editButton],
     ["2","Mobile Clinic","2013/08/27",editButton],
-    ["3","Mobile Clinic","2013/08/19",editButton]
+    ["3","Mobile Clinic","2013/08/19",editButton],
+    ["4","Daily Operation","2013/09/22",editButton],
+    ["5","Daily Operation","2013/09/25",editButton],
+    ["6","Daily Operation","2013/09/28",editButton]
     ];
 var filters = [
     {
