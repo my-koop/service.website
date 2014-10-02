@@ -1,10 +1,9 @@
 var React = require("react");
 var PropTypes = React.PropTypes;
 var BSInput = require("react-bootstrap/Input");
-var BSPanel = require("react-bootstrap/Panel");
-var BSGlyphicon = require("react-bootstrap/Glyphicon");
 var MKListModButtons = require("components/ListModButtons");
 var MKFilterableItemList = require("components/FilterableItemList");
+var MKCollapsiblePanel = require("components/CollapsiblePanel");
 
 var OptionsPage = React.createClass({
 
@@ -105,11 +104,9 @@ var OptionsPage = React.createClass({
     default:
       return null;
     }
-    var expanded = !!this.state.fields[i].expanded;
-    var glyph = expanded ? "minus" : "plus";
-    var title = (
-      <div>
-        <BSGlyphicon glyph={glyph} />
+
+    var header = (
+      <span>
         <span style={{marginRight:"15px"}}>{fieldTypeDisplay} field</span>
         <MKListModButtons
             hideUp={i === 0}
@@ -119,22 +116,13 @@ var OptionsPage = React.createClass({
             callBackDown={this.moveDown.bind(null,i)}
             warningMessage="Are you sure you want to delete this ?"
           />
-      </div>
+      </span>
     );
     return (
-      <BSPanel bsSize="small" key={i} collapsable expanded={expanded} header={title} onSelect={this.toggleField.bind(null,i)}>
+      <MKCollapsiblePanel bsSize="small" key={i} header={header}>
         {fieldComponent}
-      </BSPanel>
+      </MKCollapsiblePanel>
     );
-  },
-
-  toggleField: function(i, e, e2){
-    if(i < 0 || i >= this.state.fields.length) return null;
-
-    var fields = this.state.fields;
-    fields[i].expanded = !fields[i].expanded;
-    this.setState({fields:fields});
-
   },
 
   deleteField: function(i, e){
