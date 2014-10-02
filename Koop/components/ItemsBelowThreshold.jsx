@@ -7,7 +7,7 @@ var BSPanel = require("react-bootstrap/Panel");
 var Router = require("react-router");
 
 var RouteInfo = require("routeInformation");
-var Ajax = require("ajax");
+var ajax = require("ajax");
 var _ = require("lodash");
 
 var ItemsBelowThreshold = React.createClass({
@@ -23,7 +23,7 @@ var ItemsBelowThreshold = React.createClass({
 
   componentWillMount: function(){
     var self = this;
-    Ajax.request(
+    ajax.request(
       {endpoint: RouteInfo.itemsBelowThreshold.fullPath},
       function(err,res){
         if (err) {
@@ -31,9 +31,7 @@ var ItemsBelowThreshold = React.createClass({
           return;
         }
 
-        if (res.body.headers &&
-          res.body.data &&
-          _.isArray(res.body.headers) &&
+        if (_.isArray(res.body.headers) &&
           _.isArray(res.body.data)
         ) {
           self.setState({
@@ -56,7 +54,7 @@ var ItemsBelowThreshold = React.createClass({
   },
 
   // Deselects all checkboxes in the list
-  deSelectAll: function(){
+  unselectAll: function(){
     var l = this.state.itemList.length;
     var checkBoxState = {};
     for(var i=0; i < l; ++i){
@@ -119,7 +117,7 @@ var ItemsBelowThreshold = React.createClass({
       <BSCol md={6}>
         <BSPanel header="Items to Order" >
           <BSButton onClick={this.selectAll}>Select All</BSButton>
-          <BSButton onClick={this.deSelectAll}>DeSelect All</BSButton>
+          <BSButton onClick={this.unselectAll}>DeSelect All</BSButton>
           <form onSubmit={this.onSubmit}>
             <BSTable striped bordered condensed hover>
               <thead>
