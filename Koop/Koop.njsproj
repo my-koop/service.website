@@ -72,6 +72,9 @@
     <Content Include="components\RegisterPage.jsx" />
     <Content Include="components\SimplePage.jsx" />
     <Content Include="components\TestList.jsx" />
+    <Content Include="components\UserPrivilegesBox.jsx" />
+    <Content Include="components\UserPrivilegesModal.jsx" />
+    <Content Include="components\UserPrivilegesPage.jsx" />
     <Content Include="less\grayBg.useable.less" />
     <Content Include="less\main.less" />
     <Content Include="less\mykoop.less" />
