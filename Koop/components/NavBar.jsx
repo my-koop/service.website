@@ -20,18 +20,16 @@ var PropTypes = React.PropTypes;
 
 
 // NavigationBar
-var NavigationBar = React.createClass({
-  propTypes: {
-  },
-
+var NavBar = React.createClass({
   getInitialState: function() {
     return {
       isLoggedIn: false
     };
   },
 
-  onFakeLogin: function() {
-    this.setState({isLoggedIn: !this.state.isLoggedIn});
+  onFakeLogin: function(nowLoggedIn) {
+    var nowLoggedIn = typeof nowLoggedIn === "boolean" ? nowLoggedIn : !this.state.isLoggedIn;
+    this.setState({isLoggedIn: nowLoggedIn});
   },
 
   onMenuLogin: function() {
@@ -75,16 +73,19 @@ var NavigationBar = React.createClass({
             {isLoggedIn ?
               <BSDropdownButton
                 key={1}
+                //FIXME: Hardcoded, temporary "username".
                 title={<span><MKIcon glyph="user" /> sexytricycle</span>}
               >
                 <BSMenuItem
-                  key="1"
+                  key={1}
                   onSelect={Router.transitionTo.bind(null, RouteInfo.myaccount.name)}
                 >
                   <MKIcon glyph="cog" /> My account
                 </BSMenuItem>
                 <BSMenuItem divider />
-                <BSMenuItem key="2"><MKIcon library="glyphicon" glyph="log-out" /> Logout</BSMenuItem>
+                <BSMenuItem key={2} onSelect={this.onFakeLogin.bind(null, false)}>
+                  <MKIcon library="glyphicon" glyph="log-out" /> Logout
+                </BSMenuItem>
               </BSDropdownButton>
             :
               <BSNavItem onSelect={this.onMenuLogin}>
@@ -112,4 +113,4 @@ var NavigationBar = React.createClass({
   }
 });
 
-module.exports = NavigationBar;
+module.exports = NavBar;

@@ -11,7 +11,7 @@ var PropTypes = React.PropTypes;
 var DevMenu = React.createClass({
   render : function() {
     return (
-      <BSNav key={3} className="navbar-right">
+      <BSNav className="navbar-right">
         <BSDropdownButton
           title={<span><MKIcon glyph="cog" /> DEBUG</span>}
         >

@@ -5,12 +5,15 @@ var PropTypes = React.PropTypes;
 
 var Icon = React.createClass({
   propTypes: {
+    // String to be used as a class prefix for the approriate glyphicon library.
     library: PropTypes.string,
     glyph: PropTypes.string.isRequired
   },
 
   getDefaultProps: function() {
     return {
+      // Font Awesome glyphicons.
+      // See: https://fortawesome.github.io/Font-Awesome/icons/
       library: "fa"
     };
   },
