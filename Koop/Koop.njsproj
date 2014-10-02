@@ -39,6 +39,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="routes\controllers\index.ts" />
+    <TypeScriptCompile Include="routes\controllers\itemsData.ts" />
     <TypeScriptCompile Include="routes\controllers\staticRoot.ts" />
     <TypeScriptCompile Include="routes\controllers\navBar.ts" />
     <TypeScriptCompile Include="routes\controllers\user.ts" />
@@ -55,7 +56,11 @@
     <TypeScriptCompile Include="Scripts\typings\superagent\superagent.d.ts" />
     <Content Include="components\App.jsx" />
     <Content Include="components\DevNavBar.jsx" />
+    <Content Include="components\FilterableItemList.jsx" />
+    <Content Include="components\FormInputFactory.jsx" />
     <Content Include="components\Homepage.jsx" />
+    <Content Include="components\Items.jsx" />
+    <Content Include="components\TableSorter.jsx" />
     <Content Include="components\LoginBox.jsx" />
     <Content Include="components\LoginModal.jsx" />
     <Content Include="components\LoginPage.jsx" />
@@ -70,6 +75,7 @@
     <Content Include="components\RegisterPage.jsx" />
     <Content Include="components\SimplePage.jsx" />
     <Content Include="components\ConfirmationTrigger.jsx" />
+    <Content Include="components\TestList.jsx" />
     <Content Include="less\grayBg.useable.less" />
     <Content Include="less\main.less" />
     <Content Include="less\mykoop.less" />
