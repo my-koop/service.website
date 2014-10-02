@@ -58,6 +58,7 @@
     <Content Include="components\DevNavBar.jsx" />
     <Content Include="components\Homepage.jsx" />
     <Content Include="components\Items.jsx" />
+    <Content Include="components\TableSorter.jsx" />
     <Content Include="components\LoginBox.jsx" />
     <Content Include="components\LoginModal.jsx" />
     <Content Include="components\LoginPage.jsx" />

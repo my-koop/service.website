@@ -19,10 +19,10 @@ var operators = {
 // TableSorter React Component
 var TableSorter = React.createClass({
   propTypes: {
-    state: PropTypes.object,
-    items: PropTypes.array,
-    sort : PropTypes.object,
-    columns : PropTypes.object
+   config: React.PropTypes.shape({
+    sort: React.PropTypes.object,
+    colomn: React.PropTypes.object
+    })
   },
   getInitialState: function() {
     return {
