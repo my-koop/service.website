@@ -83,4 +83,5 @@ homepage.addAll(frontEndPages);
 
 // ajax routes
 export var devNavBar = new RouteInformation("getDevNavBar");
+export var itemsBelowThreshold = new RouteInformation("Get Items Below Threshold", "getItemsBelowThreshold");
 export var itemsData = new RouteInformation("Items Ajax", "ItemsAjax");

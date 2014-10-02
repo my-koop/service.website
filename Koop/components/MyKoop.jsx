@@ -16,7 +16,11 @@ var MKLoginPage            = require("components/LoginPage");
 var MKMyAccountPage        = require("components/MyAccountPage");
 var MKPasswordRecoveryPage = require("components/PasswordRecoveryPage");
 var MKRegisterPage         = require("components/RegisterPage");
+var MKItemsBelowThreshold  = require("components/ItemsBelowThreshold");
+var MKUserPrivilegesPage   = require("components/UserPrivilegesPage");
+var MKEventsList           = require("components/EventsList");
 var MKItems                = require("components/Items");
+var MKTransactionList      = require("components/TransactionList")
 
 var MyKoop = React.createClass({
   render: function() {
@@ -46,16 +50,16 @@ var MyKoop = React.createClass({
             <DefaultRoute handler={MKHomepage}/>
             <Route name={RouteInfo.options.name} path={RouteInfo.options.relativePath} handler={MKPlaceHolder}/>
             <Route name={RouteInfo.stats.name} path={RouteInfo.stats.relativePath} handler={MKPlaceHolder}/>
-            <Route name={RouteInfo.transaction.name} path={RouteInfo.transaction.relativePath} handler={MKPlaceHolder}/>
+            <Route name={RouteInfo.transaction.name} path={RouteInfo.transaction.relativePath} handler={MKTransactionList}/>
             <Route name={RouteInfo.events.name} path={RouteInfo.events.relativePath} handler={MKParentPlaceHolder}>
-              <DefaultRoute displayName={RouteInfo.events.name} handler={MKPlaceHolder}/>
+              <DefaultRoute displayName={RouteInfo.events.name} handler={MKEventsList}/>
               <Route name={RouteInfo.eventsPos.name} path={RouteInfo.eventsPos.relativePath} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.eventsReport.name} path={RouteInfo.eventsReport.relativePath} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.eventsSignup.name} path={RouteInfo.eventsSignup.relativePath} handler={MKPlaceHolder}/>
             </Route>
             <Route name={RouteInfo.items.name} path={RouteInfo.items.relativePath} handler={MKParentPlaceHolder}>
               <DefaultRoute displayName={RouteInfo.items.name} handler={MKItems}/>
-              <Route name={RouteInfo.itemsItemsBelowThreshold.name} path={RouteInfo.itemsItemsBelowThreshold.relativePath} handler={MKPlaceHolder}/>
+              <Route name={RouteInfo.itemsItemsBelowThreshold.name} path={RouteInfo.itemsItemsBelowThreshold.relativePath} handler={MKItemsBelowThreshold}/>
               <Route name={RouteInfo.itemsNextOrder.name} path={RouteInfo.itemsNextOrder.relativePath} handler={MKPlaceHolder}/>
             </Route>
             <Route name={RouteInfo.mailing.name} path={RouteInfo.mailing.relativePath} handler={MKParentPlaceHolder}>
@@ -65,7 +69,7 @@ var MyKoop = React.createClass({
             </Route>
             <Route name={RouteInfo.members.name} path={RouteInfo.members.relativePath} handler={MKParentPlaceHolder}>
               <DefaultRoute displayName={RouteInfo.members.name} handler={MKPlaceHolder}/>
-              <Route name={RouteInfo.membersPermissions.name} path={RouteInfo.membersPermissions.relativePath} handler={MKPlaceHolder}/>
+              <Route name={RouteInfo.membersPermissions.name} path={RouteInfo.membersPermissions.relativePath} handler={MKUserPrivilegesPage}/>
               <Route name={RouteInfo.volunteerAvailability.name} path={RouteInfo.volunteerAvailability.relativePath} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.volunteerSchedule.name} path={RouteInfo.volunteerSchedule.relativePath} handler={MKPlaceHolder}/>
             </Route>

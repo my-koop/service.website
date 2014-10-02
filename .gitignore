@@ -35,3 +35,4 @@ node_modules
 *.suo
 .ntvs_analysis.dat
 /Koop/obj
+/Koop/*.sublime-workspace
