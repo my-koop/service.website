@@ -24,12 +24,23 @@ var NavigationBar = React.createClass({
   propTypes: {
   },
 
+  getInitialState: function() {
+    return {
+      isLoggedIn: false
+    };
+  },
+
+  onFakeLogin: function() {
+    this.setState({isLoggedIn: !this.state.isLoggedIn});
+  },
+
   onMenuLogin: function() {
-    console.log("Login!");
     this.refs.loginmodal.show();
   },
 
   render : function() {
+    var isLoggedIn = this.state.isLoggedIn;
+
     return (
       <div>
         {/*FIXME: Dummy span so we can use the modal trigger... :( */}
@@ -44,6 +55,9 @@ var NavigationBar = React.createClass({
             src="/coopbeciklogo.png"
             title="Coop Bécik"
             alt="Coop Bécik logo"
+
+            //FIXME: Remove after prototype.
+            onClick={this.onFakeLogin}
           />}
         >
           <BSNav key={1} className="navbar-left">
@@ -58,12 +72,7 @@ var NavigationBar = React.createClass({
             </MKNavItemLink>
           </BSNav>
           <BSNav key={2} className="navbar-right">
-            {!this.props.loggedIn ?
-              <BSNavItem onSelect={this.onMenuLogin}>
-                <MKIcon library="glyphicon" glyph="log-in" /> Login
-              </BSNavItem>
-            : null}
-            {this.props.loggedIn ?
+            {isLoggedIn ?
               <BSDropdownButton
                 key={1}
                 title={<span><MKIcon glyph="user" /> sexytricycle</span>}
@@ -78,37 +87,11 @@ var NavigationBar = React.createClass({
                 <BSMenuItem key="2"><MKIcon library="glyphicon" glyph="log-out" /> Logout</BSMenuItem>
               </BSDropdownButton>
             :
-              <BSDropdownButton
-                key={1}
-                title={
-                  <span>
-                    <MKIcon library="glyphicon" glyph="log-in" /> Login
-                  </span>
-                }
-              >
-                {/*TODO: Change for MKLoginModal. */}
-                <BSMenuItem header>
-                  <BSInput
-                    type="text"
-                    //FIXME:
-                    // https://github.com/react-bootstrap/react-bootstrap/issues/242
-                    className="input-sm"
-                    label="Email"
-                    placeholder="Email"
-                  />
-                  <BSInput
-                    type="password"
-                    className="input-sm"
-                    label="Password"
-                    placeholder="Password"
-                  />
-                  <BSButton bsStyle="primary" block>Login</BSButton>
-                </BSMenuItem>
-                <BSMenuItem divider />
-                <BSMenuItem key="2"><MKIcon glyph="question" /> Forgot password</BSMenuItem>
-              </BSDropdownButton>
+              <BSNavItem onSelect={this.onMenuLogin}>
+                <MKIcon library="glyphicon" glyph="log-in" /> Login
+              </BSNavItem>
             }
-            {!this.props.loggedIn ?
+            {!isLoggedIn ?
               <MKNavItemLink to={RouteInfo.register.name}>
                 <MKIcon glyph="check" /> Register
               </MKNavItemLink>
