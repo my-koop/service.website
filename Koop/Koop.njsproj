@@ -55,6 +55,8 @@
     <TypeScriptCompile Include="Scripts\typings\superagent\superagent.d.ts" />
     <Content Include="components\App.jsx" />
     <Content Include="components\DevNavBar.jsx" />
+    <Content Include="components\FilterableItemList.jsx" />
+    <Content Include="components\FormInputFactory.jsx" />
     <Content Include="components\Homepage.jsx" />
     <Content Include="components\LoginBox.jsx" />
     <Content Include="components\LoginModal.jsx" />
@@ -69,6 +71,7 @@
     <Content Include="components\ProfileUpdateForm.jsx" />
     <Content Include="components\RegisterPage.jsx" />
     <Content Include="components\SimplePage.jsx" />
+    <Content Include="components\TestList.jsx" />
     <Content Include="less\grayBg.useable.less" />
     <Content Include="less\main.less" />
     <Content Include="less\mykoop.less" />
