@@ -11,7 +11,8 @@ var LoginBox = React.createClass({
 
   propTypes: {
     state: PropTypes.object,
-    saveStateCallback: PropTypes.func.isRequired
+    saveStateCallback: PropTypes.func.isRequired,
+    onLoginSuccess: PropTypes.func
   },
 
   getDefaultProps: function(){
@@ -23,7 +24,7 @@ var LoginBox = React.createClass({
   getInitialState: function(){
     return this.props.state || {};
   },
-  
+
   componentWillUnmount: function(){
     this.props.saveStateCallback(this.state);
   },
@@ -45,15 +46,25 @@ var LoginBox = React.createClass({
     // todo:: use enum if this code is to live longer than v0.1
     var emailState = Math.floor( Math.random() * 3 ) + 1;
     var pwdState = (emailState === 1 && Math.floor( Math.random() * 2) + 1 ) || 0;
-    var errorMessage = 
+    var errorMessage =
       (emailState === 2 && "Invalid E-Mail address") ||
       (emailState === 3 && "Unrecognised E-Mail address") ||
       (pwdState === 2 && "Invalid Password") ||
       "";
+
+    var hasErrors = emailState > 1 || pwdState > 1;
+    var loginSuccessful = !hasErrors;
+    var self = this;
     this.setState({
       emailState: emailState,
       pwdState: pwdState,
       errorMessage: errorMessage
+    }, function(){
+      if(loginSuccessful){
+        if(self.props.onLoginSuccess){
+          self.props.onLoginSuccess();
+        }
+      }
     });
   },
 
@@ -66,22 +77,22 @@ var LoginBox = React.createClass({
           </BSAlert>
         : null}
         <form onSubmit={this.onSubmit}>
-          <BSInput 
-            type="email" 
-            placeholder="E-Mail" 
+          <BSInput
+            type="email"
+            placeholder="E-Mail"
             label="E-Mail"
             labelClassName="sr-only"
-            bsStyle={this.getSuccessStyle(this.state.emailState)} 
-            hasFeedback 
+            bsStyle={this.getSuccessStyle(this.state.emailState)}
+            hasFeedback
             valueLink={this.linkState("email")}
           />
-          <BSInput 
-            type="password" 
-            placeholder="Password" 
-            label="Password" 
+          <BSInput
+            type="password"
+            placeholder="Password"
+            label="Password"
             labelClassName="sr-only"
-            bsStyle={this.getSuccessStyle(this.state.pwdState)} 
-            hasFeedback 
+            bsStyle={this.getSuccessStyle(this.state.pwdState)}
+            hasFeedback
             valueLink={this.linkState("password")}
           />
           <BSInput type="checkbox" label="Remember Me" checkedLink={this.linkState("rememberMe")}/>
