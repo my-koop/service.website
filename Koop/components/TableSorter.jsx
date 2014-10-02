@@ -6,8 +6,6 @@ var BSTable = require("react-bootstrap/Table");
 var PropTypes = React.PropTypes; 
 var BSButton = require("react-bootstrap/Button");
 var BSInput = require("react-bootstrap/Input");
-var BSModalTrigger = require("react-bootstrap/ModalTrigger");
-var MKItemEditModal = require("components/ItemEditModal");
 
 // Inequality function map for the filtering
 var operators = {
@@ -121,9 +119,7 @@ var TableSorter = React.createClass({
           case "editCol":
             return (
               <td key={i}>
-                <BSModalTrigger modal={<MKItemEditModal name={x["col3"]} itemId={x["id"]}/>} >
-                  <BSButton bsSize="small">Edit item  </BSButton>
-                </BSModalTrigger>
+               <BSButton bsSize="small">Edit item  </BSButton><br/>
               </td>
             );
             break;
@@ -179,7 +175,7 @@ var TableSorter = React.createClass({
     }, this);
 
     return (
-      <BSTable cellSpacing="0" className="tablesorter" striped bordered condensed hover>
+      <BSTable cellSpacing="0" className="tablesorter">
         <thead>
           <tr>
             { header }
