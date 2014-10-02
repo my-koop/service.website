@@ -75,6 +75,7 @@
     <Content Include="components\ProfileUpdateForm.jsx" />
     <Content Include="components\RegisterPage.jsx" />
     <Content Include="components\SimplePage.jsx" />
+    <Content Include="components\ConfirmationTrigger.jsx" />
     <Content Include="components\TestList.jsx" />
     <Content Include="components\TransactionList.jsx" />
     <Content Include="components\UserPrivilegesBox.jsx" />
