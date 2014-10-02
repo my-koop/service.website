@@ -47,6 +47,8 @@ var OptionsPage = React.createClass({
         <MKCollapsiblePanel header="User optional fields" defaultExpanded>
           <MKEditableFieldList fields={fields} />
         </MKCollapsiblePanel>
+        <MKCollapsiblePanel header="Other options" defaultExpanded>
+        </MKCollapsiblePanel>
       </BSCol>
     );
   }
