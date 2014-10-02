@@ -19,6 +19,8 @@ var MKRegisterPage         = require("components/RegisterPage");
 var MKUserPrivilegesPage   = require("components/UserPrivilegesPage");
 var MKEventsList           = require("components/EventsList");
 var MKItems                = require("components/Items");
+var MKMailingListSendPage  = require("components/MailingListSendPage");
+
 
 var MyKoop = React.createClass({
   render: function() {
@@ -62,7 +64,7 @@ var MyKoop = React.createClass({
             </Route>
             <Route name={RouteInfo.mailing.name} path={RouteInfo.mailing.relativePath} handler={MKParentPlaceHolder}>
               <DefaultRoute displayName={RouteInfo.mailing.name} handler={MKPlaceHolder}/>
-              <Route name={RouteInfo.mailingSend.name} path={RouteInfo.mailingSend.relativePath} handler={MKPlaceHolder}/>
+              <Route name={RouteInfo.mailingSend.name} path={RouteInfo.mailingSend.relativePath} handler={MKMailingListSendPage}/>
               <Route name={RouteInfo.mailingSubscribe.name} path={RouteInfo.mailingSubscribe.relativePath} handler={MKPlaceHolder}/>
             </Route>
             <Route name={RouteInfo.members.name} path={RouteInfo.members.relativePath} handler={MKParentPlaceHolder}>
