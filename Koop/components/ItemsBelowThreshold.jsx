@@ -1,4 +1,4 @@
-﻿var React = require("react/addons");
+﻿var React = require("react");
 var BSCol = require("react-bootstrap/Col");
 var BSTable = require("react-bootstrap/Table");
 var BSInput = require("react-bootstrap/Input");
@@ -11,8 +11,6 @@ var ajax = require("ajax");
 var _ = require("lodash");
 
 var ItemsBelowThreshold = React.createClass({
-
-  mixins: [React.addons.LinkedStateMixin],
 
   getInitialState: function(){
     return{
@@ -123,7 +121,7 @@ var ItemsBelowThreshold = React.createClass({
       <BSCol md={6}>
         <BSPanel header="Items to Order" >
           <BSButton onClick={this.selectAll}>Select All</BSButton>
-          <BSButton onClick={this.unselectAll}>DeSelect All</BSButton>
+          <BSButton onClick={this.unselectAll}>Unselect All</BSButton>
           <form onSubmit={this.onSubmit}>
             <BSTable striped bordered condensed hover>
               <thead>
