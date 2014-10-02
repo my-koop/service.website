@@ -6,6 +6,7 @@ var Route = ReactRouter.Route;
 var Routes = ReactRouter.Routes;
 var RouteInfo = require("routeInformation");
 
+
 var MKApp                  = require("components/App");
 var MKSimplePage           = require("components/SimplePage");
 var MKHomepage             = require("components/Homepage");
@@ -16,6 +17,7 @@ var MKMyAccountPage        = require("components/MyAccountPage");
 var MKPasswordRecoveryPage = require("components/PasswordRecoveryPage");
 var MKRegisterPage         = require("components/RegisterPage");
 var MKItemsBelowThreshold  = require("components/ItemsBelowThreshold");
+var MKItems                = require("components/Items");
 
 var MyKoop = React.createClass({
   render: function() {
@@ -53,7 +55,7 @@ var MyKoop = React.createClass({
               <Route name={RouteInfo.eventsSignup.name} path={RouteInfo.eventsSignup.relativePath} handler={MKPlaceHolder}/>
             </Route>
             <Route name={RouteInfo.items.name} path={RouteInfo.items.relativePath} handler={MKParentPlaceHolder}>
-              <DefaultRoute displayName={RouteInfo.items.name} handler={MKPlaceHolder}/>
+              <DefaultRoute displayName={RouteInfo.items.name} handler={MKItems}/>
               <Route name={RouteInfo.itemsItemsBelowThreshold.name} path={RouteInfo.itemsItemsBelowThreshold.relativePath} handler={MKItemsBelowThreshold}/>
               <Route name={RouteInfo.itemsNextOrder.name} path={RouteInfo.itemsNextOrder.relativePath} handler={MKPlaceHolder}/>
             </Route>
