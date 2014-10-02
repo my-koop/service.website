@@ -2,19 +2,19 @@
 var Router = require("react-router");
 var RouteInfo = require("routeInformation");
 
-var BSButton = require("react-bootstrap/Button");
 var BSDropdownButton = require("react-bootstrap/DropdownButton");
-var BSInput = require("react-bootstrap/Input");
 var BSMenuItem = require("react-bootstrap/MenuItem");
 var BSModalTrigger = require("react-bootstrap/ModalTrigger");
 var BSNavbar = require("react-bootstrap/Navbar");
 var BSNav = require("react-bootstrap/Nav");
 var BSNavItem = require("react-bootstrap/NavItem");
 
-var MKDevMenu = require("components/DevMenu");
 var MKIcon = require("components/Icon");
 var MKLoginModal = require("components/LoginModal");
 var MKNavItemLink = require("components/NavItemLink");
+
+//To be removed after development.
+//var MKDevMenu = require("components/DevMenu");
 
 var PropTypes = React.PropTypes;
 

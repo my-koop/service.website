@@ -59,7 +59,9 @@ var loaderList = [
   lessUseableLoader,
 
   // Fonts.
-  //FIXME: Removed $ in these tests, but this could be a problem with webpack.
+  //FIXME: Removed $ in these tests to get font-awesome fonts to work (they use
+  // a query parameter), but this could also be a problem with webpack (or
+  // rather the loader in question). Investigating.
   { test: /\.woff/, loader: "url?prefix=fonts/&limit=5000&mimetype=application/font-woff" },
   { test: /\.ttf/,  loader: "file?prefix=fonts/" },
   { test: /\.eot/,  loader: "file?prefix=fonts/" },

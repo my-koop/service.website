@@ -3,7 +3,6 @@ var React = require("react");
 var MKDevNavBar = require("components/DevNavBar");
 var MKNavBar = require("components/NavBar");
 var BSGrid = require("react-bootstrap/Grid");
-var BSCol = require("react-bootstrap/Col");
 var BSRow = require("react-bootstrap/Row");
 
 

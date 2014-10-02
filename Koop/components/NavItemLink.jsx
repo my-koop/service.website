@@ -14,9 +14,9 @@ var NavItemLink = React.createClass({
 
   updateActiveState: function() {
     this.setState({
-      isActive: false
+      //isActive: false
       //FIXME: For now "/" is considered active when in "/users".
-      //isActive: NavItemLink.isActive(this.props.to, this.props.params, this.props.query)
+      isActive: NavItemLink.isActive(this.props.to, this.props.params, this.props.query)
     });
   },
 

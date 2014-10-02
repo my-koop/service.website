@@ -3,7 +3,6 @@ var BSGlyphicon = require("react-bootstrap/Glyphicon");
 
 var PropTypes = React.PropTypes;
 
-
 var Icon = React.createClass({
   propTypes: {
     library: PropTypes.string,

@@ -9,9 +9,6 @@ var MKIcon = require("components/Icon");
 var PropTypes = React.PropTypes;
 
 var DevMenu = React.createClass({
-  propTypes: {
-  },
-
   render : function() {
     return (
       <BSNav key={3} className="navbar-right">
