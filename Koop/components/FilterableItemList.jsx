@@ -5,26 +5,14 @@
 //  ItemList
 //    ItemListHeader
 //    ItemRow
-//      ItemRowElement
 
 var React = require("react");
 var PropTypes = React.PropTypes;
-var FormElementFactory = require("components/FormElementFactory");
+var InputFactoryMethod = require("components/FormInputFactory");
 var BSTable = require("react-bootstrap/Table");
 
 
-var ItemRowElement = React.createClass({
-  propTypes: {
-    cellData: PropTypes.string.isRequired
-  },
-  
-  render: function(){
-    return(
-      <td> {this.props.cellData} </td>
-    );
-  }
 
-});
 
 var ItemRow = React.createClass({
   propTypes : {
@@ -34,7 +22,7 @@ var ItemRow = React.createClass({
   render: function(){
     rowElements = this.props.rowData.map(function(rowElementData,key){
       return (
-        <ItemRowElement key={key} cellData={rowElementData} />
+         <td key={key}>{rowElementData} </td>
       );
     });
     return (
@@ -95,15 +83,12 @@ var ItemList = React.createClass({
 
 var FilterOptions = React.createClass({
   propTypes: {
-    options : PropTypes.array
+    options : PropTypes.array.isRequired
   },
   render: function() {
     optionsArray = this.props.options.map(function(option,key) {
       return (
-        <FormElementFactory
-          key  ={key}
-          type = {option.type}
-          properties = {option.properties}/>
+           InputFactoryMethod(option.type,option.properties,key)
         );
     });
     return (
@@ -124,7 +109,7 @@ var FilterableItemList = React.createClass({
   },
   
   render: function() {
-    var Filtering = this.props.isFiltered ? <FilterOptions options={this.props.filterOptions} /> : '' ;
+    var Filtering = this.props.isFiltered ? <FilterOptions options={this.props.filterOptions} /> : null ;
     return (
       <div>
         {Filtering}

@@ -56,7 +56,7 @@
     <Content Include="components\App.jsx" />
     <Content Include="components\DevNavBar.jsx" />
     <Content Include="components\FilterableItemList.jsx" />
-    <Content Include="components\FormElementFactory.jsx" />
+    <Content Include="components\FormInputFactory.jsx" />
     <Content Include="components\Homepage.jsx" />
     <Content Include="components\LoginBox.jsx" />
     <Content Include="components\LoginModal.jsx" />
