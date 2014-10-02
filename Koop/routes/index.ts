@@ -16,6 +16,8 @@ function indexApp(app: express.Express) {
   }
 
   // Backend routes.
-  app.get(routeInfo.devNavBar.fullPath, ctrl.navBar);
+    app.get(routeInfo.devNavBar.fullPath, ctrl.navBar);
+
+    app.get(routeInfo.itemsData.fullPath, ctrl.itemsData);
 }
 export = indexApp;

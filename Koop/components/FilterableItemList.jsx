@@ -1,30 +1,18 @@
 //Component hierarchy
 //FilterableItemList
-//	FilterOptions
-//		FilterOption
-//	ItemList
-//		ItemListHeader
-//		ItemRow
-//			ItemRowElement
+//  FilterOptions
+//    FilterOption
+//  ItemList
+//    ItemListHeader
+//    ItemRow
 
 var React = require("react");
 var PropTypes = React.PropTypes;
-var FormElementFactory = require("components/FormElementFactory");
+var InputFactoryMethod = require("components/FormInputFactory");
 var BSTable = require("react-bootstrap/Table");
 
 
-var ItemRowElement = React.createClass({
-  propTypes: {
-    cellData: PropTypes.string.isRequired
-  },
-  
-  render: function(){
-    return(
-      <td> {this.props.cellData} </td>
-    );
-  }
 
-});
 
 var ItemRow = React.createClass({
   propTypes : {
@@ -32,10 +20,10 @@ var ItemRow = React.createClass({
   },
  
   render: function(){
-    rowElements = this.props.rowData.map(function(rowElementData){
+    rowElements = this.props.rowData.map(function(rowElementData,key){
       return (
-        <ItemRowElement cellData={rowElementData} />
-      );	
+         <td key={key}>{rowElementData} </td>
+      );
     });
     return (
       <tr>
@@ -52,9 +40,9 @@ var ItemListHeader = React.createClass({
   },
   
   render: function(){
-    headers = this.props.headerList.map(function(header){
+    headers = this.props.headerList.map(function(header,key){
       return (
-        <th> {header} </th>
+        <th key={key}> {header} </th>
       );
     });
 
@@ -75,9 +63,9 @@ var ItemList = React.createClass({
     tableData : PropTypes.array.isRequired
   },
   render: function(){
-    rows = this.props.tableData.map(function(data){
+    rows = this.props.tableData.map(function(data,key){
       return (
-          <ItemRow rowData={data} />
+          <ItemRow key={key} rowData={data} />
       );
     });
     return (
@@ -95,20 +83,18 @@ var ItemList = React.createClass({
 
 var FilterOptions = React.createClass({
   propTypes: {
-    options : PropTypes.array
+    options : PropTypes.array.isRequired
   },
   render: function() {
-    optionsArray = this.props.options.map(function(option) {
+    optionsArray = this.props.options.map(function(option,key) {
       return (
-        <FormElementFactory
-          type = {option.type}
-          properties = {option.properties}/>
+           InputFactoryMethod(option.type,option.properties,key)
         );
     });
     return (
       <div>
         {optionsArray}
-      </div>	
+      </div>
     );
   }
 
@@ -116,14 +102,14 @@ var FilterOptions = React.createClass({
 
 var FilterableItemList = React.createClass({
   propTypes: {
-    isFiltered	  : PropTypes.bool.isRequired,
+    isFiltered    : PropTypes.bool.isRequired,
     filterOptions : PropTypes.array,
-    data		  : PropTypes.array.isRequired,
+    data          : PropTypes.array.isRequired,
     headers       : PropTypes.array.isRequired
   },
   
   render: function() {
-    var Filtering = this.props.isFiltered ? <FilterOptions options={this.props.filterOptions} /> : '' ;
+    var Filtering = this.props.isFiltered ? <FilterOptions options={this.props.filterOptions} /> : null ;
     return (
       <div>
         {Filtering}
