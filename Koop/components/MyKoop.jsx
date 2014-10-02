@@ -17,6 +17,8 @@ var MKMyAccountPage        = require("components/MyAccountPage");
 var MKPasswordRecoveryPage = require("components/PasswordRecoveryPage");
 var MKRegisterPage         = require("components/RegisterPage");
 var MKItemsBelowThreshold  = require("components/ItemsBelowThreshold");
+var MKUserPrivilegesPage   = require("components/UserPrivilegesPage");
+var MKEventsList           = require("components/EventsList");
 var MKItems                = require("components/Items");
 
 var MyKoop = React.createClass({
@@ -48,7 +50,7 @@ var MyKoop = React.createClass({
             <Route name={RouteInfo.options.name} path={RouteInfo.options.relativePath} handler={MKPlaceHolder}/>
             <Route name={RouteInfo.stats.name} path={RouteInfo.stats.relativePath} handler={MKPlaceHolder}/>
             <Route name={RouteInfo.transaction.name} path={RouteInfo.transaction.relativePath} handler={MKPlaceHolder}/>
-            <Route name={RouteInfo.events.name} path={RouteInfo.events.relativePath} handler={MKParentPlaceHolder}>
+            <Route name={RouteInfo.events.name} path={RouteInfo.events.relativePath} handler={MKEventsList}>
               <DefaultRoute displayName={RouteInfo.events.name} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.eventsPos.name} path={RouteInfo.eventsPos.relativePath} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.eventsReport.name} path={RouteInfo.eventsReport.relativePath} handler={MKPlaceHolder}/>
@@ -66,7 +68,7 @@ var MyKoop = React.createClass({
             </Route>
             <Route name={RouteInfo.members.name} path={RouteInfo.members.relativePath} handler={MKParentPlaceHolder}>
               <DefaultRoute displayName={RouteInfo.members.name} handler={MKPlaceHolder}/>
-              <Route name={RouteInfo.membersPermissions.name} path={RouteInfo.membersPermissions.relativePath} handler={MKPlaceHolder}/>
+              <Route name={RouteInfo.membersPermissions.name} path={RouteInfo.membersPermissions.relativePath} handler={MKUserPrivilegesPage}/>
               <Route name={RouteInfo.volunteerAvailability.name} path={RouteInfo.volunteerAvailability.relativePath} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.volunteerSchedule.name} path={RouteInfo.volunteerSchedule.relativePath} handler={MKPlaceHolder}/>
             </Route>
