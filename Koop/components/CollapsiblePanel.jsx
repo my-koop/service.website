@@ -1,6 +1,6 @@
-var React = require("react");
-var BSPanel = require("react-bootstrap/Panel");
-var BSGlyphicon = require("react-bootstrap/Glyphicon");
+var React  = require("react");
+var BSPanel= require("react-bootstrap/Panel");
+var MKIcon = require("components/icon");
 
 var CollapsiblePanel = React.createClass({
 
@@ -30,7 +30,7 @@ var CollapsiblePanel = React.createClass({
     var header = !this.props.hideIcon ?
       (
         <span >
-          <BSGlyphicon glyph={glyph} style={{marginRight:"10px"}}/>
+          <MKIcon glyph={glyph} style={{marginRight:"10px"}}/>
           {this.props.header}
         </span>
       )

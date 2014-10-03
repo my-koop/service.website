@@ -3,6 +3,7 @@ var PropTypes            = React.PropTypes;
 var BSButton             = require("react-bootstrap/Button");
 var BSButtonGroup        = require("react-bootstrap/ButtonGroup");
 var MKConfirmationTrigger= require("components/ConfirmationTrigger");
+var MKIcon               = require("components/icon");
 
 var ListModButtons = React.createClass({
 
@@ -51,28 +52,28 @@ var ListModButtons = React.createClass({
       <BSButtonGroup>
         {!this.props.hidePlus ?
           <BSButton bsSize="small" onClick={this.getOnClickCallback(this.props.callBackPlus)}>
-            <span className="glyphicon glyphicon-plus" />
+            <MKIcon glyph="plus" />
           </BSButton>
         : null }
         {!this.props.hideMinus ?
           this.props.warningMessage ?
             <MKConfirmationTrigger message={this.props.warningMessage} onYes={this.props.callBackMinus}>
               <BSButton bsSize="small" onClick={this.getOnClickCallback(null)}>
-                <span className="glyphicon glyphicon-minus" />
+                <MKIcon glyph="minus" />
               </BSButton>
             </MKConfirmationTrigger>
           : (<BSButton bsSize="small" onClick={this.getOnClickCallback(this.props.callBackMinus)}>
-              <span className="glyphicon glyphicon-minus" />
+              <MKIcon glyph="minus" />
             </BSButton>)
         : null }
         {!this.props.hideUp ?
           <BSButton bsSize="small" onClick={this.getOnClickCallback(this.props.callBackUp)}>
-            <span className="glyphicon glyphicon-arrow-up" />
+            <MKIcon glyph="arrow-up" />
           </BSButton>
         : null }
         {!this.props.hideDown ?
           <BSButton bsSize="small" onClick={this.getOnClickCallback(this.props.callBackDown)}>
-            <span className="glyphicon glyphicon-arrow-down" />
+            <MKIcon glyph="arrow-down" />
           </BSButton>
         : null }
       </BSButtonGroup>
