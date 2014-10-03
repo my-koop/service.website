@@ -32,16 +32,25 @@ var TableSorter = React.createClass({
       columns: PropTypes.objectOf(PropTypes.shape({
         name: PropTypes.string.isRequired,
         defaultSortOrder: PropTypes.oneOf(["asc","desc","none"]),
+        // default filter text
         filterText: PropTypes.string,
+        // callback to create a custom cell content
+        // function(item: Data, colIndex: number) : ReactComponent
         cellGenerator: PropTypes.func,
+        // Disable Sort for this column only
         disableSort: PropTypes.bool,
+        // Disable Filter for this column only
         disableFilter: PropTypes.bool,
       })).isRequired
     }),
 
+    // Initial date in the table
     initialItems: PropTypes.array,
+    // Header repeat interval, 0 to disable
     headerRepeat: PropTypes.number,
+    // Disable Sort for this table
     disableSort: PropTypes.bool,
+    // Disable Filter for this table
     disableFilter: PropTypes.bool,
   },
 
@@ -55,27 +64,29 @@ var TableSorter = React.createClass({
 
   componentWillMount: function() {
     var self = this;
-      var itemsData = ajax.request(
-        {endpoint: routeInfo.itemsData.fullPath},
-        function(err, res){
-          if (err) {
-            console.error(routeInfo.itemsData.fullPath, status, err.toString());
-            return;
-          }
-          // use res object
-          self.setState({items:res.body});
-        });
+    var itemsData = ajax.request(
+      {endpoint: routeInfo.itemsData.fullPath},
+      function(err, res){
+        if (err) {
+          console.error(routeInfo.itemsData.fullPath, status, err.toString());
+          return;
+        }
+        // use res object
+        self.setState({items:res.body});
+      }
+    );
   },
 
   handleFilterTextChange: function(column) {
+    var self = this;
     return function(newValue) {
       var obj = this.state.columns;
       obj[column].filterText = newValue;
 
       // Since we have already mutated the state, just call forceUpdate().
       // Ideally we'd copy and setState or use an immutable data structure.
-      this.forceUpdate();
-    }.bind(this);
+      self.forceUpdate();
+    };
   },
 
   columnNames: function() {
@@ -83,15 +94,16 @@ var TableSorter = React.createClass({
   },
 
   sortColumn: function(column) {
+    var self = this;
     return function(event) {
-      var newSortOrder = (this.state.sort.order === "asc") ? "desc" : "asc";
+      var newSortOrder = (self.state.sort.order === "asc") ? "desc" : "asc";
 
-      if (this.state.sort.column != column) {
-        newSortOrder = this.state.columns[column].defaultSortOrder || "asc";
+      if (self.state.sort.column != column) {
+        newSortOrder = self.state.columns[column].defaultSortOrder || "asc";
       }
 
-      this.setState({sort: { column: column, order: newSortOrder }});
-    }.bind(this);
+      self.setState({sort: { column: column, order: newSortOrder }});
+    };
   },
 
   render: function() {
@@ -115,7 +127,7 @@ var TableSorter = React.createClass({
           filters[column] = function(match) { return function(x) { return operators[match[1]](x, match[2]); }; }(operandMatch);
         } else {
           filters[column] = function(x) {
-              return (x.toString().toLowerCase().indexOf(filterText.toLowerCase()) > -1);
+            return (x.toString().toLowerCase().indexOf(filterText.toLowerCase()) > -1);
           };
         }
       }
@@ -167,10 +179,28 @@ var TableSorter = React.createClass({
       );
     });
 
+    // Create filter fields
+    var filterLink = null;
+    if(!self.props.disableFilter){
+      filterLink = function(column) {
+        return {
+          value: self.state.columns[column].filterText,
+          requestChange: self.handleFilterTextChange(column)
+        };
+      };
+
+      var filterInputs = columnNames.map(function(c, i) {
+        if(!self.state.columns[c].disableFilter){
+          return <td key={i}><input type="text" valueLink={filterLink(c)} /></td>;
+        }
+        return <td key={i} />;
+      });
+    }
+
     // Extra header generator
     var headerExtra = function() {
       return columnNames.map(function(c, i) {
-        return <th key={i} className="header-extra">{self.state.columns[c].name}</th>;
+        return <th key={i}>{self.state.columns[c].name}</th>;
       }, self);
     };
 
@@ -178,8 +208,13 @@ var TableSorter = React.createClass({
     var rowGenerator = function(item) {
       return columnNames.map(function(colName, i) {
         var cellGenerator = self.state.columns[colName].cellGenerator;
+
         if(cellGenerator){
-          return cellGenerator.call(self,item,i);
+          return (
+            <td key={i}>
+              {cellGenerator.call(self,item)}
+            </td>
+          );
         } else {
           return (
             <td key={i}>
@@ -207,28 +242,11 @@ var TableSorter = React.createClass({
       );
     });
 
-    // Create filter fields
-    var filterLink = null;
-    if(!self.props.disableFilter){
-      filterLink = function(column) {
-        return {
-            value: self.state.columns[column].filterText,
-            requestChange: self.handleFilterTextChange(column)
-        };
-      };
 
-      var filterInputs = columnNames.map(function(c, i) {
-          if(!self.state.columns[c].disableFilter){
-            return <td key={i}><input type="text" valueLink={filterLink(c)} /></td>;
-          }
-          return <td key={i} />;
-      });
-    }
 
     return (
       <BSTable
-        cellSpacing="0"
-        className="tablesorter"
+        cellSpacing="0"à
         striped  ={this.props.striped}
         bordered ={this.props.bordered}
         condensed={this.props.condensed}

@@ -9,25 +9,35 @@ var BSTooltip            = require("react-bootstrap/Tooltip");
 var MKConfirmationTrigger= require("components/ConfirmationTrigger");
 var MKIcon               = require("components/Icon");
 
-
 var ListModButtons = React.createClass({
 
   propTypes : {
     buttons: PropTypes.arrayOf(
       PropTypes.shape({
+        // Use either icon or content
         icon: PropTypes.string,
         content: PropTypes.renderable,
+        // Callback when the button is clicked or confirmation on warning
+        // function(e: onClickEvent) : void
         callback: PropTypes.func,
+        // Shows a confirmation box with the message in it
         warningMessage: PropTypes.string,
+        // use this to hide the button (useful if used with a condition)
         hide: PropTypes.bool,
+        // Shows a tooltip for the button
         tooltip: PropTypes.shape({
           text: PropTypes.renderable.isRequired,
           overlayProps: PropTypes.object
         }),
+        // Callback to wrap the button (and optionnal wrapper) with something else
+        // careful the end result will be placed in a ButtonGroup
+        // function(component: ReactComponent, iBtn: number) : ReactComponent
         customWrapper: PropTypes.func
       })
     ).isRequired,
+    // Prevent button to send onClick event upward
     stopPropagation : PropTypes.bool,
+    // Default Delay in ms before show/hide of tooltip
     defaultTooltipDelay: PropTypes.number
   },
 
@@ -53,7 +63,9 @@ var ListModButtons = React.createClass({
       // Show content if available, otherwise fallback to the icon
       var content = btn.content ? btn.content : <MKIcon glyph={btn.icon} />;
 
+      // onClick handler
       var buttonOnClick = btn.warningMessage ? self.getOnClickCallback(null) : self.getOnClickCallback(btn.callback);
+      // Actual button
       var button = (
         <BSButton bsSize="small" onClick={buttonOnClick} key={i}>
           {content}
@@ -61,7 +73,6 @@ var ListModButtons = React.createClass({
       );
 
       var result = button;
-
       if(btn.warningMessage){
         result = (
           <MKConfirmationTrigger message={btn.warningMessage} onYes={btn.callback} key={i}>
