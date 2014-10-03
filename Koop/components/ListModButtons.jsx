@@ -10,7 +10,8 @@ var ListModButtons = React.createClass({
   propTypes : {
     buttons: PropTypes.arrayOf(
       PropTypes.shape({
-        icon: PropTypes.string.isRequired,
+        icon: PropTypes.string,
+        text: PropTypes.string,
         callback: PropTypes.func,
         warningMessage: PropTypes.string,
         hide: PropTypes.bool
@@ -36,16 +37,18 @@ var ListModButtons = React.createClass({
 
     var self = this;
     var buttons = this.props.buttons.map(function(btn, i){
-      if(btn.hide) return null;
+      if(btn.hide || (!btn.icon && !btn.text)) return null;
+
+      var content = btn.icon ? <MKIcon glyph={btn.icon} /> : btn.text;
 
       return btn.warningMessage ?
         <MKConfirmationTrigger message={btn.warningMessage} onYes={btn.callback}>
           <BSButton bsSize="small" onClick={self.getOnClickCallback(null)}>
-            <MKIcon glyph={btn.icon} />
+            {content}
           </BSButton>
         </MKConfirmationTrigger>
       : (<BSButton bsSize="small" onClick={self.getOnClickCallback(btn.callback)}>
-          <MKIcon glyph={btn.icon} />
+          {content}
         </BSButton>)
     });
 
