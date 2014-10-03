@@ -10,8 +10,8 @@ var CONFIG = {
         col1: { name: "Col 1" },
         col2: { name: "Col 2" },
         col3: { name: "Col 3" },
-        editCol: { name: "Edit", disableSort: true },
-        addCol: { name: "Add", disableSort: true }
+        editCol: { name: "Edit", disableSort: true, disableFilter: true},
+        addCol: { name: "Add", disableSort: true, disableFilter: true }
     }
 };
 

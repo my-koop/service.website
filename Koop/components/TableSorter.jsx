@@ -34,13 +34,15 @@ var TableSorter = React.createClass({
         name: PropTypes.string.isRequired,
         defaultSortOrder: PropTypes.oneOf(["asc","desc","none"]),
         filterText: PropTypes.string,
-        disableSort: PropTypes.bool
+        disableSort: PropTypes.bool,
+        disableFilter: PropTypes.bool,
       })).isRequired
     }),
 
     initialItems: PropTypes.array,
     headerRepeat: PropTypes.number,
     disableSort: PropTypes.bool,
+    disableFilter: PropTypes.bool,
   },
 
   getInitialState: function() {
@@ -192,13 +194,7 @@ var TableSorter = React.createClass({
       );
     }.bind(this));
 
-    var filterLink = function(column) {
-      return {
-          value: this.state.columns[column].filterText,
-          requestChange: this.handleFilterTextChange(column)
-      };
-    }.bind(this);
-
+    // Create headers
     var header = columnNames.map(function(c, i) {
       var doSort = !this.props.disableSort && !this.state.columns[c].disableSort;
       if( doSort ){
@@ -226,9 +222,23 @@ var TableSorter = React.createClass({
       );
     }, this);
 
-    var filterInputs = columnNames.map(function(c, i) {
-        return <td key={i}><input type="text" valueLink={filterLink(c)} /></td>;
-    }, this);
+    // Create filter fields
+    var filterLink = null;
+    if(!this.props.disableFilter){
+      filterLink = function(column) {
+        return {
+            value: this.state.columns[column].filterText,
+            requestChange: this.handleFilterTextChange(column)
+        };
+      }.bind(this);
+
+      var filterInputs = columnNames.map(function(c, i) {
+          if(!this.state.columns[c].disableFilter){
+            return <td key={i}><input type="text" valueLink={filterLink(c)} /></td>;
+          }
+          return null;
+      }, this);
+    }
 
     return (
       <BSTable cellSpacing="0" className="tablesorter">
