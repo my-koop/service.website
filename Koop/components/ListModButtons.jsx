@@ -3,7 +3,7 @@ var PropTypes            = React.PropTypes;
 var BSButton             = require("react-bootstrap/Button");
 var BSButtonGroup        = require("react-bootstrap/ButtonGroup");
 var MKConfirmationTrigger= require("components/ConfirmationTrigger");
-var MKIcon               = require("components/icon");
+var MKIcon               = require("components/Icon");
 
 var ListModButtons = React.createClass({
 

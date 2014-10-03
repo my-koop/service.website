@@ -3,6 +3,8 @@
 // Require styles.
 require('mykoop.less');
 
+// Polyfill for ES6's Object.assign()
+// taken from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
 if (!Object.assign) {
   Object.defineProperty(Object, "assign", {
     enumerable: false,

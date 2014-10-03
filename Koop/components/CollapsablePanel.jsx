@@ -1,8 +1,8 @@
 var React  = require("react");
 var BSPanel= require("react-bootstrap/Panel");
-var MKIcon = require("components/icon");
+var MKIcon = require("components/Icon");
 
-var CollapsiblePanel = React.createClass({
+var CollapsablePanel = React.createClass({
 
   getDefaultProps: function(){
     return {
@@ -43,4 +43,4 @@ var CollapsiblePanel = React.createClass({
   }
 });
 
-module.exports = CollapsiblePanel;
+module.exports = CollapsablePanel;
