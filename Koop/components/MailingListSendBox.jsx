@@ -4,7 +4,7 @@ var BSButton = require("react-bootstrap/Button");
 var BSInput = require("react-bootstrap/Input");
 var FormInputFactory = require("components/FormInputFactory");
 
-var inputProperties =  { 
+var inputProperties =  {
       "properties": {
         "name": "subject",
         "placeholder": "Subject Line",
@@ -12,9 +12,9 @@ var inputProperties =  {
       },
      "type": "text"
   };
-var subjectInput =  FormInputFactory(inputProperties.type, inputProperties.properties); 
+var subjectInput =  FormInputFactory(inputProperties.type, inputProperties.properties);
 
-var ListPickerProperties =  
+var ListPickerProperties =
   { "properties": {
       "name": "mailingListPicker",
       "label": "Select a mailing list",
@@ -39,16 +39,16 @@ var MailingListPicker = FormInputFactory(ListPickerProperties.type,ListPickerPro
 
 var MailingListSend = React.createClass({
   propTypes : {
-    
-  }, 
+
+  },
 
   render: function () {
     return (
-      <div>
+      <div className="clearfix">
         {MailingListPicker}
         {subjectInput}
-        <BSInput  type="textarea" placeholder="Message" />     
-        <BSButton type="submit" onSubmit={this.onSubmit}> Send </BSButton>
+        <BSInput  type="textarea" placeholder="Message" />
+        <BSButton type="submit" onSubmit={this.onSubmit} className="pull-right"> Send </BSButton>
       </div>
     )
   }
