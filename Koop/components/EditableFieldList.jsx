@@ -115,6 +115,7 @@ var OptionsPage = React.createClass({
             callBackUp={this.moveUp.bind(null,i)}
             callBackDown={this.moveDown.bind(null,i)}
             warningMessage="Are you sure you want to delete this ?"
+            stopPropagate
           />
       </span>
     );
@@ -127,7 +128,6 @@ var OptionsPage = React.createClass({
 
   deleteField: function(i, e){
     if(i < 0 || i >= this.state.fields.length) return null;
-    e.stopPropagation();
 
     var fields = this.state.fields;
     var elem = fields.splice(i,1);
@@ -136,7 +136,7 @@ var OptionsPage = React.createClass({
 
   moveUp: function(i, e){
     if(i <= 0) return null;
-    e.stopPropagation();
+
     var fields = this.state.fields;
     var elem = fields.splice(i,1);
     fields.splice(i-1,0,elem[0]);
@@ -145,7 +145,6 @@ var OptionsPage = React.createClass({
 
   moveDown: function(i, e){
     if(i < 0 || i >= this.state.fields.length-1) return null;
-    e.stopPropagation();
 
     var fields = this.state.fields;
     var elem = fields.splice(i,1);
