@@ -7,7 +7,7 @@ var ItemEditModal = React.createClass({
 
   render: function () {
     return this.transferPropsTo(
-      <BSModal title={"Editing item " + this.props.name}>
+      <BSModal title={"Editing item " + this.props.name} backdrop="static">
         <div className="modal-body" > 
 
         <BSInput type="static" label="ID" placeholder="ID" value={this.props.itemId} />
