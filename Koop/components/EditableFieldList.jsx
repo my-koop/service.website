@@ -140,7 +140,7 @@ var OptionsPage = React.createClass({
               callback: this.moveDown.bind(null,i)
             },
           ]}
-          stopPropagate
+          stopPropagation
         />
       </span>
     );

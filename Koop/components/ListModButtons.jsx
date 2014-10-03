@@ -17,11 +17,11 @@ var ListModButtons = React.createClass({
         hide: PropTypes.bool
       })
     ).isRequired,
-    stopPropagate : PropTypes.bool
+    stopPropagation : PropTypes.bool
   },
 
   getOnClickCallback: function(callback){
-    if(this.props.stopPropagate){
+    if(this.props.stopPropagation){
       return function(e){
         e.stopPropagation();
         if(callback){
@@ -42,14 +42,16 @@ var ListModButtons = React.createClass({
       var content = btn.icon ? <MKIcon glyph={btn.icon} /> : btn.text;
 
       return btn.warningMessage ?
-        <MKConfirmationTrigger message={btn.warningMessage} onYes={btn.callback}>
+        <MKConfirmationTrigger message={btn.warningMessage} onYes={btn.callback} key={i}>
           <BSButton bsSize="small" onClick={self.getOnClickCallback(null)}>
             {content}
           </BSButton>
         </MKConfirmationTrigger>
-      : (<BSButton bsSize="small" onClick={self.getOnClickCallback(btn.callback)}>
+      : (
+        <BSButton bsSize="small" onClick={self.getOnClickCallback(btn.callback)} key={i}>
           {content}
-        </BSButton>)
+        </BSButton>
+      )
     });
 
     return (

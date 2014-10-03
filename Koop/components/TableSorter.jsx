@@ -3,7 +3,6 @@ var PropTypes= React.PropTypes;
 
 var BSTable  = require("react-bootstrap/Table");
 var BSButton = require("react-bootstrap/Button");
-var BSInput  = require("react-bootstrap/Input");
 
 var MKIcon   = require("components/Icon");
 
@@ -96,9 +95,10 @@ var TableSorter = React.createClass({
   },
 
   render: function() {
+    var self = this;
     var allRows = [];
 
-    var columnNames = this.columnNames();
+    var columnNames = self.columnNames();
     var filters = {};
 
     var operandRegex = /^((?:(?:[<>]=?)|==))\s?([-]?\d+(?:\.\d+)?)$/;
@@ -106,7 +106,7 @@ var TableSorter = React.createClass({
     /////////////////////////////////////////////////////////////////////////
     // Apply filters
     columnNames.forEach(function(column) {
-      var filterText = this.state.columns[column].filterText;
+      var filterText = self.state.columns[column].filterText;
       filters[column] = null;
 
       if (filterText && filterText.length > 0) {
@@ -119,34 +119,67 @@ var TableSorter = React.createClass({
           };
         }
       }
-    }, this);
+    });
 
-    var filteredItems = _.filter(this.state.items, function(item) {
+    var filteredItems = _.filter(self.state.items, function(item) {
       return _.every(columnNames, function(c) {
         return (!filters[c] || filters[c](item[c]));
-      }, this);
-    }, this);
+      });
+    });
     /////////////////////////////////////////////////////////////////////////
 
     /////////////////////////////////////////////////////////////////////////
     // Sort data
-    if(!this.props.disableSort){
-      var sortedItems = _.sortBy(filteredItems, this.state.sort.column);
-      if (this.state.sort.order === "desc")
+    if(!self.props.disableSort){
+      var sortedItems = _.sortBy(filteredItems, self.state.sort.column);
+      if (self.state.sort.order === "desc")
         sortedItems.reverse();
     } else {
       var sortedItems = filteredItems;
     }
     /////////////////////////////////////////////////////////////////////////
 
+    // Create headers
+    var header = columnNames.map(function(c, i) {
+      var doSort = !self.props.disableSort && !self.state.columns[c].disableSort;
+      if( doSort ){
+        var iconName = self.state.sort.column === c ? self.state.sort.order == "asc" ? "sort-asc" : "sort-desc" : "sort";
+        var icon = ( <MKIcon glyph={iconName} /> );
 
+        return (
+          <th
+            key={i}
+          >
+            <BSButton onClick={self.sortColumn(c)} bsStyle="link">
+              {self.state.columns[c].name} {icon}
+            </BSButton>
+          </th>
+        );
+      }
+      return (
+        <th
+          key={i}
+        >
+          <span className="btn btn-link" disabled>
+            {self.state.columns[c].name}
+          </span>
+        </th>
+      );
+    });
+
+    // Extra header generator
+    var headerExtra = function() {
+      return columnNames.map(function(c, i) {
+        return <th key={i} className="header-extra">{self.state.columns[c].name}</th>;
+      }, self);
+    };
 
     // Row generator
     var rowGenerator = function(item) {
       return columnNames.map(function(colName, i) {
-        var cellGenerator = this.state.columns[colName].cellGenerator;
+        var cellGenerator = self.state.columns[colName].cellGenerator;
         if(cellGenerator){
-          return cellGenerator(item,i);
+          return cellGenerator.call(self,item,i);
         } else {
           return (
             <td key={i}>
@@ -154,19 +187,12 @@ var TableSorter = React.createClass({
             </td>
           );
         }
-      }, this);
-    }.bind(this);
-
-    // Extra header generator
-    var headerExtra = function() {
-      return columnNames.map(function(c, i) {
-        return <th key={i} className="header-extra">{this.state.columns[c].name}</th>;
-      }, this);
-    }.bind(this);
+      });
+    };
 
     // Create all rows
     sortedItems.forEach(function(item, idx) {
-      if ((this.props.headerRepeat > 0) && (idx > 0) && (idx % this.props.headerRepeat === 0)) {
+      if ((self.props.headerRepeat > 0) && (idx > 0) && (idx % self.props.headerRepeat === 0)) {
         allRows.push (
           <tr key={"extra"+idx}>
             { headerExtra() }
@@ -179,61 +205,40 @@ var TableSorter = React.createClass({
           { rowGenerator(item) }
         </tr>
       );
-    }.bind(this));
-
-    // Create headers
-    var header = columnNames.map(function(c, i) {
-      var doSort = !this.props.disableSort && !this.state.columns[c].disableSort;
-      if( doSort ){
-        var iconName = this.state.sort.column === c ? this.state.sort.order == "asc" ? "sort-asc" : "sort-desc" : "sort";
-        var icon = ( <MKIcon glyph={iconName} /> );
-
-        return (
-          <th
-            key={i}
-          >
-            <BSButton onClick={this.sortColumn(c)} bsStyle="link">
-              {this.state.columns[c].name} {icon}
-            </BSButton>
-          </th>
-        );
-      }
-      return (
-        <th
-          key={i}
-        >
-          <span className="btn btn-link" disabled>
-            {this.state.columns[c].name}
-          </span>
-        </th>
-      );
-    }, this);
+    });
 
     // Create filter fields
     var filterLink = null;
-    if(!this.props.disableFilter){
+    if(!self.props.disableFilter){
       filterLink = function(column) {
         return {
-            value: this.state.columns[column].filterText,
-            requestChange: this.handleFilterTextChange(column)
+            value: self.state.columns[column].filterText,
+            requestChange: self.handleFilterTextChange(column)
         };
-      }.bind(this);
+      };
 
       var filterInputs = columnNames.map(function(c, i) {
-          if(!this.state.columns[c].disableFilter){
+          if(!self.state.columns[c].disableFilter){
             return <td key={i}><input type="text" valueLink={filterLink(c)} /></td>;
           }
           return null;
-      }, this);
+      });
     }
 
     return (
-      <BSTable cellSpacing="0" className="tablesorter">
+      <BSTable
+        cellSpacing="0"
+        className="tablesorter"
+        striped  ={this.props.striped}
+        bordered ={this.props.bordered}
+        condensed={this.props.condensed}
+        hover    ={this.props.hover}
+      >
         <thead>
           <tr>
             { header }
           </tr>
-          {!this.props.disableFilter ? (
+          {!self.props.disableFilter ? (
             <tr>
               { filterInputs }
             </tr>
