@@ -6,6 +6,7 @@ var BSModal = require("react-bootstrap/Modal");
 var BSModalTrigger = require("react-bootstrap/ModalTrigger");
 
 var MKLoginModal = require("components/LoginModal");
+var MKUserPrivilegesModal = require("components/UserPrivilegesModal");
 
 var Homepage = React.createClass({
 
@@ -14,6 +15,9 @@ var Homepage = React.createClass({
       <BSCol md={6} mdOffset={3}>
         <BSModalTrigger modal={<MKLoginModal />} >
           <BSButton >Login</BSButton>
+        </BSModalTrigger>
+        <BSModalTrigger modal={<MKUserPrivilegesModal />} >
+          <BSButton >Privileges</BSButton>
         </BSModalTrigger>
         <div>
           Coop Bécik est une coopérative de réparation qui a pour mission de rendre accessible l’utilisation du vélo comme mode de transport aux citoyen-ne-s et étudiant-e-s de Montréal.

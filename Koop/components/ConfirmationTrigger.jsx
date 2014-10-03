@@ -76,7 +76,7 @@ var ConfirmationTrigger = React.createClass({
   renderOverlay: function () {
     if (!this.state.isOverlayShown) {
       // a component must be returned , an error occurs if return null;
-      return (<span/>);
+      return (<span />);
     }
 
     return (
