@@ -27,7 +27,7 @@ var Icon = React.createClass({
       );
     }
 
-    return (
+    return this.transferPropsTo(
       <i className={library + " " + library + "-" + this.props.glyph}></i>
     );
   }
