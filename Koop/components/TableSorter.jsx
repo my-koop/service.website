@@ -1,11 +1,15 @@
-var ajax = require("ajax");
-var _ = require("lodash");
-var React = require("react");
-var routeInfo = require("routeInformation");
-var BSTable = require("react-bootstrap/Table");
-var PropTypes = React.PropTypes; 
+var React    = require("react");
+var PropTypes= React.PropTypes;
+
+var BSTable  = require("react-bootstrap/Table");
 var BSButton = require("react-bootstrap/Button");
-var BSInput = require("react-bootstrap/Input");
+var BSInput  = require("react-bootstrap/Input");
+
+var MKIcon   = require("components/Icon");
+
+var _        = require("lodash");
+var ajax     = require("ajax");
+var routeInfo= require("routeInformation");
 
 // Inequality function map for the filtering
 var operators = {
@@ -18,12 +22,27 @@ var operators = {
 
 // TableSorter React Component
 var TableSorter = React.createClass({
+
   propTypes: {
-   config: React.PropTypes.shape({
-    sort: React.PropTypes.object,
-    colomn: React.PropTypes.object
-    })
+    config: PropTypes.shape({
+      sort: PropTypes.shape({
+        colomn: PropTypes.string.isRequired,
+        order: PropTypes.oneOf(["asc","desc"]).isRequired,
+      }),
+
+      columns: PropTypes.objectOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        defaultSortOrder: PropTypes.oneOf(["asc","desc","none"]),
+        filterText: PropTypes.string,
+        disableSort: PropTypes.bool
+      })).isRequired
+    }),
+
+    initialItems: PropTypes.array,
+    headerRepeat: PropTypes.number,
+    disableSort: PropTypes.bool,
   },
+
   getInitialState: function() {
     return {
       items: this.props.initialItems || [],
@@ -31,10 +50,11 @@ var TableSorter = React.createClass({
       columns: this.props.config.columns
     };
   },
+
   componentWillMount: function() {
     var self = this;
-      var itemsData = ajax.request( 
-        {endpoint: routeInfo.itemsData.fullPath}, 
+      var itemsData = ajax.request(
+        {endpoint: routeInfo.itemsData.fullPath},
         function(err, res){
           if (err) {
             console.error(routeInfo.itemsData.fullPath, status, err.toString());
@@ -44,6 +64,7 @@ var TableSorter = React.createClass({
           self.setState({items:res.body});
         });
   },
+
   handleFilterTextChange: function(column) {
     return function(newValue) {
       var obj = this.state.columns;
@@ -54,41 +75,41 @@ var TableSorter = React.createClass({
       this.forceUpdate();
     }.bind(this);
   },
+
   columnNames: function() {
-    return Object.keys(this.state.columns); 
+    return Object.keys(this.state.columns);
   },
+
   sortColumn: function(column) {
     return function(event) {
-      var newSortOrder = (this.state.sort.order == "asc") ? "desc" : "asc";
+      var newSortOrder = (this.state.sort.order === "asc") ? "desc" : "asc";
 
       if (this.state.sort.column != column) {
-          newSortOrder = this.state.columns[column].defaultSortOrder;
+        newSortOrder = this.state.columns[column].defaultSortOrder || "asc";
       }
 
       this.setState({sort: { column: column, order: newSortOrder }});
     }.bind(this);
   },
-  sortClass: function(column) {
-    var ascOrDesc = (this.state.sort.order == "asc") ? "headerSortAsc" : "headerSortDesc";
-    return (this.state.sort.column == column) ? ascOrDesc : "";
-  },
+
   render: function() {
-    var rows = [];
+    var allRows = [];
 
     var columnNames = this.columnNames();
     var filters = {};
 
     var operandRegex = /^((?:(?:[<>]=?)|==))\s?([-]?\d+(?:\.\d+)?)$/;
 
+    /////////////////////////////////////////////////////////////////////////
+    // Apply filters
     columnNames.forEach(function(column) {
       var filterText = this.state.columns[column].filterText;
       filters[column] = null;
 
-      if (filterText.length > 0) { 
+      if (filterText && filterText.length > 0) {
         operandMatch = operandRegex.exec(filterText);
-        if (operandMatch && operandMatch.length == 3) {
-          //filters[column] = Function.apply(null, ["x", "return x " + operandMatch[1] + " " + operandMatch[2]]);
-          filters[column] = function(match) { return function(x) { return operators[match[1]](x, match[2]); }; }(operandMatch); 
+        if (operandMatch && (operandMatch.length == 3) ) {
+          filters[column] = function(match) { return function(x) { return operators[match[1]](x, match[2]); }; }(operandMatch);
         } else {
           filters[column] = function(x) {
               return (x.toString().toLowerCase().indexOf(filterText.toLowerCase()) > -1);
@@ -102,18 +123,23 @@ var TableSorter = React.createClass({
         return (!filters[c] || filters[c](item[c]));
       }, this);
     }, this);
+    /////////////////////////////////////////////////////////////////////////
 
-    var sortedItems = _.sortBy(filteredItems, this.state.sort.column);
-    if (this.state.sort.order === "desc") 
-      sortedItems.reverse();
+    /////////////////////////////////////////////////////////////////////////
+    // Sort data
+    if(!this.props.disableSort){
+      var sortedItems = _.sortBy(filteredItems, this.state.sort.column);
+      if (this.state.sort.order === "desc")
+        sortedItems.reverse();
+    } else {
+      var sortedItems = filteredItems;
+    }
+    /////////////////////////////////////////////////////////////////////////
 
-    var headerExtra = function() {
-      return columnNames.map(function(c, i) {
-        return <th key={i} className="header-extra">{this.state.columns[c].name}</th>;
-      }, this);   
-    }.bind(this);
 
-    var cell = function(x) {
+
+    // Row generator
+    var rowGenerator = function(x) {
       return columnNames.map(function(colName, i) {
         switch(colName){
           case "editCol":
@@ -142,19 +168,26 @@ var TableSorter = React.createClass({
       }, this);
     }.bind(this);
 
+    // Extra header generator
+    var headerExtra = function() {
+      return columnNames.map(function(c, i) {
+        return <th key={i} className="header-extra">{this.state.columns[c].name}</th>;
+      }, this);
+    }.bind(this);
+
+    // Create all rows
     sortedItems.forEach(function(item, idx) {
-      var headerRepeat = parseInt(this.props.headerRepeat, 10);
       if ((this.props.headerRepeat > 0) && (idx > 0) && (idx % this.props.headerRepeat === 0)) {
-        rows.push (
-          <tr key={Math.random()}>
+        allRows.push (
+          <tr key={"extra"+idx}>
             { headerExtra() }
           </tr>
         )
       }
 
-      rows.push(
-        <tr key={item.id}>
-          { cell(item) }
+      allRows.push(
+        <tr key={idx}>
+          { rowGenerator(item) }
         </tr>
       );
     }.bind(this));
@@ -167,7 +200,30 @@ var TableSorter = React.createClass({
     }.bind(this);
 
     var header = columnNames.map(function(c, i) {
-        return <th key={i} onClick={this.sortColumn(c)} className={"header " + this.sortClass(c)}>{this.state.columns[c].name}</th>;
+      var doSort = !this.props.disableSort && !this.state.columns[c].disableSort;
+      if( doSort ){
+        var iconName = this.state.sort.column === c ? this.state.sort.order == "asc" ? "sort-asc" : "sort-desc" : "sort";
+        var icon = ( <MKIcon glyph={iconName} /> );
+
+        return (
+          <th
+            key={i}
+          >
+            <BSButton onClick={this.sortColumn(c)} bsStyle="link">
+              {this.state.columns[c].name} {icon}
+            </BSButton>
+          </th>
+        );
+      }
+      return (
+        <th
+          key={i}
+        >
+          <span className="btn btn-link" disabled>
+            {this.state.columns[c].name}
+          </span>
+        </th>
+      );
     }, this);
 
     var filterInputs = columnNames.map(function(c, i) {
@@ -185,7 +241,7 @@ var TableSorter = React.createClass({
           </tr>
         </thead>
         <tbody>
-          { rows }
+          { allRows }
         </tbody>
       </BSTable>
     );

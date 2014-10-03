@@ -6,13 +6,12 @@ var MKTableSorter = require("components/TableSorter");
 
 // TableSorter Config
 var CONFIG = {
-    sort: { column: "col2", order: "desc" },
     columns: {
-        col1: { name: "Col 1", filterText: "", defaultSortOrder: "desc"},
-        col2: { name: "Col 2", filterText: "", defaultSortOrder: "desc"},
-        col3: { name: "Col 3", filterText: "", defaultSortOrder: "desc"},
-        editCol: { name: "Edit", filterText: "", defaultSortOrder: "none"},
-        addCol: { name: "Add", filterText: "", defaultSortOrder: "none"}
+        col1: { name: "Col 1" },
+        col2: { name: "Col 2" },
+        col3: { name: "Col 3" },
+        editCol: { name: "Edit", disableSort: true },
+        addCol: { name: "Add", disableSort: true }
     }
 };
 
@@ -21,7 +20,7 @@ var Items = React.createClass({
       return (
           <BSCol md={12}>
               <div>
-                  <MKTableSorter config={CONFIG} headerRepeat="8" />
+                  <MKTableSorter config={CONFIG} headerRepeat={8} />
              </div>
           </BSCol>
       );
