@@ -221,7 +221,7 @@ var TableSorter = React.createClass({
           if(!self.state.columns[c].disableFilter){
             return <td key={i}><input type="text" valueLink={filterLink(c)} /></td>;
           }
-          return null;
+          return <td key={i} />;
       });
     }
 
