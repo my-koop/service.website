@@ -11,7 +11,7 @@ var UserPrivilegesModal = React.createClass({
 
   render: function(){
     return this.transferPropsTo(
-      <MKAbstractModal title={UserPrivilegesTitle} modalBody={UserPrivilegesBody} closeButtonFooter={false} /> 
+      <MKAbstractModal title={UserPrivilegesTitle} modalBody={UserPrivilegesBody} useCloseButtonFooter={true} /> 
     );
     
   }
