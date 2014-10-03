@@ -8,10 +8,12 @@ var RouteInfo = require("routeInformation");
 
 
 var MKApp                  = require("components/App");
-var MKSimplePage           = require("components/SimplePage");
+var MKSimplePageWrapper    = require("components/SimplePageWrapper");
+var MKPublicWrapper        = require("components/PublicWrapper");
+var MKDashboardWrapper     = require("components/DashboardWrapper");
+var MKHomepage             = require("components/Homepage");
 var MKPlaceHolder          = require("components/PlaceHolder");
 var MKParentPlaceHolder    = require("components/ParentPlaceHolder");
-var MKHomepage            = require("components/Homepage");
 var MKLoginPage            = require("components/LoginPage");
 var MKMyAccountPage        = require("components/MyAccountPage");
 var MKPasswordRecoveryPage = require("components/PasswordRecoveryPage");
@@ -30,9 +32,8 @@ var MyKoop = React.createClass({
     return (
       <Routes location="history">
         <Route name="app" handler={MKApp}>
-
           {/*Public pages*/}
-          <Route name={RouteInfo.homepage.name} path={RouteInfo.homepage.fullPath} handler={MKParentPlaceHolder}>
+          <Route name={RouteInfo.homepage.name} path={RouteInfo.homepage.fullPath} handler={MKPublicWrapper}>
             <DefaultRoute handler={MKHomepage}/>
             <Route name={RouteInfo.aboutUs.name} path={RouteInfo.aboutUs.relativePath} handler={MKPlaceHolder}/>
             <Route name={RouteInfo.myaccount.name} path={RouteInfo.myaccount.relativePath} handler={MKMyAccountPage}/>
@@ -42,15 +43,15 @@ var MyKoop = React.createClass({
             </Route>
           </Route>
 
-          <Route handler={MKSimplePage}>
+          <Route handler={MKSimplePageWrapper}>
             <Route name={RouteInfo.login.name} path={RouteInfo.login.fullPath} handler={MKLoginPage}/>
             <Route name={RouteInfo.pwdRcv.name} path={RouteInfo.pwdRcv.fullPath} handler={MKPasswordRecoveryPage}/>
             <Route name={RouteInfo.register.name} path={RouteInfo.register.fullPath} handler={MKRegisterPage}/>
           </Route>
 
           {/*Admin dashboard pages*/}
-          <Route name={RouteInfo.dashboard.name} path={RouteInfo.dashboard.fullPath} handler={MKParentPlaceHolder}>
-            <DefaultRoute handler={MKPlaceHolder}/>
+          <Route name={RouteInfo.dashboard.name} path={RouteInfo.dashboard.fullPath} handler={MKDashboardWrapper}>
+            <DefaultRoute handler={MKHomepage}/>
             <Route name={RouteInfo.options.name} path={RouteInfo.options.relativePath} handler={MKOptionsPage}/>
             <Route name={RouteInfo.stats.name} path={RouteInfo.stats.relativePath} handler={MKPlaceHolder}/>
             <Route name={RouteInfo.transaction.name} path={RouteInfo.transaction.relativePath} handler={MKTransactionList}/>

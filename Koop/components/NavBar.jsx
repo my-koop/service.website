@@ -57,6 +57,7 @@ var NavBar = React.createClass({
             //FIXME: Remove after prototype.
             onClick={this.onFakeLogin}
           />}
+          fixedTop
         >
           <BSNav key={1} className="navbar-left">
             <MKNavItemLink to={RouteInfo.homepage.name}>
@@ -69,7 +70,8 @@ var NavBar = React.createClass({
               <MKIcon glyph="question" /> About Us
             </MKNavItemLink>
           </BSNav>
-          <BSNav key={2} className="navbar-right">
+          {/*FIXME: Hide on small viewports for now since it doesn't wrap.*/}
+          <BSNav key={2} className="navbar-right hidden-xs">
             {isLoggedIn ?
               <BSDropdownButton
                 key={1}
