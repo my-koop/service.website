@@ -34,6 +34,7 @@ var TableSorter = React.createClass({
         name: PropTypes.string.isRequired,
         defaultSortOrder: PropTypes.oneOf(["asc","desc","none"]),
         filterText: PropTypes.string,
+        cellGenerator: PropTypes.func,
         disableSort: PropTypes.bool,
         disableFilter: PropTypes.bool,
       })).isRequired
@@ -141,32 +142,18 @@ var TableSorter = React.createClass({
 
 
     // Row generator
-    var rowGenerator = function(x) {
+    var rowGenerator = function(item) {
       return columnNames.map(function(colName, i) {
-        switch(colName){
-          case "editCol":
-            return (
-              <td key={i}>
-               <BSButton bsSize="small">Edit item  </BSButton><br/>
-              </td>
-            );
-            break;
-          case "addCol":
-            return (
-              <td key={i}>
-                <BSInput type="text" placeholder="Enter quantity"/>
-                <BSButton>Add quantity to stock (ID:{x["id"]}) </BSButton>
-              </td>
+        var cellGenerator = this.state.columns[colName].cellGenerator;
+        if(cellGenerator){
+          return cellGenerator(item,i);
+        } else {
+          return (
+            <td key={i}>
+              {item[colName]}
+            </td>
           );
-            break;
-          default:
-            return (
-              <td key={i}>
-                {x[colName]}
-              </td>
-            );
         }
-
       }, this);
     }.bind(this);
 
@@ -246,9 +233,11 @@ var TableSorter = React.createClass({
           <tr>
             { header }
           </tr>
-          <tr>
-            { filterInputs }
-          </tr>
+          {!this.props.disableFilter ? (
+            <tr>
+              { filterInputs }
+            </tr>
+          ) : null }
         </thead>
         <tbody>
           { allRows }

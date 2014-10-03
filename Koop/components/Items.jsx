@@ -1,28 +1,41 @@
-﻿var _ = require("lodash");
-var React = require("react");
-var Link = require("react-router").Link;
+﻿var React = require("react");
 var BSCol = require("react-bootstrap/Col");
+var BSInput = require("react-bootstrap/Input");
+var BSButton = require("react-bootstrap/Button");
+
 var MKTableSorter = require("components/TableSorter");
+var MKListModButtons = require("components/ListModButtons");
 
 // TableSorter Config
 var CONFIG = {
     columns: {
-        col1: { name: "Col 1" },
-        col2: { name: "Col 2" },
-        col3: { name: "Col 3" },
-        editCol: { name: "Edit", disableSort: true, disableFilter: true},
-        addCol: { name: "Add", disableSort: true, disableFilter: true }
+        id: { name: "ID" },
+        col1: { name: "Code" },
+        col2: { name: "Quantity" },
+        col3: { name: "Supplier" },
+        editCol: {
+          name: "Actions",
+          disableSort: true,
+          disableFilter: true,
+          cellGenerator: function(item, i){
+            return (
+              <td key={i}>
+                <MKListModButtons hideUp hideDown />
+              </td>
+            );
+          }
+        }
     }
 };
 
 var Items = React.createClass({
   render: function() {
       return (
-          <BSCol md={12}>
-              <div>
-                  <MKTableSorter config={CONFIG} headerRepeat={8} />
-             </div>
-          </BSCol>
+        <BSCol md={12}>
+          <div>
+            <MKTableSorter config={CONFIG} headerRepeat={8} />
+          </div>
+        </BSCol>
       );
 }
 });
