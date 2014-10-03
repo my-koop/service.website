@@ -25,7 +25,7 @@ var Items = React.createClass({
              </div>
           </BSCol>
       );
-}
+  }
 });
 
 module.exports = Items;
