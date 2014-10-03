@@ -16,18 +16,19 @@ var ListModButtons = React.createClass({
     buttons: PropTypes.arrayOf(
       PropTypes.shape({
         icon: PropTypes.string,
-        text: PropTypes.string,
+        content: PropTypes.renderable,
         callback: PropTypes.func,
         warningMessage: PropTypes.string,
         hide: PropTypes.bool,
         tooltip: PropTypes.shape({
           text: PropTypes.renderable.isRequired,
-          placement: PropTypes.oneOf(["left","top","bottom","right"])
+          overlayProps: PropTypes.object
         }),
         customWrapper: PropTypes.func
       })
     ).isRequired,
-    stopPropagation : PropTypes.bool
+    stopPropagation : PropTypes.bool,
+    defaultTooltipDelay: PropTypes.number
   },
 
   getOnClickCallback: function(callback){
@@ -47,10 +48,10 @@ var ListModButtons = React.createClass({
 
     var self = this;
     var buttons = this.props.buttons.map(function(btn, i){
-      if(btn.hide || (!btn.icon && !btn.text)) return null;
+      if(btn.hide || (!btn.icon && !btn.content)) return null;
 
-      // support both
-      var content = btn.icon ? <MKIcon glyph={btn.icon} /> : btn.text;
+      // Show content if available, otherwise fallback to the icon
+      var content = btn.content ? btn.content : <MKIcon glyph={btn.icon} />;
 
       var buttonOnClick = btn.warningMessage ? self.getOnClickCallback(null) : self.getOnClickCallback(btn.callback);
       var button = (
@@ -70,10 +71,12 @@ var ListModButtons = React.createClass({
       }
 
       if(btn.tooltip){
+        var props = btn.tooltip.overlayProps || {};
+        props.delay = props.delay || self.props.defaultTooltipDelay || 0;
         result = (
           <BSOverlayTrigger
             key={i}
-            placement={btn.tooltip.placement || "top"}
+            {...props}
             overlay={(
               <BSTooltip>
                 {btn.tooltip.text}

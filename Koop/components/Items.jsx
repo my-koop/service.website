@@ -29,19 +29,34 @@ var Items = React.createClass({
               return (
                 <td key={i}>
                   <MKListModButtons
+                    defaultTooltipDelay={500}
                     buttons={[
+                      {
+                        content:(<MKIcon glyph="star" library="glyphicon" />),
+                        tooltip:{
+                          text: "Save as favorite!",
+                          overlayProps:{
+                            placement: "top"
+                          }
+                        }
+                      },
                       {
                         icon:"plus",
                         tooltip:{
                           text: "Increase quantity",
-                          placement: "left"
+                          overlayProps: {
+                            placement: "left",
+                          }
                         }
                       },
                       {
                         icon:"minus",
                         warningMessage: "Are you sure?",
                         tooltip:{
-                          text: "Delete"
+                          text: "Delete",
+                          overlayProps: {
+                            placement: "top"
+                          }
                         },
                         callback: function(){
                           alert("You deleted the item, or did you?");
@@ -51,7 +66,9 @@ var Items = React.createClass({
                         icon:"edit",
                         tooltip:{
                           text: "Edit Item",
-                          placement: "right"
+                          overlayProps: {
+                            placement: "right"
+                          }
                         },
                         customWrapper: function(component, iBtn){
                           return (
