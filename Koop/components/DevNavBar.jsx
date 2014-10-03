@@ -31,7 +31,9 @@ var DevNavBar = React.createClass({
     var showHideButtonName = this.state.isDevBarHidden ? "Show Dev NavBar" : "Hide Dev NavBar";
     return (
       <div>
-        <BSButton onClick={this.toggleDevBarDisplay} bsSize="small">{showHideButtonName}</BSButton>
+        <div className="text-center">
+          <BSButton onClick={this.toggleDevBarDisplay} bsSize="small">{showHideButtonName}</BSButton>
+        </div>
         <div hidden={this.state.isDevBarHidden}>
           <MKNavigationBar contentUrl={RouteInformation.devNavBar.fullPath}/>
         </div>

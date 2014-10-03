@@ -15,12 +15,14 @@ var MKParentPlaceHolder    = require("components/ParentPlaceHolder");
 var MKLoginPage            = require("components/LoginPage");
 var MKMyAccountPage        = require("components/MyAccountPage");
 var MKPasswordRecoveryPage = require("components/PasswordRecoveryPage");
+var MKOptionsPage          = require("components/OptionsPage");
 var MKRegisterPage         = require("components/RegisterPage");
 var MKItemsBelowThreshold  = require("components/ItemsBelowThreshold");
 var MKUserPrivilegesPage   = require("components/UserPrivilegesPage");
 var MKEventsList           = require("components/EventsList");
 var MKItems                = require("components/Items");
 var MKMailingListSendPage  = require("components/MailingListSendPage");
+var MKTransactionList      = require("components/TransactionList")
 
 
 var MyKoop = React.createClass({
@@ -49,11 +51,11 @@ var MyKoop = React.createClass({
           {/*Admin dashboard pages*/}
           <Route name={RouteInfo.dashboard.name} path={RouteInfo.dashboard.fullPath} handler={MKParentPlaceHolder}>
             <DefaultRoute handler={MKHomepage}/>
-            <Route name={RouteInfo.options.name} path={RouteInfo.options.relativePath} handler={MKPlaceHolder}/>
+            <Route name={RouteInfo.options.name} path={RouteInfo.options.relativePath} handler={MKOptionsPage}/>
             <Route name={RouteInfo.stats.name} path={RouteInfo.stats.relativePath} handler={MKPlaceHolder}/>
-            <Route name={RouteInfo.transaction.name} path={RouteInfo.transaction.relativePath} handler={MKPlaceHolder}/>
-            <Route name={RouteInfo.events.name} path={RouteInfo.events.relativePath} handler={MKEventsList}>
-              <DefaultRoute displayName={RouteInfo.events.name} handler={MKPlaceHolder}/>
+            <Route name={RouteInfo.transaction.name} path={RouteInfo.transaction.relativePath} handler={MKTransactionList}/>
+            <Route name={RouteInfo.events.name} path={RouteInfo.events.relativePath} handler={MKParentPlaceHolder}>
+              <DefaultRoute displayName={RouteInfo.events.name} handler={MKEventsList}/>
               <Route name={RouteInfo.eventsPos.name} path={RouteInfo.eventsPos.relativePath} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.eventsReport.name} path={RouteInfo.eventsReport.relativePath} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.eventsSignup.name} path={RouteInfo.eventsSignup.relativePath} handler={MKPlaceHolder}/>
