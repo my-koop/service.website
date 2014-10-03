@@ -19,84 +19,82 @@ var AvailabilityBoxInputs  = [
      "type": "text"
     },
     {
-  "properties": {
-    "name": "dateMultiSelect",
-    "label": "Select Days",
-    "options": [
-      {
-        "name": "multiSelect_sunday",
-        "value": "Sunday"
+      "properties": {
+        "name": "dateMultiSelect",
+        "label": "Select Days",
+        "options": [
+          {
+            "name": "multiSelect_sunday",
+            "value": "Sunday"
+          },
+          {
+            "name": "multiSelect_monday",
+            "value": "Monday"
+          },
+          {
+            "name": "multiSelect_tuesday",
+            "value": "Tuesday"
+          },
+          {
+            "name": "multiSelect_wednesday",
+            "value": "Wednesday"
+          },
+          {
+            "name": "multiSelect_thursday",
+            "value": "Thursday"
+          },
+          {
+            "name": "multiSelect_friday",
+            "value": "Friday"
+          },
+          {
+            "name": "multiSelect_saturday",
+            "value": "Saturday"
+          }
+        ]
       },
-      {
-        "name": "multiSelect_monday",
-        "value": "Monday"
-      },
-      {
-        "name": "multiSelect_tuesday",
-        "value": "Tuesday"
-      },
-      {
-        "name": "multiSelect_wednesday",
-        "value": "Wednesday"
-      },
-      {
-        "name": "multiSelect_thursday",
-        "value": "Thursday"
-      },
-      {
-        "name": "multiSelect_friday",
-        "value": "Friday"
-      },
-      {
-        "name": "multiSelect_saturday",
-        "value": "Saturday"
-      }
-    ]
-  },
-  "type": "select"
-},
+      "type": "select"
+    },
 
-{
-  "properties": {
-    "name": "isrecurring",
-    "label": "Set Recurring?",
-    "isChecked": false
-  },
-  "type": "checkbox"
-},
-{
-  "properties": {
-    "name": "recurringUntil",
-    "placeholder": "(YYYY/MM/JJ)",
-    "label": "Recurring until "
-  },
-  "type": "text"
-},
-
-{
-  "properties": {
-    "name": "startTime",
-    "placeholder": "HH:MM",
-    "label": "Enter start time"
-  },
-  "type": "text"
-},
-{
-  "properties": {
-    "name": "duration",
-    "placeholder": "How many hours",
-    "label": "Enter duration (hours)"
-  },
-  "type": "text"
-}
-
+    {
+      "properties": {
+        "name": "isrecurring",
+        "label": "Set Recurring?",
+        "isChecked": false
+      },
+      "type": "checkbox"
+    },
+    {
+      "properties": {
+        "name": "recurringUntil",
+        "placeholder": "(YYYY/MM/JJ)",
+        "label": "Recurring until "
+      },
+      "type": "text"
+    },
+    {
+      "properties": {
+        "name": "startTime",
+        "placeholder": "HH:MM",
+        "label": "Enter start time"
+      },
+      "type": "text"
+    },
+    {
+      "properties": {
+        "name": "duration",
+        "placeholder": "How many hours",
+        "label": "Enter duration (hours)"
+      },
+      "type": "text"
+    }
 ];
 
 
 var AvailabilityBox = React.createClass({
-propTypes: {
-  inputs: PropTypes.array.isRequired
-},
+  propTypes: {
+    inputs: PropTypes.array.isRequired
+  },
 
   render: function(){
     inputElements = this.props.inputs.map(function(input,key){
@@ -138,19 +136,19 @@ var TriggerAvailabilityModal = function(buttonName){
   );
 };     
  
- var rowFunctions = (
+var rowFunctions = (
   <div className="form-inline">
     {TriggerAvailabilityModal("Edit")}
     <BSButton>Delete</BSButton>
   </div>
- )
+);
  
- var addButton =  TriggerAvailabilityModal("Add New");
+var addButton =  TriggerAvailabilityModal("Add New");
 var headers = ["Date","Day Of Week","Start Time","Duration","Recurring?","Fonction"];
 var data = [
-    ["2013/10/01","Wednesday","12:00" ,"3 Hours","No",rowFunctions],
-    ["2013/09/12","Friday","16:00"  ,"2 hours" ,"No",rowFunctions]
-    ];   
+  ["2013/10/01","Wednesday","12:00" ,"3 Hours","No",rowFunctions],
+  ["2013/09/12","Friday","16:00"  ,"2 hours" ,"No",rowFunctions]
+];   
 
 var VolunteerAvailability = React.createClass({
   propTypes: {

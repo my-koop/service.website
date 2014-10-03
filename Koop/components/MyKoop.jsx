@@ -20,8 +20,8 @@ var MKItemsBelowThreshold  = require("components/ItemsBelowThreshold");
 var MKUserPrivilegesPage   = require("components/UserPrivilegesPage");
 var MKEventsList           = require("components/EventsList");
 var MKItems                = require("components/Items");
-var MKTransactionList      = require("components/TransactionList")
-var MKVolunteerAvailability= require("components/VolunteerAvailability")
+var MKTransactionList      = require("components/TransactionList");
+var MKVolunteerAvailability= require("components/VolunteerAvailability");
 
 var MyKoop = React.createClass({
   render: function() {
