@@ -40,16 +40,26 @@ var OptionsPage = React.createClass({
     var options = field.options.map(function(option,i){
       return (
         [ <MKListModButtons
-              hideUp={i === 0}
-              hideDown={i >= (length - 1)}
-              hidePlus
-              warningMessage="Are you sure you want to delete this ?"
-            />,
+            buttons={[
+              {
+                icon: "minus",
+                warningMessage: "Are you sure you want to delete this ?"
+              },
+              {
+                icon: "arrow-up",
+                hide: i === 0
+              },
+              {
+                icon: "arrow-down",
+                hide: i >= (length - 1)
+              },
+            ]}
+          />,
           option.display
         ]
       );
     });
-    options.push([<MKListModButtons hideUp hideDown hideMinus />, "Add a new option"]);
+    options.push([<MKListModButtons buttons={[{icon: "plus"}]} />, "Add a new option"]);
 
     return (
       <div>
@@ -105,18 +115,33 @@ var OptionsPage = React.createClass({
       return null;
     }
 
+    var length = this.state.fields.length;
     var header = (
       <span>
         <span style={{marginRight:"15px"}}>{fieldTypeDisplay} field</span>
         <MKListModButtons
-            hideUp={i === 0}
-            hideDown={i >= (this.state.fields.length - 1)}
-            callBackMinus={this.deleteField.bind(null,i)}
-            callBackUp={this.moveUp.bind(null,i)}
-            callBackDown={this.moveDown.bind(null,i)}
-            warningMessage="Are you sure you want to delete this ?"
-            stopPropagate
-          />
+          buttons={[
+            {
+              icon: "plus",
+            },
+            {
+              icon: "minus",
+              warningMessage: "Are you sure you want to delete this ?",
+              callback: this.deleteField.bind(null,i)
+            },
+            {
+              icon: "arrow-up",
+              hide: i === 0,
+              callback: this.moveUp.bind(null,i)
+            },
+            {
+              icon: "arrow-down",
+              hide: i >= (length - 1),
+              callback: this.moveDown.bind(null,i)
+            },
+          ]}
+          stopPropagate
+        />
       </span>
     );
     return (

@@ -20,7 +20,7 @@ var CONFIG = {
           cellGenerator: function(item, i){
             return (
               <td key={i}>
-                <MKListModButtons hideUp hideDown />
+                <MKListModButtons buttons={[{icon:"plus"}]} />
               </td>
             );
           }
