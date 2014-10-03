@@ -1,7 +1,7 @@
 var React = require("react");
 var BSCol = require("react-bootstrap/Col");
 var MKEditableFieldList = require("components/EditableFieldList");
-var MKCollapsiblePanel = require("components/CollapsiblePanel");
+var MKCollapsablePanel = require("components/CollapsablePanel");
 
 // mock data
 var fields = [
@@ -44,11 +44,12 @@ var OptionsPage = React.createClass({
   render: function() {
     return (
       <BSCol md={12}>
-        <MKCollapsiblePanel header="User optional fields" defaultExpanded>
+        <MKCollapsablePanel header="User optional fields" defaultExpanded>
           <MKEditableFieldList fields={fields} />
-        </MKCollapsiblePanel>
-        <MKCollapsiblePanel header="Other options" defaultExpanded>
-        </MKCollapsiblePanel>
+        </MKCollapsablePanel>
+        <MKCollapsablePanel header="Other options">
+          Under construction
+        </MKCollapsablePanel>
       </BSCol>
     );
   }

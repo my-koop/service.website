@@ -3,7 +3,7 @@ var PropTypes = React.PropTypes;
 var BSInput = require("react-bootstrap/Input");
 var MKListModButtons = require("components/ListModButtons");
 var MKFilterableItemList = require("components/FilterableItemList");
-var MKCollapsiblePanel = require("components/CollapsiblePanel");
+var MKCollapsablePanel = require("components/CollapsablePanel");
 
 var OptionsPage = React.createClass({
 
@@ -145,9 +145,9 @@ var OptionsPage = React.createClass({
       </span>
     );
     return (
-      <MKCollapsiblePanel bsSize="small" key={i} header={header}>
+      <MKCollapsablePanel bsSize="small" key={i} header={header}>
         {fieldComponent}
-      </MKCollapsiblePanel>
+      </MKCollapsablePanel>
     );
   },
 
