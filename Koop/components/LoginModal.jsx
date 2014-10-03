@@ -1,6 +1,6 @@
 ﻿var React = require("react");
 var BSButton = require("react-bootstrap/Button");
-var BSModal = require("react-bootstrap/Modal");
+var MKAbstractModal = require("components/AbstractModal");
 
 var MKLoginBox = require("components/LoginBox");
 
@@ -9,18 +9,17 @@ var saveLoginState = function(state){
   loginState = state;
 };
 
-var LoginModal = React.createClass({
+var onLoginSuccess = function(){
+  console.log("success");
+};
 
+var LoginBody   = <MKLoginBox state={loginState} saveStateCallback={saveLoginState} onLoginSuccess={onLoginSuccess}/>
+var LoginTitle  = "Please Sign In";
+
+var LoginModal = React.createClass({
   render: function () {
     return this.transferPropsTo(
-      <BSModal title="Please Sign In" bsSize="small">
-        <div className="modal-body" >
-          <MKLoginBox state={loginState} saveStateCallback={saveLoginState} onLoginSuccess={this.props.onLoginSuccess}/>
-        </div>
-        <div className="modal-footer">
-          <BSButton onClick={this.props.onRequestHide}>Close</BSButton>
-        </div>
-      </BSModal>
+      <MKAbstractModal title={LoginTitle} modalBody={LoginBody} useCloseButtonFooter={true} />
     );
   }
 });

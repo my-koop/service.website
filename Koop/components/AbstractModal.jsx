@@ -36,7 +36,7 @@ var AbstractModal = React.createClass({
     modalBody  : PropTypes.renderable.isRequired,
     modalFooter: PropTypes.renderable,
     onRequestHide: PropTypes.func.isRequired,
-    closeButtonFooter: PropTypes.bool
+    useCloseButtonFooter: PropTypes.bool
   },
 
   render: function () {
@@ -47,7 +47,7 @@ var AbstractModal = React.createClass({
         <div className="modal-body">
            {this.props.modalBody}
         </div>
-        {PopulateFooter(this.props.closeButtonFooter,this.props.onRequestHide,this.props.modalFooter)}
+        {PopulateFooter(this.props.useCloseButtonFooter,this.props.onRequestHide,this.props.modalFooter)}
       </BSModal>
     );
   }
