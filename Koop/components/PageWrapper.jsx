@@ -9,12 +9,12 @@ var MKNavBar = require("components/NavBar");
 
 var PageWrapper = React.createClass({
   propTypes: {
-    fluid: React.PropTypes.bool
+    dashboard: React.PropTypes.bool
   },
 
   getDefaultProps: function() {
     return {
-      fluid: false
+      dashboard: false
     };
   },
 
@@ -23,9 +23,9 @@ var PageWrapper = React.createClass({
       <div>
         {/* Navigation bar. */}
         <BSRow>
-          <MKNavBar />
+          <MKNavBar dashboard={this.props.dashboard} />
         </BSRow>
-        <BSGrid fluid={this.props.fluid}>
+        <BSGrid fluid={this.props.dashboard}>
           {/* Main site content. */}
           <BSRow>
             {this.props.children}

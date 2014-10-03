@@ -8,7 +8,7 @@ var MKSideBar = require("components/SideBar");
 var DashboardWrapper = React.createClass({
   render: function() {
     return (
-      <MKPageWrapper fluid>
+      <MKPageWrapper dashboard>
         {/* Side bar. */}
         <BSCol md={2} style={{padding: 0}}>
           <MKSideBar />

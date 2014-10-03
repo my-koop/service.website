@@ -30,6 +30,11 @@ var SimplePage = React.createClass({
           </BSCol>
         </BSRow>
         <BSRow className="top-margin-20">
+          <div className="text-center">
+            <RRLink to={RouteInfo.homepage.name}>Back to homepage</RRLink>
+          </div>
+        </BSRow>
+        <BSRow className="top-margin-20">
           <BSCol sm={6} md={4} className="col-center-block">
             {this.props.activeRouteHandler()}
           </BSCol>
