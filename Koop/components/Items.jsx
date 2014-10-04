@@ -118,7 +118,15 @@ var Items = React.createClass({
     return (
       <BSCol md={12}>
         <div>
-          <MKTableSorter config={CONFIG} items={this.state.items} headerRepeat={8} striped bordered condensed hover />
+          <MKTableSorter
+            config={CONFIG}
+            items={this.state.items}
+            headerRepeat={8}
+            striped
+            bordered
+            condensed
+            hover
+          />
         </div>
       </BSCol>
     );
