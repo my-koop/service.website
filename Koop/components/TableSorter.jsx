@@ -1,14 +1,14 @@
-var React    = require("react");
-var PropTypes= React.PropTypes;
+var React     = require("react");
+var PropTypes = React.PropTypes;
 
-var BSTable  = require("react-bootstrap/Table");
-var BSButton = require("react-bootstrap/Button");
+var BSTable   = require("react-bootstrap/Table");
+var BSButton  = require("react-bootstrap/Button");
 
-var MKIcon   = require("components/Icon");
+var MKIcon    = require("components/Icon");
 
-var _        = require("lodash");
-var ajax     = require("ajax");
-var routeInfo= require("routeInformation");
+var _         = require("lodash");
+var ajax      = require("ajax");
+var routeInfo = require("routeInformation");
 
 // Inequality function map for the filtering
 var operators = {
@@ -18,6 +18,7 @@ var operators = {
     ">=": function(x, y) { return x >= y; },
     "=": function(x, y) { return x == y; }
 };
+var operandRegex = /^((?:(?:[<>]=?)|==))\s?([-]?\d+(?:\.\d+)?)$/;
 
 // TableSorter React Component
 var TableSorter = React.createClass({
@@ -31,26 +32,26 @@ var TableSorter = React.createClass({
 
       columns: PropTypes.objectOf(PropTypes.shape({
         name: PropTypes.string.isRequired,
-        defaultSortOrder: PropTypes.oneOf(["asc","desc","none"]),
+        defaultSortOrder: PropTypes.oneOf(["asc","desc",""]),
         // default filter text
         filterText: PropTypes.string,
         // callback to create a custom cell content
         // function(item: Data, colIndex: number) : ReactComponent
         cellGenerator: PropTypes.func,
-        // Disable Sort for this column only
+        // Disable Sorting for this column only
         disableSort: PropTypes.bool,
-        // Disable Filter for this column only
+        // Disable Filtering for this column only
         disableFilter: PropTypes.bool,
       })).isRequired
     }),
 
-    // Initial date in the table
+    // Initial data in the table
     initialItems: PropTypes.array,
     // Header repeat interval, 0 to disable
     headerRepeat: PropTypes.number,
-    // Disable Sort for this table
+    // Disable Sorting for this table
     disableSort: PropTypes.bool,
-    // Disable Filter for this table
+    // Disable Filtering for this table
     disableFilter: PropTypes.bool,
   },
 
@@ -80,26 +81,24 @@ var TableSorter = React.createClass({
   handleFilterTextChange: function(column) {
     var self = this;
     return function(newValue) {
-      var obj = this.state.columns;
+      var obj = self.state.columns;
       obj[column].filterText = newValue;
-
-      // Since we have already mutated the state, just call forceUpdate().
-      // Ideally we'd copy and setState or use an immutable data structure.
-      self.forceUpdate();
+      self.setState({columns:obj});
     };
   },
 
-  columnNames: function() {
+  getColumnNames: function() {
     return Object.keys(this.state.columns);
   },
 
   sortColumn: function(column) {
     var self = this;
     return function(event) {
-      var newSortOrder = (self.state.sort.order === "asc") ? "desc" : "asc";
-
-      if (self.state.sort.column != column) {
+      var newSortOrder
+      if (self.state.sort.column !== column) {
         newSortOrder = self.state.columns[column].defaultSortOrder || "asc";
+      } else {
+        newSortOrder = (self.state.sort.order === "asc") ? "desc" : "asc";
       }
 
       self.setState({sort: { column: column, order: newSortOrder }});
@@ -110,10 +109,8 @@ var TableSorter = React.createClass({
     var self = this;
     var allRows = [];
 
-    var columnNames = self.columnNames();
+    var columnNames = self.getColumnNames();
     var filters = {};
-
-    var operandRegex = /^((?:(?:[<>]=?)|==))\s?([-]?\d+(?:\.\d+)?)$/;
 
     /////////////////////////////////////////////////////////////////////////
     // Apply filters
@@ -123,7 +120,7 @@ var TableSorter = React.createClass({
 
       if (filterText && filterText.length > 0) {
         operandMatch = operandRegex.exec(filterText);
-        if (operandMatch && (operandMatch.length == 3) ) {
+        if (operandMatch && (operandMatch.length === 3) ) {
           filters[column] = function(match) { return function(x) { return operators[match[1]](x, match[2]); }; }(operandMatch);
         } else {
           filters[column] = function(x) {
@@ -154,14 +151,16 @@ var TableSorter = React.createClass({
     // Create headers
     var header = columnNames.map(function(c, i) {
       var doSort = !self.props.disableSort && !self.state.columns[c].disableSort;
-      if( doSort ){
-        var iconName = self.state.sort.column === c ? self.state.sort.order == "asc" ? "sort-asc" : "sort-desc" : "sort";
-        var icon = ( <MKIcon glyph={iconName} /> );
+      if(doSort){
+        var iconName = "sort";
+        var isSortingThisColumn = self.state.sort.column === c;
+        if(isSortingThisColumn){
+          iconName += "-" + self.state.sort.order;
+        }
+        var icon = (<MKIcon glyph={iconName} />);
 
         return (
-          <th
-            key={i}
-          >
+          <th key={i}>
             <BSButton onClick={self.sortColumn(c)} bsStyle="link">
               {self.state.columns[c].name} {icon}
             </BSButton>
@@ -169,9 +168,7 @@ var TableSorter = React.createClass({
         );
       }
       return (
-        <th
-          key={i}
-        >
+        <th key={i}>
           <span className="btn btn-link" disabled>
             {self.state.columns[c].name}
           </span>
@@ -180,9 +177,8 @@ var TableSorter = React.createClass({
     });
 
     // Create filter fields
-    var filterLink = null;
     if(!self.props.disableFilter){
-      filterLink = function(column) {
+      var filterLink = function(column) {
         return {
           value: self.state.columns[column].filterText,
           requestChange: self.handleFilterTextChange(column)
@@ -226,18 +222,18 @@ var TableSorter = React.createClass({
     };
 
     // Create all rows
-    sortedItems.forEach(function(item, idx) {
-      if ((self.props.headerRepeat > 0) && (idx > 0) && (idx % self.props.headerRepeat === 0)) {
+    sortedItems.forEach(function(item, i) {
+      if ((self.props.headerRepeat > 0) && (i > 0) && (i % self.props.headerRepeat === 0)) {
         allRows.push (
-          <tr key={"extra"+idx}>
-            { headerExtra() }
+          <tr key={"extra" + i}>
+            {headerExtra()}
           </tr>
         )
       }
 
       allRows.push(
-        <tr key={idx}>
-          { rowGenerator(item) }
+        <tr key={i}>
+          {rowGenerator(item)}
         </tr>
       );
     });
@@ -246,7 +242,7 @@ var TableSorter = React.createClass({
 
     return (
       <BSTable
-        cellSpacing="0"à
+        cellSpacing="0"
         striped  ={this.props.striped}
         bordered ={this.props.bordered}
         condensed={this.props.condensed}
@@ -254,16 +250,16 @@ var TableSorter = React.createClass({
       >
         <thead>
           <tr>
-            { header }
+            {header}
           </tr>
           {!self.props.disableFilter ? (
             <tr>
-              { filterInputs }
+              {filterInputs}
             </tr>
           ) : null }
         </thead>
         <tbody>
-          { allRows }
+          {allRows}
         </tbody>
       </BSTable>
     );
