@@ -3,7 +3,6 @@ var React = require("react");
 var BSGrid = require("react-bootstrap/Grid");
 var BSRow = require("react-bootstrap/Row");
 
-var MKDevNavBar = require("components/DevNavBar");
 var MKFooter = require("components/Footer");
 var MKNavBar = require("components/NavBar");
 
@@ -34,11 +33,6 @@ var PageWrapper = React.createClass({
           {/* Footer. */}
           <BSRow>
             <MKFooter />
-          </BSRow>
-
-          {/* To be removed after development. */}
-          <BSRow>
-            <MKDevNavBar hide />
           </BSRow>
         </BSGrid>
       </div>

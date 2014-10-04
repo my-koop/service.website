@@ -2,7 +2,9 @@
 var Router = require("react-router");
 var RouteInfo = require("routeInformation");
 
+var BSButton = require("react-bootstrap/Button");
 var BSDropdownButton = require("react-bootstrap/DropdownButton");
+var BSInput = require("react-bootstrap/Input");
 var BSMenuItem = require("react-bootstrap/MenuItem");
 var BSModalTrigger = require("react-bootstrap/ModalTrigger");
 var BSNavbar = require("react-bootstrap/Navbar");
@@ -40,6 +42,15 @@ var NavBar = React.createClass({
   onFakeLogin: function(nowLoggedIn) {
     var nowLoggedIn = typeof nowLoggedIn === "boolean" ? nowLoggedIn : !this.state.isLoggedIn;
     this.setState({isLoggedIn: nowLoggedIn});
+  },
+
+  onSearch: function(e) {
+    e.preventDefault();
+    Router.transitionTo(
+      RouteInfo.shop.name,
+      {},
+      {filter: this.refs.searchtext.getInputDOMNode().value}
+    );
   },
 
   onMenuLogin: function() {
@@ -124,7 +135,22 @@ var NavBar = React.createClass({
               </MKNavItemLink>,
               <MKNavItemLink key={30} to={RouteInfo.aboutUs.name}>
                 <MKIcon glyph="question" /> About Us
-              </MKNavItemLink>
+              </MKNavItemLink>,
+              <form
+                className="navbar-form navbar-left"
+                onSubmit={this.onSearch}
+              >
+                <BSInput
+                  ref="searchtext"
+                  type="text"
+                  placeholder="Search..."
+
+                  //FIXME: Placeholder until
+                  // https://github.com/react-bootstrap/react-bootstrap/issues/201
+                  // or a workaround.
+                  addonAfter={<MKIcon glyph="search"/>}
+                />
+              </form>
             ]}
           </BSNav>
           {/*FIXME: Hide on small viewports for now since it doesn't wrap.*/}
