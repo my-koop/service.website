@@ -8,6 +8,9 @@ var MKTableSorter   = require("components/TableSorter");
 var MKListModButtons= require("components/ListModButtons");
 var MKItemEditModal = require("components/ItemEditModal");
 
+var ajax      = require("ajax");
+var routeInfo = require("routeInformation");
+
 var actionsGenerator = function(item){
   return [
     {
@@ -64,6 +67,28 @@ var actionsGenerator = function(item){
 }
 
 var Items = React.createClass({
+
+  getInitialState: function(){
+    return {
+      items: []
+    }
+  },
+
+  componentWillMount: function() {
+    var self = this;
+    var itemsData = ajax.request(
+      {endpoint: routeInfo.itemsData.fullPath},
+      function(err, res){
+        if (err) {
+          console.error(routeInfo.itemsData.fullPath, status, err.toString());
+          return;
+        }
+        // use res object
+        self.setState({items:res.body});
+      }
+    );
+  },
+
   render: function() {
 
     // TableSorter Config
@@ -93,7 +118,15 @@ var Items = React.createClass({
     return (
       <BSCol md={12}>
         <div>
-          <MKTableSorter config={CONFIG} headerRepeat={8} striped bordered condensed hover/>
+          <MKTableSorter
+            config={CONFIG}
+            items={this.state.items}
+            headerRepeat={8}
+            striped
+            bordered
+            condensed
+            hover
+          />
         </div>
       </BSCol>
     );
