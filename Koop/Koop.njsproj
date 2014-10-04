@@ -196,6 +196,7 @@
     <Folder Include="Scripts\typings\superagent\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="components\MailingListSend.jsx" />
     <Compile Include="js\entry\index.js" />
     <Compile Include="node_modules\react-bootstrap\Accordion.js" />
     <Compile Include="node_modules\react-bootstrap\Affix.js" />
