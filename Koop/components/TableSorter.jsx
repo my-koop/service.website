@@ -7,8 +7,6 @@ var BSButton  = require("react-bootstrap/Button");
 var MKIcon    = require("components/Icon");
 
 var _         = require("lodash");
-var ajax      = require("ajax");
-var routeInfo = require("routeInformation");
 
 // Inequality function map for the filtering
 var operators = {
@@ -46,7 +44,7 @@ var TableSorter = React.createClass({
     }),
 
     // Initial data in the table
-    initialItems: PropTypes.array,
+    items: PropTypes.array,
     // Header repeat interval, 0 to disable
     headerRepeat: PropTypes.number,
     // Disable Sorting for this table
@@ -57,25 +55,9 @@ var TableSorter = React.createClass({
 
   getInitialState: function() {
     return {
-      items: this.props.initialItems || [],
       sort: this.props.config.sort || { column: "", order: "" },
       columns: this.props.config.columns
     };
-  },
-
-  componentWillMount: function() {
-    var self = this;
-    var itemsData = ajax.request(
-      {endpoint: routeInfo.itemsData.fullPath},
-      function(err, res){
-        if (err) {
-          console.error(routeInfo.itemsData.fullPath, status, err.toString());
-          return;
-        }
-        // use res object
-        self.setState({items:res.body});
-      }
-    );
   },
 
   handleFilterTextChange: function(column) {
@@ -130,7 +112,7 @@ var TableSorter = React.createClass({
       }
     });
 
-    var filteredItems = _.filter(self.state.items, function(item) {
+    var filteredItems = _.filter(self.props.items, function(item) {
       return _.every(columnNames, function(c) {
         return (!filters[c] || filters[c](item[c]));
       });
