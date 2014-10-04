@@ -21,8 +21,8 @@ var MKItemsBelowThreshold  = require("components/ItemsBelowThreshold");
 var MKUserPrivilegesPage   = require("components/UserPrivilegesPage");
 var MKEventsList           = require("components/EventsList");
 var MKItems                = require("components/Items");
+var MKVolunteerAvailability= require("components/VolunteerAvailability");
 var MKMailingListSendPage  = require("components/MailingListSendPage");
-var MKTransactionList      = require("components/TransactionList")
 
 
 var MyKoop = React.createClass({
@@ -73,7 +73,7 @@ var MyKoop = React.createClass({
             <Route name={RouteInfo.members.name} path={RouteInfo.members.relativePath} handler={MKParentPlaceHolder}>
               <DefaultRoute displayName={RouteInfo.members.name} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.membersPermissions.name} path={RouteInfo.membersPermissions.relativePath} handler={MKUserPrivilegesPage}/>
-              <Route name={RouteInfo.volunteerAvailability.name} path={RouteInfo.volunteerAvailability.relativePath} handler={MKPlaceHolder}/>
+              <Route name={RouteInfo.volunteerAvailability.name} path={RouteInfo.volunteerAvailability.relativePath} handler={MKVolunteerAvailability}/>
               <Route name={RouteInfo.volunteerSchedule.name} path={RouteInfo.volunteerSchedule.relativePath} handler={MKPlaceHolder}/>
             </Route>
           </Route>
