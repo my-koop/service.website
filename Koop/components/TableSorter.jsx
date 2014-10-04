@@ -124,7 +124,7 @@ var TableSorter = React.createClass({
           filters[column] = function(match) { return function(x) { return operators[match[1]](x, match[2]); }; }(operandMatch);
         } else {
           filters[column] = function(x) {
-            return (x.toString().toLowerCase().indexOf(filterText.toLowerCase()) > -1);
+            return ~(x.toString().toLowerCase().indexOf(filterText.toLowerCase()));
           };
         }
       }
