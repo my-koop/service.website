@@ -34,15 +34,10 @@ var Icon = React.createClass({
 
     classes[library] = true;
     classes[library + "-" + this.props.glyph] = true;
-    if (this.props.fixedWidth) {
-      classes[library + "-fw"] = true;
-    }
+    classes[library + "-fw"] = this.props.fixedWidth;
 
     return this.transferPropsTo(
-      <i
-        className={classSet(classes)}
-      >
-      </i>
+      <i className={classSet(classes)}></i>
     );
   }
 });
