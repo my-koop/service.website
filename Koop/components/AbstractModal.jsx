@@ -3,32 +3,6 @@ var PropTypes = React.PropTypes;
 var BSButton = require("react-bootstrap/Button");
 var BSModal = require("react-bootstrap/Modal");
 
-
-var PopulateFooter = function(useCloseButton,hideFunction,Footer){
-  if(useCloseButton && Footer){
-    return (
-      <div className="modal-footer">
-        {Footer}
-        <BSButton type="close" onClick={hideFunction} >Close</BSButton>
-      </div>
-    );
-  } else if(useCloseButton) {
-   return (
-     <div className="modal-footer">
-        <BSButton type="close" onClick={hideFunction} >Close</BSButton>
-      </div>
-      );
-  } else if( Footer ){
-   return (
-     <div className="modal-footer">
-        {Footer}
-     </div>
-     );
-  } else {
-    return null;
-  }
-}
-
   var AbstractModal = React.createClass({
     propTypes: {
       title      : PropTypes.string,
