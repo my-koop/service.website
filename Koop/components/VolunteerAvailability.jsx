@@ -129,7 +129,10 @@ var TriggerAvailabilityModal = function(buttonName){
         <MKAbstractModal 
           title="Enter your availability" 
           modalBody={modalBody} 
-          useCloseButtonFooter={true} />} >
+          useCloseButtonFooter={true} 
+        />
+        } 
+      >
         <BSButton>{buttonName}</BSButton>
       </BSModalTrigger>
     </div>
@@ -160,7 +163,12 @@ var actionsGenerator = function(item){
         return (
           <BSModalTrigger
             key={iBtn}
-            modal={<MKAbstractModal title="Enter your availability" modalBody={modalBody} useCloseButtonFooter={true} /> }
+            modal={
+              <MKAbstractModal 
+                title="Enter your availability" 
+                modalBody={modalBody} 
+                useCloseButtonFooter={true} 
+              /> }
           >
             {component}
           </BSModalTrigger>
