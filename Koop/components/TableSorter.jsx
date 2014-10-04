@@ -1,13 +1,14 @@
-var ajax = require("ajax");
-var _ = require("lodash");
-var React = require("react");
+var React     = require("react");
+var PropTypes = React.PropTypes;
+
+var BSTable   = require("react-bootstrap/Table");
+var BSButton  = require("react-bootstrap/Button");
+
+var MKIcon    = require("components/Icon");
+
+var _         = require("lodash");
+var ajax      = require("ajax");
 var routeInfo = require("routeInformation");
-var BSTable = require("react-bootstrap/Table");
-var PropTypes = React.PropTypes; 
-var BSButton = require("react-bootstrap/Button");
-var BSInput = require("react-bootstrap/Input");
-var BSModalTrigger = require("react-bootstrap/ModalTrigger");
-var MKItemEditModal = require("components/ItemEditModal");
 
 // Inequality function map for the filtering
 var operators = {
@@ -17,15 +18,43 @@ var operators = {
     ">=": function(x, y) { return x >= y; },
     "=": function(x, y) { return x == y; }
 };
+var operandRegex = /^((?:(?:[<>]=?)|==))\s?([-]?\d+(?:\.\d+)?)$/;
 
 // TableSorter React Component
 var TableSorter = React.createClass({
+
   propTypes: {
-   config: React.PropTypes.shape({
-    sort: React.PropTypes.object,
-    colomn: React.PropTypes.object
-    })
+    config: PropTypes.shape({
+      sort: PropTypes.shape({
+        colomn: PropTypes.string.isRequired,
+        order: PropTypes.oneOf(["asc","desc"]).isRequired,
+      }),
+
+      columns: PropTypes.objectOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        defaultSortOrder: PropTypes.oneOf(["asc","desc",""]),
+        // default filter text
+        filterText: PropTypes.string,
+        // callback to create a custom cell content
+        // function(item: Data, colIndex: number) : ReactComponent
+        cellGenerator: PropTypes.func,
+        // Disable Sorting for this column only
+        disableSort: PropTypes.bool,
+        // Disable Filtering for this column only
+        disableFilter: PropTypes.bool,
+      })).isRequired
+    }),
+
+    // Initial data in the table
+    initialItems: PropTypes.array,
+    // Header repeat interval, 0 to disable
+    headerRepeat: PropTypes.number,
+    // Disable Sorting for this table
+    disableSort: PropTypes.bool,
+    // Disable Filtering for this table
+    disableFilter: PropTypes.bool,
   },
+
   getInitialState: function() {
     return {
       items: this.props.initialItems || [],
@@ -33,163 +62,204 @@ var TableSorter = React.createClass({
       columns: this.props.config.columns
     };
   },
+
   componentWillMount: function() {
     var self = this;
-      var itemsData = ajax.request( 
-        {endpoint: routeInfo.itemsData.fullPath}, 
-        function(err, res){
-          if (err) {
-            console.error(routeInfo.itemsData.fullPath, status, err.toString());
-            return;
-          }
-          // use res object
-          self.setState({items:res.body});
-        });
+    var itemsData = ajax.request(
+      {endpoint: routeInfo.itemsData.fullPath},
+      function(err, res){
+        if (err) {
+          console.error(routeInfo.itemsData.fullPath, status, err.toString());
+          return;
+        }
+        // use res object
+        self.setState({items:res.body});
+      }
+    );
   },
+
   handleFilterTextChange: function(column) {
+    var self = this;
     return function(newValue) {
-      var obj = this.state.columns;
+      var obj = self.state.columns;
       obj[column].filterText = newValue;
+      self.setState({columns:obj});
+    };
+  },
 
-      // Since we have already mutated the state, just call forceUpdate().
-      // Ideally we'd copy and setState or use an immutable data structure.
-      this.forceUpdate();
-    }.bind(this);
+  getColumnNames: function() {
+    return Object.keys(this.state.columns);
   },
-  columnNames: function() {
-    return Object.keys(this.state.columns); 
-  },
+
   sortColumn: function(column) {
+    var self = this;
     return function(event) {
-      var newSortOrder = (this.state.sort.order == "asc") ? "desc" : "asc";
-
-      if (this.state.sort.column != column) {
-          newSortOrder = this.state.columns[column].defaultSortOrder;
+      var newSortOrder
+      if (self.state.sort.column !== column) {
+        newSortOrder = self.state.columns[column].defaultSortOrder || "asc";
+      } else {
+        newSortOrder = (self.state.sort.order === "asc") ? "desc" : "asc";
       }
 
-      this.setState({sort: { column: column, order: newSortOrder }});
-    }.bind(this);
+      self.setState({sort: { column: column, order: newSortOrder }});
+    };
   },
-  sortClass: function(column) {
-    var ascOrDesc = (this.state.sort.order == "asc") ? "headerSortAsc" : "headerSortDesc";
-    return (this.state.sort.column == column) ? ascOrDesc : "";
-  },
-  render: function() {
-    var rows = [];
 
-    var columnNames = this.columnNames();
+  render: function() {
+    var self = this;
+    var allRows = [];
+
+    var columnNames = self.getColumnNames();
     var filters = {};
 
-    var operandRegex = /^((?:(?:[<>]=?)|==))\s?([-]?\d+(?:\.\d+)?)$/;
-
+    /////////////////////////////////////////////////////////////////////////
+    // Apply filters
     columnNames.forEach(function(column) {
-      var filterText = this.state.columns[column].filterText;
+      var filterText = self.state.columns[column].filterText;
       filters[column] = null;
 
-      if (filterText.length > 0) { 
+      if (filterText && filterText.length > 0) {
         operandMatch = operandRegex.exec(filterText);
-        if (operandMatch && operandMatch.length == 3) {
-          //filters[column] = Function.apply(null, ["x", "return x " + operandMatch[1] + " " + operandMatch[2]]);
-          filters[column] = function(match) { return function(x) { return operators[match[1]](x, match[2]); }; }(operandMatch); 
+        if (operandMatch && (operandMatch.length === 3) ) {
+          filters[column] = function(match) { return function(x) { return operators[match[1]](x, match[2]); }; }(operandMatch);
         } else {
           filters[column] = function(x) {
-              return (x.toString().toLowerCase().indexOf(filterText.toLowerCase()) > -1);
+            return ~(x.toString().toLowerCase().indexOf(filterText.toLowerCase()));
           };
         }
       }
-    }, this);
+    });
 
-    var filteredItems = _.filter(this.state.items, function(item) {
+    var filteredItems = _.filter(self.state.items, function(item) {
       return _.every(columnNames, function(c) {
         return (!filters[c] || filters[c](item[c]));
-      }, this);
-    }, this);
+      });
+    });
+    /////////////////////////////////////////////////////////////////////////
 
-    var sortedItems = _.sortBy(filteredItems, this.state.sort.column);
-    if (this.state.sort.order === "desc") 
-      sortedItems.reverse();
+    /////////////////////////////////////////////////////////////////////////
+    // Sort data
+    if(!self.props.disableSort){
+      var sortedItems = _.sortBy(filteredItems, self.state.sort.column);
+      if (self.state.sort.order === "desc")
+        sortedItems.reverse();
+    } else {
+      var sortedItems = filteredItems;
+    }
+    /////////////////////////////////////////////////////////////////////////
 
+    // Create headers
+    var header = columnNames.map(function(c, i) {
+      var doSort = !self.props.disableSort && !self.state.columns[c].disableSort;
+      if(doSort){
+        var iconName = "sort";
+        var isSortingThisColumn = self.state.sort.column === c;
+        if(isSortingThisColumn){
+          iconName += "-" + self.state.sort.order;
+        }
+        var icon = (<MKIcon glyph={iconName} />);
+
+        return (
+          <th key={i}>
+            <BSButton onClick={self.sortColumn(c)} bsStyle="link">
+              {self.state.columns[c].name} {icon}
+            </BSButton>
+          </th>
+        );
+      }
+      return (
+        <th key={i}>
+          <span className="btn btn-link" disabled>
+            {self.state.columns[c].name}
+          </span>
+        </th>
+      );
+    });
+
+    // Create filter fields
+    if(!self.props.disableFilter){
+      var filterLink = function(column) {
+        return {
+          value: self.state.columns[column].filterText,
+          requestChange: self.handleFilterTextChange(column)
+        };
+      };
+
+      var filterInputs = columnNames.map(function(c, i) {
+        if(!self.state.columns[c].disableFilter){
+          return <td key={i}><input type="text" valueLink={filterLink(c)} /></td>;
+        }
+        return <td key={i} />;
+      });
+    }
+
+    // Extra header generator
     var headerExtra = function() {
       return columnNames.map(function(c, i) {
-        return <th key={i} className="header-extra">{this.state.columns[c].name}</th>;
-      }, this);   
-    }.bind(this);
+        return <th key={i}>{self.state.columns[c].name}</th>;
+      }, self);
+    };
 
-    var cell = function(x) {
+    // Row generator
+    var rowGenerator = function(item) {
       return columnNames.map(function(colName, i) {
-        switch(colName){
-          case "editCol":
-            return (
-              <td key={i}>
-                <BSModalTrigger modal={<MKItemEditModal name={x["col3"]} itemId={x["id"]}/>} >
-                  <BSButton bsSize="small">Edit item  </BSButton>
-                </BSModalTrigger>
-              </td>
-            );
-            break;
-          case "addCol":
-            return (
-              <td key={i}>
-                <BSInput type="text" placeholder="Enter quantity"/>
-                <BSButton>Add quantity to stock (ID:{x["id"]}) </BSButton>
-              </td>
+        var cellGenerator = self.state.columns[colName].cellGenerator;
+
+        if(cellGenerator){
+          return (
+            <td key={i}>
+              {cellGenerator.call(self,item)}
+            </td>
           );
-            break;
-          default:
-            return (
-              <td key={i}>
-                {x[colName]}
-              </td>
-            );
+        } else {
+          return (
+            <td key={i}>
+              {item[colName]}
+            </td>
+          );
         }
+      });
+    };
 
-      }, this);
-    }.bind(this);
-
-    sortedItems.forEach(function(item, idx) {
-      var headerRepeat = parseInt(this.props.headerRepeat, 10);
-      if ((this.props.headerRepeat > 0) && (idx > 0) && (idx % this.props.headerRepeat === 0)) {
-        rows.push (
-          <tr key={Math.random()}>
-            { headerExtra() }
+    // Create all rows
+    sortedItems.forEach(function(item, i) {
+      if ((self.props.headerRepeat > 0) && (i > 0) && (i % self.props.headerRepeat === 0)) {
+        allRows.push (
+          <tr key={"extra" + i}>
+            {headerExtra()}
           </tr>
         )
       }
 
-      rows.push(
-        <tr key={item.id}>
-          { cell(item) }
+      allRows.push(
+        <tr key={i}>
+          {rowGenerator(item)}
         </tr>
       );
-    }.bind(this));
+    });
 
-    var filterLink = function(column) {
-      return {
-          value: this.state.columns[column].filterText,
-          requestChange: this.handleFilterTextChange(column)
-      };
-    }.bind(this);
 
-    var header = columnNames.map(function(c, i) {
-        return <th key={i} onClick={this.sortColumn(c)} className={"header " + this.sortClass(c)}>{this.state.columns[c].name}</th>;
-    }, this);
-
-    var filterInputs = columnNames.map(function(c, i) {
-        return <td key={i}><input type="text" valueLink={filterLink(c)} /></td>;
-    }, this);
 
     return (
-      <BSTable cellSpacing="0" className="tablesorter" striped bordered condensed hover>
+      <BSTable
+        cellSpacing="0"
+        striped  ={this.props.striped}
+        bordered ={this.props.bordered}
+        condensed={this.props.condensed}
+        hover    ={this.props.hover}
+      >
         <thead>
           <tr>
-            { header }
+            {header}
           </tr>
-          <tr>
-            { filterInputs }
-          </tr>
+          {!self.props.disableFilter ? (
+            <tr>
+              {filterInputs}
+            </tr>
+          ) : null }
         </thead>
         <tbody>
-          { rows }
+          {allRows}
         </tbody>
       </BSTable>
     );

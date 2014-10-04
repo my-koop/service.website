@@ -95,11 +95,18 @@ var ConfirmationTrigger = React.createClass({
   render: function () {
     if(this.props.children){
       var child = React.Children.only(this.props.children);
+
+      var props = {};
+      // Pass down handler if we don't redefine them
+      props.onClick = createChainedFunction(child.props.onClick, this.toggle);
+      props.onMouseOver = this.props.onMouseOver;
+      props.onMouseOut = this.props.onMouseOut;
+      props.onFocus = this.props.onFocus;
+      props.onBlur = this.props.onBlur;
+
       return cloneWithProps(
         child,
-        {
-          onClick: createChainedFunction(child.props.onClick, this.toggle)
-        }
+        props
       );
     }
     return null;
