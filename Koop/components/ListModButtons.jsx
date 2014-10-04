@@ -5,9 +5,18 @@ var BSButtonGroup        = require("react-bootstrap/ButtonGroup");
 // use of another overlay trigger to be able to send down onClick handlers
 var BSOverlayTrigger     = require("components/CustomOverlayTrigger");
 var BSTooltip            = require("react-bootstrap/Tooltip");
+var BSModalTrigger       = require("react-bootstrap/ModalTrigger");
 
 var MKConfirmationTrigger= require("components/ConfirmationTrigger");
 var MKIcon               = require("components/Icon");
+
+//
+// btn.onClick workflow
+//    callback only : trigger the callback
+//    callback + warningMessage : trigger callback on yes of the warning message
+//    modalTrigger: Shows the modal
+//    modalTrigger + warningMessage : Shows the modal onYes of the warning message
+//    callback + modalTrigger: incompatible
 
 var ListModButtons = React.createClass({
 
@@ -17,11 +26,15 @@ var ListModButtons = React.createClass({
         // Use either icon or content
         icon: PropTypes.string,
         content: PropTypes.renderable,
+
         // Callback when the button is clicked or confirmation on warning
         // function(e: onClickEvent) : void
         callback: PropTypes.func,
         // Shows a confirmation box with the message in it
         warningMessage: PropTypes.string,
+        // Show this modal onClick, incompatible with callback
+        modalTrigger: PropTypes.component,
+
         // use this to hide the button (useful if used with a condition)
         hide: PropTypes.bool,
         // Shows a tooltip for the button
@@ -54,6 +67,10 @@ var ListModButtons = React.createClass({
     return callback;
   },
 
+  showModal: function(ref){
+    this.refs[ref].show();
+  },
+
   render: function() {
 
     var self = this;
@@ -64,7 +81,9 @@ var ListModButtons = React.createClass({
       var content = btn.content ? btn.content : <MKIcon glyph={btn.icon} />;
 
       // onClick handler
-      var buttonOnClick = btn.warningMessage ? self.getOnClickCallback(null) : self.getOnClickCallback(btn.callback);
+      var isCallbackOnBtn = !(btn.warningMessage || btn.modalTrigger);
+      var buttonOnClick = isCallbackOnBtn ? self.getOnClickCallback(btn.callback) : self.getOnClickCallback(null);
+
       // Actual button
       var button = (
         <BSButton bsSize="small" onClick={buttonOnClick} key={i}>
@@ -74,8 +93,13 @@ var ListModButtons = React.createClass({
 
       var result = button;
       if(btn.warningMessage){
+        var onYesHandler = btn.modalTrigger ? self.showModal.bind(self,["modal" + i]) : btn.callback;
         result = (
-          <MKConfirmationTrigger message={btn.warningMessage} onYes={btn.callback} key={i}>
+          <MKConfirmationTrigger
+            message={btn.warningMessage}
+            onYes={onYesHandler}
+            key={i}
+          >
             {result}
           </MKConfirmationTrigger>
         );
@@ -96,6 +120,18 @@ var ListModButtons = React.createClass({
           }>
             {result}
           </BSOverlayTrigger>
+        );
+      }
+
+      if(btn.modalTrigger){
+        result = (
+          <BSModalTrigger
+            key={i}
+            modal={btn.modalTrigger}
+            ref={"modal" + i}
+          >
+            {result}
+          </BSModalTrigger>
         );
       }
 
