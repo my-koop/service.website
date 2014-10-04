@@ -169,7 +169,7 @@ var TableSorter = React.createClass({
 
       var filterInputs = columnNames.map(function(c, i) {
         if(!self.state.columns[c].disableFilter){
-          return <td key={i}><input type="text" valueLink={filterLink(c)} /></td>;
+          return <td key={i}><input type="text" valueLink={filterLink(c)} placeholder={"Filter by " + self.state.columns[c].name} /></td>;
         }
         return <td key={i} />;
       });
