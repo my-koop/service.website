@@ -102,14 +102,13 @@ var FilterOptions = React.createClass({
 
 var FilterableItemList = React.createClass({
   propTypes: {
-    isFiltered    : PropTypes.bool.isRequired,
     filterOptions : PropTypes.array,
     data          : PropTypes.array.isRequired,
     headers       : PropTypes.array.isRequired
   },
   
   render: function() {
-    var Filtering = this.props.isFiltered ? <FilterOptions options={this.props.filterOptions} /> : null ;
+    var Filtering = this.props.filterOptions ? <FilterOptions options={this.props.filterOptions} /> : null ;
     return (
       <div>
         {Filtering}
