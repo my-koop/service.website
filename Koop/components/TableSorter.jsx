@@ -55,7 +55,8 @@ var TableSorter = React.createClass({
   getInitialState: function() {
     return {
       sort: this.props.config.sort || { column: "", order: "" },
-      columns: this.props.config.columns
+      columns: this.props.config.columns,
+      columnsOrder: Object.keys(this.props.config.columns)
     };
   },
 
@@ -69,7 +70,7 @@ var TableSorter = React.createClass({
   },
 
   getColumnNames: function() {
-    return Object.keys(this.state.columns);
+    return this.state.columnsOrder;
   },
 
   sortColumn: function(column) {
@@ -84,6 +85,33 @@ var TableSorter = React.createClass({
 
       self.setState({sort: { column: column, order: newSortOrder }});
     };
+  },
+
+  columnChangeEvent: "column change",
+
+  dragStart: function(i, e){
+    var data = {
+      index : i,
+      event: this.columnChangeEvent
+    }
+    e.dataTransfer.setData("text", JSON.stringify(data));
+  },
+
+  onDrop: function(i, e){
+    var data = JSON.parse(e.dataTransfer.getData("text"));
+    if(
+      data.event === this.columnChangeEvent &&
+      _.isNumber(data.index) &&
+      (data.index >>> 0) < this.state.columnsOrder.length &&
+      data.index !== i
+    ){
+      var columnsOrder = this.state.columnsOrder;
+      var draggedColumn = columnsOrder.splice(data.index, 1);
+      columnsOrder.splice(i, 0, draggedColumn);
+      this.setState({
+        columnsOrder: columnsOrder
+      });
+    }
   },
 
   render: function() {
@@ -132,6 +160,13 @@ var TableSorter = React.createClass({
     // Create headers
     var header = columnNames.map(function(c, i) {
       var doSort = !self.props.disableSort && !self.state.columns[c].disableSort;
+      var dragProps = {
+        draggable: true,
+        onDragStart: self.dragStart.bind(null,i),
+        onDrop: self.onDrop.bind(null,i),
+        onDragOver: function(e){e.preventDefault();},
+      };
+
       if(doSort){
         var iconName = "sort";
         var isSortingThisColumn = self.state.sort.column === c;
@@ -142,17 +177,21 @@ var TableSorter = React.createClass({
 
         return (
           <th key={i}>
-            <BSButton onClick={self.sortColumn(c)} bsStyle="link">
-              {self.state.columns[c].name} {icon}
-            </BSButton>
+            <div {...dragProps}>
+              <BSButton onClick={self.sortColumn(c)} bsStyle="link">
+                {self.state.columns[c].name} {icon}
+              </BSButton>
+            </div>
           </th>
         );
       }
       return (
         <th key={i}>
-          <span className="btn btn-link" disabled>
-            {self.state.columns[c].name}
-          </span>
+          <div {...dragProps}>
+            <span className="btn btn-link" disabled>
+              {self.state.columns[c].name}
+            </span>
+          </div>
         </th>
       );
     });
