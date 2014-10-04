@@ -1,16 +1,16 @@
-﻿var React = require("react");
-var PropTypes = React.PropTypes;
-var BSInput = require("react-bootstrap/Input");
-var BSModalTrigger = require("react-bootstrap/ModalTrigger");
-var BSButton = require("react-bootstrap/Button");
-var BSButtonGroup = require("react-bootstrap/ButtonGroup");
+﻿var React           = require("react");
+var PropTypes       = React.PropTypes;
+var BSInput         = require("react-bootstrap/Input");
+var BSModalTrigger  = require("react-bootstrap/ModalTrigger");
+var BSButton        = require("react-bootstrap/Button");
+var BSButtonGroup   = require("react-bootstrap/ButtonGroup");
 var BSCol           = require("react-bootstrap/Col");
 
 var MKIcon          = require("components/Icon");
 var MKTableSorter   = require("components/TableSorter");
 var MKListModButtons= require("components/ListModButtons");
 var MKItemEditModal = require("components/ItemEditModal");
-var FormInputFactory   = require("components/FormInputFactory");
+var FormInputFactory= require("components/FormInputFactory");
 var MKAbstractModal = require("components/AbstractModal");
 
 var AvailabilityBoxInputs  = [
@@ -125,7 +125,11 @@ var modalBody = (
 var TriggerAvailabilityModal = function(buttonName){
   return (
     <div>
-      <BSModalTrigger modal={<MKAbstractModal title="Enter your availability" modalBody={modalBody} useCloseButtonFooter={true} />} >
+      <BSModalTrigger modal={
+        <MKAbstractModal 
+          title="Enter your availability" 
+          modalBody={modalBody} 
+          useCloseButtonFooter={true} />} >
         <BSButton>{buttonName}</BSButton>
       </BSModalTrigger>
     </div>
@@ -134,7 +138,7 @@ var TriggerAvailabilityModal = function(buttonName){
  
 var actionsGenerator = function(item){
   return [
-     {
+    {
       icon: "minus",
       warningMessage: "Are you sure?",
       tooltip: {
@@ -142,9 +146,6 @@ var actionsGenerator = function(item){
         overlayProps: {
           placement: "top"
         }
-      },
-      callback: function(){
-        alert("You deleted the item, or did you?");
       }
     },
     {
@@ -174,26 +175,26 @@ var addButton =  TriggerAvailabilityModal("Add New");
 
 var VolunteerAvailability = React.createClass({
   getInitialState: function(){
-      return {
-        items:  [
-                  {
-                    "id": 1,
-                    "col1": "2013/10/01",
-                    "col2": "Wednesday",
-                    "col3": "12:00",
-                    "col4": "3 Hours",
-                    "col5": "No"
-                  },
-                  {
-                    "id": 2,
-                    "col1": "2013/09/26",
-                    "col2": "Friday",
-                    "col3": "16:00",
-                    "col4": "2 Hours",
-                    "col5": "No"
-                  }
-                ]
-      }
+    return {
+      items:  [
+        {
+          "id": 1,
+          "col1": "2013/10/01",
+          "col2": "Wednesday",
+          "col3": "12:00",
+          "col4": "3 Hours",
+          "col5": "No"
+        },
+        {
+          "id": 2,
+          "col1": "2013/09/26",
+          "col2": "Friday",
+          "col3": "16:00",
+          "col4": "2 Hours",
+          "col5": "No"
+        }
+      ]
+    }
   },
   render: function(){
     // TableSorter Config
