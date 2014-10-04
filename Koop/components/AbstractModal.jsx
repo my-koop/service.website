@@ -46,7 +46,7 @@ var BSModal = require("react-bootstrap/Modal");
         <div className="modal-body">
           {this.props.modalBody}
         </div>
-        {this.props.populateFooter(this.props.useCloseButtonFooter,this.props.onRequestHide,this.props.modalFooter)}
+        {this.populateFooter(this.props.useCloseButtonFooter,this.props.onRequestHide,this.props.modalFooter)}
       </BSModal>
     );
   }
