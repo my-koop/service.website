@@ -30,6 +30,28 @@ var SideBar = React.createClass({
             <MKIcon glyph="users" fixedWidth /> Members
           </BSListGroupItem>
           <BSListGroupItem
+            key={11}
+            className="sub-list-group-item"
+            href="#"
+            onClick={this.goToPage.bind(
+              null,
+              RouteInfo.members.name
+            )}
+          >
+            <MKIcon glyph="list-ul" fixedWidth /> Manage
+          </BSListGroupItem>
+          <BSListGroupItem
+            key={12}
+            className="sub-list-group-item"
+            href="#"
+            onClick={this.goToPage.bind(
+              null,
+              RouteInfo.members.name
+            )}
+          >
+            <MKIcon glyph="check" fixedWidth /> Permission Sets
+          </BSListGroupItem>
+          <BSListGroupItem
             key={20}
             href="#"
             onClick={this.goToPage.bind(
@@ -57,7 +79,7 @@ var SideBar = React.createClass({
               RouteInfo.mailing.name
             )}
           >
-            <MKIcon glyph="list" fixedWidth /> Mailing Lists
+            <MKIcon glyph="envelope" fixedWidth /> Mailing Lists
           </BSListGroupItem>
           <BSListGroupItem
             key={50}

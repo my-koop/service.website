@@ -79,6 +79,15 @@ footer {
 
     .list-group {
       margin-bottom: 0;
+
+      .list-group-item .list-group {
+        padding: 0;
+      }
+
+      .sub-list-group-item, //FIXME: Temporary...
+      .list-group-item .list-group .list-group-item {
+        padding-left: 30px;
+      }
     }
 
     .list-group-item {
