@@ -116,10 +116,10 @@ var AvailabilityBox = React.createClass({
 
 
 var modalBody = (
-                <div>
-                   <AvailabilityBox inputs={AvailabilityBoxInputs} />
-                   <BSButton bsStyle="primary" type="submit">Confirm</BSButton>
-                </div>
+  <div>
+      <AvailabilityBox inputs={AvailabilityBoxInputs} />
+      <BSButton bsStyle="primary" type="submit">Confirm</BSButton>
+  </div>
 );
 
 var TriggerAvailabilityModal = function(buttonName){
@@ -204,7 +204,7 @@ var VolunteerAvailability = React.createClass({
         col2: { name: "Day Of Week" },
         col3: { name: "Start Time" },
         col4: { name: "Duration" },
-        col5: { name: "Reoccuring?" },
+        col5: { name: "Reoccuring" },
         editCol: {
           name: "Actions",
           disableSort: true,
@@ -238,8 +238,9 @@ var VolunteerAvailability = React.createClass({
             hover
           />
         </div>
-      </BSCol>
         {addButton}
+      </BSCol>
+        
       </div>
     );
   }

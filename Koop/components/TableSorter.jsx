@@ -1,9 +1,8 @@
 var React     = require("react");
 var PropTypes = React.PropTypes;
-
+var BSInput   = require("react-bootstrap/Input");
 var BSTable   = require("react-bootstrap/Table");
 var BSButton  = require("react-bootstrap/Button");
-
 var MKIcon    = require("components/Icon");
 
 var _         = require("lodash");
@@ -169,7 +168,7 @@ var TableSorter = React.createClass({
 
       var filterInputs = columnNames.map(function(c, i) {
         if(!self.state.columns[c].disableFilter){
-          return <td key={i}><input type="text" valueLink={filterLink(c)} placeholder={"Filter by " + self.state.columns[c].name} /></td>;
+          return <td key={i}><BSInput type="text" valueLink={filterLink(c)} placeholder={"Filter by " + self.state.columns[c].name} /></td>;
         }
         return <td key={i} />;
       });
