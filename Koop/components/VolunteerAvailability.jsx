@@ -1,13 +1,17 @@
 ﻿var React = require("react");
 var PropTypes = React.PropTypes;
 var BSInput = require("react-bootstrap/Input");
-var BSModal = require("react-bootstrap/Modal");
 var BSModalTrigger = require("react-bootstrap/ModalTrigger");
 var BSButton = require("react-bootstrap/Button");
 var BSButtonGroup = require("react-bootstrap/ButtonGroup");
+var BSCol           = require("react-bootstrap/Col");
 
-var FilterableItemList = require("components/FilterableItemList");
+var MKIcon          = require("components/Icon");
+var MKTableSorter   = require("components/TableSorter");
+var MKListModButtons= require("components/ListModButtons");
+var MKItemEditModal = require("components/ItemEditModal");
 var FormInputFactory   = require("components/FormInputFactory");
+var MKAbstractModal = require("components/AbstractModal");
 
 var AvailabilityBoxInputs  = [
     {
@@ -110,56 +114,131 @@ var AvailabilityBox = React.createClass({
   }
 });
 
-var AvailabilityModal = React.createClass({
-  render: function(){
-    return (
-      <BSModal title="Enter your availability" bsSize="small">
-        <div className="modal-body">
-          <AvailabilityBox inputs={AvailabilityBoxInputs} />
-        </div>
-        <div className="modal-footer">
-          <BSButton onClick={this.props.onRequestHide}>Close</BSButton>
-          <BSButton type="submit">Confirm</BSButton>
-        </div>
-      </BSModal>
-    );
-  }
-});
+
+var modalBody = (
+                <div>
+                   <AvailabilityBox inputs={AvailabilityBoxInputs} />
+                   <BSButton bsStyle="primary" type="submit">Confirm</BSButton>
+                </div>
+);
 
 var TriggerAvailabilityModal = function(buttonName){
   return (
     <div>
-      <BSModalTrigger modal={<AvailabilityModal />} >
+      <BSModalTrigger modal={<MKAbstractModal title="Enter your availability" modalBody={modalBody} useCloseButtonFooter={true} />} >
         <BSButton>{buttonName}</BSButton>
       </BSModalTrigger>
     </div>
   );
 };     
  
-var rowFunctions = (
-  <div className="form-inline">
-    {TriggerAvailabilityModal("Edit")}
-    <BSButton>Delete</BSButton>
-  </div>
-);
+var actionsGenerator = function(item){
+  return [
+     {
+      icon: "minus",
+      warningMessage: "Are you sure?",
+      tooltip: {
+        text: "Delete",
+        overlayProps: {
+          placement: "top"
+        }
+      },
+      callback: function(){
+        alert("You deleted the item, or did you?");
+      }
+    },
+    {
+      icon: "edit",
+      tooltip: {
+        text: "Edit Item",
+        overlayProps: {
+          placement: "right"
+        }
+      },
+      customWrapper: function(component, iBtn){
+        return (
+          <BSModalTrigger
+            key={iBtn}
+            modal={<MKAbstractModal title="Enter your availability" modalBody={modalBody} useCloseButtonFooter={true} /> }
+          >
+            {component}
+          </BSModalTrigger>
+        );
+      }
+    },
+  ];
+}
+
  
 var addButton =  TriggerAvailabilityModal("Add New");
-var headers = ["Date","Day Of Week","Start Time","Duration","Recurring?","Fonction"];
-var data = [
-  ["2013/10/01","Wednesday","12:00" ,"3 Hours","No",rowFunctions],
-  ["2013/09/12","Friday","16:00"  ,"2 hours" ,"No",rowFunctions]
-];   
 
 var VolunteerAvailability = React.createClass({
-  propTypes: {
-  
+  getInitialState: function(){
+      return {
+        items:  [
+                  {
+                    "id": 1,
+                    "col1": "2013/10/01",
+                    "col2": "Wednesday",
+                    "col3": "12:00",
+                    "col4": "3 Hours",
+                    "col5": "No"
+                  },
+                  {
+                    "id": 2,
+                    "col1": "2013/09/26",
+                    "col2": "Friday",
+                    "col3": "16:00",
+                    "col4": "2 Hours",
+                    "col5": "No"
+                  }
+                ]
+      }
   },
-
   render: function(){
+    // TableSorter Config
+    var CONFIG = {
+      columns: {
+        id: { name: "ID" },
+        col1: { name: "Date" },
+        col2: { name: "Day Of Week" },
+        col3: { name: "Start Time" },
+        col4: { name: "Duration" },
+        col5: { name: "Reoccuring?" },
+        editCol: {
+          name: "Actions",
+          disableSort: true,
+          disableFilter: true,
+          cellGenerator: function(item){
+            var self = this;
+            return (
+              <MKListModButtons
+                defaultTooltipDelay={500}
+                buttons={actionsGenerator.call(this,item)}
+              />
+            );
+          }
+        }
+      }
+    };
+
+
    var filter = false;
     return (
       <div>
-        <FilterableItemList isFiltered={filter} headers={headers} data={data} />
+        <BSCol md={12}>
+        <div>
+          <MKTableSorter
+            config={CONFIG}
+            items={this.state.items}
+            headerRepeat={8}
+            striped
+            bordered
+            condensed
+            hover
+          />
+        </div>
+      </BSCol>
         {addButton}
       </div>
     );
