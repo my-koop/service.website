@@ -9,7 +9,6 @@ var RouteInfo = require("routeInformation");
 
 var MKApp                  = require("components/App");
 var MKSimplePage           = require("components/SimplePage");
-var MKHomepage             = require("components/Homepage");
 var MKPlaceHolder          = require("components/PlaceHolder");
 var MKParentPlaceHolder    = require("components/ParentPlaceHolder");
 var MKLoginPage            = require("components/LoginPage");
@@ -23,7 +22,7 @@ var MKEventsList           = require("components/EventsList");
 var MKItems                = require("components/Items");
 var MKVolunteerAvailability= require("components/VolunteerAvailability");
 var MKMailingListSendPage  = require("components/MailingListSendPage");
-
+var MKTransactionList      = require("components/TransactionList");
 
 var MyKoop = React.createClass({
   render: function() {
@@ -33,7 +32,7 @@ var MyKoop = React.createClass({
 
           {/*Public pages*/}
           <Route name={RouteInfo.homepage.name} path={RouteInfo.homepage.fullPath} handler={MKParentPlaceHolder}>
-            <DefaultRoute handler={MKHomepage}/>
+            <DefaultRoute handler={MKPlaceHolder}/>
             <Route name={RouteInfo.aboutUs.name} path={RouteInfo.aboutUs.relativePath} handler={MKPlaceHolder}/>
             <Route name={RouteInfo.myaccount.name} path={RouteInfo.myaccount.relativePath} handler={MKMyAccountPage}/>
             <Route name={RouteInfo.shop.name} path={RouteInfo.shop.relativePath} handler={MKParentPlaceHolder}>
@@ -50,7 +49,7 @@ var MyKoop = React.createClass({
 
           {/*Admin dashboard pages*/}
           <Route name={RouteInfo.dashboard.name} path={RouteInfo.dashboard.fullPath} handler={MKParentPlaceHolder}>
-            <DefaultRoute handler={MKHomepage}/>
+            <DefaultRoute handler={MKPlaceHolder}/>
             <Route name={RouteInfo.options.name} path={RouteInfo.options.relativePath} handler={MKOptionsPage}/>
             <Route name={RouteInfo.stats.name} path={RouteInfo.stats.relativePath} handler={MKPlaceHolder}/>
             <Route name={RouteInfo.transaction.name} path={RouteInfo.transaction.relativePath} handler={MKTransactionList}/>

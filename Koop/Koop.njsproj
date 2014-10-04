@@ -54,6 +54,7 @@
     <TypeScriptCompile Include="Scripts\typings\morgan\morgan.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\superagent\superagent.d.ts" />
+    <Content Include="components\AbstractModal.jsx" />
     <Content Include="components\App.jsx" />
     <Content Include="components\DevNavBar.jsx" />
     <Content Include="components\EventsList.jsx" />
