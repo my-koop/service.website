@@ -223,6 +223,7 @@ var TableSorter = React.createClass({
 
     return (
       <BSTable
+        className="table-sorter"
         cellSpacing="0"
         striped  ={this.props.striped}
         bordered ={this.props.bordered}
@@ -234,7 +235,7 @@ var TableSorter = React.createClass({
             {header}
           </tr>
           {!self.props.disableFilter ? (
-            <tr>
+            <tr className="table-sorter-filter-row">
               {filterInputs}
             </tr>
           ) : null }
