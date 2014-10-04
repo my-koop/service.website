@@ -77,7 +77,7 @@ var TriggerEventModal = function(buttonName){
     <div>
       <BSModalTrigger modal={
         <MKAbstractModal 
-          title="Event informations" 
+          title="Create new event" 
           modalBody={modalBody} 
           useCloseButtonFooter={true} 
         />
@@ -115,7 +115,7 @@ var actionsGenerator = function(item){
             key={iBtn}
             modal={
               <MKAbstractModal 
-                title="Enter your availability" 
+                title="Edit Event" 
                 modalBody={modalBody} 
                 useCloseButtonFooter={true} 
               /> }
