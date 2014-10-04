@@ -15,12 +15,15 @@ var MKParentPlaceHolder    = require("components/ParentPlaceHolder");
 var MKLoginPage            = require("components/LoginPage");
 var MKMyAccountPage        = require("components/MyAccountPage");
 var MKPasswordRecoveryPage = require("components/PasswordRecoveryPage");
+var MKOptionsPage          = require("components/OptionsPage");
 var MKRegisterPage         = require("components/RegisterPage");
 var MKItemsBelowThreshold  = require("components/ItemsBelowThreshold");
 var MKUserPrivilegesPage   = require("components/UserPrivilegesPage");
 var MKEventsList           = require("components/EventsList");
 var MKItems                = require("components/Items");
-var MKTransactionList      = require("components/TransactionList")
+var MKVolunteerAvailability= require("components/VolunteerAvailability");
+var MKMailingListSendPage  = require("components/MailingListSendPage");
+
 
 var MyKoop = React.createClass({
   render: function() {
@@ -48,7 +51,7 @@ var MyKoop = React.createClass({
           {/*Admin dashboard pages*/}
           <Route name={RouteInfo.dashboard.name} path={RouteInfo.dashboard.fullPath} handler={MKParentPlaceHolder}>
             <DefaultRoute handler={MKHomepage}/>
-            <Route name={RouteInfo.options.name} path={RouteInfo.options.relativePath} handler={MKPlaceHolder}/>
+            <Route name={RouteInfo.options.name} path={RouteInfo.options.relativePath} handler={MKOptionsPage}/>
             <Route name={RouteInfo.stats.name} path={RouteInfo.stats.relativePath} handler={MKPlaceHolder}/>
             <Route name={RouteInfo.transaction.name} path={RouteInfo.transaction.relativePath} handler={MKTransactionList}/>
             <Route name={RouteInfo.events.name} path={RouteInfo.events.relativePath} handler={MKParentPlaceHolder}>
@@ -64,13 +67,13 @@ var MyKoop = React.createClass({
             </Route>
             <Route name={RouteInfo.mailing.name} path={RouteInfo.mailing.relativePath} handler={MKParentPlaceHolder}>
               <DefaultRoute displayName={RouteInfo.mailing.name} handler={MKPlaceHolder}/>
-              <Route name={RouteInfo.mailingSend.name} path={RouteInfo.mailingSend.relativePath} handler={MKPlaceHolder}/>
+              <Route name={RouteInfo.mailingSend.name} path={RouteInfo.mailingSend.relativePath} handler={MKMailingListSendPage}/>
               <Route name={RouteInfo.mailingSubscribe.name} path={RouteInfo.mailingSubscribe.relativePath} handler={MKPlaceHolder}/>
             </Route>
             <Route name={RouteInfo.members.name} path={RouteInfo.members.relativePath} handler={MKParentPlaceHolder}>
               <DefaultRoute displayName={RouteInfo.members.name} handler={MKPlaceHolder}/>
               <Route name={RouteInfo.membersPermissions.name} path={RouteInfo.membersPermissions.relativePath} handler={MKUserPrivilegesPage}/>
-              <Route name={RouteInfo.volunteerAvailability.name} path={RouteInfo.volunteerAvailability.relativePath} handler={MKPlaceHolder}/>
+              <Route name={RouteInfo.volunteerAvailability.name} path={RouteInfo.volunteerAvailability.relativePath} handler={MKVolunteerAvailability}/>
               <Route name={RouteInfo.volunteerSchedule.name} path={RouteInfo.volunteerSchedule.relativePath} handler={MKPlaceHolder}/>
             </Route>
           </Route>

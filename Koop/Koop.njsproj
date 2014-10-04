@@ -82,6 +82,7 @@
     <Content Include="components\UserPrivilegesBox.jsx" />
     <Content Include="components\UserPrivilegesModal.jsx" />
     <Content Include="components\UserPrivilegesPage.jsx" />
+    <Content Include="components\VolunteerAvailability.jsx" />
     <Content Include="less\grayBg.useable.less" />
     <Content Include="less\main.less" />
     <Content Include="less\mykoop.less" />
@@ -197,6 +198,7 @@
     <Folder Include="Scripts\typings\superagent\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="components\MailingListSend.jsx" />
     <Compile Include="js\entry\index.js" />
     <Compile Include="node_modules\react-bootstrap\Accordion.js" />
     <Compile Include="node_modules\react-bootstrap\Affix.js" />
