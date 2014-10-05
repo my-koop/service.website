@@ -82,7 +82,9 @@ var ListModButtons = React.createClass({
 
       // onClick handler
       var isCallbackOnBtn = !(btn.warningMessage || btn.modalTrigger);
-      var buttonOnClick = isCallbackOnBtn ? self.getOnClickCallback(btn.callback) : self.getOnClickCallback(null);
+      var buttonOnClick = isCallbackOnBtn ?
+          self.getOnClickCallback(btn.callback)
+          : self.getOnClickCallback(null);
 
       // Actual button
       var button = (
@@ -93,7 +95,9 @@ var ListModButtons = React.createClass({
 
       var result = button;
       if(btn.warningMessage){
-        var onYesHandler = btn.modalTrigger ? self.showModal.bind(self,["modal" + i]) : btn.callback;
+        var onYesHandler = btn.modalTrigger ?
+            self.showModal.bind(self,"modal" + i)
+            : btn.callback;
         result = (
           <MKConfirmationTrigger
             message={btn.warningMessage}
