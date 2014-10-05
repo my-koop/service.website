@@ -33,6 +33,7 @@ var reportButton = <BSModalTrigger modal={<MKEventReportModal infos={eventReport
                    </BSModalTrigger>;
 
 var headers = ["ID","Name","Date","Fonction", "Signup", "Report"];
+
 var data = [
     ["1","Daily Operation","2013/10/01",editButton, signupButton, reportButton],
     ["2","Mobile Clinic","2013/08/27",editButton, signupButton, reportButton],
