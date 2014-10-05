@@ -7,13 +7,13 @@ var MKEventReportModal = require("components/EventReportModal");
 var BSModalTrigger = require("react-bootstrap/ModalTrigger");
 
 var eventSignupProps = {
-  name:"Sexy and I know it",
+  name:"Foo bar",
   date:"05/05/1989",
   price:"5.00" //Fix me. Or throw me. Do whatever you want to me ;) 
 };
 
 var eventReportProps = {
-  name:"Sexy and I know it",
+  name:"Foo bar",
   date:"05/05/1989",
   price:"5.00", //Fix me. Or throw me. Do whatever you want to me ;) 
   startTime: "19h00",
