@@ -34,9 +34,8 @@ var filters = [
 ];
 var EventsList = React.createClass({
     render: function(){
-      var filter = true;
       return (
-        <FilteredList isFiltered={filter} filterOptions={filters} headers={headers} data={data} />
+        <FilteredList filterOptions={filters} headers={headers} data={data} />
       );
     }
 });

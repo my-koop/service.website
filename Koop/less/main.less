@@ -4,3 +4,31 @@ footer {
   color: @gray-light;
   font-size: 0.9em;
 }
+
+.tight-form-group {
+  div.form-group {
+    margin: 0;
+  }
+}
+
+.tr-tight-form-group {
+  td {
+    .tight-form-group;
+  }
+}
+
+.table-tight-form-group {
+  tr {
+    .tr-tight-form-group;
+  }
+}
+
+.table-sorter .table-sorter-filter-row {
+  .tr-tight-form-group;
+}
+
+/* Example: if you wanted to apply it to the whole table.
+.table-sorter {
+  .table-tight-form-group;
+}
+*/
