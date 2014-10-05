@@ -7,7 +7,7 @@ var BSModalTrigger = require("react-bootstrap/ModalTrigger");
 
 var eventSignupProps = {name:"Sexy and I know it",
                         date:"05/05/1989",
-                        price:"5.00"};
+                        price:5.00};
 var editButton = <BSButton>Edit</BSButton>;
 var signupButton = <BSModalTrigger modal={<MKEventSignupModal infos={eventSignupProps}/>} >
                     <BSButton bsSize="small">Signup/Register</BSButton>

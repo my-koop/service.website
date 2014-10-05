@@ -4,10 +4,15 @@ var BSInput= require("react-bootstrap/Input");
 var BSButton= require("react-bootstrap/Button");
 
 var EventSignupModal = React.createClass({
-
+  propTypes: {
+    infos: React.PropTypes.shape({
+      price: React.PropTypes.number,
+      name: React.PropTypes.string,
+      date: React.PropTypes.string
+    })
+  },
   render: function () {   
     return this.transferPropsTo(
- 
       <BSModal title="Event signup" backdrop="static">
         <div className="modal-body" > 
          <form>
