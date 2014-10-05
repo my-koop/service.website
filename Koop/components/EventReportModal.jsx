@@ -24,16 +24,14 @@ var EventReportModal = React.createClass({
         <div className="modal-body"> 
           <h2>{this.props.infos.name}</h2>
           <h4>{this.props.infos.date}</h4>
-          <h4>{this.props.infos.startTime} - {this.props.infos.endTime} </h4>
+          <h4>{this.props.infos.startTime} - {this.props.infos.endTime}</h4>
           <BSInput type="static" label="Given by" value={this.props.infos.givenBy} />
           <BSInput type="static" label="Price per person" value={this.props.infos.price + "$"} />
           <BSInput type="static" label="Number of registered persons" value={this.props.infos.numberRegistered} />
           <BSInput type="static" label="Number of actual attendies" value={this.props.infos.numberAttendies} />
           <BSInput type="static" label="Total sales" value={this.props.infos.totalSales + "$"} />
-         
           <br/>
           <BSButton bsStyle="primary">Export to PDF</BSButton>
-         
         </div>
 
         <div className="modal-footer">
