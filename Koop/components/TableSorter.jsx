@@ -39,8 +39,11 @@ var TableSorter = React.createClass({
         disableSort: PropTypes.bool,
         // Disable Filtering for this column only
         disableFilter: PropTypes.bool,
-      })).isRequired
-    }),
+      })).isRequired,
+      // Default column ordering, if not specified
+      // use Object.keys()
+      defaultOrdering: PropTypes.array,
+    }).isRequired,
 
     // Initial data in the table
     items: PropTypes.array,
@@ -56,7 +59,7 @@ var TableSorter = React.createClass({
     return {
       sort: this.props.config.sort || { column: "", order: "" },
       columns: this.props.config.columns,
-      columnsOrder: Object.keys(this.props.config.columns)
+      columnsOrder: this.props.config.defaultOrdering || Object.keys(this.props.config.columns)
     };
   },
 
