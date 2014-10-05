@@ -6,7 +6,7 @@ var BSButton= require("react-bootstrap/Button");
 var EventSignupModal = React.createClass({
   propTypes: {
     infos: React.PropTypes.shape({
-      price: React.PropTypes.number,
+      price: React.PropTypes.string,
       name: React.PropTypes.string,
       date: React.PropTypes.string
     })
