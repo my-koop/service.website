@@ -76,7 +76,7 @@ var Items = React.createClass({
           }
         },
         warningMessage: "You sure?",
-        modalTrigger: <MKItemEditModal name={item["col3"]} itemId={item["id"]}/>
+        modalTrigger: <MKItemEditModal name={item.name} itemId={item.id}/>
       },
     ];
   },
@@ -87,14 +87,24 @@ var Items = React.createClass({
     // TableSorter Config
     var CONFIG = {
       columns: {
-        id: { name: "ID" },
-        col3: { name: "Name" },
-        col2: { name: "Quantity" },
-        col1: { name: "Code" },
-        editCol: {
+        id: {
+          name: "ID",
+          disableDragging: true,
+        },
+        name: {
+          name: "Name",
+        },
+        quantity: {
+          name: "Quantity",
+        },
+        code: {
+          name: "Code",
+        },
+        actions: {
           name: "Actions",
           disableSort: true,
           disableFilter: true,
+          disableDragging: true,
           cellGenerator: function(item){
             return (
               <MKListModButtons
