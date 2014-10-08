@@ -35,10 +35,14 @@ var TableSorter = React.createClass({
         // callback to create a custom cell content
         // function(item: Data, colIndex: number) : ReactComponent
         cellGenerator: PropTypes.func,
+        // Alias for disableSorting, disableFiltering & disableDragging
+        isStatic: PropTypes.bool,
         // Disable Sorting for this column only
-        disableSort: PropTypes.bool,
+        disableSorting: PropTypes.bool,
         // Disable Filtering for this column only
-        disableFilter: PropTypes.bool,
+        disableFiltering: PropTypes.bool,
+        // Disable Dragging for this column only
+        disableDragging: PropTypes.bool,
       })).isRequired,
       // Default column ordering, if not specified
       // use Object.keys()
@@ -50,17 +54,41 @@ var TableSorter = React.createClass({
     // Header repeat interval, 0 to disable
     headerRepeat: PropTypes.number,
     // Disable Sorting for this table
-    disableSort: PropTypes.bool,
+    disableSorting: PropTypes.bool,
     // Disable Filtering for this table
-    disableFilter: PropTypes.bool,
+    disableFiltering: PropTypes.bool,
+    // Disable Dragging for this table
+    disableDragging: PropTypes.bool,
   },
 
   getInitialState: function() {
+    var columnsOrder = this.props.config.defaultOrdering || Object.keys(this.props.config.columns);
+    var columns = this.props.config.columns;
+    var self = this;
     return {
       sort: this.props.config.sort || { column: "", order: "" },
-      columns: this.props.config.columns,
-      columnsOrder: this.props.config.defaultOrdering || Object.keys(this.props.config.columns)
+      columns: columns,
+      columnsOrder: columnsOrder,
+      fixedPositionColumns: columnsOrder.reduce(function(fixedPositionColumns, colName, i){
+        var col = columns[colName];
+        if(!self.canDrag(col)){
+          fixedPositionColumns[colName] = i;
+        }
+        return fixedPositionColumns;
+      }, {})
     };
+  },
+
+  canSort: function(col){
+    return !(this.props.disableSorting || col.isStatic || col.disableSorting);
+  },
+
+  canDrag: function(col){
+    return !(this.props.disableDragging || col.isStatic || col.disableDragging);
+  },
+
+  canFilter: function(col){
+    return !(this.props.disableFiltering || col.isStatic || col.disableFiltering);
   },
 
   handleFilterTextChange: function(column) {
@@ -110,7 +138,32 @@ var TableSorter = React.createClass({
     ){
       var columnsOrder = this.state.columnsOrder;
       var draggedColumn = columnsOrder.splice(data.index, 1);
-      columnsOrder.splice(i, 0, draggedColumn);
+      columnsOrder.splice(i, 0, draggedColumn[0]);
+      // makes sure static columns haven't moved
+      if(!_.isEmpty(this.state.fixedPositionColumns)){
+        var l = columnsOrder.length;
+        var self = this;
+        var checkStaticColumn = function(i){
+          // check if static column is misplaced
+          var colStaticIndex = self.state.fixedPositionColumns[columnsOrder[i]];
+          if(colStaticIndex !== undefined && colStaticIndex !== i){
+            // put it back in its place
+            var col = columnsOrder.splice(i, 1);
+            columnsOrder.splice(colStaticIndex, 0, col[0]);
+          }
+        };
+
+        // the traversing order is important depending on how the change was made
+        if(i > data.index){
+          for (var i = l - 1; i >= 0; i--) {
+            checkStaticColumn(i);
+          };
+        } else {
+          for (var i = 0; i < l; i++) {
+            checkStaticColumn(i);
+          };
+        }
+      }
       this.setState({
         columnsOrder: columnsOrder
       });
@@ -133,7 +186,11 @@ var TableSorter = React.createClass({
       if (filterText && filterText.length > 0) {
         operandMatch = operandRegex.exec(filterText);
         if (operandMatch && (operandMatch.length === 3) ) {
-          filters[column] = function(match) { return function(x) { return operators[match[1]](x, match[2]); }; }(operandMatch);
+          filters[column] = function(match) {
+            return function(x) {
+              return operators[match[1]](x, match[2]);
+            };
+          }(operandMatch);
         } else {
           filters[column] = function(x) {
             return ~(x.toString().toLowerCase().indexOf(filterText.toLowerCase()));
@@ -151,7 +208,7 @@ var TableSorter = React.createClass({
 
     /////////////////////////////////////////////////////////////////////////
     // Sort data
-    if(!self.props.disableSort){
+    if(!self.props.disableSorting){
       var sortedItems = _.sortBy(filteredItems, self.state.sort.column);
       if (self.state.sort.order === "desc")
         sortedItems.reverse();
@@ -161,46 +218,68 @@ var TableSorter = React.createClass({
     /////////////////////////////////////////////////////////////////////////
 
     // Create headers
-    var header = columnNames.map(function(c, i) {
-      var doSort = !self.props.disableSort && !self.state.columns[c].disableSort;
-      var dragProps = {
-        draggable: true,
-        onDragStart: self.dragStart.bind(null,i),
-        onDrop: self.onDrop.bind(null,i),
-        onDragOver: function(e){e.preventDefault();},
-      };
+    var header = columnNames.map(function(col, i) {
+      var columnConfig = self.state.columns[col];
+      var headerName = self.state.columns[col].name;
 
-      if(doSort){
-        var iconName = "sort";
-        var isSortingThisColumn = self.state.sort.column === c;
-        if(isSortingThisColumn){
-          iconName += "-" + self.state.sort.order;
+      var headerRender;
+      var enableSorting = self.canSort(columnConfig);
+      if(enableSorting){
+        headerRender = function(extraIcon){
+          var sortIcon = "sort";
+          var isSortingThisColumn = self.state.sort.column === col;
+          if(isSortingThisColumn){
+            sortIcon += "-" + self.state.sort.order;
+          }
+          var icon = (<MKIcon glyph={sortIcon} />);
+          return (
+            <BSButton onClick={self.sortColumn(col)} bsStyle="link" block>
+              {extraIcon} {headerName} {icon}
+            </BSButton>
+          );
         }
-        var icon = (<MKIcon glyph={iconName} />);
-
-        return (
-          <th key={i}>
-            <div {...dragProps}>
-              <BSButton onClick={self.sortColumn(c)} bsStyle="link">
-                {self.state.columns[c].name} {icon}
-              </BSButton>
+      } else {
+        headerRender = function(extraIcon){
+          // FIXME:: Style is a quick fix for prototype, change when real style decided
+          return (
+            <div
+              className="btn btn-link"
+              style={{width: "100%", cursor: "default"}}
+            >
+              {extraIcon} {headerName}
             </div>
-          </th>
-        );
+          );
+        }
       }
+
+      var enableDragging = self.canDrag(columnConfig);
+      var dragProps = {};
+      var extraIcon = null;
+      if(enableDragging){
+        extraIcon = <MKIcon
+          glyph="bars"
+          onDragStart={self.dragStart.bind(null,i)}
+          draggable
+          className="draggable pull-left"
+        />;
+        dragProps = {
+          onDrop: self.onDrop.bind(null,i),
+          onDragOver: function(e){e.preventDefault();},
+        };
+      }
+
       return (
-        <th key={i}>
-          <div {...dragProps}>
-            <span className="btn btn-link" disabled>
-              {self.state.columns[c].name}
-            </span>
-          </div>
+        <th
+          key={i}
+          {...dragProps}
+        >
+          {headerRender(extraIcon)}
         </th>
       );
     });
 
     // Create filter fields
-    if(!self.props.disableFilter){
+    if(!self.props.disableFiltering){
       var filterLink = function(column) {
         return {
           value: self.state.columns[column].filterText,
@@ -209,8 +288,16 @@ var TableSorter = React.createClass({
       };
 
       var filterInputs = columnNames.map(function(c, i) {
-        if(!self.state.columns[c].disableFilter){
-          return <td key={i}><BSInput type="text" valueLink={filterLink(c)} placeholder={"Filter by " + self.state.columns[c].name} /></td>;
+        if(self.canFilter(self.state.columns[c])){
+          return (
+            <td key={i}>
+              <BSInput
+                type="text"
+                valueLink={filterLink(c)}
+                placeholder={"Filter by " + self.state.columns[c].name}
+              />
+            </td>
+          );
         }
         return <td key={i} />;
       });
@@ -246,7 +333,11 @@ var TableSorter = React.createClass({
 
     // Create all rows
     sortedItems.forEach(function(item, i) {
-      if ((self.props.headerRepeat > 0) && (i > 0) && (i % self.props.headerRepeat === 0)) {
+      if (
+        (self.props.headerRepeat > 0) &&
+        (i > 0) &&
+        (i % self.props.headerRepeat === 0)
+      ) {
         allRows.push (
           <tr key={"extra" + i}>
             {headerExtra()}
@@ -276,7 +367,7 @@ var TableSorter = React.createClass({
           <tr>
             {header}
           </tr>
-          {!self.props.disableFilter ? (
+          {!self.props.disableFiltering ? (
             <tr className="table-sorter-filter-row">
               {filterInputs}
             </tr>
