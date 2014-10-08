@@ -35,12 +35,12 @@ var TableSorter = React.createClass({
         // callback to create a custom cell content
         // function(item: Data, colIndex: number) : ReactComponent
         cellGenerator: PropTypes.func,
-        // Alias for disableSort, disableFilter & disableDragging
+        // Alias for disableSorting, disableFiltering & disableDragging
         isStatic: PropTypes.bool,
         // Disable Sorting for this column only
-        disableSort: PropTypes.bool,
+        disableSorting: PropTypes.bool,
         // Disable Filtering for this column only
-        disableFilter: PropTypes.bool,
+        disableFiltering: PropTypes.bool,
         // Disable Dragging for this column only
         disableDragging: PropTypes.bool,
       })).isRequired,
@@ -54,9 +54,9 @@ var TableSorter = React.createClass({
     // Header repeat interval, 0 to disable
     headerRepeat: PropTypes.number,
     // Disable Sorting for this table
-    disableSort: PropTypes.bool,
+    disableSorting: PropTypes.bool,
     // Disable Filtering for this table
-    disableFilter: PropTypes.bool,
+    disableFiltering: PropTypes.bool,
     // Disable Dragging for this table
     disableDragging: PropTypes.bool,
   },
@@ -80,7 +80,7 @@ var TableSorter = React.createClass({
   },
 
   canSort: function(col){
-    return !(this.props.disableSort || col.isStatic || col.disableSort);
+    return !(this.props.disableSorting || col.isStatic || col.disableSorting);
   },
 
   canDrag: function(col){
@@ -88,7 +88,7 @@ var TableSorter = React.createClass({
   },
 
   canFilter: function(col){
-    return !(this.props.disableFilter || col.isStatic || col.disableFilter);
+    return !(this.props.disableFiltering || col.isStatic || col.disableFiltering);
   },
 
   handleFilterTextChange: function(column) {
@@ -208,7 +208,7 @@ var TableSorter = React.createClass({
 
     /////////////////////////////////////////////////////////////////////////
     // Sort data
-    if(!self.props.disableSort){
+    if(!self.props.disableSorting){
       var sortedItems = _.sortBy(filteredItems, self.state.sort.column);
       if (self.state.sort.order === "desc")
         sortedItems.reverse();
@@ -279,7 +279,7 @@ var TableSorter = React.createClass({
     });
 
     // Create filter fields
-    if(!self.props.disableFilter){
+    if(!self.props.disableFiltering){
       var filterLink = function(column) {
         return {
           value: self.state.columns[column].filterText,
@@ -367,7 +367,7 @@ var TableSorter = React.createClass({
           <tr>
             {header}
           </tr>
-          {!self.props.disableFilter ? (
+          {!self.props.disableFiltering ? (
             <tr className="table-sorter-filter-row">
               {filterInputs}
             </tr>
