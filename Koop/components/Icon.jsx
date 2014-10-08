@@ -1,20 +1,23 @@
-var React = require("react");
+var React = require("react/addons");
 var BSGlyphicon = require("react-bootstrap/Glyphicon");
 
+var classSet = React.addons.classSet;
 var PropTypes = React.PropTypes;
 
 var Icon = React.createClass({
   propTypes: {
     // String to be used as a class prefix for the approriate glyphicon library.
     library: PropTypes.string,
-    glyph: PropTypes.string.isRequired
+    glyph: PropTypes.string.isRequired,
+    fixedWidth: PropTypes.bool
   },
 
   getDefaultProps: function() {
     return {
       // Font Awesome glyphicons.
       // See: https://fortawesome.github.io/Font-Awesome/icons/
-      library: "fa"
+      library: "fa",
+      fixedWidth: false
     };
   },
 
@@ -27,8 +30,14 @@ var Icon = React.createClass({
       );
     }
 
+    var classes = {};
+
+    classes[library] = true;
+    classes[library + "-" + this.props.glyph] = true;
+    classes[library + "-fw"] = this.props.fixedWidth;
+
     return this.transferPropsTo(
-      <i className={library + " " + library + "-" + this.props.glyph}></i>
+      <i className={classSet(classes)}></i>
     );
   }
 });

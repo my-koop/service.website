@@ -2,7 +2,9 @@
 var Router = require("react-router");
 var RouteInfo = require("routeInformation");
 
+var BSButton = require("react-bootstrap/Button");
 var BSDropdownButton = require("react-bootstrap/DropdownButton");
+var BSInput = require("react-bootstrap/Input");
 var BSMenuItem = require("react-bootstrap/MenuItem");
 var BSModalTrigger = require("react-bootstrap/ModalTrigger");
 var BSNavbar = require("react-bootstrap/Navbar");
@@ -21,9 +23,19 @@ var PropTypes = React.PropTypes;
 
 // NavigationBar
 var NavBar = React.createClass({
+  propTypes: {
+    dashboard: React.PropTypes.bool,
+  },
+
+  getDefaultProps: function() {
+    return {
+      dashboard: false
+    };
+  },
+
   getInitialState: function() {
     return {
-      isLoggedIn: false
+      isLoggedIn: this.props.dashboard
     };
   },
 
@@ -32,12 +44,22 @@ var NavBar = React.createClass({
     this.setState({isLoggedIn: nowLoggedIn});
   },
 
+  onSearch: function(e) {
+    e.preventDefault();
+    Router.transitionTo(
+      RouteInfo.shop.name,
+      {},
+      {filter: this.refs.searchtext.getInputDOMNode().value}
+    );
+  },
+
   onMenuLogin: function() {
     this.refs.loginmodal.show();
   },
 
   render : function() {
     var isLoggedIn = this.state.isLoggedIn;
+    var isInDashboard = this.props.dashboard;
 
     return (
       <div>
@@ -57,34 +79,96 @@ var NavBar = React.createClass({
             //FIXME: Remove after prototype.
             onClick={this.onFakeLogin}
           />}
+          fixedTop
+          fluid={this.props.dashboard}
         >
           <BSNav key={1} className="navbar-left">
-            <MKNavItemLink to={RouteInfo.homepage.name}>
-              <MKIcon glyph="home" /> Home
-            </MKNavItemLink>
-            <MKNavItemLink to={RouteInfo.shop.name}>
-              <MKIcon glyph="shopping-cart" /> Shop
-            </MKNavItemLink>
-            <MKNavItemLink to={RouteInfo.aboutUs.name}>
-              <MKIcon glyph="question" /> About Us
-            </MKNavItemLink>
+            {isInDashboard ? [
+              <MKNavItemLink key={10} to={RouteInfo.members.name}>
+                <MKIcon glyph="users" fixedWidth /> Members
+              </MKNavItemLink>,
+              <MKNavItemLink key={20} to={RouteInfo.items.name}>
+                <MKIcon glyph="bicycle" fixedWidth /> Items
+              </MKNavItemLink>,
+              <MKNavItemLink key={30} to={RouteInfo.homepage.name}>
+                <MKIcon glyph="book" fixedWidth /> Invoices
+              </MKNavItemLink>,
+              <MKNavItemLink key={40} to={RouteInfo.events.name}>
+                <MKIcon glyph="calendar" fixedWidth /> Events
+              </MKNavItemLink>,
+              <MKNavItemLink key={50} to={RouteInfo.stats.name}>
+                <MKIcon glyph="files-o" fixedWidth /> Reports
+              </MKNavItemLink>,
+              <BSDropdownButton
+                key={60}
+                title={
+                  <span>
+                    <MKIcon glyph="bolt" fixedWidth /> Quick Actions
+                  </span>
+                }
+              >
+                <BSMenuItem
+                  key={10}
+                  onSelect={Router.transitionTo.bind(
+                    null,
+                    RouteInfo.homepage.name
+                  )}
+                >
+                  <MKIcon glyph="plus" fixedWidth /> Add Member
+                </BSMenuItem>
+                <BSMenuItem
+                  key={20}
+                  onSelect={Router.transitionTo.bind(
+                    null,
+                    RouteInfo.mailingSend.name
+                  )}
+                >
+                  <MKIcon glyph="envelope" fixedWidth /> Send Mass Message
+                </BSMenuItem>
+              </BSDropdownButton>
+            ] : [
+              <MKNavItemLink key={10} to={RouteInfo.homepage.name}>
+                <MKIcon glyph="home" /> Homepage
+              </MKNavItemLink>,
+              <MKNavItemLink key={20} to={RouteInfo.shop.name}>
+                <MKIcon glyph="shopping-cart" /> Shop
+              </MKNavItemLink>,
+              <MKNavItemLink key={30} to={RouteInfo.aboutUs.name}>
+                <MKIcon glyph="question" /> About Us
+              </MKNavItemLink>,
+              <form
+                className="navbar-form navbar-left"
+                onSubmit={this.onSearch}
+              >
+                <BSInput
+                  ref="searchtext"
+                  type="text"
+                  placeholder="Search..."
+
+                  //FIXME: Placeholder until
+                  // https://github.com/react-bootstrap/react-bootstrap/issues/201
+                  // or a workaround.
+                  addonAfter={<MKIcon glyph="search"/>}
+                />
+              </form>
+            ]}
           </BSNav>
-          <BSNav key={2} className="navbar-right">
+          {/*FIXME: Hide on small viewports for now since it doesn't wrap.*/}
+          <BSNav key={2} className="navbar-right hidden-xs">
             {isLoggedIn ?
               <BSDropdownButton
-                key={1}
                 //FIXME: Hardcoded, temporary "username".
                 title={<span><MKIcon glyph="user" /> sexytricycle</span>}
               >
                 <BSMenuItem
-                  key={1}
+                  key={10}
                   onSelect={Router.transitionTo.bind(null, RouteInfo.myaccount.name)}
                 >
-                  <MKIcon glyph="cog" /> My account
+                  <MKIcon glyph="cog" fixedWidth /> My account
                 </BSMenuItem>
-                <BSMenuItem divider />
-                <BSMenuItem key={2} onSelect={this.onFakeLogin.bind(null, false)}>
-                  <MKIcon library="glyphicon" glyph="log-out" /> Logout
+                <BSMenuItem key={20} divider />
+                <BSMenuItem key={30} onSelect={this.onFakeLogin.bind(null, false)}>
+                  <MKIcon glyph="sign-out" fixedWidth /> Logout
                 </BSMenuItem>
               </BSDropdownButton>
             :
@@ -97,12 +181,14 @@ var NavBar = React.createClass({
                 <MKIcon glyph="check" /> Register
               </MKNavItemLink>
             : null}
-            <MKNavItemLink to={RouteInfo.homepage.name}>
-              <MKIcon glyph="globe" /> French
-            </MKNavItemLink>
-            <MKNavItemLink to={RouteInfo.homepage.name}>
-              <MKIcon glyph="question-circle" /> Help
-            </MKNavItemLink>
+            {!isInDashboard ? [
+              <MKNavItemLink to={RouteInfo.homepage.name}>
+                <MKIcon glyph="globe" /> French
+              </MKNavItemLink>,
+              <MKNavItemLink to={RouteInfo.homepage.name}>
+                <MKIcon glyph="question-circle" /> Help
+              </MKNavItemLink>
+            ] : null}
           </BSNav>
 
           {/* To be removed after development. */}
