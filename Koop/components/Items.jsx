@@ -89,7 +89,6 @@ var Items = React.createClass({
       columns: {
         id: {
           name: "ID",
-          disableDragging: true,
         },
         name: {
           name: "Name",
@@ -102,9 +101,7 @@ var Items = React.createClass({
         },
         actions: {
           name: "Actions",
-          disableSort: true,
-          disableFilter: true,
-          disableDragging: true,
+          isStatic: true,
           cellGenerator: function(item){
             return (
               <MKListModButtons

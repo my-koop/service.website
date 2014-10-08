@@ -35,6 +35,8 @@ var TableSorter = React.createClass({
         // callback to create a custom cell content
         // function(item: Data, colIndex: number) : ReactComponent
         cellGenerator: PropTypes.func,
+        // Alias for disableSort, disableFilter & disableDragging
+        isStatic: PropTypes.bool,
         // Disable Sorting for this column only
         disableSort: PropTypes.bool,
         // Disable Filtering for this column only
@@ -62,18 +64,31 @@ var TableSorter = React.createClass({
   getInitialState: function() {
     var columnsOrder = this.props.config.defaultOrdering || Object.keys(this.props.config.columns);
     var columns = this.props.config.columns;
+    var self = this;
     return {
       sort: this.props.config.sort || { column: "", order: "" },
       columns: columns,
       columnsOrder: columnsOrder,
       staticColumns: columnsOrder.reduce(function(staticColumns, colName, i){
         var col = columns[colName];
-        if(col.disableDragging){
+        if(!self.canSort(col)){
           staticColumns[colName] = i;
         }
         return staticColumns;
       }, {})
     };
+  },
+
+  canSort: function(col){
+    return !(this.props.disableSort || col.isStatic || col.disableSort);
+  },
+
+  canDrag: function(col){
+    return !(this.props.disableDragging || col.isStatic || col.disableDragging);
+  },
+
+  canFilter: function(col){
+    return !(this.props.disableFilter || col.isStatic || col.disableFilter);
   },
 
   handleFilterTextChange: function(column) {
@@ -208,7 +223,7 @@ var TableSorter = React.createClass({
       var headerName = self.state.columns[col].name;
 
       var headerRender;
-      var enableSorting = !self.props.disableSort && !columnConfig.disableSort;
+      var enableSorting = self.canSort(columnConfig);
       if(enableSorting){
         headerRender = function(extraIcon){
           var sortIcon = "sort";
@@ -237,8 +252,7 @@ var TableSorter = React.createClass({
         }
       }
 
-      var enableDragging = !self.props.disableDragging &&
-        !columnConfig.disableDragging;
+      var enableDragging = self.canDrag(columnConfig);
       var dragProps = {};
       var extraIcon = null;
       if(enableDragging){
@@ -274,7 +288,7 @@ var TableSorter = React.createClass({
       };
 
       var filterInputs = columnNames.map(function(c, i) {
-        if(!self.state.columns[c].disableFilter){
+        if(self.canFilter(self.state.columns[c])){
           return (
             <td key={i}>
               <BSInput
