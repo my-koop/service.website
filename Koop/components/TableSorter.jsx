@@ -69,12 +69,12 @@ var TableSorter = React.createClass({
       sort: this.props.config.sort || { column: "", order: "" },
       columns: columns,
       columnsOrder: columnsOrder,
-      staticColumns: columnsOrder.reduce(function(staticColumns, colName, i){
+      fixedPositionColumns: columnsOrder.reduce(function(fixedPositionColumns, colName, i){
         var col = columns[colName];
-        if(!self.canSort(col)){
-          staticColumns[colName] = i;
+        if(!self.canDrag(col)){
+          fixedPositionColumns[colName] = i;
         }
-        return staticColumns;
+        return fixedPositionColumns;
       }, {})
     };
   },
@@ -140,12 +140,12 @@ var TableSorter = React.createClass({
       var draggedColumn = columnsOrder.splice(data.index, 1);
       columnsOrder.splice(i, 0, draggedColumn[0]);
       // makes sure static columns haven't moved
-      if(!_.isEmpty(this.state.staticColumns)){
+      if(!_.isEmpty(this.state.fixedPositionColumns)){
         var l = columnsOrder.length;
         var self = this;
         var checkStaticColumn = function(i){
           // check if static column is misplaced
-          var colStaticIndex = self.state.staticColumns[columnsOrder[i]];
+          var colStaticIndex = self.state.fixedPositionColumns[columnsOrder[i]];
           if(colStaticIndex !== undefined && colStaticIndex !== i){
             // put it back in its place
             var col = columnsOrder.splice(i, 1);
