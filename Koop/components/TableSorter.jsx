@@ -118,12 +118,12 @@ var TableSorter = React.createClass({
     };
   },
 
-  columnChangeEvent: "column change",
+  columnChangeEventID: "column change",
 
   dragStart: function(i, e){
     var data = {
       index : i,
-      event: this.columnChangeEvent
+      event: this.columnChangeEventID
     }
     e.dataTransfer.setData("text", JSON.stringify(data));
   },
@@ -131,7 +131,7 @@ var TableSorter = React.createClass({
   onDrop: function(i, e){
     var data = JSON.parse(e.dataTransfer.getData("text"));
     if(
-      data.event === this.columnChangeEvent &&
+      data.event === this.columnChangeEventID &&
       _.isNumber(data.index) &&
       (data.index >>> 0) < this.state.columnsOrder.length &&
       data.index !== i
