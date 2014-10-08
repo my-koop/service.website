@@ -260,7 +260,7 @@ var TableSorter = React.createClass({
           glyph="bars"
           onDragStart={self.dragStart.bind(null,i)}
           draggable
-          className="draggable-header pull-left"
+          className="draggable pull-left"
         />;
         dragProps = {
           onDrop: self.onDrop.bind(null,i),
