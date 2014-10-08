@@ -11,6 +11,7 @@ var MKApp                  = require("components/App");
 var MKSimplePage           = require("components/SimplePage");
 var MKPlaceHolder          = require("components/PlaceHolder");
 var MKParentPlaceHolder    = require("components/ParentPlaceHolder");
+var MKHomepage            = require("components/Homepage");
 var MKLoginPage            = require("components/LoginPage");
 var MKMyAccountPage        = require("components/MyAccountPage");
 var MKPasswordRecoveryPage = require("components/PasswordRecoveryPage");
@@ -32,7 +33,7 @@ var MyKoop = React.createClass({
 
           {/*Public pages*/}
           <Route name={RouteInfo.homepage.name} path={RouteInfo.homepage.fullPath} handler={MKParentPlaceHolder}>
-            <DefaultRoute handler={MKPlaceHolder}/>
+            <DefaultRoute handler={MKHomepage}/>
             <Route name={RouteInfo.aboutUs.name} path={RouteInfo.aboutUs.relativePath} handler={MKPlaceHolder}/>
             <Route name={RouteInfo.myaccount.name} path={RouteInfo.myaccount.relativePath} handler={MKMyAccountPage}/>
             <Route name={RouteInfo.shop.name} path={RouteInfo.shop.relativePath} handler={MKParentPlaceHolder}>
