@@ -82,9 +82,7 @@ var TransactionList = React.createClass({
         col6: { name: "Status" },
         editCol: {
           name: "Actions",
-          disableSorting: true,
-          disableFiltering: true,
-          disableDragging: true,
+          isStatic: true,
           cellGenerator: function(item){
             var self = this;
             return (

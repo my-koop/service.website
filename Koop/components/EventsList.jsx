@@ -189,9 +189,7 @@ var EventsList = React.createClass({
         col3: { name: "Start Time" },
         editCol: {
           name: "Actions",
-          disableSorting: true,
-          disableFiltering: true,
-          disableDragging: true,
+          isStatic: true,
           cellGenerator: function(item){
             var self = this;
             return (
