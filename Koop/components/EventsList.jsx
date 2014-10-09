@@ -93,7 +93,7 @@ var TriggerEventModal = function(buttonName){
         <MKAbstractModal 
           title="Create new event" 
           modalBody={modalBody} 
-          useCloseButtonFooter={true} 
+          useCloseButtonFooter
         />
         } 
       >
@@ -131,7 +131,7 @@ var actionsGenerator = function(item){
               <MKAbstractModal 
                 title="Edit Event" 
                 modalBody={modalBody} 
-                useCloseButtonFooter={true} 
+                useCloseButtonFooter 
               /> }
           >
             {component}
