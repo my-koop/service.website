@@ -11,61 +11,6 @@ var MKItemEditModal = require("components/ItemEditModal");
 var ajax      = require("ajax");
 var routeInfo = require("routeInformation");
 
-var actionsGenerator = function(item){
-  return [
-    {
-      content: ( <MKIcon glyph="star" library="glyphicon" /> ),
-      tooltip: {
-        text: "Save as favorite!",
-        overlayProps: {
-          placement: "left"
-        }
-      }
-    },
-    {
-      icon: "plus",
-      tooltip: {
-        text: "Increase quantity",
-        overlayProps: {
-          placement: "top",
-        }
-      }
-    },
-    {
-      icon: "minus",
-      warningMessage: "Are you sure?",
-      tooltip: {
-        text: "Delete",
-        overlayProps: {
-          placement: "top"
-        }
-      },
-      callback: function(){
-        alert("You deleted the item, or did you?");
-      }
-    },
-    {
-      icon: "edit",
-      tooltip: {
-        text: "Edit Item",
-        overlayProps: {
-          placement: "right"
-        }
-      },
-      customWrapper: function(component, iBtn){
-        return (
-          <BSModalTrigger
-            key={iBtn}
-            modal={<MKItemEditModal name={item["col3"]} itemId={item["id"]}/> }
-          >
-            {component}
-          </BSModalTrigger>
-        );
-      }
-    },
-  ];
-}
-
 var Items = React.createClass({
 
   getInitialState: function(){
@@ -89,25 +34,79 @@ var Items = React.createClass({
     );
   },
 
+  actionsGenerator: function(item){
+    return [
+      {
+        content: ( <MKIcon glyph="star" library="glyphicon" /> ),
+        tooltip: {
+          text: "Save as favorite!",
+          overlayProps: {
+            placement: "left"
+          }
+        }
+      },
+      {
+        icon: "plus",
+        tooltip: {
+          text: "Increase quantity",
+          overlayProps: {
+            placement: "top",
+          }
+        }
+      },
+      {
+        icon: "remove",
+        warningMessage: "Are you sure?",
+        tooltip: {
+          text: "Delete",
+          overlayProps: {
+            placement: "top"
+          }
+        },
+        callback: function(){
+          alert("You deleted the item, or did you?");
+        }
+      },
+      {
+        icon: "edit",
+        tooltip: {
+          text: "Edit Item",
+          overlayProps: {
+            placement: "right"
+          }
+        },
+        warningMessage: "You sure?",
+        modalTrigger: <MKItemEditModal name={item.name} itemId={item.id}/>
+      },
+    ];
+  },
+
   render: function() {
+    var self = this;
 
     // TableSorter Config
     var CONFIG = {
       columns: {
-        id: { name: "ID" },
-        col1: { name: "Code" },
-        col2: { name: "Quantity" },
-        col3: { name: "Name" },
-        editCol: {
+        id: {
+          name: "ID",
+        },
+        name: {
+          name: "Name",
+        },
+        quantity: {
+          name: "Quantity",
+        },
+        code: {
+          name: "Code",
+        },
+        actions: {
           name: "Actions",
-          disableSort: true,
-          disableFilter: true,
+          isStatic: true,
           cellGenerator: function(item){
-            var self = this;
             return (
               <MKListModButtons
                 defaultTooltipDelay={500}
-                buttons={actionsGenerator.call(this,item)}
+                buttons={self.actionsGenerator(item)}
               />
             );
           }

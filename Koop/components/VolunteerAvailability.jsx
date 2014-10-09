@@ -126,19 +126,19 @@ var TriggerAvailabilityModal = function(buttonName){
   return (
     <div>
       <BSModalTrigger modal={
-        <MKAbstractModal 
-          title="Enter your availability" 
-          modalBody={modalBody} 
-          useCloseButtonFooter={true} 
+        <MKAbstractModal
+          title="Enter your availability"
+          modalBody={modalBody}
+          useCloseButtonFooter={true}
         />
-        } 
+        }
       >
         <BSButton>{buttonName}</BSButton>
       </BSModalTrigger>
     </div>
   );
-};     
- 
+};
+
 var actionsGenerator = function(item){
   return [
     {
@@ -164,10 +164,10 @@ var actionsGenerator = function(item){
           <BSModalTrigger
             key={iBtn}
             modal={
-              <MKAbstractModal 
-                title="Enter your availability" 
-                modalBody={modalBody} 
-                useCloseButtonFooter={true} 
+              <MKAbstractModal
+                title="Enter your availability"
+                modalBody={modalBody}
+                useCloseButtonFooter={true}
               /> }
           >
             {component}
@@ -178,7 +178,7 @@ var actionsGenerator = function(item){
   ];
 }
 
- 
+
 var addButton =  TriggerAvailabilityModal("Add New");
 
 var VolunteerAvailability = React.createClass({
@@ -216,8 +216,7 @@ var VolunteerAvailability = React.createClass({
         col5: { name: "Reoccuring" },
         editCol: {
           name: "Actions",
-          disableSort: true,
-          disableFilter: true,
+          isStatic: true,
           cellGenerator: function(item){
             var self = this;
             return (
@@ -249,7 +248,7 @@ var VolunteerAvailability = React.createClass({
         </div>
         {addButton}
       </BSCol>
-        
+
       </div>
     );
   }

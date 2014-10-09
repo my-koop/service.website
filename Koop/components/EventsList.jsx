@@ -3,12 +3,25 @@ var PropTypes       = React.PropTypes;
 var BSButton        = require("react-bootstrap/Button");
 var BSCol           = require("react-bootstrap/Col");
 var BSModalTrigger  = require("react-bootstrap/ModalTrigger");
+var MKEventSignupModal = require("components/EventSignupModal");
+var BSModalTrigger = require("react-bootstrap/ModalTrigger");
 
 var MKTableSorter   = require("components/TableSorter");
 var MKListModButtons= require("components/ListModButtons");
 var MKItemEditModal = require("components/ItemEditModal");
 var FormInputFactory= require("components/FormInputFactory");
 var MKAbstractModal = require("components/AbstractModal");
+var eventSignupProps = {
+  name:"Sexy and I know it",
+  date:"05/05/1989",
+  price:"5.00" //Fix me. Or throw me. Do whatever you want to me ;) 
+};
+
+var editButton = <BSButton>Edit</BSButton>;
+var signupButton = <BSModalTrigger modal={<MKEventSignupModal infos={eventSignupProps}/>} >
+                    <BSButton bsSize="small">Signup/Register</BSButton>
+                   </BSModalTrigger>;
+
 
 var EventBoxInputs  = [
   {
