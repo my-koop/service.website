@@ -1,56 +1,116 @@
-﻿var React = require("react");
-var PropTypes = React.PropTypes;
-var FilteredList = require("components/FilterableItemList");
-var BSButton = require("react-bootstrap/Button");
-var BSButtonGroup = require("react-bootstrap/ButtonGroup");
+﻿var React           = require("react");
+var PropTypes       = React.PropTypes;
+var BSButton        = require("react-bootstrap/Button");
+var BSCol           = require("react-bootstrap/Col");
+var BSModalTrigger  = require("react-bootstrap/ModalTrigger");
 
-var editButton = <BSButton>Edit </BSButton>;
-var viewButton = <BSButton>View </BSButton>;
-var functions = <BSButtonGroup>
-                  {editButton}
-                  {viewButton}
-                </BSButtonGroup>
+var MKTableSorter   = require("components/TableSorter");
+var MKListModButtons= require("components/ListModButtons");
+var MKItemEditModal = require("components/ItemEditModal");
+var FormInputFactory= require("components/FormInputFactory");
+var MKAbstractModal = require("components/AbstractModal");
 
-var headers = ["ID","Username","Date","#items","Total Price","Total Paid","Status","Functions"];
-var data = [
-    ["1","AS","2013/09/27","6","49.56$","49.56$","Closed",functions],
-    ["2","Fraco68","2013/09/27","2","2.95$","0.67$","Open",functions],
-    ["3","Pablo","2013/09/26","1","25.00$","25.00$","Closed",functions]
-    ];
-var filters = [
+
+var actionsGenerator = function(item){
+  return [
     {
-      "properties": {
-        "name": "search_id",
-        "placeholder": "search by id",
-        "label": "Search"
-      },
-     "type": "text"
+      icon: "minus",
+      warningMessage: "Are you sure?",
+      tooltip: {
+        text: "Delete",
+        overlayProps: {
+          placement: "top"
+        }
+      }
     },
     {
-  "properties": {
-    "name": "status",
-    "label": "Status",
-    "options": [
-      {
-        "name": "open",
-        "value": "Open Transactions"
-      },
-      {
-        "name": "closed",
-        "value": "Closed Transactions"
-      },
-    ]
-  },
-  "type": "select"
+      icon: "edit",
+      tooltip: {
+        text: "Edit Item",
+        overlayProps: {
+          placement: "right"
+        }
+      }
+    },
+  ];
 }
 
-];
 var TransactionList = React.createClass({
-    render: function(){
-      return (
-        <FilteredList filterOptions={filters} headers={headers} data={data} />
-      );
+  getInitialState: function(){
+    return {
+      items:  [
+        {
+          "id": "1",
+          "col1": "Tylioq",
+          "col2": "2013/09/22",
+          "col3": "2",
+          "col4": "23.45$",
+          "col5": "10.00$",
+          "col6": "Open"
+        },
+        {
+          "id": "2",
+          "col1": "Carabeche",
+          "col2": "2013/09/22",
+          "col3": "1",
+          "col4": "2.25$",
+          "col5": "2.25$",
+          "col6": "Closed"
+        },
+        {
+          "id": "3",
+          "col1": "Grabioe",
+          "col2": "2013/09/22",
+          "col3": "6",
+          "col4": "67.45$",
+          "col5": "67.45$",
+          "col6": "Closed"
+        }
+      ]
     }
+  },
+  render: function(){
+  
+    var CONFIG = {
+      columns: {
+        id: { name: "ID" },
+        col1: { name: "Username" },
+        col2: { name: "Date" },
+        col3: { name: "#Items" },
+        col4: { name: "Total Price" },
+        col5: { name: "Total Paid" },
+        col6: { name: "Status" },
+        editCol: {
+          name: "Actions",
+          isStatic: true,
+          cellGenerator: function(item){
+            var self = this;
+            return (
+              <MKListModButtons
+                defaultTooltipDelay={500}
+                buttons={actionsGenerator.call(this,item)}
+              />
+            );
+          }
+        }
+      }
+    };
+    return (
+      <BSCol md={12}>
+      <div>
+        <MKTableSorter
+          config={CONFIG}
+          items={this.state.items}
+          headerRepeat={8}
+          striped
+          bordered
+          condensed
+          hover
+        />
+      </div>
+    </BSCol>
+    );
+  }
 });
 
 module.exports = TransactionList;
