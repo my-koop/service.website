@@ -11,6 +11,7 @@ var MKListModButtons= require("components/ListModButtons");
 var MKItemEditModal = require("components/ItemEditModal");
 var FormInputFactory= require("components/FormInputFactory");
 var MKAbstractModal = require("components/AbstractModal");
+
 var eventSignupProps = {
   name:"Sexy and I know it",
   date:"05/05/1989",
@@ -188,8 +189,9 @@ var EventsList = React.createClass({
         col3: { name: "Start Time" },
         editCol: {
           name: "Actions",
-          disableSort: true,
-          disableFilter: true,
+          disableSorting: true,
+          disableFiltering: true,
+          disableDragging: true,
           cellGenerator: function(item){
             var self = this;
             return (
