@@ -1,4 +1,4 @@
-﻿///<reference path="Scripts/typings/tsd.d.ts" />
+﻿///<reference path="typings/tsd.d.ts" />
 import express = require('express');
 import http = require('http');
 import path = require('path');

@@ -1,6 +1,6 @@
 ﻿import express = require("express");
-import routeInfo = require("../../Scripts/modules/routeInformation");
-import definitions = require("../../Scripts/modules/itemsThreshold");
+import routeInfo = require("../../modules/common/routeInformation");
+import definitions = require("../../modules/common/itemsThreshold");
 
 var muckData = [
   new definitions.Item("Item 1", "154896", 5, 10),

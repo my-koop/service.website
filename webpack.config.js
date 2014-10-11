@@ -89,9 +89,9 @@ if (isDev) {
 
 module.exports = {
   // Where to look for the entry points.
-  context: path.join(__dirname, "js/entry"),
+  context: path.join(__dirname, "entry"),
   entry: {
-    "mykoop" : "./index",
+    "mykoop" : "./mykoop",
   },
   output: {
     path: path.join(__dirname, "public/"),
@@ -106,10 +106,10 @@ module.exports = {
     extensions: ["", ".webpack.js", ".web.js", ".js", ".ts", ".jsx"],
 
     root: [
-      path.join(__dirname, "js"),
       path.join(__dirname, "less"),
       path.join(__dirname, "locales"),
-      path.join(__dirname, "Scripts", "modules")
+      path.join(__dirname, "modules", "frontend"),
+      path.join(__dirname, "modules", "common")
     ],
 
     modulesDirectories: [
