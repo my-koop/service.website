@@ -7,6 +7,7 @@ import methodOverride = require('method-override');
 import session = require('express-session');
 import bodyParser = require('body-parser');
 import errorHandler = require('errorhandler');
+import moduleManager = require('./modules/backend/moduleManager');
 var favicon = require('serve-favicon');
 var multer = require('multer');
 

@@ -6,3 +6,5 @@
 /// <reference path="method-override/method-override.d.ts" />
 /// <reference path="body-parser/body-parser.d.ts" />
 /// <reference path="errorhandler/errorhandler.d.ts" />
+/// <reference path="mykoop/mykoop.d.ts" />
+/// <reference path="lodash/lodash.d.ts" />
