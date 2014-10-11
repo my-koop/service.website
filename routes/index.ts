@@ -3,7 +3,7 @@
  */
 import express = require('express');
 import ctrl = require('./controllers/index');
-import routeInfo = require('../Scripts/modules/routeInformation');
+import routeInfo = require('../modules/common/routeInformation');
 
 function indexApp(app: express.Express) {
 

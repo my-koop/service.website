@@ -1,5 +1,5 @@
 import express = require('express');
-import routeInfo = require('../../Scripts/modules/routeInformation');
+import routeInfo = require('../../modules/common/routeInformation');
 
 function NavBar(req: express.Request, res: express.Response) {
   var allLinks = []
