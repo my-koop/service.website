@@ -18,11 +18,13 @@
     "express": "^4.9.0",
     "express-session": "^1.8.1",
     "favicon": "0.0.2",
+    "json5": "^0.2.0",
     "method-override": "^2.2.0",
     "morgan": "^1.3.0",
     "multer": "^0.1.4",
     "serve-favicon": "^2.1.3",
-    "superagent": "^0.18.2"
+    "superagent": "^0.18.2",
+    "mykoop-database": "my-koop/module.database"
   },
   "devDependencies": {
     "autoprefixer-loader": "^1.0.0",

@@ -9,14 +9,20 @@ declare module "mykoop" {
 
   }
 
+  export interface ModuleDefinition {
+    name: string;
+    dependencies?: string[];
+  }
+
   export class ModuleManager {
     // Retrieves the instance of a module, can be null if unavailable
     get(moduleName: string): IModule;
+    initializeModules(moduleDefinitions_: ModuleDefinition[]): void;
   }
 
   export interface IModuleBridge {
     // All modules are loaded and are available to use
-    onAllModulesLoaded: (moduleManager: ModuleManager) => void;
+    onAllModulesLoaded(moduleManager: ModuleManager): void;
 
     // Retrieve the instance of the module, may not be ready to be used
     getModule(): IModule;

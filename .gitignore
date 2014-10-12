@@ -30,9 +30,9 @@ node_modules
 .lock-wscript
 
 
-/Koop/app.js
-/Koop/app.js.map
+/app.js
+/app.js.map
 *.suo
 .ntvs_analysis.dat
-/Koop/obj
-/Koop/*.sublime-workspace
+/obj
+/*.sublime-workspace

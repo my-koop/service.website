@@ -8,6 +8,9 @@ import session = require('express-session');
 import bodyParser = require('body-parser');
 import errorHandler = require('errorhandler');
 import moduleManager = require('./modules/backend/moduleManager');
+//hijack require to parse json5
+require('json5/lib/require');
+
 var favicon = require('serve-favicon');
 var multer = require('multer');
 
@@ -34,6 +37,11 @@ if ('development' == app.get('env')) {
   app.use(express.static(path.join(__dirname, 'public')));
   app.use(errorHandler());
 }
+
+// Loading modules
+console.log("Loading modules...");
+var modules = require("./modules.json5");
+moduleManager.initializeModules(modules.modules);
 
 http.createServer(app).listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));
