@@ -96,7 +96,7 @@ class ModuleManager implements mykoop.ModuleManager {
         delete self.modules[moduleDefinition.name];
       }
     });
-    console.log(self.modules);
+
     // Use definition again to respect order
     moduleDefinitions.forEach(function(moduleDefinition, index) {
       if(moduleDependenciesSatisfied[index]){
