@@ -7,50 +7,79 @@ export interface ModuleDefinition {
   dependencies?: string[];
 }
 
-class Module {
+export class Module {
   public instance: mykoop.IModule;
-
+  public bridge: mykoop.IModuleBridge;
   constructor() {
     this.instance = null;
+    this.bridge = null;
   }
 }
 
-export function get(moduleName: string): mykoop.IModule {
-  return null;
+export interface ModuleDictionary{
+  [id: string]: Module;
 }
 
-export function initializeModules(moduleDefinitions: ModuleDefinition[]) {
-  var modules = moduleDefinitions.reduce(function (modules, moduleDefinition, index) {
-    var name = moduleDefinition.name;
+export class ModuleManager implements mykoop.ModuleManager {
+  get(moduleName: string): mykoop.IModule {
+    return (this.modules[moduleName] && this.modules[moduleName].instance) || null;
+  }
+  modules: ModuleDictionary;
 
-    if (modules[name]) {
-      console.error("Duplicate module: %s.", name);
+  initializeModules(moduleDefinitions: ModuleDefinition[]) {
+    this.modules = <ModuleDictionary>moduleDefinitions.reduce(function (modules, moduleDefinition, index) {
+      var name = moduleDefinition.name;
+
+      if (modules[name]) {
+        console.error("Duplicate module: %s.", name);
+        return modules;
+      }
+
+      modules[name] = new Module();
+
       return modules;
+    }, {});
+
+    var allDependenciesSatisfied = true;
+    var moduleDependenciesSatisfied = moduleDefinitions.map(function(moduleDefinition, index) {
+      var dependenciesSatisfied = _.all(
+        moduleDefinition.dependencies,
+        function(dependency) {
+          return this.modules.hasOwnProperty(dependency);
+        }
+      );
+      allDependenciesSatisfied = allDependenciesSatisfied && dependenciesSatisfied;
+      return dependenciesSatisfied;
+    });
+
+    //TODO: Be more verbose about what doesn't have valid dependencies.
+    if (!allDependenciesSatisfied) {
+      moduleDefinitions.forEach(function(moduleDefinition, index) {
+        if(!moduleDependenciesSatisfied[index]){
+          console.error("Error: Dependencies missing for module %s", moduleDefinition.name);
+        }
+      });
     }
 
-    modules[name] = new Module();
-
-    return modules;
-  }, {});
-
-  var allDependenciesSatisfied = _.all(moduleDefinitions, function(moduleDefinition, index) {
-    return _.all(
-      moduleDefinition.dependencies,
-      function(dependency) {
-        return !!modules[dependency];
+    // Instanciate modules.
+    moduleDefinitions.forEach(function(moduleDefinition, index) {
+      if(moduleDependenciesSatisfied[index]){
+        // sync call
+        var bridge = require("mykoop-" + moduleDefinition.name);
+        this.modules[moduleDefinition.name].bridge = bridge;
+        this.modules[moduleDefinition.name].instance = bridge.getModule();
+      } else {
+        delete this.modules[moduleDefinition.name];
       }
-    );
-  });
+    });
 
-  //TODO: Be more verbose about what doesn't have valid dependencies.
-  if (!allDependenciesSatisfied) {
-    console.error("Some dependencies are not satisfied.");
-    return;
+    // Use definition again to respect order
+    moduleDefinitions.forEach(function(moduleDefinition, index) {
+      if(moduleDependenciesSatisfied[index]){
+        this.modules[moduleDefinition.name].bridge.onAllModulesLoaded(this);
+      }
+    });
+
   }
-
-  //TODO: Instanciate modules.
-  moduleDefinitions.forEach(function(moduleDefinition) {
-    modules[moduleDefinition.name].instance = require("mykoop-" + moduleDefinition.name);
-  });
 }
 
