@@ -24,7 +24,8 @@
     "multer": "^0.1.4",
     "serve-favicon": "^2.1.3",
     "superagent": "^0.18.2",
-    "mykoop-database": "my-koop/module.database"
+    "mykoop-database": "my-koop/module.database",
+    "mykoop-inventory": "my-koop/module.inventory"
   },
   "devDependencies": {
     "autoprefixer-loader": "^1.0.0",

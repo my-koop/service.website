@@ -1,15 +1,23 @@
 ///<reference path="../../typings/tsd.d.ts" />
 import _ = require("lodash");
-import mykoop = require("mykoop");
 
-
+class CoreBridge implements mykoop.IModuleBridge {
+  private instance: mykoop.IModule;
+  constructor(instance: mykoop.IModule){
+    this.instance = instance;
+  }
+  onAllModulesLoaded(moduleManager: mykoop.ModuleManager): void {}
+  getModule(): mykoop.IModule { return this.instance; }
+  getStyles(): string[] { return null; }
+  getReactComponents(): string[] { return null; }
+}
 
 class Module {
   public instance: mykoop.IModule;
   public bridge: mykoop.IModuleBridge;
   public dependants: { [id:string]:number };
 
-  constructor() {
+  constructor(public isCore?: boolean) {
     this.instance = null;
     this.bridge = null;
     this.dependants = {};
@@ -21,20 +29,30 @@ interface ModuleDictionary{
 }
 
 class ModuleManager implements mykoop.ModuleManager {
+  modules: ModuleDictionary = {};
+
   get(moduleName: string): mykoop.IModule {
     return (this.modules[moduleName] && this.modules[moduleName].instance) || null;
   }
-  modules: ModuleDictionary = {};
+
+  setCore(moduleName: string, coreModule: mykoop.IModule): void {
+    var coreModuleProxy = new Module(true);
+    coreModuleProxy.bridge = new CoreBridge(coreModule);
+    coreModuleProxy.instance = coreModule;
+
+    this.modules[moduleName] = coreModuleProxy;
+  }
 
   initializeModules(moduleDefinitions_: mykoop.ModuleDefinition[]) {
     var self = this;
 
     var moduleDefinitions: mykoop.ModuleDefinition[] = [];
     // Transform array into an object
-    this.modules = <ModuleDictionary>moduleDefinitions_.reduce(function (modules, moduleDefinition, index) {
+    this.modules = moduleDefinitions_.reduce(function (modules: ModuleDictionary, moduleDefinition, index) {
       var name = moduleDefinition.name;
 
-      if (modules[name]) {
+      // Allow replacement of core modules
+      if (modules[name] && !modules[name].isCore) {
         console.error("Duplicate module: %s.", name);
         return modules;
       }
@@ -44,7 +62,7 @@ class ModuleManager implements mykoop.ModuleManager {
       modules[name] = new Module();
 
       return modules;
-    }, {});
+    }, this.modules );
 
     // Check for dependencies
     var allDependenciesSatisfied = true;
