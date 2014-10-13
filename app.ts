@@ -18,6 +18,15 @@ var app = express();
 import routes = require('./routes/index');
 routes(app);
 
+// Setting core modules
+import router = require("./modules/backend/router");
+moduleManager.setCore("router", new router.Router(app));
+
+// Loading modules
+console.log("Loading modules...");
+var modules = require("./modules.json5");
+moduleManager.initializeModules(modules.modules);
+
 // all environments
 app.set('port', process.env.PORT || 1337);
 app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -37,11 +46,6 @@ if ('development' == app.get('env')) {
   app.use(express.static(path.join(__dirname, 'public')));
   app.use(errorHandler());
 }
-
-// Loading modules
-console.log("Loading modules...");
-var modules = require("./modules.json5");
-moduleManager.initializeModules(modules.modules);
 
 http.createServer(app).listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));
