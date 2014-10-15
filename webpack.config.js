@@ -34,25 +34,17 @@ moduleManager.loadModules(modules.modules);
 var loadedModules = moduleManager.getLoadedModuleNames();
 
 /* Generate dynamic LESS imports for the global scope. */
-var moduleStyleFileName = "styles";
 var lessGlobalStyles = loadedModules.reduce(function(lessStyles, moduleName) {
-  var stylePath = moduleStyleFileName + ".less";
+  var stylePath = moduleName + "/styles.less";
 
-  var modulePath;
   try {
-    modulePath = require.resolve(moduleName);
-    modulePath = modulePath.substring(0, modulePath.lastIndexOf("/"));
+    require.resolve(stylePath);
   } catch(e) {
-    console.error("Couldn't resolve module \"%s\".", moduleName);
     // Abort trying to load styles for this module.
     return lessStyles;
   }
 
-  var hasGlobalStyles = fs.existsSync(path.join(modulePath, stylePath));
-
-  if (hasGlobalStyles) {
-    lessStyles.push("@import \"~" + path.join(moduleName, stylePath) + "\";");
-  }
+  lessStyles.push("@import \"~" + stylePath + "\";");
 
   return lessStyles;
 }, []);
