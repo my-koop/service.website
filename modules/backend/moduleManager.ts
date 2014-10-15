@@ -43,6 +43,14 @@ class ModuleManager implements mykoop.ModuleManager {
     this.modules[moduleName] = coreModuleProxy;
   }
 
+  getGlobalModuleStylePaths(): string[] {
+    return [];
+  }
+
+  getModuleComponentPaths(): string[] {
+    return [];
+  }
+
   initializeModules(moduleDefinitions_: mykoop.ModuleDefinition[]) {
     var self = this;
 
