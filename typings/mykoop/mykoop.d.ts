@@ -3,7 +3,7 @@
 // Definitions by: Michael Ferris <https://github.com/Cellule/>
 // Definitions: https://github.com/my-koop/type.definitions
 
-declare module "mykoop" {
+declare module mykoop {
 
   export interface IModule {
 
@@ -15,8 +15,11 @@ declare module "mykoop" {
   }
 
   export class ModuleManager {
+    // Adds a core module to the manager
+    setCore(moduleName: string, module: IModule): void;
     // Retrieves the instance of a module, can be null if unavailable
     get(moduleName: string): IModule;
+    // Load all modules from the definition
     initializeModules(moduleDefinitions_: ModuleDefinition[]): void;
   }
 
