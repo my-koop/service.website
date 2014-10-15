@@ -26,18 +26,11 @@ declare module mykoop {
   }
 
   export interface IModuleBridge {
-    // All modules are loaded and are available to use
-    onAllModulesLoaded(moduleManager: ModuleManager): void;
+    // All modules are initialized and are available to use
+    onAllModulesInitialized(moduleManager: ModuleManager): void;
 
     // Retrieve the instance of the module, may not be ready to be used
     getModule(): IModule;
-
-    // List of paths to style sheet (.less) to load with the module, can be null
-    getStyles(): string[];
-
-    // List of paths to react components (.jsx) to load with the module, can be null
-    getReactComponents(): string[];
   }
-
 }
 

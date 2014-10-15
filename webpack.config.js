@@ -82,6 +82,30 @@ var lessUseableLoader = {
   loaders: styleLoaders
 };
 
+var aliases = loadedModules.reduce(function(aliases, moduleName) {
+  var modulePath;
+  //FIXME: Handle module roles properly.
+  var moduleRole = moduleName;
+
+  try {
+    modulePath = require.resolve(moduleName + "/components");
+  } catch(e) {
+    console.error("Couldn't resolve module \"%s\".", moduleName);
+    // Abort trying to load styles for this module.
+    return aliases;
+  }
+
+  if (moduleName !== moduleRole) {
+    aliases[moduleName + "/components"] = moduleName + "/components";
+  }
+
+  return aliases;
+}, {
+  "bootstrap-styles": "bootstrap/less",
+  "font-awesome-styles": "font-awesome/less",
+  components: path.join(__dirname, "components")
+});
+
 var loaderList = [
   // Styles.
   lessLoader,
@@ -148,11 +172,7 @@ module.exports = {
 
     // Map the modules to the files we really need, for hassle-free inclusion
     // in our files.
-    alias: {
-      "bootstrap-styles": "bootstrap/less",
-      "font-awesome-styles": "font-awesome/less",
-      components: path.join(__dirname, "components")
-    }
+    alias: aliases
   },
   plugins: pluginList
 };
