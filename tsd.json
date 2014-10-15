@@ -1,33 +1,12 @@
 {
   "version": "v4",
-  "repo": "borisyankov/DefinitelyTyped",
+  "repo": "my-koop/type.definitions",
   "ref": "master",
   "path": "typings",
   "bundle": "typings/tsd.d.ts",
   "installed": {
-    "superagent/superagent.d.ts": {
-      "commit": "b0b4af1223f4f9449012688fa0c18f20cc3267e7"
-    },
-    "express/express.d.ts": {
-      "commit": "b0b4af1223f4f9449012688fa0c18f20cc3267e7"
-    },
-    "node/node.d.ts": {
-      "commit": "b0b4af1223f4f9449012688fa0c18f20cc3267e7"
-    },
-    "express-session/express-session.d.ts": {
-      "commit": "b0b4af1223f4f9449012688fa0c18f20cc3267e7"
-    },
-    "morgan/morgan.d.ts": {
-      "commit": "b0b4af1223f4f9449012688fa0c18f20cc3267e7"
-    },
-    "method-override/method-override.d.ts": {
-      "commit": "b0b4af1223f4f9449012688fa0c18f20cc3267e7"
-    },
-    "body-parser/body-parser.d.ts": {
-      "commit": "b0b4af1223f4f9449012688fa0c18f20cc3267e7"
-    },
-    "errorhandler/errorhandler.d.ts": {
-      "commit": "b0b4af1223f4f9449012688fa0c18f20cc3267e7"
+    "mykoop/mykoop.d.ts": {
+      "commit": "752be10a0060330c01ff0ffc9b84abec3f289e3f"
     }
   }
 }

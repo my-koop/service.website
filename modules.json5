@@ -1,0 +1,40 @@
+{
+  modules:[
+    {
+      name: "database"
+    },
+    {
+      name: "inventory",
+      dependencies: [
+        "database",
+      ]
+    },
+
+
+    // Test cases
+    {
+      name: "troll",
+      dependencies:[
+        "troll1",
+        "troll2",
+      ]
+    },
+    {
+      wrongname: "troll",
+    },
+    {
+      name: "troll",
+      dependencies:[
+        "troll1",
+        "troll3",
+      ]
+    },
+    {
+      name: "troll2",
+      dependencies:[
+        "database",
+        "troll2",
+      ]
+    },
+  ]
+}
