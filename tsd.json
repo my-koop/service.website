@@ -8,5 +8,9 @@
     "mykoop/mykoop.d.ts": {
       "commit": "752be10a0060330c01ff0ffc9b84abec3f289e3f"
     }
+  },
+  "owned": {
+    "mykoop": {},
+    "mykoop-core": {}
   }
 }
