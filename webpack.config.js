@@ -35,7 +35,7 @@ var loadedModules = moduleManager.getLoadedModuleNames();
 
 /* Generate dynamic LESS imports for the global scope. */
 var lessGlobalStyles = loadedModules.reduce(function(lessStyles, moduleName) {
-  var stylePath = moduleName + "/styles.less";
+  var stylePath = moduleName + "/styles/index.less";
 
   try {
     require.resolve(stylePath);
@@ -90,8 +90,7 @@ var aliases = loadedModules.reduce(function(aliases, moduleName) {
   try {
     modulePath = require.resolve(moduleName + "/components");
   } catch(e) {
-    console.error("Couldn't resolve module \"%s\".", moduleName);
-    // Abort trying to load styles for this module.
+    // Abort trying to load components for this module.
     return aliases;
   }
 
