@@ -25,7 +25,8 @@ moduleManager.setCore("router", new router.Router(app));
 // Loading modules
 console.log("Loading modules...");
 var modules = require("./modules.json5");
-moduleManager.initializeModules(modules.modules);
+moduleManager.loadModules(modules.modules);
+moduleManager.initializeLoadedModules();
 
 // all environments
 app.set('port', process.env.PORT || 1337);

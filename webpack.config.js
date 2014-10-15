@@ -1,7 +1,11 @@
 var env = process.env.NODE_ENV;
+var fs = require("fs");
 var path = require("path");
 var _ = require("lodash");
 var webpack = require("webpack");
+var moduleManager = require("./modules/backend/moduleManager");
+//hijack require to parse json5
+require('json5/lib/require');
 
 var isDev = env === "development";
 var isProd = env === "production";
@@ -10,7 +14,7 @@ var pluginList = [
   new webpack.DefinePlugin({
     __DEV__: isDev,
     __PROD__: isProd,
-    __FRONTEND__: true
+    "process.browser": true
   })
 ];
 
@@ -24,6 +28,39 @@ if (isProd) {
     }
   }));
 }
+
+var modules = require("./modules.json5");
+moduleManager.loadModules(modules.modules);
+var loadedModules = moduleManager.getLoadedModuleNames();
+
+/* Generate dynamic LESS imports for the global scope. */
+var moduleStyleFileName = "styles";
+var lessGlobalStyles = loadedModules.reduce(function(lessStyles, moduleName) {
+  var stylePath = moduleStyleFileName + ".less";
+
+  var modulePath;
+  try {
+    modulePath = require.resolve(moduleName);
+    modulePath = modulePath.substring(0, modulePath.lastIndexOf("/"));
+  } catch(e) {
+    console.error("Couldn't resolve module \"%s\".", moduleName);
+    // Abort trying to load styles for this module.
+    return lessStyles;
+  }
+
+  var hasGlobalStyles = fs.existsSync(path.join(modulePath, stylePath));
+
+  if (hasGlobalStyles) {
+    lessStyles.push("@import \"~" + path.join(moduleName, stylePath) + "\";");
+  }
+
+  return lessStyles;
+}, []);
+
+fs.writeFileSync(
+  "./less/dynamic-global-styles.less",
+  lessGlobalStyles.join("\n")
+);
 
 var styleLoaders = [
   "style",

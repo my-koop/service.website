@@ -1,6 +1,8 @@
 ///<reference path="../../typings/tsd.d.ts" />
 import _ = require("lodash");
 
+var MODULE_NAME_PREFIX = "mykoop-";
+
 class CoreBridge implements mykoop.IModuleBridge {
   private instance: mykoop.IModule;
   constructor(instance: mykoop.IModule){
@@ -30,6 +32,7 @@ interface ModuleDictionary{
 
 class ModuleManager implements mykoop.ModuleManager {
   modules: ModuleDictionary = {};
+  private moduleDefinitions: mykoop.ModuleDefinition[] = [];
 
   get(moduleName: string): mykoop.IModule {
     return (this.modules[moduleName] && this.modules[moduleName].instance) || null;
@@ -43,18 +46,9 @@ class ModuleManager implements mykoop.ModuleManager {
     this.modules[moduleName] = coreModuleProxy;
   }
 
-  getGlobalModuleStylePaths(): string[] {
-    return [];
-  }
-
-  getModuleComponentPaths(): string[] {
-    return [];
-  }
-
-  initializeModules(moduleDefinitions_: mykoop.ModuleDefinition[]) {
+  loadModules(moduleDefinitions_: mykoop.ModuleDefinition[]) {
     var self = this;
 
-    var moduleDefinitions: mykoop.ModuleDefinition[] = [];
     // Transform array into an object
     this.modules = moduleDefinitions_.reduce(function (modules: ModuleDictionary, moduleDefinition, index) {
       var name = moduleDefinition.name;
@@ -66,15 +60,25 @@ class ModuleManager implements mykoop.ModuleManager {
       }
 
       // Only use valid definitions
-      moduleDefinitions.push(moduleDefinition);
+      self.moduleDefinitions.push(moduleDefinition);
       modules[name] = new Module();
 
       return modules;
-    }, this.modules );
+    }, this.modules);
+  }
+
+  getLoadedModuleNames(): string[] {
+    return this.moduleDefinitions.map(function(moduleDefinition){
+      return MODULE_NAME_PREFIX + moduleDefinition.name;
+    });
+  }
+
+  initializeLoadedModules() {
+    var self = this;
 
     // Check for dependencies
     var allDependenciesSatisfied = true;
-    var moduleDependenciesSatisfied = moduleDefinitions.map(function(moduleDefinition, index) {
+    var moduleDependenciesSatisfied = this.moduleDefinitions.map(function(moduleDefinition, index) {
       var dependenciesSatisfied = _.all(
         moduleDefinition.dependencies,
         function(dependency) {
@@ -91,7 +95,7 @@ class ModuleManager implements mykoop.ModuleManager {
 
     //TODO: Be more verbose about what doesn't have valid dependencies.
     if (!allDependenciesSatisfied) {
-      moduleDefinitions.forEach(function(moduleDefinition, index) {
+      self.moduleDefinitions.forEach(function(moduleDefinition, index) {
         if(!moduleDependenciesSatisfied[index]){
           console.error("Error: Dependencies missing for module %s", moduleDefinition.name);
         }
@@ -99,13 +103,13 @@ class ModuleManager implements mykoop.ModuleManager {
     }
 
     // Instanciate modules.
-    moduleDefinitions.forEach(function(moduleDefinition, index) {
+    self.moduleDefinitions.forEach(function(moduleDefinition, index) {
       if(moduleDependenciesSatisfied[index]){
         // sync call
         console.log("Loading module %s", moduleDefinition.name);
         var bridge;
         try{
-          bridge = require("mykoop-" + moduleDefinition.name);
+          bridge = require(MODULE_NAME_PREFIX + moduleDefinition.name);
         } catch(e) {
           console.error(e);
           _.each(self.modules[moduleDefinition.name].dependants, function(index, moduleName){
@@ -124,7 +128,7 @@ class ModuleManager implements mykoop.ModuleManager {
     });
 
     // Use definition again to respect order
-    moduleDefinitions.forEach(function(moduleDefinition, index) {
+    self.moduleDefinitions.forEach(function(moduleDefinition, index) {
       if(moduleDependenciesSatisfied[index]){
         self.modules[moduleDefinition.name].bridge.onAllModulesLoaded(self);
       }

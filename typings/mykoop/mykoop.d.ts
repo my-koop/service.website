@@ -20,7 +20,9 @@ declare module mykoop {
     // Retrieves the instance of a module, can be null if unavailable
     get(moduleName: string): IModule;
     // Load all modules from the definition
-    initializeModules(moduleDefinitions_: ModuleDefinition[]): void;
+    loadModules(moduleDefinitions_: ModuleDefinition[]): void;
+    // Instanciate all modules from the definition
+    initializeLoadedModules(): void;
   }
 
   export interface IModuleBridge {
