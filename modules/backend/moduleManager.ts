@@ -8,10 +8,8 @@ class CoreBridge implements mykoop.IModuleBridge {
   constructor(instance: mykoop.IModule){
     this.instance = instance;
   }
-  onAllModulesLoaded(moduleManager: mykoop.ModuleManager): void {}
+  onAllModulesInitialized(moduleManager: mykoop.ModuleManager): void {}
   getModule(): mykoop.IModule { return this.instance; }
-  getStyles(): string[] { return null; }
-  getReactComponents(): string[] { return null; }
 }
 
 class Module {
@@ -130,7 +128,7 @@ class ModuleManager implements mykoop.ModuleManager {
     // Use definition again to respect order
     self.moduleDefinitions.forEach(function(moduleDefinition, index) {
       if(moduleDependenciesSatisfied[index]){
-        self.modules[moduleDefinition.name].bridge.onAllModulesLoaded(self);
+        self.modules[moduleDefinition.name].bridge.onAllModulesInitialized(self);
       }
     });
   }

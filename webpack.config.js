@@ -35,7 +35,7 @@ var loadedModules = moduleManager.getLoadedModuleNames();
 
 /* Generate dynamic LESS imports for the global scope. */
 var lessGlobalStyles = loadedModules.reduce(function(lessStyles, moduleName) {
-  var stylePath = moduleName + "/styles.less";
+  var stylePath = moduleName + "/styles/index.less";
 
   try {
     require.resolve(stylePath);
@@ -81,6 +81,29 @@ var lessUseableLoader = {
   test: /\.useable\.less$/,
   loaders: styleLoaders
 };
+
+var aliases = loadedModules.reduce(function(aliases, moduleName) {
+  var modulePath;
+  //FIXME: Handle module roles properly.
+  var moduleRole = moduleName;
+
+  try {
+    modulePath = require.resolve(moduleName + "/components");
+  } catch(e) {
+    // Abort trying to load components for this module.
+    return aliases;
+  }
+
+  if (moduleName !== moduleRole) {
+    aliases[moduleName + "/components"] = moduleName + "/components";
+  }
+
+  return aliases;
+}, {
+  "bootstrap-styles": "bootstrap/less",
+  "font-awesome-styles": "font-awesome/less",
+  components: path.join(__dirname, "components")
+});
 
 var loaderList = [
   // Styles.
@@ -148,11 +171,7 @@ module.exports = {
 
     // Map the modules to the files we really need, for hassle-free inclusion
     // in our files.
-    alias: {
-      "bootstrap-styles": "bootstrap/less",
-      "font-awesome-styles": "font-awesome/less",
-      components: path.join(__dirname, "components")
-    }
+    alias: aliases
   },
   plugins: pluginList
 };
