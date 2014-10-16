@@ -10,6 +10,7 @@ class CoreBridge implements mykoop.IModuleBridge {
   }
   onAllModulesInitialized(moduleManager: mykoop.ModuleManager): void {}
   getModule(): mykoop.IModule { return this.instance; }
+  getMetaData(): mykoop.IModuleMetaData { return {}; }
 }
 
 class Module {

@@ -32,6 +32,29 @@ declare module mykoop {
 
     // Retrieve the instance of the module, may not be ready to be used
     getModule(): IModule;
+
+    getMetaData(): IModuleMetaData;
+  }
+
+  export interface IRouteMetaDataLeaf {
+    handler?: string;
+    name?: string;
+    path?: string;
+  }
+
+  export interface IRouteMetaDataParent extends IRouteMetaDataLeaf {
+    wrapper: IRouteMetaDataLeaf;
+    default: IRouteMetaDataLeaf;
+  }
+
+  export interface IModuleMetaData {
+    // Route meta data.
+    routes?: {[key: string]: IRouteMetaDataLeaf};
+
+    // Your mom meta data...
+
+    // Other types of meta data...
+    [key: string]: any;
   }
 }
 
