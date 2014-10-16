@@ -41,6 +41,7 @@ class ModuleManager implements mykoop.ModuleManager {
     coreModuleProxy.bridge = new CoreBridge(coreModule);
     coreModuleProxy.instance = coreModule;
 
+    // For core modules, the role is the same as the name.
     this.modules[moduleName] = coreModuleProxy;
   }
 
