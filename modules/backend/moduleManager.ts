@@ -17,7 +17,7 @@ class Module {
   public bridge: mykoop.IModuleBridge;
   public dependants: { [id:string]:number };
 
-  constructor(public isCore?: boolean) {
+  constructor(public moduleName: string, public isCore?: boolean) {
     this.instance = null;
     this.bridge = null;
     this.dependants = {};
@@ -37,7 +37,7 @@ class ModuleManager implements mykoop.ModuleManager {
   }
 
   setCore(moduleName: string, coreModule: mykoop.IModule): void {
-    var coreModuleProxy = new Module(true);
+    var coreModuleProxy = new Module(moduleName, true);
     coreModuleProxy.bridge = new CoreBridge(coreModule);
     coreModuleProxy.instance = coreModule;
 
@@ -50,25 +50,42 @@ class ModuleManager implements mykoop.ModuleManager {
     // Transform array into an object
     this.modules = moduleDefinitions_.reduce(function (modules: ModuleDictionary, moduleDefinition, index) {
       var name = moduleDefinition.name;
+      var role = moduleDefinition.role;
 
-      // Allow replacement of core modules
-      if (modules[name] && !modules[name].isCore) {
-        console.error("Duplicate module: %s.", name);
+      if (!name) {
+        console.error("Every module needs to specify a name.");
+        return modules;
+      }
+
+      if (!role) {
+        console.error("Role not defined for module %s.", name);
+        return modules;
+      }
+
+      // Allow replacement of core modules.
+      if (modules[role] && !modules[role].isCore) {
+        console.error(
+          "Duplicate role: %s. (Defined by %s and attempted to be redefined by %s)",
+          role,
+          modules[role].moduleName,
+          name
+        );
         return modules;
       }
 
       // Only use valid definitions
       self.moduleDefinitions.push(moduleDefinition);
-      modules[name] = new Module();
+      modules[role] = new Module(name);
 
       return modules;
     }, this.modules);
   }
 
-  getLoadedModuleNames(): string[] {
-    return this.moduleDefinitions.map(function(moduleDefinition){
-      return MODULE_NAME_PREFIX + moduleDefinition.name;
-    });
+  getLoadedModulePairings(): {[role: string]: string} {
+    return this.moduleDefinitions.reduce(function(pairings: {[role: string]: string}, moduleDefinition){
+      pairings[moduleDefinition.role] = MODULE_NAME_PREFIX + moduleDefinition.name;
+      return pairings;
+    }, <{[role: string]: string}>{});
   }
 
   initializeLoadedModules() {
@@ -81,7 +98,7 @@ class ModuleManager implements mykoop.ModuleManager {
         moduleDefinition.dependencies,
         function(dependency) {
           if(self.modules.hasOwnProperty(dependency)){
-            self.modules[dependency].dependants[moduleDefinition.name] = index;
+            self.modules[dependency].dependants[moduleDefinition.role] = index;
             return true;
           }
           return false;
@@ -110,25 +127,25 @@ class ModuleManager implements mykoop.ModuleManager {
           bridge = require(MODULE_NAME_PREFIX + moduleDefinition.name);
         } catch(e) {
           console.error(e);
-          _.each(self.modules[moduleDefinition.name].dependants, function(index, moduleName){
+          _.each(self.modules[moduleDefinition.role].dependants, function(index, moduleRole){
             moduleDependenciesSatisfied[index] = false;
-            delete self.modules[moduleName];
+            delete self.modules[moduleRole];
           });
           moduleDependenciesSatisfied[index] = false;
-          delete self.modules[moduleDefinition.name];
+          delete self.modules[moduleDefinition.role];
           return;
         }
-        self.modules[moduleDefinition.name].bridge = bridge;
-        self.modules[moduleDefinition.name].instance = bridge.getModule();
+        self.modules[moduleDefinition.role].bridge = bridge;
+        self.modules[moduleDefinition.role].instance = bridge.getModule();
       } else {
-        delete self.modules[moduleDefinition.name];
+        delete self.modules[moduleDefinition.role];
       }
     });
 
     // Use definition again to respect order
     self.moduleDefinitions.forEach(function(moduleDefinition, index) {
       if(moduleDependenciesSatisfied[index]){
-        self.modules[moduleDefinition.name].bridge.onAllModulesInitialized(self);
+        self.modules[moduleDefinition.role].bridge.onAllModulesInitialized(self);
       }
     });
   }
