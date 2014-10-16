@@ -11,6 +11,7 @@ declare module mykoop {
 
   export interface ModuleDefinition {
     name: string;
+    role: string;
     dependencies?: string[];
   }
 

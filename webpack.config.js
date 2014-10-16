@@ -31,10 +31,10 @@ if (isProd) {
 
 var modules = require("./modules.json5");
 moduleManager.loadModules(modules.modules);
-var loadedModules = moduleManager.getLoadedModuleNames();
+var loadedModules = moduleManager.getLoadedModulePairings();
 
 /* Generate dynamic LESS imports for the global scope. */
-var lessGlobalStyles = loadedModules.reduce(function(lessStyles, moduleName) {
+var lessGlobalStyles = _.reduce(loadedModules, function(lessStyles, moduleName) {
   var stylePath = moduleName + "/styles/index.less";
 
   try {
@@ -82,26 +82,25 @@ var lessUseableLoader = {
   loaders: styleLoaders
 };
 
-var aliases = loadedModules.reduce(function(aliases, moduleName) {
+var aliases = _.reduce(loadedModules, function(aliases, moduleName, moduleRole) {
   var modulePath;
-  //FIXME: Handle module roles properly.
-  var moduleRole = moduleName;
 
   try {
-    modulePath = require.resolve(moduleName + "/components");
+    modulePath = require.resolve(moduleName);
   } catch(e) {
-    // Abort trying to load components for this module.
+    // Abort trying to load the alias for this module.
     return aliases;
   }
 
   if (moduleName !== moduleRole) {
-    aliases[moduleName + "/components"] = moduleName + "/components";
+    aliases[moduleRole] = moduleName;
   }
 
   return aliases;
 }, {
   "bootstrap-styles": "bootstrap/less",
   "font-awesome-styles": "font-awesome/less",
+   //FIXME: One day, these components will be core only.
   components: path.join(__dirname, "components")
 });
 
