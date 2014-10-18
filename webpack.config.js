@@ -2,6 +2,7 @@ var env = process.env.NODE_ENV;
 var fs = require("fs");
 var path = require("path");
 var _ = require("lodash");
+var beautify = require("js-beautify").js_beautify
 var webpack = require("webpack");
 var moduleManager = require("./modules/backend/moduleManager");
 //hijack require to parse json5
@@ -103,6 +104,65 @@ var aliases = _.reduce(loadedModules, function(aliases, moduleName, moduleRole) 
    //FIXME: One day, these components will be core only.
   components: path.join(__dirname, "components")
 });
+
+// Generate a temporary file with the meta data.
+dynamicMetadataFileContent = "/** DYNAMICALLY GENERATED - DO NOT EDIT **/\n\n";
+
+var metaData = {
+  admin: {
+    handler: {origin: "mykoop-patate/components"},
+    handler2: {origin: "mykoop-patate2/components", property: "ItemList"}
+    //handler: "__require(mykoop-patate/components).ItemList__",
+  }
+};
+
+function generateIntermediaryRequires(obj) {
+  if (_.isPlainObject(obj)) {
+    if (
+      obj.hasOwnProperty("origin")
+    ) {
+      // Consider this a leaf that needs to be resolved.
+      var requireString = "__require(";
+
+      requireString += obj.origin + ")";
+
+      if (obj.hasOwnProperty("property")) {
+        requireString += "." + obj.property;
+      }
+
+      requireString += "__";
+
+      return requireString;
+    }
+
+    _.forEach(obj, function (value, key) {
+      obj[key] = generateIntermediaryRequires(value);
+    });
+  }
+
+  return obj;
+}
+
+var metaDataString;
+metaData = generateIntermediaryRequires(metaData);
+
+try{
+  metaDataString = JSON.stringify(metaData);
+} catch(e) {
+  console.error("Invalid intermediary meta data, couldn't generate dynamic dependencies.");
+}
+
+if (metaDataString) {
+  metaDataString = beautify(metaDataString, {indent_size: 2});
+  metaDataString = metaDataString.replace(/\"__require\((.*?)\)(\..*?)?__\"/g, "require(\"$1\")$2");
+
+  dynamicMetadataFileContent += "module.exports = " + metaDataString + ";\n";
+
+  fs.writeFileSync(
+    "./modules/frontend/dynamic-metadata.js",
+    dynamicMetadataFileContent
+  );
+}
 
 var loaderList = [
   // Styles.

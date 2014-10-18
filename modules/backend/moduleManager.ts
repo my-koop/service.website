@@ -30,8 +30,9 @@ interface ModuleDictionary{
 }
 
 class ModuleManager implements mykoop.ModuleManager {
-  modules: ModuleDictionary = {};
+  private modules: ModuleDictionary = {};
   private moduleDefinitions: mykoop.ModuleDefinition[] = [];
+  private metaData: mykoop.IModuleMetaData;
 
   get(moduleName: string): mykoop.IModule {
     return (this.modules[moduleName] && this.modules[moduleName].instance) || null;
@@ -81,34 +82,25 @@ class ModuleManager implements mykoop.ModuleManager {
 
       return modules;
     }, this.modules);
-  }
-
-  getLoadedModulePairings(): {[role: string]: string} {
-    return this.moduleDefinitions.reduce(function(pairings: {[role: string]: string}, moduleDefinition){
-      pairings[moduleDefinition.role] = MODULE_NAME_PREFIX + moduleDefinition.name;
-      return pairings;
-    }, <{[role: string]: string}>{});
-  }
-
-  initializeLoadedModules() {
-    var self = this;
 
     // Check for dependencies
     var allDependenciesSatisfied = true;
-    var moduleDependenciesSatisfied = this.moduleDefinitions.map(function(moduleDefinition, index) {
-      var dependenciesSatisfied = _.all(
-        moduleDefinition.dependencies,
-        function(dependency) {
-          if(self.modules.hasOwnProperty(dependency)){
-            self.modules[dependency].dependants[moduleDefinition.role] = index;
-            return true;
+    var moduleDependenciesSatisfied = this.moduleDefinitions.map(
+      function(moduleDefinition, index) {
+        var dependenciesSatisfied = _.all(
+          moduleDefinition.dependencies,
+          function(dependency) {
+            if(self.modules.hasOwnProperty(dependency)){
+              self.modules[dependency].dependants[moduleDefinition.role] = index;
+              return true;
+            }
+            return false;
           }
-          return false;
-        }
-      );
-      allDependenciesSatisfied = allDependenciesSatisfied && dependenciesSatisfied;
-      return dependenciesSatisfied;
-    });
+        );
+        allDependenciesSatisfied = allDependenciesSatisfied && dependenciesSatisfied;
+        return dependenciesSatisfied;
+      }
+    );
 
     //TODO: Be more verbose about what doesn't have valid dependencies.
     if (!allDependenciesSatisfied) {
@@ -138,17 +130,89 @@ class ModuleManager implements mykoop.ModuleManager {
           return;
         }
         self.modules[moduleDefinition.role].bridge = bridge;
-        self.modules[moduleDefinition.role].instance = bridge.getModule();
+        //self.modules[moduleDefinition.role].instance = bridge.getModule();
       } else {
         delete self.modules[moduleDefinition.role];
       }
     });
 
     // Use definition again to respect order
-    self.moduleDefinitions.forEach(function(moduleDefinition, index) {
-      if(moduleDependenciesSatisfied[index]){
-        self.modules[moduleDefinition.role].bridge.onAllModulesInitialized(self);
+    self.moduleDefinitions.filter(function(moduleDefinition, index) {
+      return moduleDependenciesSatisfied[index];
+    });
+  }
+
+  getLoadedModulePairings(): {[role: string]: string} {
+    return this.moduleDefinitions.reduce(function(pairings: {[role: string]: string}, moduleDefinition){
+      pairings[moduleDefinition.role] = MODULE_NAME_PREFIX + moduleDefinition.name;
+      return pairings;
+    }, <{[role: string]: string}>{});
+  }
+
+  getMetaData(callback: mykoop.ModuleMetaDataCallback) : void {
+    var self = this;
+
+    function computeResolveDemands(
+      moduleName: string,
+      metaData: /*FIXME: mykoop.IRouteMetaDataLeaf*/ any
+    ): mykoop.IModuleMetaData {
+      if (_.isPlainObject(metaData)) {
+        if (
+          metaData.hasOwnProperty("resolve") &&
+          metaData.hasOwnProperty("value") &&
+          Object.keys(metaData).length === 2
+        ) {
+          // Consider this a leaf that needs to be resolved.
+          var computedMetaData;
+
+          switch (metaData.resolve) {
+            case "component":
+              computedMetaData = {origin: MODULE_NAME_PREFIX + moduleName + "/components"};
+              if (metaData.value) {
+                computedMetaData.component = metaData.value;
+              }
+              return computedMetaData;
+
+            default:
+              // Your princess is in another castle...
+              return metaData;
+          }
+        }
+
+        _.forEach(metaData, function (value, key) {
+          metaData[key] = computeResolveDemands(moduleName, value);
+        });
       }
+
+      return metaData;
+    }
+
+    if (this.metaData) {
+      return callback(null, this.metaData);
+    }
+
+    this.metaData = {};
+
+    this.moduleDefinitions.forEach(function(moduleDefinition) {
+      self.modules[moduleDefinition.role].bridge.getMetaData(function(err, result) {
+        var metaData = computeResolveDemands(moduleDefinition.name, result);
+        self.metaData = <mykoop.IModuleMetaData>_.merge(self.metaData, metaData);
+      });
+    });
+
+    callback(null, this.metaData);
+  }
+
+  initializeLoadedModules() : void {
+    var self = this;
+
+    _.forEach(this.modules, function(currentModule) {
+      currentModule.instance = currentModule.bridge.getModule();
+    });
+
+    // Use definition again to respect order
+    this.moduleDefinitions.forEach(function(moduleDefinition) {
+      self.modules[moduleDefinition.role].bridge.onAllModulesInitialized(self);
     });
   }
 }
