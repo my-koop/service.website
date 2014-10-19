@@ -105,16 +105,13 @@ var aliases = _.reduce(loadedModules, function(aliases, moduleName, moduleRole) 
   components: path.join(__dirname, "components")
 });
 
-// Generate a temporary file with the meta data.
+/* Generate a temporary file with the meta data. */
 dynamicMetadataFileContent = "/** DYNAMICALLY GENERATED - DO NOT EDIT **/\n\n";
 
-var metaData = {
-  admin: {
-    handler: {origin: "mykoop-patate/components"},
-    handler2: {origin: "mykoop-patate2/components", property: "ItemList"}
-    //handler: "__require(mykoop-patate/components).ItemList__",
-  }
-};
+var metaData;
+moduleManager.getMetaData(function (err, modulesMetaData) {
+  metaData = modulesMetaData;
+});
 
 function generateIntermediaryRequires(obj) {
   if (_.isPlainObject(obj)) {

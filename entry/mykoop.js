@@ -1,7 +1,10 @@
 /** @jsx React.DOM */
 
 // Require styles.
-require('mykoop.less');
+require("mykoop.less");
+
+// Require dynamic meta data.
+require("dynamic-metadata");
 
 // Polyfill for ES6's Object.assign()
 // taken from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
@@ -48,7 +51,7 @@ if (!Object.assign) {
   });
 }
 
-var React = require('react');
+var React = require("react");
 var MyKoop = require("components/MyKoop");
 
 

@@ -10,7 +10,9 @@ class CoreBridge implements mykoop.IModuleBridge {
   }
   onAllModulesInitialized(moduleManager: mykoop.ModuleManager): void {}
   getModule(): mykoop.IModule { return this.instance; }
-  getMetaData(): mykoop.IModuleMetaData { return {}; }
+  getMetaData(callback: mykoop.ModuleMetaDataCallback): void {
+    callback(null, {});
+  }
 }
 
 class Module {
@@ -130,23 +132,30 @@ class ModuleManager implements mykoop.ModuleManager {
           return;
         }
         self.modules[moduleDefinition.role].bridge = bridge;
-        //self.modules[moduleDefinition.role].instance = bridge.getModule();
       } else {
         delete self.modules[moduleDefinition.role];
       }
     });
 
     // Use definition again to respect order
-    self.moduleDefinitions.filter(function(moduleDefinition, index) {
-      return moduleDependenciesSatisfied[index];
-    });
+    self.moduleDefinitions = self.moduleDefinitions.filter(
+      function(moduleDefinition, index) {
+        return moduleDependenciesSatisfied[index];
+      }
+    );
   }
 
   getLoadedModulePairings(): {[role: string]: string} {
-    return this.moduleDefinitions.reduce(function(pairings: {[role: string]: string}, moduleDefinition){
-      pairings[moduleDefinition.role] = MODULE_NAME_PREFIX + moduleDefinition.name;
-      return pairings;
-    }, <{[role: string]: string}>{});
+    return this.moduleDefinitions.reduce(
+      function (
+        pairings: {[role: string]: string},
+        moduleDefinition
+      ) {
+        pairings[moduleDefinition.role] = MODULE_NAME_PREFIX + moduleDefinition.name;
+        return pairings;
+      },
+      <{[role: string]: string}>{}
+    );
   }
 
   getMetaData(callback: mykoop.ModuleMetaDataCallback) : void {
@@ -167,9 +176,11 @@ class ModuleManager implements mykoop.ModuleManager {
 
           switch (metaData.resolve) {
             case "component":
-              computedMetaData = {origin: MODULE_NAME_PREFIX + moduleName + "/components"};
+              computedMetaData = {
+                origin: MODULE_NAME_PREFIX + moduleName + "/components"
+              };
               if (metaData.value) {
-                computedMetaData.component = metaData.value;
+                computedMetaData.property = metaData.value;
               }
               return computedMetaData;
 
@@ -191,13 +202,61 @@ class ModuleManager implements mykoop.ModuleManager {
       return callback(null, this.metaData);
     }
 
-    this.metaData = {};
+    //FIXME: Temporarily here for lack of a better choice. Ultimately this
+    // will be an empty object literal.
+    this.metaData = {
+      routes: {
+        public: {
+          handler: {origin: "components/PublicWrapper"},
+          name: "Homepage",
+          path: "/",
+          children: {
+            homepage: {
+              default: true,
+              handler: {origin: "components/Homepage"}
+            },
+            aboutUs: {
+              handler: {origin: "components/PlaceHolder"},
+              name: "About Us",
+              path: "/aboutus"
+            },
+            myAccount: {
+              handler: {origin: "components/MyAccountPage"},
+              name: "My Account",
+              path: "/myaccount"
+            },
+            shop: {
+              handler: {origin: "components/ParentPlaceHolder"},
+              name: "Shop",
+              path: "/shop",
+              children: {
+                storefront: {
+                  default: true,
+                  handler: {origin: "components/PlaceHolder"}
+                },
+                cart: {
+                  handler: {origin: "components/PlaceHolder"},
+                  name: "Shopping Cart",
+                  path: "/shop/cart"
+                }
+              }
+            }
+          }
+        }
+      }
+    };
 
     this.moduleDefinitions.forEach(function(moduleDefinition) {
-      self.modules[moduleDefinition.role].bridge.getMetaData(function(err, result) {
-        var metaData = computeResolveDemands(moduleDefinition.name, result);
-        self.metaData = <mykoop.IModuleMetaData>_.merge(self.metaData, metaData);
-      });
+      var getMetaData = self.modules[moduleDefinition.role].bridge.getMetaData;
+      if (_.isFunction(getMetaData)) {
+        getMetaData(function(err, result) {
+          var metaData = computeResolveDemands(moduleDefinition.name, result);
+          self.metaData = <mykoop.IModuleMetaData>_.merge(
+            self.metaData,
+            metaData
+          );
+        });
+      }
     });
 
     callback(null, this.metaData);
