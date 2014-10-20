@@ -243,6 +243,13 @@ class ModuleManager implements mykoop.ModuleManager {
             }
           }
         }
+      },
+      translations: {
+        en: {
+          general: {
+            "testString": "blablabla"
+          }
+        }
       }
     };
 

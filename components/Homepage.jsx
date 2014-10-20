@@ -11,6 +11,8 @@ var MKMailingSendModal    = require("components/MailingListSendModal");
 
 var MKItemList = require("mykoop-inventory/components").ItemList;
 
+var __ = require("language").__;
+
 var Homepage = React.createClass({
 
   render: function() {
@@ -26,6 +28,7 @@ var Homepage = React.createClass({
           <BSButton >Send Mail</BSButton>
         </BSModalTrigger>
         <div>
+          <strong>{__("testString")}</strong>
           Coop Bécik est une coopérative de réparation qui a pour mission de rendre accessible l’utilisation du vélo comme mode de transport aux citoyen-ne-s et étudiant-e-s de Montréal.
           <MKItemList />
         </div>

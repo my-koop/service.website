@@ -102,7 +102,8 @@ var aliases = _.reduce(loadedModules, function(aliases, moduleName, moduleRole) 
   "bootstrap-styles": "bootstrap/less",
   "font-awesome-styles": "font-awesome/less",
    //FIXME: One day, these components will be core only.
-  components: path.join(__dirname, "components")
+  components: path.join(__dirname, "components"),
+  "i18next": "i18next-client"
 });
 
 /* Generate a temporary file with the meta data. */
@@ -153,7 +154,13 @@ if (metaDataString) {
   metaDataString = beautify(metaDataString, {indent_size: 2});
   metaDataString = metaDataString.replace(/\"__require\((.*?)\)(\..*?)?__\"/g, "require(\"$1\")$2");
 
-  dynamicMetadataFileContent += "module.exports = " + metaDataString + ";\n";
+  dynamicMetadataFileContent += "var moduleExports = {};\n";
+  dynamicMetadataFileContent += "module.exports = moduleExports;\n";
+  //dynamicMetadataFileContent += "module.exports = " + metaDataString + ";\n";
+
+  dynamicMetadataFileContent += "var metaData = " + metaDataString + ";\n";
+  dynamicMetadataFileContent += "for(var prop in metaData) {\n";
+  dynamicMetadataFileContent += "  moduleExports[prop] = metaData[prop];\n}\n";
 
   fs.writeFileSync(
     "./modules/frontend/dynamic-metadata.js",
