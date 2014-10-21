@@ -152,15 +152,15 @@ try{
 
 if (metaDataString) {
   metaDataString = beautify(metaDataString, {indent_size: 2});
-  metaDataString = metaDataString.replace(/\"__require\((.*?)\)(\..*?)?__\"/g, "require(\"$1\")$2");
+  metaDataString = metaDataString.replace(/\"__require\((.*?)\)(\..*?)?__\"/g, "function() { return require(\"$1\")$2; }");
 
-  dynamicMetadataFileContent += "var moduleExports = {};\n";
-  dynamicMetadataFileContent += "module.exports = moduleExports;\n";
-  //dynamicMetadataFileContent += "module.exports = " + metaDataString + ";\n";
+  //dynamicMetadataFileContent += "var moduleExports = {};\n";
+  //dynamicMetadataFileContent += "module.exports = moduleExports;\n";
+  dynamicMetadataFileContent += "module.exports = " + metaDataString + ";\n";
 
-  dynamicMetadataFileContent += "var metaData = " + metaDataString + ";\n";
-  dynamicMetadataFileContent += "for(var prop in metaData) {\n";
-  dynamicMetadataFileContent += "  moduleExports[prop] = metaData[prop];\n}\n";
+  //dynamicMetadataFileContent += "var metaData = " + metaDataString + ";\n";
+  //dynamicMetadataFileContent += "for(var prop in metaData) {\n";
+  //dynamicMetadataFileContent += "  moduleExports[prop] = metaData[prop];\n}\n";
 
   fs.writeFileSync(
     "./modules/frontend/dynamic-metadata.js",

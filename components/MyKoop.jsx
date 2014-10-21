@@ -38,7 +38,7 @@ function addDynamicRoute(routeInfo) {
     _.forEach(routeInfo.children, function (child) {
       if (child.hasOwnProperty("default")) {
         children.push(
-          <DefaultRoute handler={child.handler} />
+          <DefaultRoute handler={child.handler()} />
         );
       } else {
         children.push(addDynamicRoute(child));
@@ -55,7 +55,7 @@ function addDynamicRoute(routeInfo) {
       key={routeUniqueKey++}
       name={routeInfo.name}
       path={routeInfo.path}
-      handler={routeInfo.handler}
+      handler={routeInfo.handler()}
     >
       {children}
     </Route>
