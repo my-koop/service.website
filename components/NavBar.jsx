@@ -45,10 +45,9 @@ var NavBar = React.createClass({
     var nowLoggedIn = typeof nowLoggedIn === "boolean" ? nowLoggedIn : !this.state.isLoggedIn;
     this.setState({isLoggedIn: nowLoggedIn});
 
-    //TODO: Temporaily switch current language here...
+    //FIXME: Temporaily switch current language here...
     var currentLanguage = language.getLanguage();
-    var newLanguage = currentLanguage === "en" ? "fr" : "en";
-    language.setLanguage(newLanguage);
+    language.setLanguage(currentLanguage === "en" ? "fr" : "en");
   },
 
   onSearch: function(e) {
