@@ -51,8 +51,5 @@ if (!Object.assign) {
   });
 }
 
-var React = require("react");
-var MyKoop = require("components/MyKoop");
-
-
-React.renderComponent(<MyKoop />, document.body);
+var website = require("website");
+website.render();

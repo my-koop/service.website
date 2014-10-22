@@ -18,6 +18,8 @@ var MKNavItemLink = require("components/NavItemLink");
 //To be removed after development.
 //var MKDevMenu = require("components/DevMenu");
 
+var language = require("language");
+
 var PropTypes = React.PropTypes;
 
 
@@ -42,6 +44,11 @@ var NavBar = React.createClass({
   onFakeLogin: function(nowLoggedIn) {
     var nowLoggedIn = typeof nowLoggedIn === "boolean" ? nowLoggedIn : !this.state.isLoggedIn;
     this.setState({isLoggedIn: nowLoggedIn});
+
+    //TODO: Temporaily switch current language here...
+    var currentLanguage = language.getLanguage();
+    var newLanguage = currentLanguage === "en" ? "fr" : "en";
+    language.setLanguage(newLanguage);
   },
 
   onSearch: function(e) {

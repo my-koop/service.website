@@ -1,10 +1,26 @@
 ﻿///<reference path="../../typings/i18next/i18next.d.ts" />
-import i18n = require("i18next");
+//FIXME: Get better i18next typings.
+var i18n = require("i18next");
 var translations = require("dynamic-metadata").translations;
+var website = require("website");
+
+//FIXME: Maybe put this in a config file...
+var defaultLanguage = "en";
+
+export function getLanguage(): string {
+  return i18n.lng();
+}
+
+export function setLanguage(language: string): void {
+  i18n.setLng(language, function() {
+    // Async if the language resources ever needed to be loaded on the fly.
+    website.render();
+  });
+}
 
 i18n.init({
   getAsync: false,
-  lng: "en-US",
+  lng: defaultLanguage,
   fallbackLng: "en",
   cookieName: "lang",
   detectLngQS: "lang",
@@ -14,7 +30,6 @@ i18n.init({
   resStore: translations
 });
 
-export = {
-  __: i18n.t
-};
+export var __ = i18n.t;
+
 
