@@ -30,7 +30,6 @@ var MKVolunteerAvailability= require("components/VolunteerAvailability");
 var MKMailingListSendPage  = require("components/MailingListSendPage");
 var MKTransactionList      = require("components/TransactionList");
 
-var routeUniqueKey = 0;
 function addDynamicRoute(routeInfo) {
   var children = null;
   if (routeInfo.hasOwnProperty("children")) {
@@ -38,7 +37,7 @@ function addDynamicRoute(routeInfo) {
     _.forEach(routeInfo.children, function (child) {
       if (child.hasOwnProperty("default")) {
         children.push(
-          <DefaultRoute handler={child.handler()} />
+          <DefaultRoute key={child.path} handler={child.handler()} />
         );
       } else {
         children.push(addDynamicRoute(child));
@@ -52,7 +51,7 @@ function addDynamicRoute(routeInfo) {
 
   return (
     <Route
-      key={routeUniqueKey++}
+      key={routeInfo.path}
       name={routeInfo.name}
       path={routeInfo.path}
       handler={routeInfo.handler()}
@@ -77,13 +76,13 @@ dynamicRoutes.push([
 </Route>,
 */
 
+{/*Admin dashboard pages*/},
 <Route handler={MKSimplePageWrapper}>
   <Route name={RouteInfo.login.name} path={RouteInfo.login.fullPath} handler={MKLoginPage}/>
   <Route name={RouteInfo.pwdRcv.name} path={RouteInfo.pwdRcv.fullPath} handler={MKPasswordRecoveryPage}/>
   <Route name={RouteInfo.register.name} path={RouteInfo.register.fullPath} handler={MKRegisterPage}/>
 </Route>,
 
-{/*Admin dashboard pages*/},
 <Route name={RouteInfo.dashboard.name} path={RouteInfo.dashboard.fullPath} handler={MKDashboardWrapper}>
   <DefaultRoute handler={MKHomepage}/>
   <Route name={RouteInfo.options.name} path={RouteInfo.options.relativePath} handler={MKOptionsPage}/>

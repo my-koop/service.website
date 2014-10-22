@@ -31,6 +31,12 @@
     },
     "lodash/lodash.d.ts": {
       "commit": "bba33bcb0b363ae41db8517a09d1a4d07828616b"
+    },
+    "i18next/i18next.d.ts": {
+      "commit": "bd9a1922e44ddf35953587a92c5caf4242bf6ea5"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "bd9a1922e44ddf35953587a92c5caf4242bf6ea5"
     }
   }
 }

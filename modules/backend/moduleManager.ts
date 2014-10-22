@@ -163,13 +163,11 @@ class ModuleManager implements mykoop.ModuleManager {
 
     function computeResolveDemands(
       moduleName: string,
-      metaData: /*FIXME: mykoop.IRouteMetaDataLeaf*/ any
+      metaData: any
     ): mykoop.IModuleMetaData {
       if (_.isPlainObject(metaData)) {
         if (
-          metaData.hasOwnProperty("resolve") &&
-          metaData.hasOwnProperty("value") &&
-          Object.keys(metaData).length === 2
+          metaData.hasOwnProperty("resolve")
         ) {
           // Consider this a leaf that needs to be resolved.
           var computedMetaData;
@@ -186,6 +184,11 @@ class ModuleManager implements mykoop.ModuleManager {
 
             default:
               // Your princess is in another castle...
+              console.warn(
+                "Warning: Unrecognized resolve type: \"%s\" in module %s.",
+                metaData.resolve,
+                moduleName
+              );
               return metaData;
           }
         }

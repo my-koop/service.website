@@ -1,10 +1,6 @@
-﻿//var moduleExports = {};
-
-//module.exports = moduleExports;
-
-/* //<reference path="../../typings/i18next/i18next.d.ts" /> */
-//import i18n = require("i18next");
-var i18n = require("i18next");
+﻿///<reference path="../../typings/i18next/i18next.d.ts" />
+import i18n = require("i18next");
+//var i18n = require("i18next");
 var translations = require("dynamic-metadata").translations;
 
 i18n.init({
@@ -19,10 +15,7 @@ i18n.init({
   resStore: translations
 });
 
-//moduleExports.__ = i18n.t;
-
-module.exports = {
+export = {
   __: i18n.t
 };
 
-//export __;

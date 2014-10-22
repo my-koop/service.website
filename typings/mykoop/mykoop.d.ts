@@ -43,21 +43,20 @@ declare module mykoop {
   }
 
   export interface IRouteMetaDataLeaf {
-    handler?: {resolve: string; value: string};
+    handler?: {resolve: string; value?: string};
     name?: string;
     path?: string;
+    default?: boolean;
   }
 
   export interface IRouteMetaDataParent extends IRouteMetaDataLeaf {
-    wrapper: IRouteMetaDataLeaf;
     children: {[id: string]: IRouteMetaDataLeaf};
   }
 
   export interface IModuleMetaData {
     // Route meta data.
     routes?: {[key: string]: IRouteMetaDataLeaf};
-
-    // Your mom meta data...
+    translations?: {[key: string]: any};
 
     // Other types of meta data...
     [key: string]: any;
