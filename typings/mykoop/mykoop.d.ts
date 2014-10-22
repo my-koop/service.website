@@ -24,6 +24,8 @@ declare module mykoop {
     loadModules(moduleDefinitions_: ModuleDefinition[]): void;
     // Instanciate all modules from the definition
     initializeLoadedModules(): void;
+    // Get the meta data computed from loaded modules.
+    getMetaData(callback: ModuleMetaDataCallback): void;
   }
 
   export interface IModuleBridge {
@@ -32,6 +34,32 @@ declare module mykoop {
 
     // Retrieve the instance of the module, may not be ready to be used
     getModule(): IModule;
+
+    getMetaData(callback: ModuleMetaDataCallback) : void;
+  }
+
+  export interface ModuleMetaDataCallback {
+    (err: Error, result: IModuleMetaData) : void;
+  }
+
+  export interface IRouteMetaDataLeaf {
+    handler?: {resolve: string; value?: string};
+    name?: string;
+    path?: string;
+    default?: boolean;
+  }
+
+  export interface IRouteMetaDataParent extends IRouteMetaDataLeaf {
+    children: {[id: string]: IRouteMetaDataLeaf};
+  }
+
+  export interface IModuleMetaData {
+    // Route meta data.
+    routes?: {[key: string]: IRouteMetaDataLeaf};
+    translations?: {[key: string]: any};
+
+    // Other types of meta data...
+    [key: string]: any;
   }
 }
 

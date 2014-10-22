@@ -46,6 +46,8 @@
     "ts-loader": "git://github.com/robarnold/ts-loader.git",
     "url-loader": "^0.5.5",
     "webpack": "^1.4.4",
-    "webpack-dev-server": "^1.6.5"
+    "webpack-dev-server": "^1.6.5",
+    "js-beautify": "^1.5.4",
+    "i18next-client": "^1.7.4"
   }
 }
