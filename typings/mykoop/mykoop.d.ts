@@ -3,6 +3,10 @@
 // Definitions by: Michael Ferris <https://github.com/Cellule/>
 // Definitions: https://github.com/my-koop/type.definitions
 
+declare module express {
+  export interface Router{}
+}
+
 declare module mykoop {
 
   export interface IModule {
@@ -39,7 +43,7 @@ declare module mykoop {
   }
 
   export interface ModuleMetaDataCallback {
-    (err: Error, result: IModuleMetaData) : void;
+    (err: Error, result: any) : void;
   }
 
   export interface IRouteMetaDataLeaf {
@@ -60,6 +64,17 @@ declare module mykoop {
 
     // Other types of meta data...
     [key: string]: any;
+  }
+
+  // see http://expressjs.com/4x/api.html#router
+  export interface RouterOptions{
+    caseSensitive?: boolean;
+    mergeParams?: boolean;
+    strict?: boolean;
+  }
+
+  export class Router implements IModule {
+    addRoutes(callback: (router: express.Router) => string, options?: RouterOptions);
   }
 }
 

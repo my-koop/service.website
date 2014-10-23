@@ -1,6 +1,5 @@
 ///<reference path="../../typings/tsd.d.ts" />
 import _ = require("lodash");
-import metaData = require("../../metadata/index");
 
 var MODULE_NAME_PREFIX = "mykoop-";
 
@@ -206,9 +205,7 @@ class ModuleManager implements mykoop.ModuleManager {
       return callback(null, this.metaData);
     }
 
-    //FIXME: Temporarily here for lack of a better choice. Ultimately this
-    // will be an empty object literal.
-    this.metaData = metaData;
+    this.metaData = {};
 
     this.moduleDefinitions.forEach(function(moduleDefinition) {
       var getMetaData = self.modules[moduleDefinition.role].bridge.getMetaData;
