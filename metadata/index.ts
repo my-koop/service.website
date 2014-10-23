@@ -1,8 +1,10 @@
-export import routes = require("./routes");
-export var translations = {
-  en: {
-    general: {
-      "testString": "blablabla"
-    }
-  }
-};
+import utils = require("mykoop-utils");
+import routes = require("./routes");
+import translations = require("./locales");
+
+var metaData = new utils.MetaData();
+routes.addRoutes(metaData);
+
+metaData.addData("translations", translations);
+
+export = metaData;
