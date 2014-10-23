@@ -34,7 +34,7 @@ interface ModuleDictionary{
 class ModuleManager implements mykoop.ModuleManager {
   private modules: ModuleDictionary = {};
   private moduleDefinitions: mykoop.ModuleDefinition[] = [];
-  private metaData: mykoop.IModuleMetaData;
+  private metaData: any;
 
   get(moduleName: string): mykoop.IModule {
     return (this.modules[moduleName] && this.modules[moduleName].instance) || null;
@@ -205,56 +205,7 @@ class ModuleManager implements mykoop.ModuleManager {
       return callback(null, this.metaData);
     }
 
-    //FIXME: Temporarily here for lack of a better choice. Ultimately this
-    // will be an empty object literal.
-    this.metaData = {
-      routes: {
-        public: {
-          handler: {origin: "components/PublicWrapper"},
-          name: "Homepage",
-          path: "/",
-          children: {
-            homepage: {
-              default: true,
-              handler: {origin: "components/Homepage"}
-            },
-            aboutUs: {
-              handler: {origin: "components/PlaceHolder"},
-              name: "About Us",
-              path: "/aboutus"
-            },
-            myAccount: {
-              handler: {origin: "components/MyAccountPage"},
-              name: "My Account",
-              path: "/myaccount"
-            },
-            shop: {
-              handler: {origin: "components/ParentPlaceHolder"},
-              name: "Shop",
-              path: "/shop",
-              children: {
-                storefront: {
-                  default: true,
-                  handler: {origin: "components/PlaceHolder"}
-                },
-                cart: {
-                  handler: {origin: "components/PlaceHolder"},
-                  name: "Shopping Cart",
-                  path: "/shop/cart"
-                }
-              }
-            }
-          }
-        }
-      },
-      translations: {
-        en: {
-          general: {
-            "testString": "blablabla"
-          }
-        }
-      }
-    };
+    this.metaData = {};
 
     this.moduleDefinitions.forEach(function(moduleDefinition) {
       var getMetaData = self.modules[moduleDefinition.role].bridge.getMetaData;

@@ -1,4 +1,4 @@
-﻿///<reference path="../../typings/i18next/i18next.d.ts" />
+﻿///<reference path="../../typings/tsd.d.ts" />
 //FIXME: Get better i18next typings.
 var i18n = require("i18next");
 var translations = require("dynamic-metadata").translations;

@@ -1,6 +1,10 @@
 {
   modules:[
     {
+      name: "core",
+      role: "core"
+    },
+    {
       name: "database",
       role: "database"
     },
