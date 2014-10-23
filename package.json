@@ -25,7 +25,8 @@
     "serve-favicon": "^2.1.3",
     "superagent": "^0.18.2",
     "mykoop-database": "my-koop/module.database",
-    "mykoop-inventory": "my-koop/module.inventory"
+    "mykoop-inventory": "my-koop/module.inventory",
+    "mykoop-utils": "git://github.com/my-koop/module.utils"
   },
   "devDependencies": {
     "autoprefixer-loader": "^1.0.0",
