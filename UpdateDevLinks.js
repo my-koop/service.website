@@ -26,3 +26,4 @@ function execTsdLink(){
 exec('tsd-link group -g mykoop', execResultNext.bind(null,execTsdLink) );
 exec('npm link ../module.inventory', execResult );
 exec('npm link ../module.database', execResult );
+exec('npm link ../module.user', execResult );
