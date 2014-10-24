@@ -13,6 +13,13 @@ function requestFactory(params) {
   var data = params.data;
   var splitPath;
 
+  if (requestPath.charAt(0) !== "/") {
+    console.warn(
+      "All paths must start with a \"/\". Error with \"%s\".",
+      requestPath
+    );
+  }
+
   if (params.path && ~params.path.indexOf(":")) {
     splitPath = params.path.split("/").splice(1);
   }
