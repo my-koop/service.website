@@ -4,7 +4,7 @@ export class Router implements mykoop.Router {
   constructor(public express: express.Express){
   }
 
-  // Allows us to server a controller to an endpoint.
+  // Allows us to assign a controller to an endpoint.
   addRoute(
     params: mykoop.RouteParams,
     callback: (
