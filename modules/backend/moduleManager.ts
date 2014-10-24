@@ -231,6 +231,11 @@ class ModuleManager implements mykoop.ModuleManager {
       return;
     }
 
+    if(utils.__DEV__) {
+      // must deep clone because _.merge() changes var on the left
+      var srcMetaData = _.cloneDeep(this.metaData);
+    }
+
     var newMetaData = <mykoop.IModuleMetaData>_.merge(
       this.metaData,
       metaData
@@ -269,7 +274,7 @@ class ModuleManager implements mykoop.ModuleManager {
         }
       }
 
-      checkIfOverwritten("", this.metaData, newMetaData);
+      checkIfOverwritten("", srcMetaData, newMetaData);
     }
 
     this.metaData = newMetaData;
