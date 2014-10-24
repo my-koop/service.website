@@ -39,7 +39,7 @@ declare module mykoop {
     // Retrieve the instance of the module, may not be ready to be used
     getModule(): IModule;
 
-    getMetaData(callback: ModuleMetaDataCallback) : void;
+    getMetaData?: (callback: ModuleMetaDataCallback) => void;
   }
 
   export interface ModuleMetaDataCallback {

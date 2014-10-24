@@ -26,7 +26,6 @@ moduleManager.setCore("router", new router.Router(app));
 console.log("Loading modules...");
 var modules = require("./modules.json5");
 moduleManager.loadModules(modules.modules);
-moduleManager.initializeLoadedModules();
 
 // all environments
 app.set('port', process.env.PORT || 1337);
@@ -41,6 +40,8 @@ app.use(session({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
+
+moduleManager.initializeLoadedModules();
 
 // development only
 if ('development' == app.get('env')) {
