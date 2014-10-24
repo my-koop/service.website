@@ -1,10 +1,15 @@
 /** @jsx React.DOM */
 
+// Bootstrapping requires, these will enforce early loading & caching of resources.
+
 // Require styles.
 require("mykoop.less");
 
 // Require dynamic meta data.
 require("dynamic-metadata");
+
+// Require actions.
+require("actions");
 
 // Polyfill for ES6's Object.assign()
 // taken from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign

@@ -1,20 +1,21 @@
-﻿///<reference path="../../typings/superagent/superagent.d.ts" />
-import superagent = require('superagent');
-var t: any = superagent;
-var agent: superagent.Agent = t;
+var superagent = require("superagent");
 
 export interface AjaxParams {
-    endpoint: string;
-    method: string;
-    data: Object;
+  endpoint: string;
+  method?: string;
+  data?: any;
 }
 
 export interface AjaxCallback {
-    (err: Error, res: superagent.Response) : void;
+  (err: Error, res: any) : void;
 }
 
 export function request(params: AjaxParams, callback: AjaxCallback) {
-    agent
-        .get(params.endpoint)
-        .end(callback);
+  var method = params.method ? params.method.toUpperCase() : "GET";
+  var data = params.data || {};
+
+  //TODO: Do we want to wrap the response a little? Consider 404 an error etc.
+  superagent(method, params.endpoint)
+    .send(data)
+    .end(callback);
 }

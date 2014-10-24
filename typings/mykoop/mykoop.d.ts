@@ -5,6 +5,8 @@
 
 declare module express {
   export interface Router{}
+  export interface Request{}
+  export interface Response{}
 }
 
 declare module mykoop {
@@ -61,6 +63,7 @@ declare module mykoop {
     // Route meta data.
     routes?: {[key: string]: IRouteMetaDataLeaf};
     translations?: {[key: string]: any};
+    endpoints?: {[key: string]: any};
 
     // Other types of meta data...
     [key: string]: any;
@@ -73,8 +76,24 @@ declare module mykoop {
     strict?: boolean;
   }
 
+  export interface RouteParams{
+    endPoint: {
+      path: string;
+      method?: string;
+      type?: string;
+    };
+    //TODO: permissions?: {...};
+  }
+
   export class Router implements IModule {
-    addRoutes(callback: (router: express.Router) => string, options?: RouterOptions);
+    addRoute(
+      params: RouteParams,
+      callback: (
+        req: express.Request,
+        res: express.Response,
+        next: Function
+      ) => void
+    );
   }
 }
 
