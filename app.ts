@@ -15,8 +15,6 @@ var favicon = require('serve-favicon');
 var multer = require('multer');
 
 var app = express();
-import routes = require('./routes/index');
-routes(app);
 
 // Setting core modules
 import router = require("./modules/backend/router");
@@ -26,6 +24,9 @@ moduleManager.setCore("router", new router.Router(app));
 console.log("Loading modules...");
 var modules = require("./modules.json5");
 moduleManager.loadModules(modules.modules);
+
+import routes = require('./routes/index');
+routes(app);
 
 // all environments
 app.set('port', process.env.PORT || 1337);

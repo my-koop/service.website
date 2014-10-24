@@ -47,6 +47,7 @@ export class RouteInformationTree {
 }
 
 // public pages
+
 export var homepage = new RouteInformationTree("Homepage");
   export var aboutUs = new RouteInformationTree("About Us", homepage);
   export var pwdRcv = new RouteInformationTree("Password Recovery", homepage);
@@ -54,7 +55,6 @@ export var homepage = new RouteInformationTree("Homepage");
     export var register = new RouteInformationTree("Register", myaccount);
   export var login = new RouteInformationTree("Login", homepage);
   export var shop = new RouteInformationTree("Shop", homepage);
-    export var cart = new RouteInformationTree("Cart", shop);
 
 // dashboard pages
 export var dashboard = new RouteInformationTree("Dashboard", homepage);
