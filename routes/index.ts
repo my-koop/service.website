@@ -41,14 +41,17 @@ function indexApp(app: express.Express) {
   }
 
   // Map all possible static routes/route patterns.
-  // Change this if it becomes async...
-  var routes;
   moduleManager.getMetaData(function (err, metaDataResult) {
-    routes = metaDataResult.routes;
-  });
+    if (err) {
+      console.error("Error while attempting to retrieve route meta data.");
+      return;
+    }
 
-  routeListFromRouteTree(routes).forEach(function (route) {
-    app.get(route, ctrl.staticRoot);
+    var routes = metaDataResult.routes;
+
+    routeListFromRouteTree(routes).forEach(function (route) {
+      app.get(route, ctrl.staticRoot);
+    });
   });
 
   //FIXME: (Legacy) Backend routes.
