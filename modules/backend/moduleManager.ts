@@ -1,5 +1,7 @@
 ///<reference path="../../typings/tsd.d.ts" />
 import _ = require("lodash");
+import utils = require("mykoop-utils");
+import getLogger = require("mykoop-logger");
 
 var MODULE_NAME_PREFIX = "mykoop-";
 
@@ -29,6 +31,10 @@ class Module {
 
 interface ModuleDictionary{
   [id: string]: Module;
+}
+
+interface Pairing {
+  [id: string]: string;
 }
 
 class ModuleManager implements mykoop.ModuleManager {
@@ -148,13 +154,13 @@ class ModuleManager implements mykoop.ModuleManager {
   getLoadedModulePairings(): {[role: string]: string} {
     return this.moduleDefinitions.reduce(
       function (
-        pairings: {[role: string]: string},
+        pairings: Pairing,
         moduleDefinition
       ) {
         pairings[moduleDefinition.role] = MODULE_NAME_PREFIX + moduleDefinition.name;
         return pairings;
       },
-      <{[role: string]: string}>{}
+      <Pairing>{}
     );
   }
 
@@ -212,15 +218,65 @@ class ModuleManager implements mykoop.ModuleManager {
       if (_.isFunction(getMetaData)) {
         getMetaData(function(err, result) {
           var metaData = computeResolveDemands(moduleDefinition.name, result);
-          self.metaData = <mykoop.IModuleMetaData>_.merge(
-            self.metaData,
-            metaData
-          );
+          self.mergeMetaData(metaData, moduleDefinition);
         });
       }
     });
 
     callback(null, this.metaData);
+  }
+
+  mergeMetaData(metaData: any, moduleDefinition: mykoop.ModuleDefinition) {
+    if (_.isEmpty(metaData)) {
+      return;
+    }
+
+    if(utils.__DEV__) {
+      // must deep clone because _.merge() changes var on the left
+      var srcMetaData = _.cloneDeep(this.metaData);
+    }
+
+    var newMetaData = <mykoop.IModuleMetaData>_.merge(
+      this.metaData,
+      metaData
+    );
+
+    if(utils.__DEV__) {
+      var moduleLogger = getLogger(moduleDefinition.role);
+      moduleLogger.verbose("Checking metadata merge");
+
+      function checkIfOverwritten(path, src, res) {
+        if (typeof src !== typeof res) {
+          moduleLogger.warn(
+            "The metadata has changed type [%s -> %s] at path [%s]",
+            typeof src,
+            typeof res,
+            path
+          );
+        } else if (_.isArray(src)) {
+          var sl = src.length, rl = res.length;
+          for (var i = 0; i < sl; ++i) {
+            checkIfOverwritten(path + "/[" + i + "]", src[i], res[i]);
+          }
+        } else if (_.isObject(src)) {
+          _.forEach(Object.keys(src), function(key) {
+            checkIfOverwritten(path + "/" + key, src[key], res[key]);
+          });
+        } else {
+          if (src !== res) {
+            moduleLogger.warn("The value changed [%s -> %s] at path [%s]",
+              _(src).toString(),
+              _(res).toString(),
+              path
+            );
+          }
+        }
+      }
+
+      checkIfOverwritten("", srcMetaData, newMetaData);
+    }
+
+    this.metaData = newMetaData;
   }
 
   initializeLoadedModules() : void {
