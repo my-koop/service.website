@@ -1,3 +1,4 @@
+///<reference path="../../typings/tsd.d.ts" />
 var superagent = require("superagent");
 
 export interface AjaxParams {
