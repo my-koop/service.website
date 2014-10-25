@@ -243,7 +243,6 @@ class ModuleManager implements mykoop.ModuleManager {
 
     if(utils.__DEV__) {
       var moduleLogger = getLogger(moduleDefinition.role);
-      moduleLogger.setMinimalLevel("silly");
       moduleLogger.verbose("Checking metadata merge");
 
       function checkIfOverwritten(path, src, res) {
