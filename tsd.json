@@ -10,7 +10,6 @@
     }
   },
   "owned": {
-    "mykoop": {},
-    "mykoop-core": {}
+    "mykoop": {}
   }
 }
