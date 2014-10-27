@@ -38,3 +38,4 @@ node_modules
 .ntvs_analysis.dat
 /obj
 /*.sublime-workspace
+routes/*.js
