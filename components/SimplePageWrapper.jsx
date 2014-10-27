@@ -10,7 +10,8 @@ var MKFooter = require("components/Footer");
 
 var RRLink = Router.Link;
 
-var style = require("grayBg.useable.less");
+//FIXME: Explicit until this is moved to the core module.
+var style = require("mykoop-core/styles/grayBg.useable.less");
 
 var SimplePage = React.createClass({
   componentDidMount: function(){

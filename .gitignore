@@ -33,7 +33,7 @@ node_modules
 /app.js
 /app.js.map
 /modules/**/*.js
-/less/dynamic-global-styles.less
+/styles/dynamic-global-styles.less
 *.suo
 .ntvs_analysis.dat
 /obj
