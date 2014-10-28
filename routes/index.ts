@@ -6,6 +6,8 @@ import _ = require("lodash");
 import ctrl = require("./controllers/index");
 import routeInfo = require("../modules/common/routeInformation");
 import moduleManager = require("../modules/backend/moduleManager");
+import getLogger = require("mykoop-logger");
+var logger = getLogger(module);
 
 function routeListFromRouteTree(routes: any, basePath?: string) {
   basePath = basePath || "";
@@ -22,6 +24,9 @@ function routeListFromRouteTree(routes: any, basePath?: string) {
     } else if (route.hasOwnProperty("default")) {
       routeList.push(currentPath);
     }
+
+    // Replace all // /// //// etc... by /
+    currentPath = currentPath.replace(/\/\/+/g, "/");
 
     if (route.hasOwnProperty("children")) {
       routeList = routeList.concat(routeListFromRouteTree(route.children, currentPath));
@@ -48,8 +53,9 @@ function indexApp(app: express.Express) {
     }
 
     var routes = metaDataResult.routes;
-
+    logger.verbose("Adding frontend routes");
     routeListFromRouteTree(routes).forEach(function (route) {
+      logger.debug("Frontend route [%s]", route);
       app.get(route, ctrl.staticRoot);
     });
   });
