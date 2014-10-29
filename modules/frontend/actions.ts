@@ -1,13 +1,9 @@
-//TODO: Make this file in TypeScript.
-var actions = {};
-
-module.exports = actions;
-
-var _ = require("lodash");
-var ajax = require("ajax");
+///<reference path="../../typings/tsd.d.ts" />
+import _ = require("lodash");
+import ajax = require("./ajax");
 var endpoints = require("dynamic-metadata").endpoints;
 
-function requestFactory(params) {
+function requestFactory(params: any) {
   var requestPath = params.path || "/";
   var method = params.method;
   var splitPath;
@@ -77,8 +73,8 @@ function requestFactory(params) {
   }
 }
 
-function actionsFromEndpoints(endpoints, actions) {
-  _.forEach(endpoints, function (endpoint, actionName) {
+function actionsFromEndpoints(endpoints: any, actions: any) {
+  _.forEach(endpoints, function (endpoint: any, actionName: string) {
     if (endpoint.hasOwnProperty("path")) {
       // No children...
       actions[actionName] = requestFactory({
@@ -92,4 +88,7 @@ function actionsFromEndpoints(endpoints, actions) {
   });
 }
 
+var actions = {};
 actionsFromEndpoints(endpoints, actions);
+
+export = actions;
