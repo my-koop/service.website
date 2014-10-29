@@ -9,6 +9,10 @@ declare module express {
   export interface Response{}
 }
 
+interface Error {
+  stack ?: string;
+}
+
 declare module mykoop {
 
   export interface IModule {
