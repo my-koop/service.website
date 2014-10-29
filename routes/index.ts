@@ -48,7 +48,7 @@ function indexApp(app: express.Express) {
   // Map all possible static routes/route patterns.
   moduleManager.getMetaData(function (err, metaDataResult) {
     if (err) {
-      console.error("Error while attempting to retrieve route meta data.");
+      logger.error("Error while attempting to retrieve route meta data.");
       return;
     }
 
