@@ -284,6 +284,10 @@ class ModuleManager implements mykoop.ModuleManager {
 
     _.forEach(this.modules, function(currentModule) {
       currentModule.instance = currentModule.bridge.getModule();
+      // check for backward compatibility
+      if(currentModule.instance.setModuleManager) {
+        currentModule.instance.setModuleManager(self);
+      }
     });
 
     // Use definition again to respect order

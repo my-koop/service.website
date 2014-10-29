@@ -12,7 +12,8 @@ declare module express {
 declare module mykoop {
 
   export interface IModule {
-
+    getModuleManager(): ModuleManager;
+    setModuleManager(moduleManager: ModuleManager): void;
   }
 
   export interface ModuleDefinition {
@@ -36,7 +37,7 @@ declare module mykoop {
 
   export interface IModuleBridge {
     // All modules are initialized and are available to use
-    onAllModulesInitialized(moduleManager: ModuleManager): void;
+    onAllModulesInitialized(moduleManager ?: ModuleManager): void;
 
     // Retrieve the instance of the module, may not be ready to be used
     getModule(): IModule;
@@ -85,7 +86,7 @@ declare module mykoop {
     //TODO: permissions?: {...};
   }
 
-  export class Router implements IModule {
+  export interface Router extends IModule {
     addRoute(
       params: RouteParams,
       callback: (

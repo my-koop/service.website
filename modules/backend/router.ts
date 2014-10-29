@@ -1,7 +1,9 @@
 import express = require("express");
+import utils = require("mykoop-utils");
 
-export class Router implements mykoop.Router {
-  constructor(public express: express.Express){
+export class Router extends utils.BaseModule implements mykoop.Router {
+  constructor(public express: express.Express) {
+    super();
   }
 
   // Allows us to assign a controller to an endpoint.
