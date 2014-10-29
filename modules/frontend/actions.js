@@ -10,7 +10,6 @@ var endpoints = require("dynamic-metadata").endpoints;
 function requestFactory(params) {
   var requestPath = params.path || "/";
   var method = params.method;
-  var data = params.data;
   var splitPath;
 
   if (requestPath.charAt(0) !== "/") {
@@ -27,9 +26,17 @@ function requestFactory(params) {
   return function (args, callback) {
     if (_.isFunction(args)) {
       callback = args;
-      args = {
-        query: {}
-      };
+      args = {};
+    }
+
+    if (!args.data) {
+      args.data = {};
+    }
+
+    //FIXME: Remove this at one point.
+    if (args.query) {
+      console.warn("The usage of the \"query\" property has been deprecated.");
+      args.data = _.merge(args.query, args.data);
     }
 
     var hasErrored;
@@ -38,7 +45,7 @@ function requestFactory(params) {
       requestPath = splitPath.reduce(function (requestPath, pathPart) {
         if (pathPart.charAt(0) === ":") {
           var queryArgument = pathPart.substr(1);
-          var queryValue = args.query[queryArgument];
+          var queryValue = args.data[queryArgument];
 
           if (!queryValue && !hasErrored) {
             hasErrored = true;
@@ -65,7 +72,7 @@ function requestFactory(params) {
     ajax.request({
       endpoint: "/json" + requestPath,
       method: method,
-      data: data
+      data: args.data
     }, callback);
   }
 }
