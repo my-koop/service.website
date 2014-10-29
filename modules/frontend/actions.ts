@@ -1,16 +1,11 @@
-//TODO: Make this file in TypeScript.
-var actions = {};
-
-module.exports = actions;
-
-var _ = require("lodash");
-var ajax = require("ajax");
+///<reference path="../../typings/tsd.d.ts" />
+import _ = require("lodash");
+import ajax = require("./ajax");
 var endpoints = require("dynamic-metadata").endpoints;
 
-function requestFactory(params) {
+function requestFactory(params: any) {
   var requestPath = params.path || "/";
   var method = params.method;
-  var data = params.data;
   var splitPath;
 
   if (requestPath.charAt(0) !== "/") {
@@ -27,9 +22,19 @@ function requestFactory(params) {
   return function (args, callback) {
     if (_.isFunction(args)) {
       callback = args;
-      args = {
-        query: {}
-      };
+      args = {};
+    }
+
+    args.data = args.data || {};
+
+    //FIXME: Remove this at one point.
+    if (args.query) {
+      console.warn(
+        "The usage of the \"query\" property has been deprecated in the " +
+        "actions module. (Endpoint: \"%s\")",
+        requestPath
+      );
+      args.data = _.merge(args.query, args.data);
     }
 
     var hasErrored;
@@ -38,7 +43,7 @@ function requestFactory(params) {
       requestPath = splitPath.reduce(function (requestPath, pathPart) {
         if (pathPart.charAt(0) === ":") {
           var queryArgument = pathPart.substr(1);
-          var queryValue = args.query[queryArgument];
+          var queryValue = args.data[queryArgument];
 
           if (!queryValue && !hasErrored) {
             hasErrored = true;
@@ -65,13 +70,13 @@ function requestFactory(params) {
     ajax.request({
       endpoint: "/json" + requestPath,
       method: method,
-      data: data
+      data: args.data
     }, callback);
   }
 }
 
-function actionsFromEndpoints(endpoints, actions) {
-  _.forEach(endpoints, function (endpoint, actionName) {
+function actionsFromEndpoints(endpoints: any, actions: any) {
+  _.forEach(endpoints, function (endpoint: any, actionName: string) {
     if (endpoint.hasOwnProperty("path")) {
       // No children...
       actions[actionName] = requestFactory({
@@ -85,4 +90,7 @@ function actionsFromEndpoints(endpoints, actions) {
   });
 }
 
+var actions = {};
 actionsFromEndpoints(endpoints, actions);
+
+export = actions;
