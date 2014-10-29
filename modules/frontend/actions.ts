@@ -25,13 +25,15 @@ function requestFactory(params: any) {
       args = {};
     }
 
-    if (!args.data) {
-      args.data = {};
-    }
+    args.data = args.data || {};
 
     //FIXME: Remove this at one point.
     if (args.query) {
-      console.warn("The usage of the \"query\" property has been deprecated.");
+      console.warn(
+        "The usage of the \"query\" property has been deprecated in the " +
+        "actions module. (Endpoint: \"%s\")",
+        requestPath
+      );
       args.data = _.merge(args.query, args.data);
     }
 
