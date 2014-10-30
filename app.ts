@@ -77,7 +77,7 @@ function loadModules(app, callback) {
   moduleManager.setCore("router", new router.Router(app));
 
   var moduleDefinitionsOptions = {
-    excludes: program.excludes,
+    excludes: program.exclude,
     searchNodeModules: program.node_module
   };
 
