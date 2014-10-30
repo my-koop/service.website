@@ -184,7 +184,7 @@ class ModuleManager implements mykoop.ModuleManager {
                 origin: MODULE_NAME_PREFIX + moduleName + "/components"
               };
               if (metaData.value) {
-                computedMetaData.property = metaData.value;
+                computedMetaData.origin += "/" + metaData.value;
               }
               return computedMetaData;
 
