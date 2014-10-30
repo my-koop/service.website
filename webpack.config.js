@@ -16,7 +16,11 @@ var pluginList = [
     __DEV__: isDev,
     __PROD__: isProd,
     "process.browser": true
-  })
+  }),
+
+  // This might seem like a wide net, but we don't want anything that has to do
+  // with jQuery, by default anyway.
+  new webpack.IgnorePlugin(/jquery/)
 ];
 
 if (isProd) {
