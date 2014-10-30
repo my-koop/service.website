@@ -9,7 +9,7 @@ var MKLoginModal          = require("components/LoginModal");
 var MKUserPrivilegesModal = require("components/UserPrivilegesModal");
 var MKMailingSendModal    = require("components/MailingListSendModal");
 
-var MKItemList = require("mykoop-inventory/components").ItemList;
+var MKItemList = require("mykoop-inventory/components/ItemList");
 
 var __ = require("language").__;
 
