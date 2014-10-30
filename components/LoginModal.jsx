@@ -1,8 +1,8 @@
 ﻿var React = require("react");
 var BSButton = require("react-bootstrap/Button");
-var MKAbstractModal = require("components/AbstractModal");
+var MKAbstractModal = require("mykoop-core/components/AbstractModal");
 
-var MKLoginBox = require("components/LoginBox");
+var MKLoginBox = require("./LoginBox");
 
 var loginState = {};
 var saveLoginState = function(state){

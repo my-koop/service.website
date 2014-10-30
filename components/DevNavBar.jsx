@@ -1,6 +1,6 @@
 ﻿var React = require("react");
 var PropTypes = React.PropTypes;
-var MKNavigationBar = require("components/NavigationBar");
+var MKNavigationBar = require("mykoop-core/components/NavigationBar");
 var BSButton = require("react-bootstrap/Button");
 
 var RouteInformation = require("routeInformation");

@@ -10,15 +10,15 @@ var RouteInfo = require("routeInformation");
 
 var routeData = require("dynamic-metadata").routes;
 
-var MKApp                  = require("components/App");
-var MKSimplePageWrapper    = require("components/SimplePageWrapper");
-var MKPublicWrapper        = require("components/PublicWrapper");
-var MKDashboardWrapper     = require("components/DashboardWrapper");
-var MKHomepage             = require("components/Homepage");
-var MKPlaceHolder          = require("components/PlaceHolder");
-var MKParentPlaceHolder    = require("components/ParentPlaceHolder");
+var MKApp                  = require("mykoop-core/components/App");
+var MKSimplePageWrapper    = require("mykoop-core/components/SimplePageWrapper");
+var MKPublicWrapper        = require("mykoop-core/components/PublicWrapper");
+var MKDashboardWrapper     = require("mykoop-core/components/DashboardWrapper");
+var MKHomepage             = require("mykoop-core/components/Homepage");
+var MKPlaceHolder          = require("mykoop-core/components/PlaceHolder");
+var MKParentPlaceHolder    = require("mykoop-core/components/ParentPlaceHolder");
 var MKLoginPage            = require("components/LoginPage");
-var MKMyAccountPage        = require("components/MyAccountPage");
+var MKMyAccountPage        = require("mykoop-user/components/MyAccountPage");
 var MKPasswordRecoveryPage = require("components/PasswordRecoveryPage");
 var MKOptionsPage          = require("components/OptionsPage");
 var MKRegisterPage         = require("components/RegisterPage");

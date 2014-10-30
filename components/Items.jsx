@@ -2,11 +2,11 @@
 var BSCol           = require("react-bootstrap/Col");
 var BSButton        = require("react-bootstrap/Button");
 var BSModalTrigger  = require("react-bootstrap/ModalTrigger");
-var MKIcon          = require("components/Icon");
+var MKIcon          = require("mykoop-core/components/Icon");
 
-var MKTableSorter   = require("components/TableSorter");
-var MKListModButtons= require("components/ListModButtons");
-var MKItemEditModal = require("components/ItemEditModal");
+var MKTableSorter   = require("mykoop-core/components/TableSorter");
+var MKListModButtons= require("mykoop-core/components/ListModButtons");
+var MKItemEditModal = require("./ItemEditModal");
 
 var ajax      = require("ajax");
 var routeInfo = require("routeInformation");

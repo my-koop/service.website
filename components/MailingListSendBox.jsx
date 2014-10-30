@@ -2,7 +2,7 @@
 var PropTypes = React.PropTypes;
 var BSButton = require("react-bootstrap/Button");
 var BSInput = require("react-bootstrap/Input");
-var FormInputFactory = require("components/FormInputFactory");
+var FormInputFactory = require("mykoop-core/components/FormInputFactory");
 
 var inputProperties =  {
   "properties": {
@@ -14,7 +14,7 @@ var inputProperties =  {
 };
 var subjectInput =  FormInputFactory(inputProperties.type, inputProperties.properties);
 
-var ListPickerProperties ={ 
+var ListPickerProperties ={
   "properties": {
     "name": "mailingListPicker",
     "label": "Select a mailing list",

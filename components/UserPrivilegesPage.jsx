@@ -1,6 +1,6 @@
 ﻿var React = require("react");
 var BSPanel = require("react-bootstrap/Panel");
-var MKUserPrivilegesBox = require("components/UserPrivilegesBox");
+var MKUserPrivilegesBox = require("./UserPrivilegesBox");
 
 var UserPrivilegesPage = React.createClass({
 

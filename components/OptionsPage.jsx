@@ -1,7 +1,7 @@
 var React = require("react");
 var BSCol = require("react-bootstrap/Col");
-var MKEditableFieldList = require("components/EditableFieldList");
-var MKCollapsablePanel = require("components/CollapsablePanel");
+var MKEditableFieldList = require("mykoop-core/components/EditableFieldList");
+var MKCollapsablePanel = require("mykoop-core/components/CollapsablePanel");
 
 // mock data
 var fields = [

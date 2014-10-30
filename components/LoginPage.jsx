@@ -1,6 +1,6 @@
 ﻿var React = require("react");
 var BSPanel = require("react-bootstrap/Panel");
-var MKLoginBox = require("components/LoginBox");
+var MKLoginBox = require("./LoginBox");
 
 var LoginPage = React.createClass({
 
