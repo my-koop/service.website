@@ -15,7 +15,13 @@
         "database",
       ]
     },
-
+    {
+      name: "user",
+      role: "user",
+      dependencies: [
+        "database",
+      ]
+    },
 
     // Test cases
     {

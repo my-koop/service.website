@@ -26,6 +26,7 @@
     "mykoop-database": "my-koop/module.database",
     "mykoop-inventory": "my-koop/module.inventory",
     "mykoop-logger": "git://github.com/my-koop/module.logger",
+    "mykoop-user": "my-koop/module.user",
     "mykoop-utils": "git://github.com/my-koop/module.utils",
     "serve-favicon": "^2.1.3",
     "superagent": "^0.18.2"
