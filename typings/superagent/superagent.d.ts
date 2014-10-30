@@ -5,8 +5,8 @@
 
 /// <reference path='../node/node.d.ts' />
 
-declare module "superagent" {
-    import stream = require('stream');
+/// MANUALLY MODIFIED FOR MYKOOP DO NOT OVERWRITE FROM DefinitelyTyped
+declare module superagent {
   export interface Response {
     text: string;
     body: any;
@@ -45,7 +45,6 @@ declare module "superagent" {
     send(data: Object): Request;
     write(data: string, encoding: string): boolean;
     write(data: Buffer, encoding: string): boolean;
-    pipe(stream: NodeJS.WritableStream, options?: Object): stream.Writable;
     buffer(val: boolean): Request;
     timeout(ms: number): Request;
     clearTimeout(): Request;
@@ -56,6 +55,8 @@ declare module "superagent" {
   }
 
   export interface Agent {
+    (method : string, url: string): Request;
+    (url: string, callback?: (err: Error, res: Response) => void ): Request;
     get(url: string, callback?: (err: Error, res: Response) => void): Request;
     post(url: string, callback?: (err: Error, res: Response) => void): Request;
     put(url: string, callback?: (err: Error, res: Response) => void): Request;
@@ -83,6 +84,4 @@ declare module "superagent" {
     saveCookies(res: Response): void;
     attachCookies(req: Request): void;
   }
-
-  export function agent(): Agent;
 }
