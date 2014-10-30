@@ -1,15 +1,15 @@
-var env = process.env.NODE_ENV;
 var fs = require("fs");
 var path = require("path");
 var _ = require("lodash");
 var beautify = require("js-beautify").js_beautify
 var webpack = require("webpack");
+var utils = require("mykoop-utils");
 var moduleManager = require("./modules/backend/moduleManager");
 //hijack require to parse json5
 require('json5/lib/require');
 
-var isDev = env === "development";
-var isProd = env === "production";
+var isDev = utils.__DEV__;
+var isProd = utils.__PROD__;
 
 var pluginList = [
   new webpack.DefinePlugin({
