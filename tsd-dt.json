@@ -37,6 +37,9 @@
     },
     "jquery/jquery.d.ts": {
       "commit": "bd9a1922e44ddf35953587a92c5caf4242bf6ea5"
+    },
+    "async/async.d.ts": {
+      "commit": "1a9210fff5becc7aa4aa5e03869e14455285c56b"
     }
   }
 }

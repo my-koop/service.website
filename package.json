@@ -13,7 +13,9 @@
     "assets-dev-win": "set NODE_ENV=development&& \"%CD%/node_modules/.bin/webpack-dev-server\" --port 8080 --content-base-target http://localhost:1337"
   },
   "dependencies": {
+    "async": "^0.9.0",
     "body-parser": "^1.8.1",
+    "commander": "^2.5.0",
     "errorhandler": "^1.2.0",
     "express": "^4.9.0",
     "express-session": "^1.8.1",
@@ -26,6 +28,7 @@
     "mykoop-database": "my-koop/module.database",
     "mykoop-inventory": "my-koop/module.inventory",
     "mykoop-logger": "git://github.com/my-koop/module.logger",
+    "mykoop-user": "git://github.com/my-koop/module.user#ad_module_user",
     "mykoop-utils": "git://github.com/my-koop/module.utils",
     "serve-favicon": "^2.1.3",
     "superagent": "^0.18.2"
