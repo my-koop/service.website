@@ -18,6 +18,18 @@ export function setLanguage(language: string): void {
   });
 }
 
+//FIXME: Temporary placeholder. See #198.
+export function formatDate(dateToFormat: Date): string {
+  //FIXME: Extremely basic formatting, we'll be using moment.js instead.
+  return dateToFormat.toLocaleDateString();
+}
+
+//FIXME: Temporary placeholder. See #199.
+export function formatMoney(amount: number): string {
+  //FIXME: Extremely basic formatting, we'll be using accounting.js instead.
+  return amount + " $";
+}
+
 i18n.init({
   getAsync: false,
   lng: defaultLanguage,
