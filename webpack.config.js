@@ -216,7 +216,8 @@ module.exports = {
     publicPath: "/"
   },
   module: {
-    loaders: loaderList
+    loaders: loaderList,
+    noParse: /validate\.js/
   },
   resolve: {
     extensions: ["", ".webpack.js", ".web.js", ".js", ".ts", ".jsx"],
