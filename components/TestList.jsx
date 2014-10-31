@@ -1,6 +1,6 @@
 ﻿var React = require("react");
 var PropTypes = React.PropTypes;
-var FilteredList = require("components/FilterableItemList");
+var FilteredList = require("mykoop-core/components/FilterableItemList");
 var BSButton = require("react-bootstrap/Button");
 
 var button = <BSButton>Edit </BSButton>;

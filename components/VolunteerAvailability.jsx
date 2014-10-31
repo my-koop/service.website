@@ -6,12 +6,12 @@ var BSButton        = require("react-bootstrap/Button");
 var BSButtonGroup   = require("react-bootstrap/ButtonGroup");
 var BSCol           = require("react-bootstrap/Col");
 
-var MKIcon          = require("components/Icon");
-var MKTableSorter   = require("components/TableSorter");
-var MKListModButtons= require("components/ListModButtons");
-var MKItemEditModal = require("components/ItemEditModal");
-var FormInputFactory= require("components/FormInputFactory");
-var MKAbstractModal = require("components/AbstractModal");
+var MKIcon          = require("mykoop-core/components/Icon");
+var MKTableSorter   = require("mykoop-core/components/TableSorter");
+var MKListModButtons= require("mykoop-core/components/ListModButtons");
+var MKItemEditModal = require("./ItemEditModal");
+var FormInputFactory= require("mykoop-core/components/FormInputFactory");
+var MKAbstractModal = require("mykoop-core/components/AbstractModal");
 
 var AvailabilityBoxInputs  = [
     {

@@ -2,7 +2,7 @@
 var PropTypes = React.PropTypes;
 var BSButton = require("react-bootstrap/Button");
 
-var FormInputFactory = require("components/FormInputFactory");
+var FormInputFactory = require("mykoop-core/components/FormInputFactory");
 
 var PrivilegesExamples = [
   {

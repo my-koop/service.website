@@ -4,11 +4,11 @@ var BSButton        = require("react-bootstrap/Button");
 var BSCol           = require("react-bootstrap/Col");
 var BSModalTrigger  = require("react-bootstrap/ModalTrigger");
 
-var MKTableSorter   = require("components/TableSorter");
-var MKListModButtons= require("components/ListModButtons");
-var MKItemEditModal = require("components/ItemEditModal");
-var FormInputFactory= require("components/FormInputFactory");
-var MKAbstractModal = require("components/AbstractModal");
+var MKTableSorter   = require("mykoop-core/components/TableSorter");
+var MKListModButtons= require("mykoop-core/components/ListModButtons");
+var MKItemEditModal = require("./ItemEditModal");
+var FormInputFactory= require("mykoop-core/components/FormInputFactory");
+var MKAbstractModal = require("mykoop-core/components/AbstractModal");
 
 
 var actionsGenerator = function(item){
@@ -70,7 +70,7 @@ var TransactionList = React.createClass({
     }
   },
   render: function(){
-  
+
     var CONFIG = {
       columns: {
         id: { name: "ID" },

@@ -55,7 +55,7 @@ var lessGlobalStyles = _.reduce(loadedModules, function(lessStyles, moduleName) 
 }, []);
 
 fs.writeFileSync(
-  "./less/dynamic-global-styles.less",
+  "./styles/dynamic-global-styles.less",
   lessGlobalStyles.join("\n")
 );
 
@@ -222,7 +222,7 @@ module.exports = {
     extensions: ["", ".webpack.js", ".web.js", ".js", ".ts", ".jsx"],
 
     root: [
-      path.join(__dirname, "less"),
+      path.join(__dirname, "styles"),
       path.join(__dirname, "locales"),
       path.join(__dirname, "modules", "frontend"),
       path.join(__dirname, "modules", "common")

@@ -3,19 +3,19 @@ var PropTypes       = React.PropTypes;
 var BSButton        = require("react-bootstrap/Button");
 var BSCol           = require("react-bootstrap/Col");
 var BSModalTrigger  = require("react-bootstrap/ModalTrigger");
-var MKEventSignupModal = require("components/EventSignupModal");
+var MKEventSignupModal = require("./EventSignupModal");
 var BSModalTrigger = require("react-bootstrap/ModalTrigger");
 
-var MKTableSorter   = require("components/TableSorter");
-var MKListModButtons= require("components/ListModButtons");
-var MKItemEditModal = require("components/ItemEditModal");
-var FormInputFactory= require("components/FormInputFactory");
-var MKAbstractModal = require("components/AbstractModal");
+var MKTableSorter   = require("mykoop-core/components/TableSorter");
+var MKListModButtons= require("mykoop-core/components/ListModButtons");
+var MKItemEditModal = require("./ItemEditModal");
+var FormInputFactory= require("mykoop-core/components/FormInputFactory");
+var MKAbstractModal = require("mykoop-core/components/AbstractModal");
 
 var eventSignupProps = {
   name:"Sexy and I know it",
   date:"05/05/1989",
-  price:"5.00" //Fix me. Or throw me. Do whatever you want to me ;) 
+  price:"5.00" //Fix me. Or throw me. Do whatever you want to me ;)
 };
 
 var editButton = <BSButton>Edit</BSButton>;
@@ -49,7 +49,7 @@ var EventBoxInputs  = [
       "placeholder": "YYYY/MM/DD"
     },
     "type": "text"
-  }, 
+  },
   {
     "properties": {
       "name": "startTime",
@@ -90,18 +90,18 @@ var TriggerEventModal = function(buttonName){
   return (
     <div>
       <BSModalTrigger modal={
-        <MKAbstractModal 
-          title="Create new event" 
-          modalBody={modalBody} 
+        <MKAbstractModal
+          title="Create new event"
+          modalBody={modalBody}
           useCloseButtonFooter
         />
-        } 
+        }
       >
         <BSButton>{buttonName}</BSButton>
       </BSModalTrigger>
     </div>
   );
-};   
+};
 
 var actionsGenerator = function(item){
   return [
@@ -128,10 +128,10 @@ var actionsGenerator = function(item){
           <BSModalTrigger
             key={iBtn}
             modal={
-              <MKAbstractModal 
-                title="Edit Event" 
-                modalBody={modalBody} 
-                useCloseButtonFooter 
+              <MKAbstractModal
+                title="Edit Event"
+                modalBody={modalBody}
+                useCloseButtonFooter
               /> }
           >
             {component}
