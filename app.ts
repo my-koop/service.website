@@ -7,6 +7,7 @@ import methodOverride = require("method-override");
 import session = require("express-session");
 import bodyParser = require("body-parser");
 import errorHandler = require("errorhandler");
+import _ = require("lodash");
 import moduleManager = require("./modules/backend/moduleManager");
 import utils = require("mykoop-utils");
 
@@ -51,6 +52,12 @@ if (utils.__DEV__) {
   app.use(errorHandler());
   app.use(express.static(path.join(__dirname, "public")));
 }
+
+app.use(function (req, res, next) {
+  // merge all the different data from the request
+  res.locals.data = _.merge(req.params, req.body, req.query);
+  next();
+});
 
 // Initialise module and add backend routes
 moduleManager.initializeLoadedModules();

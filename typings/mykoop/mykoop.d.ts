@@ -81,12 +81,17 @@ declare module mykoop {
     strict?: boolean;
   }
 
+  export interface ValidationResults {
+    [id: string]: string[];
+  }
+
   export interface RouteParams{
     endPoint: {
       path: string;
       method?: string;
       type?: string;
     };
+    validation?: (obj: any) => ValidationResults;
     //TODO: permissions?: {...};
   }
 
