@@ -6,7 +6,6 @@ var BSModalTrigger  = require("react-bootstrap/ModalTrigger");
 
 var MKTableSorter   = require("mykoop-core/components/TableSorter");
 var MKListModButtons= require("mykoop-core/components/ListModButtons");
-var MKItemEditModal = require("./ItemEditModal");
 var FormInputFactory= require("mykoop-core/components/FormInputFactory");
 var MKAbstractModal = require("mykoop-core/components/AbstractModal");
 
