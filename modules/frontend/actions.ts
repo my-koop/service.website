@@ -6,8 +6,17 @@ var endpoints = require("dynamic-metadata").endpoints;
 function requestFactory(params: any) {
   var requestPath = params.path || "/";
   var method = params.method;
-  var validate = _.isFunction(params.validation) && params.validation() || _.noop();
   var splitPath;
+  var validation = params.validation;
+  var validate: (obj: any) => any = _.noop;
+
+  if (validation) {
+    if (!_.isFunction(validation) || !_.isFunction(validate = validation())) {
+      console.error("Validation provided is not function at ", requestPath);
+      // revert to noop
+      validate = _.noop;
+    }
+  }
 
   if (requestPath.charAt(0) !== "/") {
     console.warn(
