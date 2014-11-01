@@ -2,7 +2,7 @@
 import express = require("express");
 import http = require("http");
 import path = require("path");
-import logger = require("morgan");
+import middlewareLogger = require("morgan");
 import methodOverride = require("method-override");
 import session = require("express-session");
 import bodyParser = require("body-parser");
@@ -10,6 +10,7 @@ import errorHandler = require("errorhandler");
 import _ = require("lodash");
 import moduleManager = require("./modules/backend/moduleManager");
 import utils = require("mykoop-utils");
+var logger = utils.getLogger(module);
 
 //hijack require to parse json5
 require("json5/lib/require");
@@ -24,14 +25,14 @@ import router = require("./modules/backend/router");
 moduleManager.setCore("router", new router.Router(app));
 
 // Loading modules
-console.log("Loading modules...");
+logger.info("Loading modules...");
 var modules = require("./modules.json5");
 moduleManager.loadModules(modules.modules);
 
 // all environments
 app.set("port", process.env.PORT || 1337);
 app.use(favicon(__dirname + "/public/favicon.ico"));
-app.use(logger("dev"));
+app.use(middlewareLogger("dev"));
 
 // Frontend routes
 import routes = require("./routes/index");
@@ -63,5 +64,5 @@ app.use(function (req, res, next) {
 moduleManager.initializeLoadedModules();
 
 http.createServer(app).listen(app.get("port"), function () {
-  console.log("Express server listening on port " + app.get("port"));
+  logger.info("Express server listening on port " + app.get("port"));
 });

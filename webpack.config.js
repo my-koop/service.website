@@ -5,6 +5,8 @@ var beautify = require("js-beautify").js_beautify
 var webpack = require("webpack");
 var utils = require("mykoop-utils");
 var moduleManager = require("./modules/backend/moduleManager");
+var logger = require("mykoop-logger")(module);
+
 //hijack require to parse json5
 require('json5/lib/require');
 
@@ -151,7 +153,7 @@ metaData = generateIntermediaryRequires(metaData);
 try{
   metaDataString = JSON.stringify(metaData);
 } catch(e) {
-  console.error("Invalid intermediary meta data, couldn't generate dynamic dependencies.");
+  logger.error("Invalid intermediary meta data, couldn't generate dynamic dependencies.");
 }
 
 if (metaDataString) {

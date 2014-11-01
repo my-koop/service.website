@@ -2,12 +2,13 @@
 import _ = require("lodash");
 import utils = require("mykoop-utils");
 import getLogger = require("mykoop-logger");
+var managerLogger = getLogger(module);
 
 var MODULE_NAME_PREFIX = "mykoop-";
 
 class CoreBridge implements mykoop.IModuleBridge {
   private instance: mykoop.IModule;
-  constructor(instance: mykoop.IModule){
+  constructor(instance: mykoop.IModule) {
     this.instance = instance;
   }
   onAllModulesInitialized(moduleManager: mykoop.ModuleManager): void {}
@@ -21,8 +22,15 @@ class Module {
   public instance: mykoop.IModule;
   public bridge: mykoop.IModuleBridge;
   public dependants: { [id:string]:number };
+  public logger: mklogger.Logger;
+  public name: string;
+  public role: string;
 
-  constructor(public moduleName: string, public isCore?: boolean) {
+  constructor(name: string, role: string, public isCore?: boolean) {
+    this.name = name;
+    this.role = role;
+    this.logger = getLogger(role);
+
     this.instance = null;
     this.bridge = null;
     this.dependants = {};
@@ -47,7 +55,7 @@ class ModuleManager implements mykoop.ModuleManager {
   }
 
   setCore(moduleName: string, coreModule: mykoop.IModule): void {
-    var coreModuleProxy = new Module(moduleName, true);
+    var coreModuleProxy = new Module(moduleName, moduleName, true);
     coreModuleProxy.bridge = new CoreBridge(coreModule);
     coreModuleProxy.instance = coreModule;
 
@@ -64,21 +72,28 @@ class ModuleManager implements mykoop.ModuleManager {
       var role = moduleDefinition.role;
 
       if (!name) {
-        console.error("Every module needs to specify a name.");
+        managerLogger.error(
+          "Every module needs to specify a name.",
+          {culprit: moduleDefinition}
+        );
         return modules;
       }
 
       if (!role) {
-        console.error("Role not defined for module %s.", name);
+        managerLogger.error(
+          "Role not defined for module %s.",
+          name,
+          {culprit: moduleDefinition}
+        );
         return modules;
       }
 
       // Allow replacement of core modules.
       if (modules[role] && !modules[role].isCore) {
-        console.error(
+        managerLogger.error(
           "Duplicate role: %s. (Defined by %s and attempted to be redefined by %s)",
           role,
-          modules[role].moduleName,
+          modules[role].name,
           name
         );
         return modules;
@@ -86,7 +101,7 @@ class ModuleManager implements mykoop.ModuleManager {
 
       // Only use valid definitions
       self.moduleDefinitions.push(moduleDefinition);
-      modules[role] = new Module(name);
+      modules[role] = new Module(name, role);
 
       return modules;
     }, this.modules);
@@ -94,11 +109,11 @@ class ModuleManager implements mykoop.ModuleManager {
     // Check for dependencies
     var allDependenciesSatisfied = true;
     var moduleDependenciesSatisfied = this.moduleDefinitions.map(
-      function(moduleDefinition, index) {
+      function (moduleDefinition, index) {
         var dependenciesSatisfied = _.all(
           moduleDefinition.dependencies,
-          function(dependency) {
-            if(self.modules.hasOwnProperty(dependency)){
+          function (dependency) {
+            if (self.modules.hasOwnProperty(dependency)) {
               self.modules[dependency].dependants[moduleDefinition.role] = index;
               return true;
             }
@@ -112,40 +127,58 @@ class ModuleManager implements mykoop.ModuleManager {
 
     //TODO: Be more verbose about what doesn't have valid dependencies.
     if (!allDependenciesSatisfied) {
-      self.moduleDefinitions.forEach(function(moduleDefinition, index) {
-        if(!moduleDependenciesSatisfied[index]){
-          console.error("Error: Dependencies missing for module %s", moduleDefinition.name);
+      self.moduleDefinitions.forEach(function (moduleDefinition, index) {
+        if (!moduleDependenciesSatisfied[index]) {
+          managerLogger.error(
+            "Error: Dependencies missing for module %s",
+            moduleDefinition.name
+          );
         }
       });
     }
 
     // Instanciate modules.
-    self.moduleDefinitions.forEach(function(moduleDefinition, index) {
-      if(moduleDependenciesSatisfied[index]){
-        // sync call
-        console.log("Loading module %s", moduleDefinition.name);
-        var bridge;
-        try{
+    self.moduleDefinitions.forEach(function (moduleDefinition, index) {
+      if (moduleDependenciesSatisfied[index]) {
+        var module = self.modules[moduleDefinition.role];
+        module.logger.verbose("Loading module...");
+        var bridge: mykoop.IModuleBridge;
+        // Try to load module
+        try {
           bridge = require(MODULE_NAME_PREFIX + moduleDefinition.name);
+          var validate: mykoop.IModuleBridge = {
+            getModule: bridge.getModule.bind(null),
+            onAllModulesInitialized: bridge.onAllModulesInitialized.bind(null)
+          };
         } catch(e) {
-          console.error(e);
-          _.each(self.modules[moduleDefinition.role].dependants, function(index, moduleRole){
+          // Couldn't load the module
+          module.logger.error(e, {});
+          // Mark all module depending on this one as invalid
+          _.each(module.dependants, function (index, moduleRole) {
             moduleDependenciesSatisfied[index] = false;
+            self.modules[moduleRole].logger.error(
+              "Dependency %s had errors",
+              moduleDefinition.name
+            );
             delete self.modules[moduleRole];
           });
+          // Mark this module invalid
           moduleDependenciesSatisfied[index] = false;
           delete self.modules[moduleDefinition.role];
           return;
         }
-        self.modules[moduleDefinition.role].bridge = bridge;
+        // Everything is fine
+        module.bridge = bridge;
       } else {
+        // Already marked as invalid, remove it
+        self.modules[moduleDefinition.role].logger.error("Dependencies had errors");
         delete self.modules[moduleDefinition.role];
       }
     });
 
     // Use definition again to respect order
     self.moduleDefinitions = self.moduleDefinitions.filter(
-      function(moduleDefinition, index) {
+      function (moduleDefinition, index) {
         return moduleDependenciesSatisfied[index];
       }
     );
@@ -197,8 +230,8 @@ class ModuleManager implements mykoop.ModuleManager {
               return computedMetaData;
             default:
               // Your princess is in another castle...
-              console.warn(
-                "Warning: Unrecognized resolve type: \"%s\" in module %s.",
+              managerLogger.warn(
+                "Unrecognized resolve type: \"%s\" in module %s.",
                 metaData.resolve,
                 moduleName
               );
@@ -220,10 +253,13 @@ class ModuleManager implements mykoop.ModuleManager {
 
     this.metaData = {};
 
-    this.moduleDefinitions.forEach(function(moduleDefinition) {
-      var getMetaData = self.modules[moduleDefinition.role].bridge.getMetaData;
+    this.moduleDefinitions.forEach(function (moduleDefinition) {
+      var module = self.modules[moduleDefinition.role];
+      var getMetaData = module.bridge.getMetaData;
       if (_.isFunction(getMetaData)) {
-        getMetaData(function(err, result) {
+        module.logger.verbose("Acquiring MetaData...");
+        getMetaData(function (err, result) {
+          module.logger.debug("Computing resolve...");
           var metaData = computeResolveDemands(moduleDefinition.name, result);
           self.mergeMetaData(metaData, moduleDefinition);
         });
@@ -238,7 +274,7 @@ class ModuleManager implements mykoop.ModuleManager {
       return;
     }
 
-    if(utils.__DEV__) {
+    if (utils.__DEV__) {
       // must deep clone because _.merge() changes var on the left
       var srcMetaData = _.cloneDeep(this.metaData);
     }
@@ -248,9 +284,9 @@ class ModuleManager implements mykoop.ModuleManager {
       metaData
     );
 
-    if(utils.__DEV__) {
-      var moduleLogger = getLogger(moduleDefinition.role);
-      moduleLogger.verbose("Checking metadata merge");
+    if (utils.__DEV__) {
+      var moduleLogger = this.modules[moduleDefinition.role].logger;
+      moduleLogger.verbose("Checking metadata merge...");
 
       function checkIfOverwritten(path, src, res) {
         if (typeof src !== typeof res) {
@@ -266,12 +302,13 @@ class ModuleManager implements mykoop.ModuleManager {
             checkIfOverwritten(path + "/[" + i + "]", src[i], res[i]);
           }
         } else if (_.isObject(src)) {
-          _.forEach(Object.keys(src), function(key) {
+          _.forEach(Object.keys(src), function (key) {
             checkIfOverwritten(path + "/" + key, src[key], res[key]);
           });
         } else {
           if (src !== res) {
-            moduleLogger.warn("The value changed [%s -> %s] at path [%s]",
+            moduleLogger.warn(
+              "The value changed [%s -> %s] at path [%s]",
               _(src).toString(),
               _(res).toString(),
               path
@@ -289,17 +326,19 @@ class ModuleManager implements mykoop.ModuleManager {
   initializeLoadedModules() : void {
     var self = this;
 
-    _.forEach(this.modules, function(currentModule) {
+    _.forEach(this.modules, function (currentModule) {
       currentModule.instance = currentModule.bridge.getModule();
       // check for backward compatibility
-      if(currentModule.instance.setModuleManager) {
+      if (currentModule.instance.setModuleManager) {
         currentModule.instance.setModuleManager(self);
       }
     });
 
     // Use definition again to respect order
-    this.moduleDefinitions.forEach(function(moduleDefinition) {
-      self.modules[moduleDefinition.role].bridge.onAllModulesInitialized(self);
+    this.moduleDefinitions.forEach(function (moduleDefinition) {
+      var module = self.modules[moduleDefinition.role];
+      module.logger.verbose("Initialising module...");
+      module.bridge.onAllModulesInitialized(self);
     });
   }
 }
