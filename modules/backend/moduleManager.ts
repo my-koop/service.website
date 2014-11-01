@@ -187,7 +187,14 @@ class ModuleManager implements mykoop.ModuleManager {
                 computedMetaData.origin += "/" + metaData.value;
               }
               return computedMetaData;
-
+            case "validation":
+              computedMetaData = {
+                origin: MODULE_NAME_PREFIX + moduleName + "/lib/validation"
+              };
+              if (metaData.value) {
+                computedMetaData.property = metaData.value;
+              }
+              return computedMetaData;
             default:
               // Your princess is in another castle...
               console.warn(

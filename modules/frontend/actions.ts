@@ -6,6 +6,7 @@ var endpoints = require("dynamic-metadata").endpoints;
 function requestFactory(params: any) {
   var requestPath = params.path || "/";
   var method = params.method;
+  var validate = _.isFunction(params.validation) && params.validation() || _.noop();
   var splitPath;
 
   if (requestPath.charAt(0) !== "/") {
@@ -24,7 +25,10 @@ function requestFactory(params: any) {
       callback = args;
       args = {};
     }
-
+    var validationErrors = validate(args.data);
+    if(validationErrors) {
+      return callback(new Error(validationErrors));
+    }
     args.data = args.data || {};
 
     //FIXME: Remove this at one point.
@@ -79,10 +83,7 @@ function actionsFromEndpoints(endpoints: any, actions: any) {
   _.forEach(endpoints, function (endpoint: any, actionName: string) {
     if (endpoint.hasOwnProperty("path")) {
       // No children...
-      actions[actionName] = requestFactory({
-        path: endpoint.path,
-        method: endpoint.method
-      });
+      actions[actionName] = requestFactory(endpoint);
     } else {
       actions[actionName] = {};
       actionsFromEndpoints(endpoint, actions[actionName]);
