@@ -73,8 +73,8 @@ class ModuleManager implements mykoop.ModuleManager {
 
       if (!name) {
         managerLogger.error(
-          "Every module needs to specify a name. %j",
-          moduleDefinition
+          "Every module needs to specify a name.",
+          {culprit: moduleDefinition}
         );
         return modules;
       }
@@ -285,17 +285,17 @@ class ModuleManager implements mykoop.ModuleManager {
     );
 
     if (utils.__DEV__) {
-      var moduleLogger = getLogger(moduleDefinition.role);
-      moduleLogger.debug("Checking metadata merge...");
+      var moduleLogger = this.modules[moduleDefinition.role].logger;
+      moduleLogger.verbose("Checking metadata merge...");
 
       function checkIfOverwritten(path, src, res) {
         if (typeof src !== typeof res) {
-          moduleLogger.warn([
+          moduleLogger.warn(
             "The metadata has changed type [%s -> %s] at path [%s]",
             typeof src,
             typeof res,
             path
-          ]);
+          );
         } else if (_.isArray(src)) {
           var sl = src.length, rl = res.length;
           for (var i = 0; i < sl; ++i) {
@@ -307,12 +307,12 @@ class ModuleManager implements mykoop.ModuleManager {
           });
         } else {
           if (src !== res) {
-            moduleLogger.warn([
+            moduleLogger.warn(
               "The value changed [%s -> %s] at path [%s]",
               _(src).toString(),
               _(res).toString(),
               path
-            ]);
+            );
           }
         }
       }
