@@ -217,6 +217,8 @@ module.exports = {
   },
   module: {
     loaders: loaderList,
+    // FIXME:: Webpack must not parse this module because cannot be statically
+    // analysed
     noParse: /validate\.js/
   },
   resolve: {

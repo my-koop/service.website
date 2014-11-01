@@ -6,7 +6,7 @@ var endpoints = require("dynamic-metadata").endpoints;
 function requestFactory(params: any) {
   var requestPath = params.path || "/";
   var method = params.method;
-  var validate = params.validation && params.validation() || function() {return null;};
+  var validate = _.isFunction(params.validation) && params.validation() || _.noop();
   var splitPath;
 
   if (requestPath.charAt(0) !== "/") {
