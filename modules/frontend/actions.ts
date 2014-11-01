@@ -12,7 +12,7 @@ function requestFactory(params: any) {
 
   if (validation) {
     if (!_.isFunction(validation) || !_.isFunction(validate = validation())) {
-      console.error("Validation provided is not function at ", requestPath);
+      console.error("Validation provided is not a function at ", requestPath);
       // revert to noop
       validate = _.noop;
     }

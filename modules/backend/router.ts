@@ -17,9 +17,9 @@ export class Router extends utils.BaseModule implements mykoop.Router {
     ) => void
   ){
     var endpoint = params.endPoint;
-    var path = params.endPoint.path;
-    var method = params.endPoint.method || "get";
-    var type = params.endPoint.type;
+    var path = endpoint.path;
+    var method = endpoint.method || "get";
+    var type = endpoint.type;
     var middlewares: any[] = [callback];
 
     // Attach automatic validation on request
