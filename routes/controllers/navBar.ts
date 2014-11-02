@@ -25,7 +25,7 @@ var devNavBarLinks = [];
 
 // Map all possible static routes/route patterns.
 moduleManager.getMetaData(function (err, metaDataResult) {
-  devNavBarLinks = findNested(metaDataResult, "name").map(
+  devNavBarLinks = findNested(metaDataResult.routes, "name").map(
     function (name) {
       return new Link(name, name);
     }
