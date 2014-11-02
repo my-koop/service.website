@@ -1,5 +1,4 @@
 ﻿import express = require("express");
-import routeInfo = require("../../modules/common/routeInformation");
 import definitions = require("../../modules/common/itemsThreshold");
 
 var muckData = [

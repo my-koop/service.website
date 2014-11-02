@@ -39,12 +39,6 @@ function routeListFromRouteTree(routes: any, basePath?: string) {
 }
 
 function indexApp(app: express.Express) {
-
-  //FIXME: (Legacy) Front-end static routes.
-  for (var i = 0; i < routeInfo.frontEndPages.length; ++i) {
-    app.get(routeInfo.frontEndPages[i].fullPath, ctrl.staticRoot);
-  }
-
   // Map all possible static routes/route patterns.
   moduleManager.getMetaData(function (err, metaDataResult) {
     if (err) {

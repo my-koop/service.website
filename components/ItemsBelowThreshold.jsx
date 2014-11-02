@@ -6,7 +6,6 @@ var BSButton = require("react-bootstrap/Button");
 var BSPanel = require("react-bootstrap/Panel");
 var Router = require("react-router");
 
-var RouteInfo = require("routeInformation");
 var ajax = require("ajax");
 var _ = require("lodash");
 
@@ -22,6 +21,7 @@ var ItemsBelowThreshold = React.createClass({
 
   componentWillMount: function(){
     var self = this;
+    /*FIXME: Use actions module.
     ajax.request(
       {endpoint: RouteInfo.itemsBelowThreshold.fullPath},
       function(err,res){
@@ -41,6 +41,7 @@ var ItemsBelowThreshold = React.createClass({
         }
       }
     );
+    */
   },
 
   // Selects all checkboxes in the list
@@ -67,7 +68,7 @@ var ItemsBelowThreshold = React.createClass({
     e.preventDefault();
     // only transition if something is selected
     if(this.countSelected() > 0){
-      Router.transitionTo(RouteInfo.itemsNextOrder.name);
+      //Router.transitionTo(RouteInfo.itemsNextOrder.name);
     }
   },
 
