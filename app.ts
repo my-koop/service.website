@@ -38,6 +38,7 @@ if(utils.__DEV__) {
 }
 moduleManager.loadModules(modules.modules);
 
+app.disable("etag");
 // all environments
 app.set("port", process.env.PORT || 1337);
 app.use(favicon(__dirname + "/public/favicon.ico"));
