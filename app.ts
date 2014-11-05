@@ -27,6 +27,15 @@ moduleManager.setCore("router", new router.Router(app));
 // Loading modules
 logger.info("Loading modules...");
 var modules = require("./modules.json5");
+if(utils.__DEV__) {
+  modules.modules.push({
+    name: "base",
+    role: "base",
+    dependencies: [
+      "core",
+    ]
+  });
+}
 moduleManager.loadModules(modules.modules);
 
 // all environments

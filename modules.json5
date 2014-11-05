@@ -22,34 +22,5 @@
         "database",
       ]
     },
-
-    // Test cases
-    {
-      name: "troll",
-      role: "troll",
-      dependencies:[
-        "troll1",
-        "troll2",
-      ]
-    },
-    {
-      wrongname: "troll",
-    },
-    {
-      // No role either...
-      name: "troll",
-      dependencies:[
-        "troll1",
-        "troll3",
-      ]
-    },
-    {
-      name: "troll2",
-      role: "database", // Already provided...
-      dependencies:[
-        "database",
-        "troll2",
-      ]
-    },
   ]
 }
