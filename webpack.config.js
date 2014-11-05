@@ -37,6 +37,15 @@ if (isProd) {
 }
 
 var modules = require("./modules.json5");
+if(isDev) {
+  modules.modules.push({
+    name: "template",
+    role: "template",
+    dependencies: [
+      "core",
+    ]
+  });
+}
 moduleManager.loadModules(modules.modules);
 var loadedModules = moduleManager.getLoadedModulePairings();
 

@@ -29,8 +29,8 @@ logger.info("Loading modules...");
 var modules = require("./modules.json5");
 if(utils.__DEV__) {
   modules.modules.push({
-    name: "base",
-    role: "base",
+    name: "template",
+    role: "template",
     dependencies: [
       "core",
     ]
