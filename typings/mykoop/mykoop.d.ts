@@ -99,8 +99,8 @@ declare module mykoop {
     addRoute(
       params: RouteParams,
       callback: (
-        req: express.Request,
-        res: express.Response,
+        req: Express.Request,
+        res: Express.Response,
         next: Function
       ) => void
     );
