@@ -36,7 +36,10 @@ function requestFactory(params: any) {
     }
     var validationErrors = validate(args.data);
     if(validationErrors) {
-      return callback(new Error(validationErrors));
+      return callback({
+        context: "validation",
+        validation: validationErrors
+      });
     }
     args.data = args.data || {};
 

@@ -22,29 +22,5 @@
         "database",
       ]
     },
-    {
-      name: "event",
-      role: "event",
-      dependencies: [
-        "database",
-      ]
-    },
-    {
-      name: "member",
-      role: "member",
-      dependencies: [
-        "database",
-        "user"
-      ]
-    },
-    {
-      name: "transaction",
-      role: "transaction",
-      dependencies: [
-        "database",
-        "inventory",
-        "user"
-      ]
-    },
   ]
 }

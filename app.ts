@@ -70,6 +70,25 @@ app.use(function (req, res, next) {
   next();
 });
 
+function errorResponse(err, status: number = 500) {
+  this.status(status);
+  if(!err) {
+    return this.end();
+  }
+  if(err instanceof utils.errors) {
+    return this.send(err.serialize());
+  }
+  if(_.isFunction(err.toString)) {
+    return this.send(err.toString());
+  }
+  this.send(err);
+}
+
+app.use(function (req, res, next) {
+  res.error = errorResponse;
+  next();
+});
+
 // Initialise module and add backend routes
 moduleManager.initializeLoadedModules();
 
