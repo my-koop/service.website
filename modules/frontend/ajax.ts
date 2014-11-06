@@ -25,10 +25,10 @@ export function request(params: AjaxParams, callback: AjaxCallback) {
     };
   function wrapSuperAgentCallback(err, res: superagent.Response) {
     if(err) {
-      return callback(err);
+      return callback(err, null, res);
     }
     if(res.error) {
-      return callback(res.body || new Error(res.text));
+      return callback(res.body || new Error(res.text), null, res);
     }
     callback(null, res.body, res);
   }

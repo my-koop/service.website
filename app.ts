@@ -64,13 +64,7 @@ if (utils.__DEV__) {
   app.use(express.static(path.join(__dirname, "public")));
 }
 
-app.use(function (req, res, next) {
-  // merge all the different data from the request
-  res.locals.data = _.merge(req.params, req.body, req.query);
-  next();
-});
-
-function errorResponse(err, status: number = 500) {
+function errorResponse(err, status = 500) {
   this.status(status);
   if(!err) {
     return this.end();

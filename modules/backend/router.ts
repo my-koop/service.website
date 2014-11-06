@@ -1,5 +1,6 @@
 import express = require("express");
 import utils = require("mykoop-utils");
+var ValidationError = utils.errors.ValidationError;
 import _ = require("lodash");
 var logger = utils.getLogger(module);
 
@@ -29,11 +30,10 @@ export class Router extends utils.BaseModule implements mykoop.Router {
         res: express.Response,
         next: Function
       ) {
-        var errors = params.validation(res.locals.data);
+        var errors = params.validation(_.merge(req.params, req.body, req.query));
         if(errors) {
           logger.info(errors, {});
-          res.status(400);
-          res.send(new Error(<any>errors));
+          res.error(new ValidationError(null, errors, "Validation Errors"), 400);
           return;
         }
         next();

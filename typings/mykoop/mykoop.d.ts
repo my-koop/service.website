@@ -7,7 +7,7 @@ declare module Express {
   export interface Router{}
   export interface Request{}
   export interface Response{
-    error(err, status: number);
+    error(err, status?: number);
   }
 }
 
