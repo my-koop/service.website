@@ -33,6 +33,7 @@
     "mykoop-transaction": "git://github.com/my-koop/module.transaction#beta",
     "mykoop-user": "my-koop/module.user#beta",
     "mykoop-utils": "git://github.com/my-koop/module.utils#beta",
+    "react-spinner": "^0.2.0",
     "react-typeahead": "git://github.com/cellule/react-typeahead",
     "serve-favicon": "^2.1.3",
     "superagent": "^0.18.2"
