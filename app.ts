@@ -52,7 +52,8 @@ app.use(methodOverride());
 app.use(session({
   resave: true,
   saveUninitialized: true,
-  secret: "uwotm8"
+  //FIXME: Get this out of GitHub. / Make this configurable.
+  secret: "8bb6b8987c0e3244e30690cb9baf4d0a7085491f"
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
