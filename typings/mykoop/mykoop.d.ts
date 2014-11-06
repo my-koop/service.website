@@ -6,8 +6,11 @@
 declare module Express {
   export interface Router{}
   export interface Request{}
-  export interface Response{
+  export interface Response{}
     error(err, status?: number);
+  }
+  export interface Session{
+    user?: any;
   }
 }
 
