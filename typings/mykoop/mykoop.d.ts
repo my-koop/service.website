@@ -9,6 +9,9 @@ declare module Express {
   export interface Response{
     error(err, status?: number);
   }
+  export interface Session{
+    user?: any;
+  }
 }
 
 interface Error {

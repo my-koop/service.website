@@ -11,6 +11,9 @@ require("dynamic-metadata");
 // Require actions.
 require("actions");
 
+// Require local session.
+require("session");
+
 // Polyfill for ES6's Object.assign()
 // taken from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
 if (!Object.assign) {
