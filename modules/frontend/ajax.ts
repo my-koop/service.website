@@ -25,15 +25,14 @@ export function request(params: AjaxParams, callback: AjaxCallback) {
     };
   function wrapSuperAgentCallback(err, res: superagent.Response) {
     if(err) {
-      return callback(new Error(err));
+      return callback(err, null, res);
     }
     if(res.error) {
-      return callback(new Error(res.text));
+      return callback(res.body || new Error(res.text), null, res);
     }
     callback(null, res.body, res);
   }
-  //TODO: Do we want to wrap the response a little? Consider 404 an error,
-  // only send the reponse body, etc.
+
   agent(method, params.endpoint)
     .query(data.query)
     .send(data.send)
