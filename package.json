@@ -19,6 +19,7 @@
     "express-session": "^1.8.1",
     "favicon": "0.0.2",
     "json5": "^0.2.0",
+    "lodash": "^2.4.1",
     "method-override": "^2.2.0",
     "morgan": "^1.3.0",
     "multer": "^0.1.4",
@@ -32,8 +33,8 @@
     "mykoop-transaction": "git://github.com/my-koop/module.transaction#beta",
     "mykoop-user": "my-koop/module.user#beta",
     "mykoop-utils": "git://github.com/my-koop/module.utils#beta",
+    "react-typeahead": "git://github.com/cellule/react-typeahead",
     "serve-favicon": "^2.1.3",
-    "lodash": "^2.4.1",
     "superagent": "^0.18.2"
   },
   "devDependencies": {
