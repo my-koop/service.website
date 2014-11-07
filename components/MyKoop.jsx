@@ -11,7 +11,7 @@ var routeData = require("dynamic-metadata").routes;
 
 var MKApp = require("mykoop-core/components/wrappers/AppWrapper");
 
-
+var iRoute = 0;
 function addDynamicRoute(routeInfo) {
   var children = null;
   if (routeInfo.hasOwnProperty("children")) {
@@ -19,7 +19,7 @@ function addDynamicRoute(routeInfo) {
     _.forEach(routeInfo.children, function (child) {
       if (child.hasOwnProperty("default")) {
         children.push(
-          <DefaultRoute key={child.path} handler={child.handler()} />
+          <DefaultRoute key={iRoute++} handler={child.handler()} />
         );
       } else {
         children.push(addDynamicRoute(child));
@@ -33,7 +33,7 @@ function addDynamicRoute(routeInfo) {
 
   return (
     <Route
-      key={routeInfo.path}
+      key={iRoute++}
       name={routeInfo.name}
       path={routeInfo.path}
       handler={routeInfo.handler()}
