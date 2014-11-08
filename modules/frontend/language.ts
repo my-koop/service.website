@@ -30,7 +30,7 @@ export function formatMoney(amount: number): string {
   return amount.toFixed(2) + " $";
 }
 
-i18n.init({
+var i18nOptions: any = {
   getAsync: false,
   lng: defaultLanguage,
   fallbackLng: "en",
@@ -40,12 +40,23 @@ i18n.init({
   ns: "general",
   nsseparator: "::",
   resStore: translations,
-  // FIXME: Remove in prod
-  sendMissing: true,
-  missingKeyHandler: function() {
-    console.warn(arguments);
+};
+
+if(process.__DEV__) {
+  var missingKeys = {};
+  i18nOptions.sendMissing = true;
+  i18nOptions.missingKeyHandler = function(lng, ns, key, all) {
+    if(!missingKeys[all]) {
+      console.warn(
+        "Missing localized key: lng:%s, namespace:%s, key:%s. args:",
+        lng, ns, key, arguments
+      );
+      missingKeys[all] = arguments;
+    }
   }
-});
+}
+
+i18n.init(i18nOptions);
 
 export var __ = i18n.t;
 

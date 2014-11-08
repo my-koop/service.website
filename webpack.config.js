@@ -15,8 +15,8 @@ var isProd = utils.__PROD__;
 
 var pluginList = [
   new webpack.DefinePlugin({
-    __DEV__: isDev,
-    __PROD__: isProd,
+    "process.__DEV__": isDev,
+    "process.__PROD__": isProd,
     "process.browser": true
   }),
 

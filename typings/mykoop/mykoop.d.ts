@@ -3,6 +3,14 @@
 // Definitions by: Michael Ferris <https://github.com/Cellule/>
 // Definitions: https://github.com/my-koop/type.definitions
 
+declare module NodeJS {
+  export interface Process {
+    __DEV__: boolean;
+    __PROD__: boolean;
+    browser: boolean;
+  }
+}
+
 declare module Express {
   export interface Router{}
   export interface Request{}
