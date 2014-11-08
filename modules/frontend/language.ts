@@ -27,7 +27,7 @@ export function formatDate(dateToFormat: Date): string {
 //FIXME: Temporary placeholder. See #199.
 export function formatMoney(amount: number): string {
   //FIXME: Extremely basic formatting, we'll be using accounting.js instead.
-  return amount + " $";
+  return amount.toFixed(2) + " $";
 }
 
 i18n.init({
@@ -39,7 +39,12 @@ i18n.init({
   useLocalStorage: false,
   ns: "general",
   nsseparator: "::",
-  resStore: translations
+  resStore: translations,
+  // FIXME: Remove in prod
+  sendMissing: true,
+  missingKeyHandler: function() {
+    console.warn(arguments);
+  }
 });
 
 export var __ = i18n.t;
