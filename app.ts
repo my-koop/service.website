@@ -12,6 +12,12 @@ import moduleManager = require("./modules/backend/moduleManager");
 import utils = require("mykoop-utils");
 var logger = utils.getLogger(module);
 
+// Define global variables to ensure coherence between backend and frontend
+process.__PROD__ = utils.__PROD__;
+__PROD__ = utils.__PROD__;
+process.__DEV__ = utils.__DEV__;
+__DEV__ = utils.__DEV__;
+
 //hijack require to parse json5
 require("json5/lib/require");
 

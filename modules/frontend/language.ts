@@ -42,7 +42,7 @@ var i18nOptions: any = {
   resStore: translations,
 };
 
-if(process.__DEV__) {
+if(__DEV__) {
   var missingKeys = {};
   i18nOptions.sendMissing = true;
   i18nOptions.missingKeyHandler = function(lng, ns, key, all) {

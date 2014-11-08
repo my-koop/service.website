@@ -3,6 +3,9 @@
 // Definitions by: Michael Ferris <https://github.com/Cellule/>
 // Definitions: https://github.com/my-koop/type.definitions
 
+declare var __DEV__: boolean;
+declare var __PROD__: boolean;
+
 declare module NodeJS {
   export interface Process {
     __DEV__: boolean;
