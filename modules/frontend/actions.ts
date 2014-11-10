@@ -2,6 +2,7 @@
 import _ = require("lodash");
 import ajax = require("./ajax");
 var endpoints = require("dynamic-metadata").endpoints;
+var globalSpinner = require("mykoop-core/components/Spinner");
 
 function requestFactory(params: any) {
   var requestPath = params.path || "/";
@@ -83,6 +84,14 @@ function requestFactory(params: any) {
       return;
     }
 
+    if(!args.silent) {
+      globalSpinner.showGlobalSpinner();
+      var finalCallback = callback;
+      callback = function() {
+        globalSpinner.hideGlobalSpinner();
+        finalCallback.apply(ajax, arguments);
+      }
+    }
     ajax.request({
       endpoint: "/json" + requestPath,
       method: method,

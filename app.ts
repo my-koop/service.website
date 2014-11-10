@@ -10,6 +10,7 @@ import errorHandler = require("errorhandler");
 import _ = require("lodash");
 import moduleManager = require("./modules/backend/moduleManager");
 import utils = require("mykoop-utils");
+import frontendCompilation = require("./modules/frontend/index");
 var logger = utils.getLogger(module);
 
 // Define global variables to ensure coherence between backend and frontend
