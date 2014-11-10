@@ -71,7 +71,19 @@ if (utils.__DEV__) {
   app.use(express.static(path.join(__dirname, "public")));
 }
 
-function errorResponse(err, status = 500) {
+
+var loggingError: any = [
+  /*0*/_.noop,
+  /*1*/_.noop,
+  /*2*/_.noop,
+  /*3*/_.noop,
+  /*4*/_.bind(logger.verbose, logger),
+  /*5*/_.bind(logger.error, logger)
+]
+function errorResponse(err, status) {
+  status = status || err.statusCode || 500;
+  loggingError[status/100](err);
+
   this.status(status);
   if(!err) {
     return this.end();
