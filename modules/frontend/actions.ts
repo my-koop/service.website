@@ -30,7 +30,7 @@ function requestFactory(params: any) {
     splitPath = params.path.split("/").splice(1);
   }
 
-  return function (args, callback, noShowSpinner) {
+  return function (args, callback) {
     if (_.isFunction(args)) {
       callback = args;
       args = {};
@@ -84,7 +84,7 @@ function requestFactory(params: any) {
       return;
     }
 
-    if(!noShowSpinner) {
+    if(!args.silent) {
       globalSpinner.showGlobalSpinner();
       var finalCallback = callback;
       callback = function() {
