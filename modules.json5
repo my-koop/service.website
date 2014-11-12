@@ -27,6 +27,7 @@
       role: "event",
       dependencies: [
         "database",
+        "user"
       ]
     },
     {

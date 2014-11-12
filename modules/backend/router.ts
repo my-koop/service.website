@@ -11,17 +11,13 @@ export class Router extends utils.BaseModule implements mykoop.Router {
   // Allows us to assign a controller to an endpoint.
   addRoute(
     params: mykoop.RouteParams,
-    callback: (
-      req: express.Request,
-      res: express.Response,
-      next: Function
-    ) => void
+    callback: express.Handler[]
   ){
     var endpoint = params.endPoint;
     var path = endpoint.path;
     var method = endpoint.method || "get";
     var type = endpoint.type;
-    var middlewares: any[] = [callback];
+    var middlewares: any[] = _.isFunction(callback) ? [callback] : callback;
 
     // Attach automatic validation on request
     if(_.isFunction(params.validation)) {

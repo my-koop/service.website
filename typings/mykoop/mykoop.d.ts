@@ -23,6 +23,7 @@ declare module Express {
   export interface Session{
     user?: any;
   }
+  export interface Handler{}
 }
 
 interface Error {
@@ -114,11 +115,7 @@ declare module mykoop {
   export interface Router extends IModule {
     addRoute(
       params: RouteParams,
-      callback: (
-        req: Express.Request,
-        res: Express.Response,
-        next: Function
-      ) => void
+      callback: Express.Handler[]
     );
   }
 }
