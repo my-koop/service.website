@@ -85,10 +85,23 @@ function requestFactory(params: any) {
     }
 
     if(!args.silent) {
-      globalSpinner.showGlobalSpinner();
+      var requestReceived = false, spinnerShown = false;
+      setTimeout(
+        function() {
+          if(!requestReceived) {
+            spinnerShown = true;
+            globalSpinner.showGlobalSpinner();
+          }
+        }
+        , 500
+      );
+
       var finalCallback = callback;
       callback = function() {
-        globalSpinner.hideGlobalSpinner();
+        requestReceived = true;
+        if(spinnerShown) {
+          globalSpinner.hideGlobalSpinner();
+        }
         finalCallback.apply(ajax, arguments);
       }
     }
