@@ -46,6 +46,9 @@
     "favicon": "0.0.2",
     "file-loader": "^0.7.2",
     "font-awesome": "^4.2.0",
+    "i18next-client": "^1.7.4",
+    "js-beautify": "^1.5.4",
+    "json5-loader": "^0.5.0",
     "jsx-loader": "^0.11.0",
     "less": "^1.7.5",
     "less-loader": "^0.7.7",
@@ -56,8 +59,6 @@
     "ts-loader": "git://github.com/robarnold/ts-loader.git",
     "url-loader": "^0.5.5",
     "webpack": "^1.4.4",
-    "webpack-dev-server": "^1.6.5",
-    "js-beautify": "^1.5.4",
-    "i18next-client": "^1.7.4"
+    "webpack-dev-server": "^1.6.5"
   }
 }

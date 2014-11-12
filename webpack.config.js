@@ -6,9 +6,9 @@ var webpack = require("webpack");
 var utils = require("mykoop-utils");
 var moduleManager = require("./modules/backend/moduleManager");
 var logger = require("mykoop-logger")(module);
-
 //hijack require to parse json5
 require('json5/lib/require');
+var configs = require("./modules/common/mykoop-config.json5");
 
 var isDev = utils.__DEV__;
 var isProd = utils.__PROD__;
@@ -226,7 +226,7 @@ module.exports = {
     path: path.join(__dirname, "public/"),
     filename: "[name].bundle.js",
     chunkFilename: "[id].chunk.js",
-    publicPath: "/"
+    publicPath: configs.assetsUrl + "/"
   },
   module: {
     loaders: loaderList,
