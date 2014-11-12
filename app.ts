@@ -83,7 +83,7 @@ var loggingError: any = [
 ]
 function errorResponse(err, status) {
   status = status || err.statusCode || 500;
-  loggingError[status/100](err);
+  loggingError[Math.floor(status/100)](err);
 
   this.status(status);
   if(!err) {
