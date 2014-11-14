@@ -36,5 +36,6 @@ export function request(params: AjaxParams, callback: AjaxCallback) {
   agent(method, params.endpoint)
     .query(data.query)
     .send(data.send)
+    .timeout(10000)
     .end(wrapSuperAgentCallback);
 }
