@@ -56,7 +56,5 @@ function indexApp(app: express.Express) {
 
   //FIXME: (Legacy) Backend routes.
   app.get(routeInfo.devNavBar.fullPath, ctrl.navBar);
-  app.get(routeInfo.itemsData.fullPath, ctrl.itemsData);
-  app.get(routeInfo.itemsBelowThreshold.fullPath, ctrl.itemsThreshold);
 }
 export = indexApp;
