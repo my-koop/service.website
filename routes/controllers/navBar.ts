@@ -41,7 +41,7 @@ moduleManager.getMetaData(function (err, metaDataResult) {
         var queryOptions = _.keys(obj.query);
         logger.debug("route with params and/or queries %j", obj);
 
-        function getCombinaisons(src, i) {
+        function getCombinations(src, i) {
           // Default case
           if(i >= src.length) {
             return [[]];
@@ -56,7 +56,7 @@ moduleManager.getMetaData(function (err, metaDataResult) {
           //           ["c","f"],
           //           ["d","e"],
           //           ["d","f"]]
-          var next = getCombinaisons(src, i + 1);
+          var next = getCombinations(src, i + 1);
           _.each(arr, function(elem) {
             _.each(next, function(n) {
               // order is important for zipping in the end
@@ -67,7 +67,7 @@ moduleManager.getMetaData(function (err, metaDataResult) {
           return result;
         }
         // get combinaisons for all params and queries
-        var result = getCombinaisons(_.toArray(obj.params).concat(_.toArray(obj.query)), 0);
+        var result = getCombinations(_.toArray(obj.params).concat(_.toArray(obj.query)), 0);
         var iParam = paramsOptions.length;
         logger.debug("All possible routes", result);
         // from the result, create all possible routes
