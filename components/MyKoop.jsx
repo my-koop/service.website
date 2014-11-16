@@ -9,7 +9,9 @@ var Routes = ReactRouter.Routes;
 
 var routeData = require("dynamic-metadata").routes;
 
-var MKApp = require("mykoop-core/components/wrappers/AppWrapper");
+var MKApp                = require("mykoop-core/components/wrappers/AppWrapper");
+var MKPlaceHolder        = require("mykoop-core/components/PlaceHolder");
+var MKPlaceHolderWrapper = require("mykoop-core/components/wrappers/PlaceHolderWrapper");
 
 var iRoute = 0;
 function addDynamicRoute(routeInfo) {
@@ -27,8 +29,11 @@ function addDynamicRoute(routeInfo) {
     });
   }
 
-  if (!routeInfo.hasOwnProperty("handler")) {
-    return children;
+  var handler = null;
+  if (routeInfo.hasOwnProperty("handler")) {
+    handler = routeInfo.handler();
+  } else {
+    handler = children ? MKPlaceHolderWrapper : MKPlaceHolder;
   }
 
   return (
@@ -36,7 +41,7 @@ function addDynamicRoute(routeInfo) {
       key={iRoute++}
       name={routeInfo.name}
       path={routeInfo.path}
-      handler={routeInfo.handler()}
+      handler={handler}
     >
       {children}
     </Route>
