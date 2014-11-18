@@ -195,7 +195,7 @@ var loaderList = [
   { test: /\.svg($|\?)/,  loader: "file?prefix=fonts/" },
 
   // Images.
-  { test: /\.(png|jpg)$/, loader: "url-loader?limit=8192"},
+  { test: /\.(png|jpg|gif)$/, loader: "url-loader?limit=8192"},
 
   // JSON files (Mostly used for languages).
   { test: /\.json$/,   loader: "json" },

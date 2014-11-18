@@ -39,6 +39,7 @@ function requestFactory(params: any) {
     if(validationErrors) {
       return callback({
         context: "validation",
+        path: requestPath,
         validation: validationErrors
       });
     }
