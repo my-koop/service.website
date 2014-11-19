@@ -1,6 +1,6 @@
 {
   assetsUrl: "//mykoop.s3-website-us-east-1.amazonaws.com",
-  mykoopModulesList: "modules.json5",
+  //mykoopModulesList: "modules.json5",
   mykoopLoadModuleFromNode: true,
   mykoopModuleExcludeList: ["template"]
 }

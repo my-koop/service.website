@@ -57,7 +57,7 @@ function getModulesDefinitions(
     try {
       moduleDefinitions = require(options.path).modules;
     } catch(e) {
-      logger.error("Error while trying to read [%s]", options.path);
+      logger.error("Error while trying to read [%s]", options.path, e);
     }
   }
 
