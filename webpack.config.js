@@ -9,6 +9,7 @@ var logger = require("mykoop-logger")(module);
 //hijack require to parse json5
 require('json5/lib/require');
 var configs = require("./modules/common/mykoop-config.json5");
+var getModulesDefinitions = require("./modules/backend/getModulesDefinitions");
 
 var isDev = utils.__DEV__;
 var isProd = utils.__PROD__;
@@ -38,17 +39,12 @@ if (isProd) {
   }));
 }
 
-var modules = require("./modules.json5");
-if(isDev) {
-  modules.modules.push({
-    name: "template",
-    role: "template",
-    dependencies: [
-      "core",
-    ]
-  });
-}
-moduleManager.loadModules(modules.modules);
+var modulesDefinitions = getModulesDefinitions({
+  excludes: configs.mykoopModuleExcludeList,
+  searchNodeModules: configs.mykoopLoadModuleFromNode,
+  path: path.resolve(configs.mykoopModulesList || "")
+});
+moduleManager.loadModules(modulesDefinitions);
 var loadedModules = moduleManager.getLoadedModulePairings();
 
 /* Generate dynamic LESS imports for the global scope. */

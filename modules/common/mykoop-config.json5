@@ -1,3 +1,6 @@
 {
-  assetsUrl: ""
+  assetsUrl: "",
+  //mykoopModulesList: "modules.json5",
+  mykoopLoadModuleFromNode: true,
+  mykoopModuleExcludeList: []
 }

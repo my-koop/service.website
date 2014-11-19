@@ -11,6 +11,7 @@ import _ = require("lodash");
 import moduleManager = require("./modules/backend/moduleManager");
 import utils = require("mykoop-utils");
 import frontendCompilation = require("./modules/frontend/index");
+import getModulesDefinitions = require("./modules/backend/getModulesDefinitions");
 var logger = utils.getLogger(module);
 
 // Define global variables to ensure coherence between backend and frontend
@@ -21,6 +22,7 @@ __DEV__ = utils.__DEV__;
 
 //hijack require to parse json5
 require("json5/lib/require");
+var configs = require("./modules/common/mykoop-config.json5");
 
 var favicon = require("serve-favicon");
 var multer = require("multer");
@@ -33,17 +35,12 @@ moduleManager.setCore("router", new router.Router(app));
 
 // Loading modules
 logger.info("Loading modules...");
-var modules = require("./modules.json5");
-if(utils.__DEV__) {
-  modules.modules.push({
-    name: "template",
-    role: "template",
-    dependencies: [
-      "core",
-    ]
-  });
-}
-moduleManager.loadModules(modules.modules);
+var modulesDefinitions = getModulesDefinitions({
+  excludes: configs.mykoopModuleExcludeList,
+  searchNodeModules: configs.mykoopLoadModuleFromNode,
+  path: path.resolve(configs.mykoopModulesList || "")
+});
+moduleManager.loadModules(modulesDefinitions);
 
 app.disable("etag");
 // all environments
