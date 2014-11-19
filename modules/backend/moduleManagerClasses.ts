@@ -287,7 +287,28 @@ export class ModuleManager implements mykoop.ModuleManager {
 
     var newMetaData = <mykoop.IModuleMetaData>_.merge(
       this.metaData,
-      metaData
+      metaData,
+      //FIXME: Provided here for now, we would like to allow modules to provide
+      // a custom merge strategy for particular properties.
+      // See https://github.com/my-koop/service.website/issues/284
+      function customMerge(lhs, rhs) {
+        // We want numbers to win over booleans.
+        if (typeof lhs === "boolean" && typeof rhs === "number") {
+          return rhs;
+        }
+
+        if (typeof lhs === "number") {
+          // We want numbers to win over booleans.
+          if (typeof rhs === "boolean") {
+            return lhs;
+          }
+
+          // We want bigger numbers to win.
+          if (typeof rhs === "number") {
+            return rhs > lhs ? rhs : lhs;
+          }
+        }
+      }
     );
 
     if (utils.__DEV__) {
