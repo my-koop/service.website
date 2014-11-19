@@ -10,6 +10,7 @@ function requestFactory(params: any) {
   var splitPath;
   var validation = params.validation;
   var validate: (obj: any) => any = _.noop;
+  var paramsIdentifiers = [];
 
   if (validation) {
     if (!_.isFunction(validation) || !_.isFunction(validate = validation())) {
@@ -28,6 +29,11 @@ function requestFactory(params: any) {
 
   if (params.path && ~params.path.indexOf(":")) {
     splitPath = params.path.split("/").splice(1);
+    paramsIdentifiers = _.filter(splitPath, function(pathPart: string) {
+      return pathPart.charAt(0) === ":";
+    }).map(function(pathPart) {
+      return pathPart.substr(1);
+    });
   }
 
   return function (args, callback) {
@@ -109,7 +115,7 @@ function requestFactory(params: any) {
     ajax.request({
       endpoint: "/json" + requestPath,
       method: method,
-      data: args.data
+      data: _.omit(args.data, paramsIdentifiers)
     }, callback);
   }
 }
