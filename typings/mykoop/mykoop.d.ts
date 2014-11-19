@@ -44,14 +44,8 @@ declare module mykoop {
   }
 
   export class ModuleManager {
-    // Adds a core module to the manager
-    setCore(moduleName: string, module: IModule): void;
     // Retrieves the instance of a module, can be null if unavailable
     get(moduleName: string): IModule;
-    // Load all modules from the definition
-    loadModules(moduleDefinitions_: ModuleDefinition[]): void;
-    // Instanciate all modules from the definition
-    initializeLoadedModules(): void;
     // Get the meta data computed from loaded modules.
     getMetaData(callback: ModuleMetaDataCallback): void;
   }

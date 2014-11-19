@@ -21,7 +21,7 @@ export function setLanguage(language: string): void {
 //FIXME: Temporary placeholder. See #198.
 export function formatDate(dateToFormat: Date): string {
   //FIXME: Extremely basic formatting, we'll be using moment.js instead.
-  return dateToFormat.toLocaleDateString();
+  return dateToFormat ? dateToFormat.toLocaleDateString() : "";
 }
 
 //FIXME: Temporary placeholder. See #199.
