@@ -11,6 +11,7 @@ import _ = require("lodash");
 import moduleManager = require("./modules/backend/moduleManager");
 import utils = require("mykoop-utils");
 import frontendCompilation = require("./modules/frontend/index");
+import getModulesDefinitions = require("./modules/backend/getModulesDefinitions");
 var logger = utils.getLogger(module);
 
 // Define global variables to ensure coherence between backend and frontend
@@ -21,6 +22,26 @@ __DEV__ = utils.__DEV__;
 
 //hijack require to parse json5
 require("json5/lib/require");
+
+var program = require("commander");
+program
+  .option(
+    "-n, --node_module",
+    "Loads the plugins from the node module that have a key \"mykoop\" in their package.json"
+  )
+  .option(
+    "-m, --modules [path]",
+    "Specify the path to a config file containing the module list. Invalid with --node_module\n\
+      Default = \"modules.json5\"\n\
+      { modules: { name: string; role: string; dependencies?: stringp[] }[] }"
+  )
+  .option("-e, --exclude <plugin1;...>",
+    "Exclude plugins by their name (semicolon seperated).\n\
+     ie: \"-e user;inventory\" will exclude plugins mykoop-user & mykoop-inventory"
+  )
+  .parse(process.argv);
+var moduleExcludes = program.exclude ? program.exclude.split(";") : [];
+var modulePath = path.resolve(program.modules || "modules.json5");
 
 var favicon = require("serve-favicon");
 var multer = require("multer");
@@ -33,17 +54,12 @@ moduleManager.setCore("router", new router.Router(app));
 
 // Loading modules
 logger.info("Loading modules...");
-var modules = require("./modules.json5");
-if(utils.__DEV__) {
-  modules.modules.push({
-    name: "template",
-    role: "template",
-    dependencies: [
-      "core",
-    ]
-  });
-}
-moduleManager.loadModules(modules.modules);
+var modulesDefinitions = getModulesDefinitions({
+  excludes: moduleExcludes,
+  searchNodeModules: program.node_module,
+  path: modulePath
+});
+moduleManager.loadModules(modulesDefinitions);
 
 app.disable("etag");
 // all environments
