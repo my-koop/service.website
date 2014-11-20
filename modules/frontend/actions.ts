@@ -1,8 +1,10 @@
 ///<reference path="../../typings/tsd.d.ts" />
 import _ = require("lodash");
 import ajax = require("./ajax");
+var traverse = require("traverse");
 var endpoints = require("dynamic-metadata").endpoints;
 var globalSpinner = require("mykoop-core/components/Spinner");
+var errorVarRegExp = /__(.+)__/;
 
 function requestFactory(params: any) {
   var requestPath = params.path || "/";
@@ -41,9 +43,34 @@ function requestFactory(params: any) {
       callback = args;
       args = {};
     }
+
+    function processResponse(err, body?, res?) {
+      if(err && args.i18nErrors) {
+        var keys: any = _.pick(err, args.i18nErrors.keys);
+        var i18n = traverse(keys).reduce(function(i18n, content) {
+          if(this.isLeaf) {
+            var _var: any = errorVarRegExp.exec(content);
+            _var = _var && _var[1];
+            var i18nKey = this.path
+              .concat(content.replace(errorVarRegExp, ""))
+              .join(".")
+              .replace(/\.\d+\./g, ".")
+            i18n.push({
+              key: i18nKey,
+              var: _var
+            });
+          }
+          return i18n;
+        }, []);
+        console.log(i18n);
+        (<any>err).i18n = i18n;
+      }
+      callback(err, body, res);
+    }
+
     var validationErrors = validate(args.data);
     if(validationErrors) {
-      return callback({
+      return processResponse({
         context: "validation",
         path: requestPath,
         validation: validationErrors
@@ -116,7 +143,7 @@ function requestFactory(params: any) {
       endpoint: "/json" + requestPath,
       method: method,
       data: _.omit(args.data, paramsIdentifiers)
-    }, callback);
+    }, processResponse);
   }
 }
 
