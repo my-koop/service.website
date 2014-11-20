@@ -46,24 +46,29 @@ function requestFactory(params: any) {
 
     function processResponse(err, body?, res?) {
       if(err && args.i18nErrors) {
+        var prefix = args.i18nErrors.prefix || "";
         var keys: any = _.pick(err, args.i18nErrors.keys);
-        var i18n = traverse(keys).reduce(function(i18n, content) {
-          if(this.isLeaf) {
-            var _var: any = errorVarRegExp.exec(content);
-            _var = _var && _var[1];
-            var i18nKey = this.path
-              .concat(content.replace(errorVarRegExp, ""))
-              .join(".")
-              .replace(/\.\d+\./g, ".")
-            i18n.push({
-              key: i18nKey,
-              var: _var
-            });
-          }
-          return i18n;
-        }, []);
-        console.log(i18n);
-        (<any>err).i18n = i18n;
+        var i18n = null;
+        if(!_.isEmpty(keys)) {
+          var i18n = traverse(keys).reduce(function(i18n, content) {
+            if(this.isLeaf) {
+              var _var: any = errorVarRegExp.exec(content);
+              _var = _var && _var[1];
+              var i18nKey = prefix + this.path
+                .concat(content.replace(errorVarRegExp, ""))
+                .join(".")
+                .replace(/\.\d+\./g, ".");
+              i18n.push({
+                key: i18nKey,
+                var: _var
+              });
+            }
+            return i18n;
+          }, []);
+        }
+        (<any>err).i18n = !_.isEmpty(i18n) ?
+          i18n
+        : [{key: "errors::error", context: err.context}];
       }
       callback(err, body, res);
     }
