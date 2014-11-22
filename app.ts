@@ -133,7 +133,7 @@ app.use(function (req, res, next) {
       return true;
     }
 
-    if (_.isEqual(permissions, {})) {
+    if (_.isEmpty(permissions)) {
       return true;
     }
 
