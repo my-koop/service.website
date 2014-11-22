@@ -28,9 +28,6 @@ var configs = require("./modules/common/mykoop-config.json5");
 var sessionStore;
 try  {
   var connectionInfo = require("dbConfig.json5");
-  if (!connectionInfo.connectionLimit) {
-    connectionInfo.connectionLimit = 1;
-  }
 
   sessionStore = new SessionStore({
     host: connectionInfo.host,
