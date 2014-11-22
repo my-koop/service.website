@@ -12,6 +12,7 @@ import moduleManager = require("./modules/backend/moduleManager");
 import utils = require("mykoop-utils");
 import frontendCompilation = require("./modules/frontend/index");
 import getModulesDefinitions = require("./modules/backend/getModulesDefinitions");
+var SessionStore = require("express-mysql-session");
 var logger = utils.getLogger(module);
 
 // Define global variables to ensure coherence between backend and frontend
@@ -23,6 +24,28 @@ __DEV__ = utils.__DEV__;
 //hijack require to parse json5
 require("json5/lib/require");
 var configs = require("./modules/common/mykoop-config.json5");
+
+var sessionStore;
+try  {
+  var connectionInfo = require("dbConfig.json5");
+  if (!connectionInfo.connectionLimit) {
+    connectionInfo.connectionLimit = 1;
+  }
+
+  sessionStore = new SessionStore({
+    host: connectionInfo.host,
+    port: connectionInfo.port,
+    user: connectionInfo.user,
+    password: connectionInfo.password,
+    database: connectionInfo.database,
+    useConnectionPooling: true
+  });
+} catch (e) {
+  logger.warn(
+    "Unable to find Database configuration [dbConfig.json5].\
+     Will use in-memory sessions."
+  , e);
+}
 
 var favicon = require("serve-favicon");
 var multer = require("multer");
@@ -57,7 +80,8 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   //FIXME: Get this out of GitHub. / Make this configurable.
-  secret: "8bb6b8987c0e3244e30690cb9baf4d0a7085491f"
+  secret: "8bb6b8987c0e3244e30690cb9baf4d0a7085491f",
+  store: sessionStore || undefined
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
