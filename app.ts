@@ -121,6 +121,24 @@ app.use(function (req, res, next) {
   next();
 });
 
+//FIXME: Allow the modules to attach helpers to res and req through the API so
+// the user module can do this without us knowing...
+var validatePermissions = require("mykoop-user/lib/common/validatePermissions");
+app.use(function (req, res, next) {
+  req.userHasPermissions = function(permissions) {
+    if (_.isEqual(permissions, {})) {
+      return true;
+    }
+
+    if (!req.session.user) {
+      return false;
+    }
+
+    return validatePermissions(req.session.user.perms, permissions);
+  };
+  next();
+});
+
 // Initialise module and add backend routes
 moduleManager.initializeLoadedModules();
 

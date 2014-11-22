@@ -16,7 +16,10 @@ declare module NodeJS {
 
 declare module Express {
   export interface Router{}
-  export interface Request{}
+  export interface Request{
+    param (name: string) : string;
+    userHasPermissions(permissions);
+  }
   export interface Response{
     error(err, status?: number);
   }
@@ -103,7 +106,15 @@ declare module mykoop {
       type?: string;
     };
     validation?: (obj: any) => ValidationResults;
-    //TODO: permissions?: {...};
+    customPermissionDenied?: (
+      req: Express.Request,
+      callback: (err?: Error) => void
+    ) => void;
+    customPermissionGranted?: (
+      req: Express.Request,
+      callback: (err?: Error) => void
+    ) => void;
+    permissions?: any;
   }
 
   export interface Router extends IModule {
