@@ -126,7 +126,10 @@ app.use(function (req, res, next) {
 var validatePermissions = require("mykoop-user/lib/common/validatePermissions");
 app.use(function (req, res, next) {
   req.userHasPermissions = function(permissions) {
-    if (_.isEqual(permissions, {})) {
+    if (!_.isPlainObject(permissions)) {
+      logger.warn(
+        "You need to call req.userHasPermissions with an object literal."
+      );
       return true;
     }
 
