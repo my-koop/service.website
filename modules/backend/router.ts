@@ -1,6 +1,6 @@
 import express = require("express");
 import utils = require("mykoop-utils");
-var ValidationError = utils.errors.ValidationError;
+var ValidationError = utils.errors.ApplicationError.ValidationError;
 import _ = require("lodash");
 var logger = utils.getLogger(module);
 
