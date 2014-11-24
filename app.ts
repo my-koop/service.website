@@ -133,6 +133,10 @@ app.use(function (req, res, next) {
       return true;
     }
 
+    if (_.isEqual(permissions, {})) {
+      return true;
+    }
+
     if (!req.session.user) {
       return false;
     }
