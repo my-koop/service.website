@@ -10,6 +10,11 @@ export function getLanguage(): string {
   return i18n.lng();
 }
 
+export function getAlternateLanguages(): string[] {
+  // For now, only support French and English.
+  return [getLanguage() === "en" ? "fr" : "en"];
+}
+
 export function setLanguage(language: string): void {
   var website = require("website");
   i18n.setLng(language, function() {
