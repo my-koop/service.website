@@ -23,6 +23,13 @@ var pluginList = [
     "process.browser": true
   }),
 
+  // Only keep English or French locales from moment.
+  //FIXME: Have this be done dynamically based on available languages.
+  new webpack.ContextReplacementPlugin(
+    /moment[\/\\]locale$/,
+    /fr|en/
+  ),
+
   // This might seem like a wide net, but we don't want anything that has to do
   // with jQuery, by default anyway.
   new webpack.IgnorePlugin(/jquery/)
