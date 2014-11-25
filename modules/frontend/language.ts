@@ -1,9 +1,9 @@
 ﻿///<reference path="../../typings/tsd.d.ts" />
 //FIXME: Get better i18next typings.
 import lodash = require("lodash");
+import moment = require("moment");
+import accounting = require("accounting");
 var i18n = require("i18next");
-var moment = require("moment");
-var accounting = require("accounting");
 var translations = require("dynamic-metadata").translations;
 
 var accountingDefaultSettings = _.cloneDeep(accounting.settings);
