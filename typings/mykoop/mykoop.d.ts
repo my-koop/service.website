@@ -17,7 +17,7 @@ declare module NodeJS {
 declare module Express {
   export interface Router{}
   export interface Request{
-    param (name: string) : string;
+    param (name: string, defaultValue?: any) : string;
     userHasPermissions(permissions);
   }
   export interface Response{
