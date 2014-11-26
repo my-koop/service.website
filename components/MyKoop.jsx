@@ -9,7 +9,9 @@ var Routes = ReactRouter.Routes;
 
 var routeData = require("dynamic-metadata").routes;
 
-var MKApp                = require("mykoop-core/components/wrappers/AppWrapper");
+var MKApp                = require(
+  "mykoop-core/components/wrappers/AppWrapper"
+);
 var MKPlaceHolder        = require("mykoop-core/components/PlaceHolder");
 var MKPlaceHolderWrapper = require("mykoop-core/components/wrappers/PlaceHolderWrapper");
 
@@ -42,6 +44,7 @@ function addDynamicRoute(routeInfo) {
       name={routeInfo.name}
       path={routeInfo.path}
       handler={handler}
+      permissions={routeInfo.permissions}
     >
       {children}
     </Route>
@@ -54,16 +57,6 @@ var dynamicRoutes = addDynamicRoute({children: routeData});
 dynamicRoutes.push([
 <Route name={RouteInfo.dashboard.name} path={RouteInfo.dashboard.fullPath} handler={MKDashboardWrapper}>
   <Route name={RouteInfo.options.name} path={RouteInfo.options.relativePath} handler={MKOptionsPage}/>
-  <Route name={RouteInfo.transaction.name} path={RouteInfo.transaction.relativePath} handler={MKTransactionList}/>
-  <Route name={RouteInfo.events.name} path={RouteInfo.events.relativePath} handler={MKParentPlaceHolder}>
-    <DefaultRoute displayName={RouteInfo.events.name} handler={MKEventsList}/>
-  </Route>
-  <Route name={RouteInfo.items.name} path={RouteInfo.items.relativePath} handler={MKParentPlaceHolder}>
-    <Route name={RouteInfo.itemsItemsBelowThreshold.name} path={RouteInfo.itemsItemsBelowThreshold.relativePath} handler={MKItemsBelowThreshold}/>
-  </Route>
-  <Route name={RouteInfo.mailing.name} path={RouteInfo.mailing.relativePath} handler={MKParentPlaceHolder}>
-    <Route name={RouteInfo.mailingSend.name} path={RouteInfo.mailingSend.relativePath} handler={MKMailingListSendPage}/>
-  </Route>
   <Route name={RouteInfo.members.name} path={RouteInfo.members.relativePath} handler={MKParentPlaceHolder}>
     <Route name={RouteInfo.membersPermissions.name} path={RouteInfo.membersPermissions.relativePath} handler={MKUserPrivilegesPage}/>
     <Route name={RouteInfo.volunteerAvailability.name} path={RouteInfo.volunteerAvailability.relativePath} handler={MKVolunteerAvailability}/>
