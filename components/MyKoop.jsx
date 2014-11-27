@@ -15,6 +15,31 @@ var MKApp                = require(
 var MKPlaceHolder        = require("mykoop-core/components/PlaceHolder");
 var MKPlaceHolderWrapper = require("mykoop-core/components/wrappers/PlaceHolderWrapper");
 
+// FIXME: Allow modules to hook here so website doesn't have to know about
+// the user module.
+var MKPermissionMixin = require("mykoop-user/components/PermissionMixin");
+var MKPermissionRedirectMixin = require(
+  "mykoop-user/components/PermissionRedirectMixin"
+);
+
+var AuthenticationWrapper = React.createClass({
+  mixins: [MKPermissionMixin, MKPermissionRedirectMixin],
+
+  render: function() {
+    var props = _.omit(this.props, ["subHandler", "ref"]);
+
+    if (!this.state.userMeetsPermissions) {
+      return null;
+    }
+
+    return (
+      <this.props.subHandler
+        {...props}
+      />
+    );
+  }
+});
+
 var iRoute = 0;
 function addDynamicRoute(routeInfo) {
   var children = null;
@@ -38,12 +63,19 @@ function addDynamicRoute(routeInfo) {
     handler = children ? MKPlaceHolderWrapper : MKPlaceHolder;
   }
 
+  var needsPermissionCheck = routeInfo.permissions &&
+                             !routeInfo.manualPermissions;
+
   return (
     <Route
       key={iRoute++}
       name={routeInfo.name}
       path={routeInfo.path}
-      handler={handler}
+      handler={needsPermissionCheck ?
+        AuthenticationWrapper :
+        handler
+      }
+      subHandler={needsPermissionCheck && handler}
       permissions={routeInfo.permissions}
     >
       {children}
