@@ -29,7 +29,7 @@
     "mykoop-event": "git://github.com/my-koop/module.event#rc",
     "mykoop-inventory": "git://github.com/my-koop/module.inventory#rc",
     "mykoop-logger": "git://github.com/my-koop/module.logger",
-    "mykoop-mailing-list": "git://github.com/my-koop/module.mailing-list",
+    "mykoop-mailing-list": "git://github.com/my-koop/module.mailing-list#rc",
     "mykoop-member": "git://github.com/my-koop/module.member#rc",
     "mykoop-transaction": "git://github.com/my-koop/module.transaction#rc",
     "mykoop-user": "git://github.com/my-koop/module.user#rc",
