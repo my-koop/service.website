@@ -24,6 +24,7 @@
     "morgan": "^1.3.0",
     "multer": "^0.1.4",
     "mykoop-core": "git://github.com/my-koop/module.core#rc",
+    "mykoop-communications": "git://github.com/my-koop/module.communications#rc",
     "mykoop-database": "git://github.com/my-koop/module.database#rc",
     "mykoop-event": "git://github.com/my-koop/module.event#rc",
     "mykoop-inventory": "git://github.com/my-koop/module.inventory#rc",
