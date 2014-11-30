@@ -226,6 +226,16 @@ export class ModuleManager implements mykoop.ModuleManager {
                 computedMetaData.origin += "/" + metaData.value;
               }
               return computedMetaData;
+
+            case "lib":
+              computedMetaData = {
+                origin: MODULE_NAME_PREFIX + moduleName + "/lib"
+              };
+              if (metaData.value) {
+                computedMetaData.origin += "/" + metaData.value;
+              }
+              return computedMetaData;
+
             case "validation":
               computedMetaData = {
                 origin: MODULE_NAME_PREFIX + moduleName + "/lib/validation"
@@ -234,6 +244,7 @@ export class ModuleManager implements mykoop.ModuleManager {
                 computedMetaData.property = metaData.value;
               }
               return computedMetaData;
+
             default:
               // Your princess is in another castle...
               managerLogger.warn(
