@@ -70,6 +70,10 @@ export function unformat(amount: string): number {
   return accounting.unformat(amount);
 }
 
+export function getCurrencySymbol() {
+  return accounting.settings.currency.symbol;
+}
+
 var i18nOptions: any = {
   getAsync: false,
   fallbackLng: "en",
