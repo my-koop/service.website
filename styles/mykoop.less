@@ -6,11 +6,21 @@
 
 .calendar {
   @import "~react-calendar-styles/bootstrap-theme";
+
   .rc-Week-number {
     visibility: hidden;
   }
-  .rc-Day:hover {
-    background-color: @gray-lighter;
+  .rc-Day {
+    cursor: default;
+
+    &:hover {
+      background-color: @gray-lighter;
+    }
+  }
+  &.calendar-pointer {
+    .rc-Day {
+      cursor: pointer;
+    }
   }
 }
 
