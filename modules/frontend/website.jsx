@@ -3,7 +3,7 @@ var moduleExports = {};
 module.exports = moduleExports;
 
 var React = require("react");
-var MyKoop = require("components/MyKoop");
+var MyKoop = require("../../components/MyKoop");
 
 function render() {
   React.renderComponent(<MyKoop />, document.body);

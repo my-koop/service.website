@@ -121,8 +121,7 @@ var aliases = _.reduce(loadedModules, function(aliases, moduleName, moduleRole) 
 }, {
   "bootstrap-styles": "bootstrap/less",
   "font-awesome-styles": "font-awesome/less",
-   //FIXME: One day, these components will be core only.
-  components: path.join(__dirname, "components"),
+  "react-calendar-styles": "react-calendar/less",
   "i18next": "i18next-client"
 });
 
