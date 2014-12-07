@@ -220,28 +220,28 @@ export class ModuleManager implements mykoop.ModuleManager {
           switch (metaData.resolve) {
             case "component":
               computedMetaData = {
-                origin: MODULE_NAME_PREFIX + moduleName + "/components"
+                __metadata__origin__: MODULE_NAME_PREFIX + moduleName + "/components"
               };
               if (metaData.value) {
-                computedMetaData.origin += "/" + metaData.value;
+                computedMetaData.__metadata__origin__ += "/" + metaData.value;
               }
               return computedMetaData;
 
             case "lib":
               computedMetaData = {
-                origin: MODULE_NAME_PREFIX + moduleName + "/lib"
+                __metadata__origin__: MODULE_NAME_PREFIX + moduleName + "/lib"
               };
               if (metaData.value) {
-                computedMetaData.origin += "/" + metaData.value;
+                computedMetaData.__metadata__origin__ += "/" + metaData.value;
               }
               return computedMetaData;
 
             case "validation":
               computedMetaData = {
-                origin: MODULE_NAME_PREFIX + moduleName + "/lib/validation"
+                __metadata__origin__: MODULE_NAME_PREFIX + moduleName + "/lib/validation"
               };
               if (metaData.value) {
-                computedMetaData.property = metaData.value;
+                computedMetaData.__metadata__property__ = metaData.value;
               }
               return computedMetaData;
 

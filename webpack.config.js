@@ -136,15 +136,15 @@ moduleManager.getMetaData(function (err, modulesMetaData) {
 function generateIntermediaryRequires(obj) {
   if (_.isPlainObject(obj)) {
     if (
-      obj.hasOwnProperty("origin")
+      obj.hasOwnProperty("__metadata__origin__")
     ) {
       // Consider this a leaf that needs to be resolved.
       var requireString = "__require(";
 
-      requireString += obj.origin + ")";
+      requireString += obj.__metadata__origin__ + ")";
 
-      if (obj.hasOwnProperty("property")) {
-        requireString += "." + obj.property;
+      if (obj.hasOwnProperty("__metadata__property__")) {
+        requireString += "." + obj.__metadata__property__;
       }
 
       requireString += "__";
