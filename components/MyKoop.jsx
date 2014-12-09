@@ -1,12 +1,12 @@
 var _ = require("lodash");
+var __ = require("language").__;
 
 var React = require("react");
 var ReactRouter = require("react-router");
-
 var DefaultRoute = ReactRouter.DefaultRoute;
 var Route = ReactRouter.Route;
 var Routes = ReactRouter.Routes;
-
+var DocumentTitle = require("react-document-title");
 var routeData = require("dynamic-metadata").routes;
 
 var MKApp                = require(
@@ -31,11 +31,38 @@ var AuthenticationWrapper = React.createClass({
     if (!this.state.userMeetsPermissions) {
       return null;
     }
+    var extraTitle = __(
+      this.props.i18nkey ||
+      this.props.title ||
+      this.props.name
+    );
 
+    extraTitle = extraTitle ? " - " + extraTitle : "";
     return (
-      <this.props.subHandler
-        {...props}
-      />
+      <DocumentTitle title={"My Koop" + extraTitle}>
+        <this.props.subHandler
+          {...props}
+        />
+      </DocumentTitle>
+    );
+  }
+});
+
+var DocumentWrapper = React.createClass({
+  render: function() {
+    var props = _.omit(this.props, ["subHandler", "ref"]);
+    var extraTitle = __(
+      this.props.i18nkey ||
+      this.props.title ||
+      this.props.name
+    );
+    extraTitle = extraTitle ? " - " + extraTitle : "";
+    return (
+      <DocumentTitle title={"My Koop" + extraTitle}>
+        <this.props.subHandler
+          {...props}
+        />
+      </DocumentTitle>
     );
   }
 });
@@ -65,18 +92,19 @@ function addDynamicRoute(routeInfo) {
 
   var needsPermissionCheck = routeInfo.permissions &&
                              !routeInfo.manualPermissions;
-
+  var props = _.omit(routeInfo,
+    "handler",
+    "children"
+  );
   return (
     <Route
       key={iRoute++}
-      name={routeInfo.name}
-      path={routeInfo.path}
+      {...props}
       handler={needsPermissionCheck ?
         AuthenticationWrapper :
-        handler
+        DocumentWrapper
       }
-      subHandler={needsPermissionCheck && handler}
-      permissions={routeInfo.permissions}
+      subHandler={handler}
     >
       {children}
     </Route>
@@ -84,18 +112,6 @@ function addDynamicRoute(routeInfo) {
 }
 
 var dynamicRoutes = addDynamicRoute({children: routeData});
-
-/*
-dynamicRoutes.push([
-<Route name={RouteInfo.dashboard.name} path={RouteInfo.dashboard.fullPath} handler={MKDashboardWrapper}>
-  <Route name={RouteInfo.options.name} path={RouteInfo.options.relativePath} handler={MKOptionsPage}/>
-  <Route name={RouteInfo.members.name} path={RouteInfo.members.relativePath} handler={MKParentPlaceHolder}>
-    <Route name={RouteInfo.membersPermissions.name} path={RouteInfo.membersPermissions.relativePath} handler={MKUserPrivilegesPage}/>
-    <Route name={RouteInfo.volunteerAvailability.name} path={RouteInfo.volunteerAvailability.relativePath} handler={MKVolunteerAvailability}/>
-  </Route>
-</Route>
-]);
-*/
 
 var MyKoop = React.createClass({
   render: function() {
