@@ -32,7 +32,7 @@ var AuthenticationWrapper = React.createClass({
       return null;
     }
     var extraTitle = __(
-      this.props.i18nkey ||
+      this.props.i18nKey ||
       this.props.title ||
       this.props.name
     );
@@ -52,7 +52,7 @@ var DocumentWrapper = React.createClass({
   render: function() {
     var props = _.omit(this.props, ["subHandler", "ref"]);
     var extraTitle = __(
-      this.props.i18nkey ||
+      this.props.i18nKey ||
       this.props.title ||
       this.props.name
     );
