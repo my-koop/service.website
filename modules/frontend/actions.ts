@@ -48,6 +48,7 @@ function requestFactory(params: any) {
     if(!_.isFunction(callback)) {
       callback = _.noop;
     }
+    args.i18nErrors = args.i18nErrors || {};
 
     function processResponse(err, body?, res?) {
       if(err && args.i18nErrors) {
