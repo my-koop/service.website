@@ -1,9 +1,11 @@
 ///<reference path="../../typings/tsd.d.ts" />
 import _ = require("lodash");
 import ajax = require("./ajax");
+var __ = require("language").__;
 var traverse = require("traverse");
 var endpoints = require("dynamic-metadata").endpoints;
 var globalSpinner = require("mykoop-core/components/Spinner");
+var globalAlert = require("mykoop-core/components/AlertTrigger");
 var errorVarRegExp = /__(.+)__/;
 
 function requestFactory(params: any) {
@@ -43,6 +45,10 @@ function requestFactory(params: any) {
       callback = args;
       args = {};
     }
+    if(!_.isFunction(callback)) {
+      callback = _.noop;
+    }
+    args.i18nErrors = args.i18nErrors || {};
 
     function processResponse(err, body?, res?) {
       if(err && args.i18nErrors) {
@@ -69,6 +75,16 @@ function requestFactory(params: any) {
         (<any>err).i18n = !_.isEmpty(i18n) ?
           i18n
         : [{key: "errors::error", context: err.context}];
+        if(args.alertErrors) {
+          var errorMessage = _.map(err.i18n, function(i18nError: any) {
+            return __(i18nError.key, i18nError);
+          }).join("\n");
+          console.error(err);
+          globalAlert.showAlert(errorMessage);
+        }
+      }
+      if(!err && args.alertSuccess) {
+        globalAlert.showAlert(__("success"));
       }
       callback(err, body, res);
     }
@@ -104,7 +120,7 @@ function requestFactory(params: any) {
 
           if (!queryValue && !hasErrored) {
             hasErrored = true;
-            callback(
+            processResponse(
               new Error(
                 "Couldn't build request, missing parameter: " + queryArgument
               )

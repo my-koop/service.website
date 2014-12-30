@@ -70,6 +70,10 @@ export function unformat(amount: string): number {
   return accounting.unformat(amount);
 }
 
+export function getCurrencySymbol() {
+  return accounting.settings.currency.symbol;
+}
+
 var i18nOptions: any = {
   getAsync: false,
   fallbackLng: "en",
@@ -97,6 +101,11 @@ if(__DEV__) {
 }
 
 i18n.init(i18nOptions, function(){
+  // Post processor to capitalize the first letter of a key.
+  i18n.addPostProcessor("ucfirst", function(translated) {
+    return translated.charAt(0).toUpperCase() + translated.slice(1);
+  });
+
   synchronizeLanguage(i18n.lng());
 });
 

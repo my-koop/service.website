@@ -4,5 +4,25 @@
 @import        "~font-awesome-styles/font-awesome";
 @fa-font-path: "~font-awesome/fonts";
 
+.calendar {
+  @import "~react-calendar-styles/bootstrap-theme";
+
+  .rc-Week-number {
+    visibility: hidden;
+  }
+  .rc-Day {
+    cursor: default;
+
+    &:hover {
+      background-color: @gray-lighter;
+    }
+  }
+  &.calendar-pointer {
+    .rc-Day {
+      cursor: pointer;
+    }
+  }
+}
+
 /* Module global styles */
 @import "dynamic-global-styles";
