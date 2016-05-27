@@ -60,14 +60,16 @@ function requestFactory(params: any) {
             if(this.isLeaf) {
               var i18nVar: any = errorVarRegExp.exec(content);
               i18nVar = i18nVar && i18nVar[1];
-              var i18nKey = prefix + this.path
-                .concat(content.replace(errorVarRegExp, ""))
-                .join(".")
-                .replace(/\.\d+\./g, ".");
-              i18n.push({
-                key: i18nKey,
-                variable: i18nVar
-              });
+              if (i18nVar && content && content.replace) {
+                var i18nKey = prefix + this.path
+                  .concat(content.replace(errorVarRegExp, ""))
+                  .join(".")
+                  .replace(/\.\d+\./g, ".");
+                i18n.push({
+                  key: i18nKey,
+                  variable: i18nVar
+                });
+              }
             }
             return i18n;
           }, []);
