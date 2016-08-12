@@ -16,6 +16,7 @@ var isProd = utils.__PROD__;
 
 var pluginList = [
   new webpack.DefinePlugin({
+    "__SERVICE_URL__": "\"" + configs.serviceUrl + "\"",
     "__DEV__": isDev,
     "__PROD__": isProd,
     "process.__DEV__": isDev,

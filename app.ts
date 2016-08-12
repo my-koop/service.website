@@ -67,6 +67,22 @@ app.disable("etag");
 app.set("port", process.env.PORT || 1337);
 app.use(favicon(__dirname + "/public/favicon.ico"));
 app.use(middlewareLogger("dev"));
+app.options("*", function(req, res, next) {
+  var headers = {};
+  // IE8 does not allow domains to be specified, just the *
+  // headers["Access-Control-Allow-Origin"] = req.headers.origin;
+  headers["Access-Control-Allow-Origin"] = "*";
+  headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
+  headers["Access-Control-Allow-Credentials"] = false;
+  headers["Access-Control-Max-Age"] = '86400'; // 24 hours
+  headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept";
+  res.writeHead(200, headers);
+  res.end();
+});
+app.use(function(req, res, next) {
+  res.set("Access-Control-Allow-Origin", "*");
+  next();
+});
 
 // Frontend routes
 import routes = require("./routes/index");

@@ -1,6 +1,7 @@
 {
   assetsUrl: "",
-  //mykoopModulesList: "modules.json5",
+  serviceUrl: "", //http://localhost:1337",
+  mykoopModulesList: "modules.json5",
   mykoopLoadModuleFromNode: true,
   mykoopModuleExcludeList: []
 }

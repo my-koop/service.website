@@ -5,6 +5,7 @@
 
 declare var __DEV__: boolean;
 declare var __PROD__: boolean;
+declare var __SERVICE_URL__: string;
 
 declare module NodeJS {
   export interface Process {

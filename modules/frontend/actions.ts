@@ -164,7 +164,7 @@ function requestFactory(params: any) {
       }
     }
     ajax.request({
-      endpoint: "/json" + requestPath,
+      endpoint: __SERVICE_URL__ + "/json" + requestPath,
       method: method,
       data: _.omit(args.data, paramsIdentifiers)
     }, processResponse);
